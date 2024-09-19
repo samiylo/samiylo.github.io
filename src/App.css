@@ -589,6 +589,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   z-index: 0;
   display: flex;
   align-items: center;
+  gap: 10px;
 }
 .new-email-bx::before {
   content: "";
@@ -627,6 +628,21 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   font-weight: 500;
   letter-spacing: 0.5px;
   border-radius: 18px;
+}
+@media (max-width: 768px) {
+  .new-email-bx {
+    flex-direction: column; /* Stack input and button vertically */
+    align-items: stretch; /* Ensures input and button take full width */
+  }
+
+  .new-email-bx button {
+    width: 100%; /* Make button full width on mobile */
+    padding: 15px 0; /* Adjust button padding for mobile */
+  }
+
+  .new-email-bx input {
+    padding: 10px; /* Adjust input padding for mobile */
+  }
 }
 .footer img {
   width: 26%;
