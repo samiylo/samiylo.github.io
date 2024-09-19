@@ -8,6 +8,11 @@ import { HashLink } from 'react-router-hash-link';
 import {
   BrowserRouter as Router
 } from "react-router-dom";
+import { SocialIcon } from "react-social-icons";
+import 'react-social-icons/discord';
+import 'react-social-icons/twitter';
+import 'react-social-icons/github';
+
 
 export const NavBar = () => {
 
@@ -49,10 +54,10 @@ export const NavBar = () => {
               <Nav.Link href="#projects" className={activeLink === 'projects' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('projects')}>Projects</Nav.Link>
             </Nav>
             <span className="navbar-text">
-              <div className="social-icon">
-                <a href="#">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
+              <div className="icon">
+                <SocialIcon bgColor="white" fgColor="purple" url="https://discord.com"/>
+                <SocialIcon bgColor="white" fgColor="purple" url="https://x.com"/>
+                <SocialIcon bgColor="white" fgColor="purple" url="https://github.com"/>
               </div>
               <HashLink to='#connect'>
                 <button className="vvd"><span>Let’s Connect</span></button>
