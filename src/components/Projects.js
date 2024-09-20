@@ -1,5 +1,8 @@
 import { Container, Row, Col, Tab, Nav } from "react-bootstrap";
 import { ProjectCard } from "./ProjectCard";
+import hftImage from "../assets/img/HFT.jpg";
+import bitcoinWalletImage from "../assets/img/bitcoinwallet.jpg";
+import webCrawler from "../assets/img/webcrawler.jpg";
 import projImg1 from "../assets/img/project-img1.png";
 import projImg2 from "../assets/img/project-img2.png";
 import projImg3 from "../assets/img/project-img3.png";
@@ -11,28 +14,28 @@ export const Projects = () => {
 
   const projects = [
     {
+      title: "High Frequency Trading",
+      description: "Automation & Analysis",
+      imgUrl: hftImage,
+    },
+    {
+      title: "Bitcoin Wallet",
+      description: "Security & Privacy",
+      imgUrl: bitcoinWalletImage,
+    },
+    {
+      title: "Web Crawler",
+      description: "Web Scraping",
+      imgUrl: webCrawler,
+    },
+    {
       title: "Business Startup",
       description: "Design & Development",
       imgUrl: projImg1,
     },
     {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: projImg2,
-    },
-    {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: projImg3,
-    },
-    {
-      title: "Business Startup",
-      description: "Design & Development",
-      imgUrl: projImg1,
-    },
-    {
-      title: "Business Startup",
-      description: "Design & Development",
+      title: "Consulting",
+      description: "Architecture & Pricing",
       imgUrl: projImg2,
     },
     {
