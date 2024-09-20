@@ -36,10 +36,10 @@ export const Skills = () => {
                     <div className="skill-bx wow zoomIn">
                         <h2>Skills</h2>
                         <p>My skill set spans a broad range of technologies and tools, with a deep focus on Java, backend development, and scalable system design. I'm proficient in modern frameworks, cloud services, and development practices that ensure efficient, reliable, and maintainable solutions.</p>
-                        <Carousel responsive={responsive} infinite={true} className="owl-carousel owl-theme skill-slider">
+                        <Carousel responsive={responsive} infinite={true} className="owl-carousel skill-arrow owl-theme skill-slider">
                             <div className="item">
                                 {/* <img src={meter1} alt="Image" /> */}
-                                <h5>App Development</h5>
+                                <h5>Progressive Web Apps</h5>
                             </div>
                             <div className="item">
                                 {/* <img src={meter1} alt="Image" /> */}
@@ -52,10 +52,6 @@ export const Skills = () => {
                             <div className="item">
                                 {/* <img src={meter1} alt="Image" /> */}
                                 <h5>Artificial Intelligence</h5>
-                            </div>
-                            <div className="item">
-                                {/* <img src={meter3} alt="Image" /> */}
-                                <h5>Brand Identity</h5>
                             </div>
                             
                         </Carousel>
