@@ -51,14 +51,14 @@ export const Projects = () => {
               {({ isVisible }) =>
               <div className={isVisible ? "animate__animated animate__fadeIn": ""}>
                 <h2>Projects</h2>
-                <p>Explore my key projects that showcase a blend of innovative problem-solving, robust design, and real-world application. From backend services to full-stack solutions, each project reflects my dedication to clean code, scalability, and delivering high-quality software.</p>
+                <p>Explore my key projects that showcase a blend of innovative problem-solving, robust design, and real-world application.</p>
                 <Tab.Container id="projects-tabs" defaultActiveKey="first">
                   <Nav variant="pills" className="nav-pills mb-5 justify-content-center align-items-center" id="pills-tab">
                     <Nav.Item>
                       <Nav.Link eventKey="first">Apps</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
-                      <Nav.Link eventKey="second">ML  AI </Nav.Link>
+                      <Nav.Link eventKey="second">ML ~ AI</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
                       <Nav.Link eventKey="third">Cloud</Nav.Link>
