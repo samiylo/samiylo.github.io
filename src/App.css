@@ -96,6 +96,72 @@ input:focus, textarea:focus, select:focus {
 	}
 }
 
+.liquid-button {
+  background: linear-gradient(120deg, #170d79, #381b58, #a80ba8);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+}
+.liquid-button::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.1);
+  animation: liquid 5s infinite linear;
+  z-index: 0;
+}
+.liquid-button-inverse {
+  background: linear-gradient(120deg, #a80ba8, #381b58, #170d79);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes liquid {
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(50%, 50%);
+    opacity: 0;
+  }
+}
+
+
+.letsConnectNav {
+  background: transparent;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 16px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  animation: liquid 5s infinite linear;
+}
+
+.letsConnectNav:hover {
+  color: rgb(223, 118, 223);
+}
+
+
+
+
+
 p.success {
 	color: green;
 }
@@ -256,11 +322,22 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 .banner {
   margin-top: 0;
   padding: 260px 0 100px 0;
+  /* background-image: url('./assets/img/banner-bg.jpg'); */
+  background: linear-gradient(to top, #3c0e5ea1, black);
+  background-position: top center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* filter:blur(5px) */
+}
+/* .sbanner {
+  margin-top: 0;
+  padding: 260px 0 100px 0;
   background-image: url('./assets/img/banner-bg.png');
   background-position: top center;
   background-size: cover;
   background-repeat: no-repeat;
-}
+  filter:blur(5px)
+} */
 .banner .tagline {
   font-weight: 700;
   letter-spacing: 0.8px;
@@ -333,6 +410,8 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   text-align: center;
   padding: 60px 50px;
   margin-top: -60px;
+  /* opacity: .08; */
+  /* filter: blur(10px) */
 }
 .skill h2 {
 	font-size: 45px;
