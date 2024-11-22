@@ -148,13 +148,14 @@ input:focus, textarea:focus, select:focus {
   padding: 10px 20px;
   border-radius: 50px;
   font-size: 16px;
-  color: #ffffff; /* Default text color */
+  color: #ffffff;
   cursor: pointer;
-  transition: color 0.3s ease; /* Smooth transition for color */
+  transition: color 0.3s ease;
+  animation: liquid 5s infinite linear;
 }
 
 .letsConnectNav:hover {
-  color: rgb(223, 118, 223); /* Change text color to purple */
+  color: rgb(223, 118, 223);
 }
 
 
