@@ -1,14 +1,13 @@
 {
   "files": {
-    "main.css": "/static/css/main.4b4148e6.css",
-    "main.js": "/static/js/main.21cee197.js",
+    "main.css": "/static/css/main.b292756d.css",
+    "main.js": "/static/js/main.985f248f.js",
     "static/js/453.85f98929.chunk.js": "/static/js/453.85f98929.chunk.js",
     "static/media/logo.png": "/static/media/logo.7ddad3ad5a75c1a1f831.png",
     "static/media/color-sharp.png": "/static/media/color-sharp.bea361cfef80fefc2d1e.png",
     "static/media/color-sharp2.png": "/static/media/color-sharp2.c87586c6c2f549cb4aa6.png",
     "static/media/astronaut.png": "/static/media/astronaut.f65b9130a83d8bff0365.png",
     "static/media/HFT.jpg": "/static/media/HFT.c3873d99a2108c61b65c.jpg",
-    "static/media/banner-bg.png": "/static/media/banner-bg.cc1273af450504afe755.png",
     "static/media/webcrawler.jpg": "/static/media/webcrawler.9f7f81637513ff897a46.jpg",
     "static/media/bitcoinwallet.jpg": "/static/media/bitcoinwallet.2c6639e6066533fd828c.jpg",
     "static/media/CentraNo2-Bold.ttf": "/static/media/CentraNo2-Bold.2faff7f7d3fc92a2fcd9.ttf",
@@ -22,12 +21,12 @@
     "static/media/revicons.ttf": "/static/media/revicons.57fd05d4ae650374c8de.ttf",
     "static/media/revicons.woff": "/static/media/revicons.e8746a624ed098489406.woff",
     "index.html": "/index.html",
-    "main.4b4148e6.css.map": "/static/css/main.4b4148e6.css.map",
-    "main.21cee197.js.map": "/static/js/main.21cee197.js.map",
+    "main.b292756d.css.map": "/static/css/main.b292756d.css.map",
+    "main.985f248f.js.map": "/static/js/main.985f248f.js.map",
     "453.85f98929.chunk.js.map": "/static/js/453.85f98929.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4b4148e6.css",
-    "static/js/main.21cee197.js"
+    "static/css/main.b292756d.css",
+    "static/js/main.985f248f.js"
   ]
 }
