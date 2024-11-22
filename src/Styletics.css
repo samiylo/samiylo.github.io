@@ -2,3 +2,21 @@
     color: #e57fff;
     text-shadow: 0 0 5px #ff14eb, 0 0 10px #ff14d8, 0 0 20px #ff14cc, 0 0 40px #ff1482;
   }
+
+  /* .spotlight {
+    box-shadow: 0 50px 50px #ffffff15;
+  }
+  .spotlight:hover {
+    box-shadow: 0 50px 50px #ffffff42;
+    overflow: hidden;
+  } */
+
+
+  /* Lets Conncet */
+  .spotlight-pink {
+    box-shadow: 0 50px 50px #ffffff15;
+  }
+  .spotlight-pink:hover {
+    box-shadow: 0 50px 50px #c304f356;
+    overflow: hidden;
+  }

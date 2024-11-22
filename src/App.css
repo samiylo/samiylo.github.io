@@ -103,14 +103,7 @@ input:focus, textarea:focus, select:focus {
   border-radius: 50px;
   position: relative;
   overflow: hidden;
-}
-.liquid-button-inverse {
-  background: linear-gradient(120deg, #a80ba8, #381b58, #170d79);
-  border: none;
-  padding: 10px 20px;
-  border-radius: 50px;
-  position: relative;
-  overflow: hidden;
+  z-index: 2;
 }
 .liquid-button::before {
   content: "";
@@ -121,7 +114,17 @@ input:focus, textarea:focus, select:focus {
   height: 200%;
   background: rgba(255, 255, 255, 0.1);
   animation: liquid 5s infinite linear;
+  z-index: 0;
 }
+.liquid-button-inverse {
+  background: linear-gradient(120deg, #a80ba8, #381b58, #170d79);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  position: relative;
+  overflow: hidden;
+}
+
 @keyframes liquid {
   0% { transform: translate(0, 0); }
   100% { transform: translate(50%, 50%); }

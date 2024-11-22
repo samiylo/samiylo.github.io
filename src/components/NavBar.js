@@ -60,7 +60,7 @@ export const NavBar = () => {
                 <SocialIcon bgColor="white" fgColor="purple" url="https://github.com"/>
               </div>
               <HashLink to='#connect'>
-                <button className=" neon liquid-button-inverse"><span className="letsConnectNav animated-border">Let’s Connect</span></button>
+                <button className=" neon spotlight-pink liquid-button-inverse"><span className="letsConnectNav animated-border">Let’s Connect</span></button>
               </HashLink>
             </span>
           </Navbar.Collapse>
