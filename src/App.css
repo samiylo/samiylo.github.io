@@ -256,11 +256,22 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 .banner {
   margin-top: 0;
   padding: 260px 0 100px 0;
+  /* background-image: url('./assets/img/banner-bg.jpg'); */
+  background: linear-gradient(to top, #3c0e5ea1, black);
+  background-position: top center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* filter:blur(5px) */
+}
+/* .sbanner {
+  margin-top: 0;
+  padding: 260px 0 100px 0;
   background-image: url('./assets/img/banner-bg.png');
   background-position: top center;
   background-size: cover;
   background-repeat: no-repeat;
-}
+  filter:blur(5px)
+} */
 .banner .tagline {
   font-weight: 700;
   letter-spacing: 0.8px;
