@@ -126,9 +126,22 @@ input:focus, textarea:focus, select:focus {
 }
 
 @keyframes liquid {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(50%, 50%); }
+  0% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(50%, 50%);
+    opacity: 0;
+  }
 }
+
 
 .letsConnectNav {
   background: transparent;
