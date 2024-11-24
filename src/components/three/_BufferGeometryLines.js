@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
-
+import { OrbitControls } from '../../assets/jsm/OrbitControls';
 import { GUI } from 'lil-gui';
-
+import Stats from '../../assets/jsm/stats.module'
 
 const BufferGeometryLines = () => {
   const containerRef = useRef(null);
@@ -100,22 +100,29 @@ const BufferGeometryLines = () => {
       linesMesh = new THREE.LineSegments(geometry, material);
       group.add(linesMesh);
 
-    //   Controls
-    //   const controls = new OrbitControls(camera, containerRef.current);
-    //   controls.minDistance = 1000;
-    //   controls.maxDistance = 3000;
+      // Controls
+      const controls = new OrbitControls(camera, containerRef.current);
+      controls.minDistance = 1000;
+      controls.maxDistance = 3000;
 
-      // GUI
-    //   const gui = new GUI();
-    //   gui.add(effectController, 'showDots').onChange((value) => (pointCloud.visible = value));
-    //   gui.add(effectController, 'showLines').onChange((value) => (linesMesh.visible = value));
-    //   gui.add(effectController, 'minDistance', 10, 300);
-    //   gui.add(effectController, 'limitConnections');
-    //   gui.add(effectController, 'maxConnections', 0, 30, 1);
-    //   gui.add(effectController, 'particleCount', 0, maxParticleCount, 1).onChange((value) => {
-    //     particleCount = value;
-    //     particles.setDrawRange(0, particleCount);
-    //   });
+      //GUI
+      const gui = new GUI();
+      
+      gui.add(effectController, 'showDots').onChange((value) => (pointCloud.visible = value));
+      gui.add(effectController, 'showLines').onChange((value) => (linesMesh.visible = value));
+      gui.add(effectController, 'minDistance', 10, 300);
+      gui.add(effectController, 'limitConnections');
+      gui.add(effectController, 'maxConnections', 0, 30, 1);
+      gui.add(effectController, 'particleCount', 0, maxParticleCount, 1).onChange((value) => {
+        particleCount = value;
+        particles.setDrawRange(0, particleCount);
+      });
+
+      // Hide all GUI elements
+    const guiContainers = document.querySelectorAll('.lil-gui'); // Select all GUI elements
+    guiContainers.forEach((guiContainer) => {
+    guiContainer.style.display = 'none'; // Hide each GUI element
+});
 
       window.addEventListener('resize', onWindowResize);
     };
