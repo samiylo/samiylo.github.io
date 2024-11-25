@@ -21,14 +21,5 @@
     overflow: hidden;
   }
 
-  canvas {
-    display: block;
-    margin-left: 100px;
-}
-
-#cloudBuffer {
-  height: 100px;
-  width: 100px;
-}
 
 

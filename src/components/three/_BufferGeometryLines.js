@@ -212,7 +212,7 @@ const BufferGeometryLines = () => {
     };
   }, []);
 
-  return <div ref={containerRef} style={{ marginLeft: '160px', width: '50%', height: '40vh' }} />;
+  return <div ref={containerRef} style={{ width: '100%', height: '40vh' }} />;
 };
 
 export default BufferGeometryLines;
