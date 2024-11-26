@@ -181,6 +181,7 @@ nav.navbar {
 nav.navbar.scrolled {
   padding: 0px 0;
   background-color: #121212;
+  opacity: 60%;
 }
 nav.navbar a.navbar-brand {
     width: 9%;
@@ -247,7 +248,7 @@ span.navbar-text {
   margin-left: 18px;
 	position: relative;
 	background-color: transparent;
-	transition: 0.3s ease-in-out;
+	/* transition: 0.3s ease-in-out; */
 }
 .navbar-text button span {
   z-index: 1;
@@ -261,7 +262,7 @@ span.navbar-text {
   left: 0;
   top: 0;
   z-index: -1;
-  transition: 0.3s ease-in-out;
+  /* transition: 0.3s ease-in-out; */
 }
 .navbar-text button:hover {
   color: #121212;

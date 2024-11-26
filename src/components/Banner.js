@@ -4,6 +4,7 @@ import headerImg from "../astronaut.png";
 import { ArrowRightCircle } from 'react-bootstrap-icons';
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
+import BufferGeometryLines from "./three/_BufferGeometryLines";
 
 export const Banner = () => {
   const [loopNum, setLoopNum] = useState(0);
@@ -57,7 +58,7 @@ export const Banner = () => {
               <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
                 <span className="c">Let's build together</span>
                 <h1 className="">{`Hi! I'm Samiylo, `} <span className="txt-rotate" dataPeriod="1000" data-rotate='[ " Apps Engineer", "Web Eccommerce Architect", "UX/UI Designer" ]'><span className="wrap">{text}</span></span></h1>
-                  <p>Engineer with a passion for building scalable, high-performance applications. I create solutions that drive innovations.</p>
+                  <p>Engineer building high-performance modern applications used in AI & Machine Learning</p>
                   <button onClick={() => console.log('connect')}>Let’s Connect <ArrowRightCircle size={25} /></button>
               </div>}
             </TrackVisibility>
@@ -66,7 +67,8 @@ export const Banner = () => {
             <TrackVisibility>
               {({ isVisible }) =>
                 <div className={isVisible ? "animate__animated animate__zoomIn" : ""}>
-                  <img src={headerImg} alt="Header Img"/>
+                  {/* <img src={headerImg} alt="Header Img"/> */}
+                  {/* <div><BufferGeometryLines></BufferGeometryLines></div> */}
                 </div>}
             </TrackVisibility>
           </Col>

@@ -9,6 +9,7 @@ import projImg3 from "../assets/img/project-img3.png";
 import colorSharp2 from "../assets/img/color-sharp2.png";
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
+import BufferGeometryLines from "./three/_BufferGeometryLines";
 
 export const Projects = () => {
 
@@ -55,10 +56,10 @@ export const Projects = () => {
               <div className={isVisible ? "animate__animated animate__fadeIn": ""}>
                 <h2>Projects</h2>
                 <p>Explore my key projects that showcase a blend of innovative problem-solving, robust design, and real-world application.</p>
-                <Tab.Container id="projects-tabs" defaultActiveKey="first">
+                <Tab.Container id="projects-tabs" defaultActiveKey="third">
                   <Nav variant="pills" className="nav-pills mb-5 justify-content-center align-items-center" id="pills-tab">
                     <Nav.Item>
-                      <Nav.Link eventKey="first">Apps</Nav.Link>
+                    <Nav.Link eventKey="first">Apps</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
                       <Nav.Link eventKey="second">ML ~ AI</Nav.Link>
@@ -82,11 +83,13 @@ export const Projects = () => {
                         }
                       </Row>
                     </Tab.Pane>
-                    <Tab.Pane eventKey="section">
+                    <Tab.Pane eventKey="second">
                       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quam, quod neque provident velit, rem explicabo excepturi id illo molestiae blanditiis, eligendi dicta officiis asperiores delectus quasi inventore debitis quo.</p>
                     </Tab.Pane>
+                    {/* <BufferGeometryLines></BufferGeometryLines> */}
                     <Tab.Pane eventKey="third">
-                      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque quam, quod neque provident velit, rem explicabo excepturi id illo molestiae blanditiis, eligendi dicta officiis asperiores delectus quasi inventore debitis quo.</p>
+                    <BufferGeometryLines />
+                    <p>Cloud computing leverages a network of remote servers to store, manage, and process data, providing scalable and on-demand resources for applications. Distributed services within this model work collaboratively across multiple servers or nodes, ensuring reliability, scalability, and performance by balancing workloads and data across various locations. When integrated with edge computing, these services bring computational power closer to the data source or user, reducing latency and enhancing real-time processing. This synergy enables faster response times and efficient resource utilization, making it ideal for applications like IoT, video streaming, and AI-driven analytics.</p>
                     </Tab.Pane>
                   </Tab.Content>
                 </Tab.Container>
