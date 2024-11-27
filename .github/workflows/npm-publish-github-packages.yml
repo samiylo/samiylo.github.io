@@ -15,7 +15,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+      - name: Inject Environment Variable
+        run: |
+            echo "DISCORD_WEBHOOK_URL=${{secrets.DISCORD_WEBHOOK_URL}}" >> .env
       - run: yarn build
+        env:
+          DISCORD_WEBHOOK_URL: ${{secrets.DISCORD_WEBHOOK_URL}}
       - run: yarn test
 
   publish-gpr:
@@ -30,6 +35,9 @@ jobs:
         with:
           node-version: 20
           registry-url: https://npm.pkg.github.com/
+      - name: Inject Environment Variable
+        run: |
+          echo "DISCORD_WEBHOOK_URL=${{secrets.DISCORD_WEBHOOK_URL}}" >> .env
       - run: yarn start
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
