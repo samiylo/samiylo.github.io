@@ -15,6 +15,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+      - run: echo "DISCORD_WEBHOOK_URL=${{vars.DISCORD_WEBHOOK_URL}}" >> .env
       - run: yarn build
       - run: yarn test
 
@@ -33,3 +34,4 @@ jobs:
       - run: yarn start
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          DISCORD_WEBHOOK_URL: ${{vars.DISCORD_WEBHOOK_URL}}
