@@ -23,25 +23,75 @@ export const Contact = () => {
       })
   }
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setButtonText("Sending...");
+  //   let response = await fetch("http://localhost:5000/contact", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json;charset=utf-8",
+  //     },
+  //     body: JSON.stringify(formDetails),
+  //   });
+  //   setButtonText("Send");
+  //   let result = await response.json();
+  //   setFormDetails(formInitialDetails);
+  //   if (result.code == 200) {
+  //     setStatus({ succes: true, message: 'Message sent successfully'});
+  //   } else {
+  //     setStatus({ succes: false, message: 'Something went wrong, please try again later.'});
+  //   }
+  // };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setButtonText("Sending...");
-    let response = await fetch("http://localhost:5000/contact", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json;charset=utf-8",
-      },
-      body: JSON.stringify(formDetails),
-    });
-    setButtonText("Send");
-    let result = await response.json();
-    setFormDetails(formInitialDetails);
-    if (result.code == 200) {
-      setStatus({ succes: true, message: 'Message sent successfully'});
-    } else {
-      setStatus({ succes: false, message: 'Something went wrong, please try again later.'});
+
+    // Format the message for Discord
+    const discordMessage = {
+        content: `New Contact Form Submission:
+- **First Name**: ${formDetails.firstName}
+- **Last Name**: ${formDetails.lastName}
+- **Email**: ${formDetails.email}
+- **Phone**: ${formDetails.phone}
+- **Message**: ${formDetails.message}`
+    };
+
+    try {
+        // Send to Discord Webhook
+        const discordResponse = await fetch("https://discord.com/api/webhooks/1311435779662286858/VKfGYACrupZ7WfKdLAF5cWzQeirz470DHdbt3Z-9aY86dxHBQE58fMT6aiEjXwzRB58G", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(discordMessage),
+        });
+
+        if (!discordResponse.ok) {
+            throw new Error("Failed to send message to Discord");
+        }
+
+        // Handle local submission if needed (e.g., saving to a database)
+        const response = await fetch("http://localhost:5000/contact", {
+            method: "POST",
+            headers: { "Content-Type": "application/json;charset=utf-8" },
+            body: JSON.stringify(formDetails),
+        });
+
+        let result = await response.json();
+        setFormDetails(formInitialDetails);
+
+        if (result.code === 200) {
+            setStatus({ success: true, message: "Message sent successfully" });
+        } else {
+            setStatus({ success: false, message: "Something went wrong, please try again later." });
+        }
+    } catch (error) {
+        console.error("Error:", error);
+        // setStatus({ success: false, message: "Failed to send the message." });
     }
-  };
+
+    setButtonText("Send");
+};
+
 
   return (
     <section className="contact" id="connect">
