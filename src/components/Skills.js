@@ -34,8 +34,8 @@ export const Skills = () => {
             <div className="row">
                 <div className="col-12">
                     <div className="skill-bx wow zoomIn">
-                        <h2>Skills</h2>
-                        <p>My skill sets span a wide range of technologies and tools, with a deep focus on building high performance apps. </p>
+                        <h2>Tools</h2>
+                        <p>Developer tools I personally use, and designed to speadup development lifecycle.</p>
                         <Carousel responsive={responsive} infinite={true} className="owl-carousel skill-arrow owl-theme skill-slider">
                             <div className="item">
                                 {/* <img src={meter1} alt="Image" /> */}
@@ -43,15 +43,15 @@ export const Skills = () => {
                             </div>
                             <div className="item">
                                 {/* <img src={meter1} alt="Image" /> */}
-                                <h5>Cloud Computing</h5>
+                                <h5>AI & ML Applications</h5>
                             </div>
                             <div className="item">
                                 {/* <img src={meter2} alt="Image" /> */}
-                                <h5>Machine Learning</h5>
+                                <h5>Performance with Cloud Computing</h5>
                             </div>
                             <div className="item">
                                 {/* <img src={meter1} alt="Image" /> */}
-                                <h5>Artificial Intelligence</h5>
+                                <h5>Automation Tools</h5>
                             </div>
                             
                         </Carousel>

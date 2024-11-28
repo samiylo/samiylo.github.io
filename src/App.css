@@ -176,10 +176,13 @@ nav.navbar {
   width: 100%;
   top: 0;
   z-index: 9999;
-  transition:  0.32s ease-in-out;
+  height: 100px;
+  transition: all 5s ease-in-out;
 }
 nav.navbar.scrolled {
   padding: 0px 0;
+  height: 2%;
+  transition: all 5s ease;
   background-color: #121212;
   opacity: 60%;
 }
