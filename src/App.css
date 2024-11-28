@@ -716,6 +716,9 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     flex-direction: column; /* Stack input and button vertically */
     align-items: stretch; /* Ensures input and button take full width */
   }
+  #main-logo {
+    display: none;
+  }
 
   .new-email-bx button {
     width: 100%; /* Make button full width on mobile */
