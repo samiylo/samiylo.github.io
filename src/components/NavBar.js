@@ -54,11 +54,11 @@ export const NavBar = () => {
               <Nav.Link href="#skills" className={activeLink === 'skills' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('skills')}>Tools</Nav.Link>
             </Nav>
             <span className="navbar-text">
-              <div className="icon">
-                <SocialIcon bgColor="white" fgColor="purple" url="https://discord.com"/>
-                <SocialIcon bgColor="white" fgColor="purple" url="https://x.com"/>
-                <SocialIcon bgColor="white" fgColor="purple" url="https://github.com"/>
-              </div>
+            <div className="icon">
+                <SocialIcon target="_blank" bgColor="white" fgColor="purple" url="https://discord.com"/>
+                <SocialIcon target="_blank" bgColor="white" fgColor="purple" url="https://linkedin.com/in/samiylo"/>
+                <SocialIcon target="_blank" bgColor="white" fgColor="purple" url="https://github.com/samiylo"/>
+            </div>
               <HashLink to='#connect'>
                 <button className=" neon spotlight-pink liquid-button-inverse"><span className="letsConnectNav animated-border">Let’s Connect</span></button>
               </HashLink>
