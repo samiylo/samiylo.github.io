@@ -72,11 +72,11 @@ export const Contact = () => {
         }
 
         // Handle local submission if needed (e.g., saving to a database)
-        const response = await fetch("http://localhost:5000/contact", {
-            method: "POST",
-            headers: { "Content-Type": "application/json;charset=utf-8" },
-            body: JSON.stringify(formDetails),
-        });
+        // const response = await fetch("http://localhost:5000/contact", {
+        //     method: "POST",
+        //     headers: { "Content-Type": "application/json;charset=utf-8" },
+        //     body: JSON.stringify(formDetails),
+        // });
 
     } catch (error) {
         console.error("Error:", error);

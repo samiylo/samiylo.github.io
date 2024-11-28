@@ -89,7 +89,7 @@ export const Projects = () => {
                     {/* <BufferGeometryLines></BufferGeometryLines> */}
                     <Tab.Pane eventKey="third">
                     <BufferGeometryLines />
-                    <p>Cloud computing leverages a network of remote servers to store, manage, and process data, providing scalable and on-demand resources for applications. Distributed services within this model work collaboratively across multiple servers or nodes, ensuring reliability, scalability, and performance by balancing workloads and data across various locations. When integrated with edge computing, these services bring computational power closer to the data source or user, reducing latency and enhancing real-time processing. This synergy enables faster response times and efficient resource utilization, making it ideal for applications like IoT, video streaming, and AI-driven analytics.</p>
+                    <p>Cloud computing leverages a network of remote servers to store, manage, and process data, providing scalable and on-demand resources for applications. Distributed services within this model work collaboratively across multiple servers or nodes, ensuring reliability, scalability, and performance by balancing workloads and data across various locations.</p>
                     </Tab.Pane>
                   </Tab.Content>
                 </Tab.Container>
@@ -98,7 +98,7 @@ export const Projects = () => {
           </Col>
         </Row>
       </Container>
-      <img className="background-image-right" src={colorSharp2}></img>
+      <img alt="Projects" className="background-image-right" src={colorSharp2}></img>
     </section>
   )
 }

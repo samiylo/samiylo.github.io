@@ -17,9 +17,9 @@ export const Footer = () => {
           </Col>
           <Col size={12} sm={6} className="text-center text-sm-end">
             <div className="social-icon">
-            <SocialIcon bgColor="white" fgColor="purple" url="https://discord.com"/>
-                <SocialIcon bgColor="white" fgColor="purple" url="https://x.com"/>
-                <SocialIcon bgColor="white" fgColor="purple" url="https://github.com"/>
+            <SocialIcon target="_blank" bgColor="white" fgColor="purple" url="https://discord.com"/>
+                <SocialIcon target="_blank" bgColor="white" fgColor="purple" url="https://linkedin.com/in/samiylo"/>
+                <SocialIcon target="_blank" bgColor="white" fgColor="purple" url="https://github.com/samiylo"/>
             </div>
             <p>Copyright 2024. All Rights Reserved</p>
           </Col>

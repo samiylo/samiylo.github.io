@@ -7,7 +7,7 @@ const BufferGeometryLines = () => {
   const containerRef = useRef(null);
 
   useEffect(() => {
-    let camera, scene, renderer, stats, group;
+    let camera, scene, renderer, group;
     let positions, colors, particles, particlePositions, linesMesh, pointCloud;
     const particlesData = [];
     const maxParticleCount = 1000;
