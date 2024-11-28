@@ -715,20 +715,20 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 @media (max-width: 768px) {
   .new-email-bx {
-    flex-direction: column; /* Stack input and button vertically */
-    align-items: stretch; /* Ensures input and button take full width */
+    flex-direction: column;
+    align-items: stretch; 
   }
   #main-logo {
     display: none;
   }
 
   .new-email-bx button {
-    width: 100%; /* Make button full width on mobile */
-    padding: 15px 0; /* Adjust button padding for mobile */
+    width: 100%;
+    padding: 15px 0;
   }
 
   .new-email-bx input {
-    padding: 10px; /* Adjust input padding for mobile */
+    padding: 10px;
   }
 }
 .footer img {
