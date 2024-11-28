@@ -2,7 +2,6 @@ import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { OrbitControls } from '../../assets/jsm/OrbitControls';
 import { GUI } from 'lil-gui';
-import Stats from '../../assets/jsm/stats.module';
 
 const BufferGeometryLines = () => {
   const containerRef = useRef(null);
