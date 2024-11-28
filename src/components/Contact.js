@@ -67,6 +67,8 @@ export const Contact = () => {
 
         if (!discordResponse.ok) {
             throw new Error("Failed to send message to Discord");
+        } else {
+          setStatus({ success: true, message: "Message sent successfully" });
         }
 
         // Handle local submission if needed (e.g., saving to a database)
@@ -76,14 +78,6 @@ export const Contact = () => {
             body: JSON.stringify(formDetails),
         });
 
-        let result = await response.json();
-        setFormDetails(formInitialDetails);
-
-        if (result.code === 200) {
-            setStatus({ success: true, message: "Message sent successfully" });
-        } else {
-            setStatus({ success: false, message: "Something went wrong, please try again later." });
-        }
     } catch (error) {
         console.error("Error:", error);
         // setStatus({ success: true, message: "Failed to send the message." });
