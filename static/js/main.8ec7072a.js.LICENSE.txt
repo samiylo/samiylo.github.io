@@ -20,12 +20,6 @@ PERFORMANCE OF THIS SOFTWARE.
 ***************************************************************************** */
 
 /**
- * @license
- * Copyright 2010-2024 Three.js Authors
- * SPDX-License-Identifier: MIT
- */
-
-/**
  * @license React
  * react-dom.production.min.js
  *
