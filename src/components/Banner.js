@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import headerImg from "../astronaut.png";
 import { ArrowRightCircle } from 'react-bootstrap-icons';
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
-import BufferGeometryLines from "./three/_BufferGeometryLines";
 
 export const Banner = () => {
   const [loopNum, setLoopNum] = useState(0);
@@ -21,7 +19,7 @@ export const Banner = () => {
     }, delta);
 
     return () => { clearInterval(ticker) };
-  }, [text])
+  }, [delta, text])
 
   const tick = () => {
     let i = loopNum % toRotate.length;

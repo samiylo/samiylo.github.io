@@ -370,7 +370,7 @@ class OrbitControls extends Controls {
 		let zoomChanged = false;
 		// adjust the camera position based on zoom only if we're not zooming to the cursor or if it's an ortho camera
 		// we adjust zoom later in these cases
-		if ( this.zoomToCursor && this._performCursorZoom || this.object.isOrthographicCamera ) {
+		if ( (this.zoomToCursor && this._performCursorZoom) || this.object.isOrthographicCamera ) {
 
 			this._spherical.radius = this._clampDistance( this._spherical.radius );
 
@@ -378,7 +378,7 @@ class OrbitControls extends Controls {
 
 			const prevRadius = this._spherical.radius;
 			this._spherical.radius = this._clampDistance( this._spherical.radius * this._scale );
-			zoomChanged = prevRadius != this._spherical.radius;
+			zoomChanged = prevRadius !== this._spherical.radius;
 
 		}
 
@@ -840,6 +840,8 @@ class OrbitControls extends Controls {
 				needsUpdate = true;
 				break;
 
+			default:
+				console.log("Unhandled key pressed:", event.code);
 		}
 
 		if ( needsUpdate ) {
@@ -923,7 +925,7 @@ class OrbitControls extends Controls {
 
 	_handleTouchMoveRotate( event ) {
 
-		if ( this._pointers.length == 1 ) {
+		if ( this._pointers.length === 1 ) {
 
 			this._rotateEnd.set( event.pageX, event.pageY );
 
@@ -1029,7 +1031,7 @@ class OrbitControls extends Controls {
 
 		for ( let i = 0; i < this._pointers.length; i ++ ) {
 
-			if ( this._pointers[ i ] == event.pointerId ) {
+			if ( this._pointers[ i ] === event.pointerId ) {
 
 				this._pointers.splice( i, 1 );
 				return;
@@ -1044,7 +1046,7 @@ class OrbitControls extends Controls {
 
 		for ( let i = 0; i < this._pointers.length; i ++ ) {
 
-			if ( this._pointers[ i ] == event.pointerId ) return true;
+			if ( this._pointers[ i ] === event.pointerId ) return true;
 
 		}
 
@@ -1097,6 +1099,9 @@ class OrbitControls extends Controls {
 			case 2: // PAGE_MODE
 				newEvent.deltaY *= 100;
 				break;
+			
+			default:
+				console.log("Error in CustomWheelEvent:", event.code);
 
 		}
 
@@ -1191,6 +1196,8 @@ function onPointerUp( event ) {
 
 			break;
 
+		default:
+			console.log("Unhandled onPointerUp:", event.code);
 	}
 
 }
@@ -1320,6 +1327,8 @@ function onMouseMove( event ) {
 
 			break;
 
+		default:
+			console.log("Issues on Mouse Down: ", event.code);
 	}
 
 }
