@@ -42,6 +42,7 @@ export const Contact = () => {
   //   }
   // };
 
+  //Yeay practice
   const handleSubmit = async (e) => {
     e.preventDefault();
     setButtonText("Sending...");
@@ -58,7 +59,7 @@ export const Contact = () => {
 
     try {
         // Send to Discord Webhook
-        const discordResponse = await fetch(process.env.DISCORD_WEBHOOK_URL, {
+        const discordResponse = await fetch("https://discord.com/api/webhooks/1311435779662286858/VKfGYACrupZ7WfKdLAF5cWzQeirz470DHdbt3Z-9aY86dxHBQE58fMT6aiEjXwzRB58G", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(discordMessage),
