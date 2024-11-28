@@ -176,15 +176,14 @@ nav.navbar {
   width: 100%;
   top: 0;
   z-index: 9999;
-  height: 100px;
+  height: 150px;
   transition: all 1s ease-in-out;
 }
 nav.navbar.scrolled {
   padding: 0px 0;
   height: 2%;
-  /* transition: all 3s ease-in-out; */
-  background-color: #121212;
-  opacity: 60%;
+  background: linear-gradient(-190deg, rgba(18, 18, 18, 0.4), #7400a199);
+  opacity: 100%;
 }
 nav.navbar a.navbar-brand {
     width: 9%;
