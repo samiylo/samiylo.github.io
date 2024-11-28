@@ -205,8 +205,10 @@ span.navbar-text {
     align-items: center;
 }
 .social-icon {
-    display: inline-block;
-    margin-left: 14px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center; 
 }
 .social-icon a {
     width: 42px;
@@ -231,7 +233,7 @@ span.navbar-text {
 	transition: 0.3s ease-in-out;
 }
 .social-icon a:hover::before {
-    transform: scale(1);
+    transform: scale(5);
 }
 .social-icon a img {
 	width: 40%;
