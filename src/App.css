@@ -176,12 +176,14 @@ nav.navbar {
   width: 100%;
   top: 0;
   z-index: 9999;
-  transition:  0.32s ease-in-out;
+  height: 150px;
+  transition: all 1s ease-in-out;
 }
 nav.navbar.scrolled {
   padding: 0px 0;
-  background-color: #121212;
-  opacity: 60%;
+  height: 2%;
+  background: linear-gradient(-190deg, rgba(18, 18, 18, 0.4), #20004b99);
+  opacity: 100%;
 }
 nav.navbar a.navbar-brand {
     width: 9%;
@@ -713,6 +715,9 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   .new-email-bx {
     flex-direction: column; /* Stack input and button vertically */
     align-items: stretch; /* Ensures input and button take full width */
+  }
+  #main-logo {
+    display: none;
   }
 
   .new-email-bx button {
