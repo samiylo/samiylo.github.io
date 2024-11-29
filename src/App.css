@@ -326,6 +326,15 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 	border-color: transparent;
 }
 
+.navbar-toggler {
+  border: none
+}
+.navbar-toggler:hover {
+  transform: scale(1.2) rotate(360deg);
+  transition: ease-in-out .3s;
+  border: none
+}
+
 /************ Banner Css ************/
 .banner {
   margin-top: 0;
