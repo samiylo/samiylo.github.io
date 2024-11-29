@@ -182,7 +182,6 @@ nav.navbar {
 nav.navbar.scrolled {
   padding: 0px 0;
   height: 2%;
-  background: linear-gradient(-190deg, rgba(18, 18, 18, 0.4), #20004b99);
   opacity: 100%;
 }
 nav.navbar a.navbar-brand {
@@ -195,7 +194,7 @@ nav.navbar .navbar-nav .nav-link.navbar-link {
   padding: 0 25px;
   font-size: 18px;
   opacity: 0.75;
-}
+}3
 nav.navbar .navbar-nav a.nav-link.navbar-link:hover,
 nav.navbar .navbar-nav a.nav-link.navbar-link.active {
     opacity: 1;
