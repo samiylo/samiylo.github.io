@@ -185,7 +185,11 @@ nav.navbar.scrolled {
   opacity: 100%;
 }
 nav.navbar a.navbar-brand {
-    width: 9%;
+  width: 9%;
+  transition: transform 0.3s ease-in-out;
+}
+a.navbar-brand:hover {
+  transform: scale(1.2) rotate(360deg);
 }
 nav.navbar .navbar-nav .nav-link.navbar-link {
   font-weight: 400;
@@ -194,7 +198,7 @@ nav.navbar .navbar-nav .nav-link.navbar-link {
   padding: 0 25px;
   font-size: 18px;
   opacity: 0.75;
-}3
+}
 nav.navbar .navbar-nav a.nav-link.navbar-link:hover,
 nav.navbar .navbar-nav a.nav-link.navbar-link.active {
     opacity: 1;
