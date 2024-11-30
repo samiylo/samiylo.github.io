@@ -3,6 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import { ArrowRightCircle } from 'react-bootstrap-icons';
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
+import Spline from '@splinetool/react-spline';
 
 export const Banner = () => {
   const [loopNum, setLoopNum] = useState(0);
@@ -57,7 +58,7 @@ export const Banner = () => {
                 <span className="c">Let's build together</span>
                 <h1 className="">{`Hi! I'm Samiylo, `} <span className="txt-rotate" dataPeriod="1000" data-rotate='[ " Apps Engineer", "Web Eccommerce Architect", "UX/UI Designer" ]'><span className="wrap">{text}</span></span></h1>
                   <p>Engineer building high-performance modern applications used in AI & Machine Learning</p>
-                  <button onClick={() => console.log('connect')}>Let’s Connect <ArrowRightCircle size={25} /></button>
+                  {/* <button onClick={() => console.log('connect')}>Let’s Connect <ArrowRightCircle size={25} /></button> */}
               </div>}
             </TrackVisibility>
           </Col>
@@ -68,6 +69,7 @@ export const Banner = () => {
                   {/* <img src={headerImg} alt="Header Img"/> */}
                   {/* <div><BufferGeometryLines></BufferGeometryLines></div> */}
                 </div>}
+                <Spline scene="https://prod.spline.design/kcNfbALfc98G-jW2/scene.splinecode" />
             </TrackVisibility>
           </Col>
         </Row>

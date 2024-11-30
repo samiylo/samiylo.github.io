@@ -5,7 +5,11 @@
   "private": true,
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@react-three/drei": "^9.118.0",
+    "@react-three/fiber": "^8.17.10",
     "@sendgrid/mail": "^8.1.4",
+    "@splinetool/react-spline": "^4.0.0",
+    "@splinetool/runtime": "^1.9.46",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
