@@ -22,39 +22,18 @@ export const Contact = () => {
       })
   }
 
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   setButtonText("Sending...");
-  //   let response = await fetch("http://localhost:5000/contact", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json;charset=utf-8",
-  //     },
-  //     body: JSON.stringify(formDetails),
-  //   });
-  //   setButtonText("Send");
-  //   let result = await response.json();
-  //   setFormDetails(formInitialDetails);
-  //   if (result.code == 200) {
-  //     setStatus({ succes: true, message: 'Message sent successfully'});
-  //   } else {
-  //     setStatus({ succes: false, message: 'Something went wrong, please try again later.'});
-  //   }
-  // };
 
-  //Yeay practice
   const handleSubmit = async (e) => {
     e.preventDefault();
     setButtonText("Sending...");
 
-    // Format the message for Discord
     const discordMessage = {
         content: `New Contact Form Submission:
-- **First Name**: ${formDetails.firstName}
-- **Last Name**: ${formDetails.lastName}
-- **Email**: ${formDetails.email}
-- **Phone**: ${formDetails.phone}
-- **Message**: ${formDetails.message}`
+      - **First Name**: ${formDetails.firstName}
+      - **Last Name**: ${formDetails.lastName}
+      - **Email**: ${formDetails.email}
+      - **Phone**: ${formDetails.phone}
+      - **Message**: ${formDetails.message}`
     };
     setButtonText("Send");
     try {
@@ -71,14 +50,6 @@ export const Contact = () => {
           setStatus({ success: true });
           setButtonText("Message Sent");
         }
-
-        // Handle local submission if needed (e.g., saving to a database)
-        // const response = await fetch("http://localhost:5000/contact", {
-        //     method: "POST",
-        //     headers: { "Content-Type": "application/json;charset=utf-8" },
-        //     body: JSON.stringify(formDetails),
-        // });
-
     } catch (error) {
         console.error("Error:", error);
         // setStatus({ success: true, message: "Failed to send the message." });
