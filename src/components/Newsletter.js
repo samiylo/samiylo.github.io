@@ -3,6 +3,7 @@ import { Col, Row, Alert } from "react-bootstrap";
 
 export const Newsletter = ({ status, message, onValidated }) => {
   const [email, setEmail] = useState('');
+  const [buttonText, setButtonText] = useState('Submit');
 
   useEffect(() => {
     if (status === 'success') clearFields();
@@ -14,13 +15,12 @@ export const Newsletter = ({ status, message, onValidated }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // setButtonText("Sending...");
+    setButtonText("Sending...");
     const discordMessage =  {
       content: email
     }
     
     try {
-        // Send to Discord Webhook
         const discordResponse = await fetch("https://discord.com/api/webhooks/1311435779662286858/VKfGYACrupZ7WfKdLAF5cWzQeirz470DHdbt3Z-9aY86dxHBQE58fMT6aiEjXwzRB58G", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -31,7 +31,7 @@ export const Newsletter = ({ status, message, onValidated }) => {
             throw new Error("Failed to send message to Discord");
         } else {
           // setStatus({ success: true });
-          
+          setButtonText("Submitted")
         }
 
     } catch (error) {
@@ -56,7 +56,7 @@ export const Newsletter = ({ status, message, onValidated }) => {
               <form onSubmit={handleSubmit}>
                 <div className="new-email-bx">
                   <input value={email} type="email" onChange={(e) => setEmail(e.target.value)} placeholder="Email Address" />
-                  <button type="submit">Submit</button>
+                  <button id="send" type="submit">{buttonText}</button>
                 </div>
                 
               </form>
