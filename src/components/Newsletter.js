@@ -37,6 +37,7 @@ export const Newsletter = ({ status, message, onValidated }) => {
     } catch (error) {
         console.error("Error:", error);
         // setStatus({ success: true, message: "Failed to send the message." });
+        setButtonText("Opps, Error Occured")
     }
 
   
