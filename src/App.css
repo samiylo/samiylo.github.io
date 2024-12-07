@@ -182,11 +182,14 @@ nav.navbar {
 nav.navbar.scrolled {
   padding: 0px 0;
   height: 2%;
-  background: linear-gradient(-190deg, rgba(18, 18, 18, 0.4), #20004b99);
   opacity: 100%;
 }
 nav.navbar a.navbar-brand {
-    width: 9%;
+  width: 9%;
+  transition: transform 0.3s ease-in-out;
+}
+a.navbar-brand:hover {
+  transform: scale(1.2) rotate(360deg);
 }
 nav.navbar .navbar-nav .nav-link.navbar-link {
   font-weight: 400;
@@ -205,8 +208,10 @@ span.navbar-text {
     align-items: center;
 }
 .social-icon {
-    display: inline-block;
-    margin-left: 14px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center; 
 }
 .social-icon a {
     width: 42px;
@@ -231,7 +236,7 @@ span.navbar-text {
 	transition: 0.3s ease-in-out;
 }
 .social-icon a:hover::before {
-    transform: scale(1);
+    transform: scale(5);
 }
 .social-icon a img {
 	width: 40%;
@@ -319,6 +324,15 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:before {
 }
 nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 	border-color: transparent;
+}
+
+.navbar-toggler {
+  border: none
+}
+.navbar-toggler:hover {
+  transform: scale(1.2) rotate(360deg);
+  transition: ease-in-out .3s;
+  border: none
 }
 
 /************ Banner Css ************/
@@ -462,7 +476,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   line-height: 1.5em;
   margin: 14px auto 30px auto;
   text-align: center;
-  width: 56%;
+  width: 80%;
 }
 .project .nav.nav-pills {
   width: 72%;
@@ -713,20 +727,20 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 @media (max-width: 768px) {
   .new-email-bx {
-    flex-direction: column; /* Stack input and button vertically */
-    align-items: stretch; /* Ensures input and button take full width */
+    flex-direction: column;
+    align-items: stretch; 
   }
   #main-logo {
     display: none;
   }
 
   .new-email-bx button {
-    width: 100%; /* Make button full width on mobile */
-    padding: 15px 0; /* Adjust button padding for mobile */
+    width: 100%;
+    padding: 15px 0;
   }
 
   .new-email-bx input {
-    padding: 10px; /* Adjust input padding for mobile */
+    padding: 10px;
   }
 }
 .footer img {
