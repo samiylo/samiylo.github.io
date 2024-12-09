@@ -99,6 +99,29 @@ input:focus, textarea:focus, select:focus {
 		max-width: 100%;
 		padding: 0 150px;
 	}
+  .react-multi-carousel-item .item {
+    margin-right: 30px;
+  }
+
+.react-multi-carousel-track {
+    display: flex;
+    gap: 30px;
+  }
+}
+
+@media (min-width:1024px) {
+	main .container {
+		max-width: 100%;
+		padding: 0 150px;
+	}
+  .react-multi-carousel-item .item {
+    margin-right: 30px;
+  }
+
+.react-multi-carousel-track {
+    display: flex;
+    gap: 30px;
+  }
 }
 
 .liquid-button {
