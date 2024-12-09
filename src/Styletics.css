@@ -30,5 +30,6 @@
   #footer-logo {
     pointer-events: none;
     background-size: cover;
+    opacity: 25%;
   }
 
