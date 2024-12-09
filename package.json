@@ -1,7 +1,7 @@
 {
   "homepage": "http://samiylo.github.io",
   "name": "opn-core",
-  "version": "0.3.6",
+  "version": "0.3.7",
   "private": true,
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
