@@ -27,19 +27,9 @@
   }
 
 
-  /* Focus Carousel */
-  .react-multi-carousel-item .item {
-    margin-right: 30px;
-  }
-  
-  .react-multi-carousel-track {
-    display: flex;
-    gap: 30px;
-  }
-
-
   #footer-logo {
     pointer-events: none;
     background-size: cover;
+    opacity: 25%;
   }
 

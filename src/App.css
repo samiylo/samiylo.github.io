@@ -99,6 +99,29 @@ input:focus, textarea:focus, select:focus {
 		max-width: 100%;
 		padding: 0 150px;
 	}
+  .react-multi-carousel-item .item {
+    margin-right: 30px;
+  }
+
+.react-multi-carousel-track {
+    display: flex;
+    gap: 30px;
+  }
+}
+
+@media (min-width:1024px) {
+	main .container {
+		max-width: 100%;
+		padding: 0 150px;
+	}
+  .react-multi-carousel-item .item {
+    margin-right: 30px;
+  }
+
+.react-multi-carousel-track {
+    display: flex;
+    gap: 30px;
+  }
 }
 
 .liquid-button {
@@ -191,7 +214,24 @@ nav.navbar.scrolled {
 }
 nav.navbar a.navbar-brand {
   width: 9%;
-  transition: transform 0.3s ease-in-out;
+  animation: pulse 2s infinite;
+}
+#pulse {
+  pointer-events: none;
+  opacity: 0.15;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 0.25;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0.25;
+    }
 }
 a.navbar-brand:hover {
   transform: scale(1.2) rotate(360deg);
