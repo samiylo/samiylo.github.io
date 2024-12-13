@@ -340,13 +340,7 @@ nav.navbar .navbar-toggler-icon {
   top: -2px;
 }
 
-.navbar-toggler-icon-mobile {
-  width: 50px; /* Adjust as needed */
-  height: 50px; /* Adjust as needed */
-  background-color: #007bff; /* Change to match your theme */
-  border-radius: 50%;
-  animation: breathe 2s infinite;
-}
+
 
 @keyframes breathe {
   0% {
@@ -354,7 +348,7 @@ nav.navbar .navbar-toggler-icon {
     opacity: 0.8;
   }
   50% {
-    transform: scale(1.1);
+    transform: scale(1.3);
     opacity: 1;
   }
   100% {
