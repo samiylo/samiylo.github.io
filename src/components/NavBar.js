@@ -56,9 +56,9 @@ export const NavBar = () => {
             </Nav>
             <span className="navbar-text">
             <div className="icon">
-                <SocialIcon target="_blank" bgColor="white" fgColor="purple" url="https://discord.com"/>
-                <SocialIcon target="_blank" bgColor="white" fgColor="purple" url="https://linkedin.com/in/samiylo"/>
-                <SocialIcon target="_blank" bgColor="white" fgColor="purple" url="https://github.com/samiylo"/>
+                <SocialIcon className="box" target="_blank" bgColor="white" fgColor="purple" url="https://discord.com"/>
+                <SocialIcon className="box" target="_blank" bgColor="white" fgColor="purple" url="https://linkedin.com/in/samiylo"/>
+                <SocialIcon className="box" target="_blank" bgColor="white" fgColor="purple" url="https://github.com/samiylo"/>
             </div>
               <HashLink to='#connect'>
                 <button className=" neon spotlight-pink liquid-button-inverse"><span className="letsConnectNav animated-border">Let’s Connect</span></button>
