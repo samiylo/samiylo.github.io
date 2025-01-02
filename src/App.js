@@ -21,6 +21,7 @@ function App() {
                 <>
                 <NavBar />
                 <Banner />
+                <GetJwtToken />
                 <Projects />
                 <Skills />
                 <Contact />
