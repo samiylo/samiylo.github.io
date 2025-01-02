@@ -24,8 +24,6 @@ const GetJwtToken = () => {
     }
   };
   
-  
-
   return (
     <div>
       <h1>Get JWT Token</h1>
