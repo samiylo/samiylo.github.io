@@ -10,7 +10,7 @@ const GetJwtToken = () => {
 
     try {
         console.log(apiUrl);
-      const response = await fetch( apiUrl + "usr/login");
+      const response = await fetch("https://opn-service.onrender.com/usr/login");
       console.log(response.body);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
