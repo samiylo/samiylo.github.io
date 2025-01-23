@@ -19,7 +19,7 @@ export const Footer = () => {
                 <SocialIcon target="_blank" bgColor="white" fgColor="purple" url="https://linkedin.com/in/samiylo"/>
                 <SocialIcon target="_blank" bgColor="white" fgColor="purple" url="https://github.com/samiylo"/>
             </div>
-            <p>Copyright 2024. All Rights Reserved</p>
+            <p>Copyright 2025. All Rights Reserved</p>
           </Col>
         </Row>
       </Container>
