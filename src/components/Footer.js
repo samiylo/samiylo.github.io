@@ -1,5 +1,4 @@
 import { Container, Row, Col } from "react-bootstrap";
-import { MailchimpForm } from "./MailchimpForm";
 import logo from "../assets/img/logo.png";
 import { SocialIcon } from "react-social-icons";
 import 'react-social-icons/discord';
@@ -11,7 +10,6 @@ export const Footer = () => {
     <footer className="footer">
       <Container>
         <Row className="align-items-center">
-          <MailchimpForm />
           <Col size={12} sm={6}>
             <img id="footer-logo" oncontextmenu="return false;" src={logo} alt="Logo" />
           </Col>
@@ -21,7 +19,7 @@ export const Footer = () => {
                 <SocialIcon target="_blank" bgColor="white" fgColor="purple" url="https://linkedin.com/in/samiylo"/>
                 <SocialIcon target="_blank" bgColor="white" fgColor="purple" url="https://github.com/samiylo"/>
             </div>
-            <p>Copyright 2024. All Rights Reserved</p>
+            <p>Copyright 2025. All Rights Reserved</p>
           </Col>
         </Row>
       </Container>
