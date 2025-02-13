@@ -104,8 +104,11 @@ export const Projects = () => {
                     {/* <BufferGeometryLines></BufferGeometryLines> */}
                     <Tab.Pane eventKey="third">
                     <h4>Cloud Computing</h4>
+                    <p>Cloud computing has become the new standard for AI, providing a vast network of remote servers to store, manage, and process data at scale. This model enables AI applications to leverage on-demand, high-performance computing resources, eliminating the limitations of local infrastructure.</p>
                     <BufferGeometryLines />
-                    <p>Cloud computing leverages a network of remote servers to store, manage, and process data, providing scalable and on-demand resources for applications. Distributed services within this model work collaboratively across multiple servers or nodes, ensuring reliability, scalability, and performance by balancing workloads and data across various locations.</p>
+                    <p>Distributed services within cloud environments collaborate across multiple nodes, ensuring reliability, scalability, and efficiency. By dynamically balancing workloads and optimizing data distribution, cloud computing accelerates AI model training, inference, and deployment. As AI continues to evolve, the cloud remains essential for handling massive datasets, executing complex algorithms, and delivering real-time, intelligent solutions across industries.</p>
+
+                    
                     </Tab.Pane>
                   </Tab.Content>
                 </Tab.Container>
