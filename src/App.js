@@ -9,6 +9,7 @@ import { Projects } from "./components/Projects";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 import GetJwtToken from './components/session/GetLogin';
+import Feature from './components/Feature';
 
 function App() {
   return (
@@ -30,7 +31,7 @@ function App() {
               } 
             />
             <Route path='/login' element={<GetJwtToken />} />
-            <Route path='/signup' element={<><NavBar /> </>} />
+            <Route path='/signup' element={<><Feature /> </>} />
         </Routes>
       </Router>
     </div>

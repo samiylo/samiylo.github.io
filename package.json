@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@heroicons/react": "^2.2.0",
     "@react-three/drei": "^9.118.0",
     "@react-three/fiber": "^8.17.10",
     "@splinetool/react-spline": "^4.0.0",
