@@ -30,6 +30,7 @@ function App() {
               } 
             />
             <Route path='/login' element={<GetJwtToken />} />
+            <Route path='/signup' element={<><NavBar /> </>} />
         </Routes>
       </Router>
     </div>
