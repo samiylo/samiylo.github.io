@@ -31,7 +31,7 @@ function App() {
               } 
             />
             <Route path='/login' element={<GetJwtToken />} />
-            <Route path='/signup' element={<><Feature /> </>} />
+            <Route path='/lglj' element={<><Feature /> </>} />
         </Routes>
       </Router>
     </div>
