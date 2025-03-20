@@ -486,11 +486,11 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   position: relative;
 }
 .skill-bx {
+  margin-top: 100px;
   background: #151515;
   border-radius: 64px;
   text-align: center;
   padding: 60px 50px;
-  margin-top: -60px;
   /* opacity: .08; */
   /* filter: blur(10px) */
 }

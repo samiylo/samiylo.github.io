@@ -9,7 +9,9 @@ import { Projects } from "./components/Projects";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 import GetJwtToken from './components/session/GetLogin';
-import Feature from './components/Feature';
+import LGLJClient from './components/external/lglj/LGLJClient'
+import { ProjectCard } from './components/ProjectCard';
+import { Lglj } from './components/external/lglj/Lglj';
 
 function App() {
   return (
@@ -31,7 +33,10 @@ function App() {
               } 
             />
             <Route path='/login' element={<GetJwtToken />} />
-            <Route path='/lglj' element={<><Feature /> </>} />
+            <Route path='/lglj' element={<>
+            {/* <NavBar></NavBar> */}
+            <Lglj />
+             </>} />
         </Routes>
       </Router>
     </div>

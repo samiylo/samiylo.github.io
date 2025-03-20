@@ -15,8 +15,8 @@ export const Projects = () => {
 
   const projects = [
     {
-      title: "High Frequency Trading",
-      description: "Automation & Analysis",
+      title: "LGLJ Designs",
+      description: "Bakery & Ecommerce",
       imgUrl: hftImage,
     },
     {
