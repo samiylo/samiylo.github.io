@@ -11,7 +11,8 @@ import { Footer } from "./components/Footer";
 import GetJwtToken from './components/session/GetLogin';
 import LGLJClient from './components/external/lglj/LGLJClient'
 import { ProjectCard } from './components/ProjectCard';
-import { Lglj } from './components/external/lglj/Lglj';
+import { Lglj } from './components/external/lglj/LgljService';
+import { LgHomeComponent } from './components/external/lglj/LgHomeComponent';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
                 <>
                 <NavBar />
                 <Banner />
+                <LgHomeComponent />
                 <Projects />
                 <Skills />
                 <Contact />
@@ -34,8 +36,8 @@ function App() {
             />
             <Route path='/login' element={<GetJwtToken />} />
             <Route path='/lglj' element={<>
-            {/* <NavBar></NavBar> */}
-            <Lglj />
+            <NavBar></NavBar>
+              <Lglj></Lglj>
              </>} />
         </Routes>
       </Router>

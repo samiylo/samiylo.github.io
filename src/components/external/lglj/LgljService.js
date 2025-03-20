@@ -31,6 +31,18 @@ export const Lglj = () => {
                     <div className="skill-bx wow zoomIn">
                         <h2>LGLJ Dashboard</h2>
                         <p>Dashboard for Dericks LGLJ Company</p>
+
+                        <h2>LGLJ Dashboard</h2>
+                        <p>Dashboard for Dericks LGLJ Company</p>
+
+                        <h2>LGLJ Dashboard</h2>
+                        <p>Dashboard for Dericks LGLJ Company</p>
+
+                        <h2>LGLJ Dashboard</h2>
+                        <p>Dashboard for Dericks LGLJ Company</p>
+
+                        <h2>LGLJ Dashboard</h2>
+                        <p>Dashboard for Dericks LGLJ Company</p>
                         
                     </div>
                 </div>
