@@ -50,15 +50,15 @@ export const NavBar = () => {
           </Navbar.Toggle>
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
-              <Nav.Link href="#home" className={activeLink === 'LGLJ' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('home')}>Home</Nav.Link>
-              <Nav.Link href="#projects" className={activeLink === 'projects' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('projects')}>Projects</Nav.Link>
+              <Nav.Link href="/#home" className={activeLink === 'LGLJ' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('home')}>Home</Nav.Link>
+              <Nav.Link href="/#projects" className={activeLink === 'projects' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('projects')}>Projects</Nav.Link>
               <Nav.Link href="/lglj" className={activeLink === 'skills' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('skills')}>Clients</Nav.Link>
             </Nav>
             <span className="navbar-text">
             <div className="icon">
-                <SocialIcon className="box" target="_blank" bgColor="white" fgColor="purple" url="https://discord.com"/>
+                {/* <SocialIcon className="box" target="_blank" bgColor="white" fgColor="purple" url="https://discord.com"/>
                 <SocialIcon className="box" target="_blank" bgColor="white" fgColor="purple" url="https://linkedin.com/in/samiylo"/>
-                <SocialIcon className="box" target="_blank" bgColor="white" fgColor="purple" url="https://github.com/samiylo"/>
+                <SocialIcon className="box" target="_blank" bgColor="white" fgColor="purple" url="https://github.com/samiylo"/> */}
             </div>
               <HashLink to='#connect'>
                 <button className=" neon spotlight-pink liquid-button-inverse"><span className="letsConnectNav animated-border">Let’s Connect</span></button>
