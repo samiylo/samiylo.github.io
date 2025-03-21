@@ -12,6 +12,7 @@ import { SocialIcon } from "react-social-icons";
 import 'react-social-icons/discord';
 import 'react-social-icons/twitter';
 import 'react-social-icons/github';
+import { useNavigate } from 'react-router-dom';
 
 
 export const NavBar = () => {
@@ -37,6 +38,12 @@ export const NavBar = () => {
     setActiveLink(value);
   }
 
+  const navigate = useNavigate();
+
+  const handleNavClick = (path) => {
+    navigate(path);
+  };
+
   return (
     
       <Navbar expand="md" className={scrolled ? "scrolled" : ""}>
@@ -52,8 +59,12 @@ export const NavBar = () => {
             <Nav className="ms-auto">
               <Nav.Link href="/#home" className={activeLink === 'LGLJ' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('home')}>Home</Nav.Link>
               <Nav.Link href="/#projects" className={activeLink === 'projects' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('projects')}>Projects</Nav.Link>
-              <Nav.Link href="/lglj" className={activeLink === 'skills' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('skills')}>Clients</Nav.Link>
-            </Nav>
+              <Nav.Link
+                onClick={() => handleNavClick('/lglj')}
+                className={activeLink === 'skills' ? 'active navbar-link' : 'navbar-link'}
+                 >
+        Clients
+      </Nav.Link>            </Nav>
             <span className="navbar-text">
             <div className="icon">
                 {/* <SocialIcon className="box" target="_blank" bgColor="white" fgColor="purple" url="https://discord.com"/>
