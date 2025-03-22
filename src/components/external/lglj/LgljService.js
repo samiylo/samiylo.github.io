@@ -2,8 +2,7 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import colorSharp from "../../../assets/img/project-img1.png"
 import { Color } from 'three';
-import lilyLogo from "../../../assets/img/lglj-logo1-white.jpg"
-import lilyLogoYellow from "../../../assets/img/lglj-logo1-yellow.jpg"
+import lilyLogoYellow from "../../../assets/img/lglj-logo-bread.jpg"
 
 export const Lglj = () => {
   const responsive = {
