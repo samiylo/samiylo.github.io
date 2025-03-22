@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.0e536457.css",
-    "main.js": "/static/js/main.c1a3f6b3.js",
+    "main.js": "/static/js/main.ee73d46f.js",
     "static/js/208.00dad7d4.chunk.js": "/static/js/208.00dad7d4.chunk.js",
     "static/js/293.0d4aeaea.chunk.js": "/static/js/293.0d4aeaea.chunk.js",
     "static/js/917.ec07250e.chunk.js": "/static/js/917.ec07250e.chunk.js",
@@ -13,7 +13,9 @@
     "static/js/453.85f98929.chunk.js": "/static/js/453.85f98929.chunk.js",
     "static/media/logo.png": "/static/media/logo.7ddad3ad5a75c1a1f831.png",
     "static/media/color-sharp.png": "/static/media/color-sharp.bea361cfef80fefc2d1e.png",
+    "static/media/lglj-logo1-white.jpg": "/static/media/lglj-logo1-white.44f7a964ff7564b805bc.jpg",
     "static/media/color-sharp2.png": "/static/media/color-sharp2.c87586c6c2f549cb4aa6.png",
+    "static/media/lglj-logo1-yellow.jpg": "/static/media/lglj-logo1-yellow.5d78a3ba1729739ce255.jpg",
     "static/media/HFT.jpg": "/static/media/HFT.c3873d99a2108c61b65c.jpg",
     "static/media/webcrawler.jpg": "/static/media/webcrawler.9f7f81637513ff897a46.jpg",
     "static/media/bitcoinwallet.jpg": "/static/media/bitcoinwallet.2c6639e6066533fd828c.jpg",
@@ -29,7 +31,7 @@
     "static/media/revicons.woff": "/static/media/revicons.e8746a624ed098489406.woff",
     "index.html": "/index.html",
     "main.0e536457.css.map": "/static/css/main.0e536457.css.map",
-    "main.c1a3f6b3.js.map": "/static/js/main.c1a3f6b3.js.map",
+    "main.ee73d46f.js.map": "/static/js/main.ee73d46f.js.map",
     "208.00dad7d4.chunk.js.map": "/static/js/208.00dad7d4.chunk.js.map",
     "293.0d4aeaea.chunk.js.map": "/static/js/293.0d4aeaea.chunk.js.map",
     "917.ec07250e.chunk.js.map": "/static/js/917.ec07250e.chunk.js.map",
@@ -42,6 +44,6 @@
   },
   "entrypoints": [
     "static/css/main.0e536457.css",
-    "static/js/main.c1a3f6b3.js"
+    "static/js/main.ee73d46f.js"
   ]
 }
