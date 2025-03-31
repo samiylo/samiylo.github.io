@@ -67,6 +67,26 @@
   }
 
 
+  .logo1 {
+    background-color: black;
+    color: white;
+    font-family: 'Arial Black', sans-serif;
+    font-size: 40px;
+    padding: 20px 40px;
+    display: inline-block;
+    letter-spacing: 2px;
+    border-radius: 24px;
+    transition: color 0.3s ease;
+    line-height: 1;
+  }
+
+  .logo1:hover {
+
+    color: rgb(255, 115, 0);
+
+  }
+
+
 
   .logo2 {
     background-color: black;

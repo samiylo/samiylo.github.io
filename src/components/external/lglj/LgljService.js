@@ -44,9 +44,11 @@ export const Lglj = () => {
                         <h1>Logo Design #1</h1>
                         <p>Dashboard for Dericks LGLJ Company</p>
 
-                        <div className='logo2'>
-                          LGLJ Apperal
+                        <div className='logo1'>
+                          <div>LG</div>
+                          <div>LJ</div>
                         </div>
+                        
                         
                         
                     </div>

@@ -9,7 +9,6 @@ import { Projects } from "./components/Projects";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 import GetJwtToken from './components/session/GetLogin';
-import LGLJClient from './components/external/lglj/LGLJClient'
 import { ProjectCard } from './components/ProjectCard';
 import { Lglj } from './components/external/lglj/LgljService';
 import { LgHomeComponent } from './components/external/lglj/LgHomeComponent';
