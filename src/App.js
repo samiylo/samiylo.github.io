@@ -9,8 +9,6 @@ import { Projects } from "./components/Projects";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 import GetJwtToken from './components/session/GetLogin';
-import { ProjectCard } from './components/ProjectCard';
-import { Lglj } from './components/external/lglj/LgljService';
 import { LgHomeComponent } from './components/external/lglj/LgHomeComponent';
 
 function App() {
@@ -34,10 +32,7 @@ function App() {
               } 
             />
             <Route path='/login' element={<GetJwtToken />} />
-            <Route path='/lglj' element={<>
-            <NavBar></NavBar>
-              <Lglj></Lglj>
-             </>} />
+            
         </Routes>
       </Router>
     </div>
