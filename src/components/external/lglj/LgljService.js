@@ -1,6 +1,8 @@
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import colorSharp from "../../../assets/img/project-img1.png"
+import { Color } from 'three';
+import lilyLogoYellow from "../../../assets/img/lglj-logo-bread.jpg"
 
 export const Lglj = () => {
   const responsive = {
@@ -30,20 +32,40 @@ export const Lglj = () => {
                 <div className="col-12">
                     <div className="skill-bx wow zoomIn">
                         <h2>LGLJ Dashboard</h2>
-                        <p>Dashboard for Dericks LGLJ Company</p>
-
-                        <h2>LGLJ Dashboard</h2>
-                        <p>Dashboard for Dericks LGLJ Company</p>
-
-                        <h2>LGLJ Dashboard</h2>
-                        <p>Dashboard for Dericks LGLJ Company</p>
-
-                        <h2>LGLJ Dashboard</h2>
-                        <p>Dashboard for Dericks LGLJ Company</p>
-
-                        <h2>LGLJ Dashboard</h2>
-                        <p>Dashboard for Dericks LGLJ Company</p>
                         
+                        <h5>Derek McCallum</h5>
+                        <a className='web-links' href="https://www.lg-lj.net/">lglj.net</a>
+                        <p>Bakery & Accessories </p>
+                    </div>
+                    
+                
+                    <div className="skill-bx wow zoomIn">
+
+                        <h1>Logo Design #1</h1>
+                        <p>Dashboard for Dericks LGLJ Company</p>
+
+                        <div className='logo1'>
+                          <div>LG</div>
+                          <div>LJ</div>
+                        </div>
+                        
+                        
+                        
+                    </div>
+                    <div className="skill-bx wow zoomIn">
+
+                        <h1>Logo Design #2</h1>
+                        <p>Dashboard for Dericks LGLJ Company</p>
+
+                        <div className='logo2'>
+                          LGLJ Apperal
+                        </div>
+                    </div>
+
+                    <div className="skill-bx wow zoomIn">
+                    <h1>Baked Bread Design</h1>
+                        <p>Letters made out of baked bread</p>
+                        <img src={lilyLogoYellow} /> 
                     </div>
                 </div>
             </div>
