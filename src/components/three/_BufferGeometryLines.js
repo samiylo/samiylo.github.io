@@ -205,9 +205,10 @@ const BufferGeometryLines = () => {
     init();
     renderer.setAnimationLoop(animate);
 
+    const container = containerRef.current;
     return () => {
       window.removeEventListener('resize', onWindowResize);
-      if (containerRef.current) containerRef.current.innerHTML = '';
+      if (container) container.innerHTML = '';
     };
   }, []);
 
