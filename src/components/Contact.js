@@ -15,6 +15,7 @@ export const Contact = () => {
   const [formDetails, setFormDetails] = useState(formInitialDetails);
   const [buttonText, setButtonText] = useState('Send');
   const [status, setStatus] = useState({});
+  const [showNotification, setShowNotification] = useState(false);
 
   const onFormUpdate = (category, value) => {
       setFormDetails({
@@ -26,6 +27,7 @@ export const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setButtonText("Sending...");
+    setShowNotification(false);
 
     try {
       // Log form data for debugging
@@ -59,6 +61,12 @@ export const Contact = () => {
         setStatus({ success: true, message: "Message sent successfully!" });
         setButtonText("Message Sent");
         setFormDetails(formInitialDetails); // Reset form
+        setShowNotification(true);
+        
+        // Auto-hide notification after 5 seconds
+        setTimeout(() => {
+          setShowNotification(false);
+        }, 5000);
       } else {
         throw new Error("Failed to send message");
       }
@@ -74,11 +82,48 @@ export const Contact = () => {
       
       setStatus({ success: false, message: errorMessage });
       setButtonText("Send");
+      setShowNotification(true);
+      
+      // Auto-hide notification after 5 seconds
+      setTimeout(() => {
+        setShowNotification(false);
+      }, 5000);
     }
   };
 
   return (
     <section className="contact" id="connect">
+      {/* Success/Error Notification */}
+      {showNotification && (
+        <div className={`notification ${status.success ? 'success' : 'error'}`}>
+          <div className="notification-content">
+            <div className="notification-icon">
+              {status.success ? (
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              ) : (
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 9V13M12 17H12.01M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              )}
+            </div>
+            <div className="notification-text">
+              <h4>{status.success ? 'Success!' : 'Error'}</h4>
+              <p>{status.message}</p>
+            </div>
+            <button 
+              className="notification-close" 
+              onClick={() => setShowNotification(false)}
+            >
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      )}
+
       <Container>
         <Row className="align-items-center">
           <Col size={12} md={6}>
@@ -111,12 +156,6 @@ export const Contact = () => {
                       <textarea required rows="6" name="message" value={formDetails.message} placeholder="Message" onChange={(e) => onFormUpdate('message', e.target.value)}></textarea>
                       <button id="send" type="submit"><span>{buttonText}</span></button>
                     </Col>
-                    {
-                      status.message &&
-                      <Col>
-                        <p className={status.success === false ? "danger" : "success"}>{status.message}</p>
-                      </Col>
-                    }
                   </Row>
                 </form>
               </div>}
