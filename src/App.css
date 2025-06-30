@@ -209,11 +209,13 @@ p.danger {
 }
 
 .notification.success {
-  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+  background: rgba(76, 175, 80, 0.1);
+  border: 1px solid rgba(76, 175, 80, 0.3);
 }
 
 .notification.error {
-  background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%);
+  background: rgba(244, 67, 54, 0.1);
+  border: 1px solid rgba(244, 67, 54, 0.3);
 }
 
 .notification-content {
@@ -221,11 +223,13 @@ p.danger {
   align-items: center;
   padding: 20px;
   border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   position: relative;
   overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .notification-content::before {
@@ -235,7 +239,7 @@ p.danger {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
   pointer-events: none;
 }
 
@@ -244,12 +248,15 @@ p.danger {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-right: 15px;
   color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .notification-text {
@@ -262,6 +269,7 @@ p.danger {
   font-weight: 700;
   margin: 0 0 5px 0;
   color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .notification-text p {
@@ -269,11 +277,14 @@ p.danger {
   margin: 0;
   opacity: 0.9;
   color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .notification-close {
-  background: rgba(255, 255, 255, 0.2);
-  border: none;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 50%;
   width: 30px;
   height: 30px;
@@ -288,8 +299,9 @@ p.danger {
 }
 
 .notification-close:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.2);
   transform: scale(1.1);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 @keyframes slideInRight {
