@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
+import emailjs from '@emailjs/browser';
 
 export const Contact = () => {
   const formInitialDetails = {
@@ -22,42 +23,59 @@ export const Contact = () => {
       })
   }
 
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setButtonText("Sending...");
 
-    const discordMessage = {
-        content: `New Contact Form Submission:
-      - **First Name**: ${formDetails.firstName}
-      - **Last Name**: ${formDetails.lastName}
-      - **Email**: ${formDetails.email}
-      - **Phone**: ${formDetails.phone}
-      - **Message**: ${formDetails.message}`
-    };
-    setButtonText("Send");
     try {
-        // Send to Discord Webhook
-        const discordResponse = await fetch("https://discord.com/api/webhooks/1311435779662286858/VKfGYACrupZ7WfKdLAF5cWzQeirz470DHdbt3Z-9aY86dxHBQE58fMT6aiEjXwzRB58G", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(discordMessage),
-        });
+      // Log form data for debugging
+      console.log("Form data being sent:", {
+        firstName: formDetails.firstName,
+        lastName: formDetails.lastName,
+        email: formDetails.email,
+        phone: formDetails.phone,
+        message: formDetails.message
+      });
 
-        if (!discordResponse.ok) {
-            throw new Error("Failed to send message to Discord");
-        } else {
-          setStatus({ success: true });
-          setButtonText("Message Sent");
-        }
+      // Try using emailjs.send() instead of sendForm()
+      const templateParams = {
+        from_name: `${formDetails.firstName} ${formDetails.lastName}`,
+        from_email: formDetails.email,
+        phone: formDetails.phone,
+        message: formDetails.message,
+        to_name: "Website Admin" // You can customize this
+      };
+
+      const result = await emailjs.send(
+        process.env.REACT_APP_NET_SERVICE_ID,
+        process.env.REACT_APP_NET_SERVICE_TEMPLATE,
+        templateParams,
+        process.env.REACT_APP_NET_SERVICE_PUBLIC_ID
+      );
+
+      console.log("EmailJS result:", result);
+
+      if (result.status === 200) {
+        setStatus({ success: true, message: "Message sent successfully!" });
+        setButtonText("Message Sent");
+        setFormDetails(formInitialDetails); // Reset form
+      } else {
+        throw new Error("Failed to send message");
+      }
     } catch (error) {
-        console.error("Error:", error);
-        // setStatus({ success: true, message: "Failed to send the message." });
+      console.error("EmailJS Error Details:", error);
+      console.error("Error text:", error.text);
+      console.error("Error status:", error.status);
+      
+      let errorMessage = "Failed to send the message. Please try again.";
+      if (error.text) {
+        errorMessage = `Error: ${error.text}`;
+      }
+      
+      setStatus({ success: false, message: errorMessage });
+      setButtonText("Send");
     }
-
-  
-};
-
+  };
 
   return (
     <section className="contact" id="connect">
@@ -78,19 +96,19 @@ export const Contact = () => {
                 <form onSubmit={handleSubmit}>
                   <Row>
                     <Col size={12} sm={6} className="px-1">
-                      <input type="text" value={formDetails.firstName} placeholder="First Name" onChange={(e) => onFormUpdate('firstName', e.target.value)} />
+                      <input type="text" name="firstName" value={formDetails.firstName} placeholder="First Name" onChange={(e) => onFormUpdate('firstName', e.target.value)} />
                     </Col>
                     <Col size={12} sm={6} className="px-1">
-                      <input type="text" value={formDetails.lasttName} placeholder="Last Name" onChange={(e) => onFormUpdate('lastName', e.target.value)}/>
+                      <input type="text" name="lastName" value={formDetails.lastName} placeholder="Last Name" onChange={(e) => onFormUpdate('lastName', e.target.value)}/>
                     </Col>
                     <Col size={12} sm={6} className="px-1">
-                      <input required type="email" value={formDetails.email} placeholder="Email Address" onChange={(e) => onFormUpdate('email', e.target.value)} />
+                      <input required type="email" name="email" value={formDetails.email} placeholder="Email Address" onChange={(e) => onFormUpdate('email', e.target.value)} />
                     </Col>
                     <Col size={12} sm={6} className="px-1">
-                      <input required type="tel" value={formDetails.phone} placeholder="Phone No." onChange={(e) => onFormUpdate('phone', e.target.value)}/>
+                      <input required type="tel" name="phone" value={formDetails.phone} placeholder="Phone No." onChange={(e) => onFormUpdate('phone', e.target.value)}/>
                     </Col>
                     <Col size={12} className="px-1">
-                      <textarea required rows="6" value={formDetails.message} placeholder="Message" onChange={(e) => onFormUpdate('message', e.target.value)}></textarea>
+                      <textarea required rows="6" name="message" value={formDetails.message} placeholder="Message" onChange={(e) => onFormUpdate('message', e.target.value)}></textarea>
                       <button id="send" type="submit"><span>{buttonText}</span></button>
                     </Col>
                     {
