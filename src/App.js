@@ -6,9 +6,9 @@ import { NavBar } from "./components/NavBar";
 import { Banner } from "./components/Banner";
 import { Skills } from "./components/Skills";
 import { Projects } from "./components/Projects";
+import { Timeline } from "./components/Timeline";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
-import GetJwtToken from './components/session/GetLogin';
 
 function App() {
   return (
@@ -23,6 +23,7 @@ function App() {
                 <Banner />
 
                 <Projects />
+                <Timeline />
                 <Skills />
                 <Contact />
                 <Footer />
@@ -30,7 +31,6 @@ function App() {
               
               } 
             />
-            <Route path='/login' element={<GetJwtToken />} />
             
         </Routes>
       </Router>
