@@ -8,6 +8,7 @@ import { Projects } from "./components/Projects";
 import { Timeline } from "./components/Timeline";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
+import { Showcase } from "./components/Showcase"
 
 function App() {
   return (
@@ -21,7 +22,9 @@ function App() {
                 <NavBar />
                 <Banner />
                 <Timeline />
-                <Projects />
+                <Showcase />
+                {/* <Projects /> */}
+                
                 <Contact />
                 <Footer />
                 </>
