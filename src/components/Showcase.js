@@ -2,10 +2,10 @@ import React from 'react';
 
 const projects = [
   {
-    title: 'Project One',
+    title: 'DeterministicPhysics Lab',
     description: 'A brief description of Project One. This project does amazing things!',
-    link: 'https://example.com/project-one',
-    image: '', // Optional: add image URL
+    link: 'https://opncore-physics-lab.netlify.app',
+    image: '',
   },
   {
     title: 'Project Two',
