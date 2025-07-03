@@ -2,7 +2,7 @@ import React from 'react';
 
 const projects = [
   {
-    title: 'DeterministicPhysics Lab',
+    title: 'Deterministic Physics Lab',
     description: 'A brief description of Project One. This project does amazing things!',
     link: 'https://opncore-physics-lab.netlify.app',
     image: '',
