@@ -4,15 +4,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { NavBar } from "./components/NavBar";
 import { Banner } from "./components/Banner";
-import { Skills } from "./components/Skills";
 import { Projects } from "./components/Projects";
+import { Timeline } from "./components/Timeline";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
-import GetJwtToken from './components/session/GetLogin';
-import LGLJClient from './components/external/lglj/LGLJClient'
-import { ProjectCard } from './components/ProjectCard';
-import { Lglj } from './components/external/lglj/LgljService';
-import { LgHomeComponent } from './components/external/lglj/LgHomeComponent';
+import { Showcase } from "./components/Showcase"
 
 function App() {
   return (
@@ -25,20 +21,17 @@ function App() {
                 <>
                 <NavBar />
                 <Banner />
-                <LgHomeComponent />
-                <Projects />
-                <Skills />
+                <Timeline />
+                <Showcase />
+                {/* <Projects /> */}
+                
                 <Contact />
                 <Footer />
                 </>
               
               } 
             />
-            <Route path='/login' element={<GetJwtToken />} />
-            <Route path='/lglj' element={<>
-            <NavBar></NavBar>
-              <Lglj></Lglj>
-             </>} />
+            
         </Routes>
       </Router>
     </div>
