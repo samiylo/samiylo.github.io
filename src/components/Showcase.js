@@ -3,20 +3,20 @@ import React from 'react';
 const projects = [
   {
     title: 'Deterministic Physics Lab',
-    description: 'A brief description of Project One. This project does amazing things!',
+    description: 'Deterministic Physics Lab is a platform for learning physics concepts through interactive simulations. It provides a hands-on learning experience for students and enthusiasts alike.',
     link: 'https://opncore-physics-lab.netlify.app',
     image: '',
   },
   {
-    title: 'Project Two',
-    description: 'A brief description of Project Two. This project is super cool!',
-    link: 'https://example.com/project-two',
+    title: 'Let\'s Travel World',
+    description: 'Let\'s Travel World is a platform for exploring the world through interactive maps. It provides a visual representation of the world and allows users to explore the world through interactive maps.',
+    link: 'https://lets-travel-world.netlify.app',
     image: '',
   },
   {
-    title: 'Project Three',
-    description: 'A brief description of Project Three. This project is innovative!',
-    link: 'https://example.com/project-three',
+    title: 'It\'s a Lifestyle',
+    description: 'It\'s a Lifestyle is travel blog website. It\'s a blog website where users can share their travel experiences and tips.',
+    link: 'https://itsalifestyle.netlify.app',
     image: '',
   },
 
