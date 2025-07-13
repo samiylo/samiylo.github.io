@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import TrackVisibility from 'react-on-screen';
-// import './Achievements.css';
+import './Achievements.css';
 
 export const Achievements = () => {
   const achievements = [
@@ -79,17 +79,46 @@ export const Achievements = () => {
     }
   ];
 
+  // SVGs for small shapes (star, circle, triangle, square)
+  const svgShapes = [
+    // Star
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" key="star"><polygon points="8,2 9.76,6.32 14.41,6.32 10.82,8.97 12.58,13.28 8,10.63 3.42,13.28 5.18,8.97 1.59,6.32 6.24,6.32" fill="#FFD93D"/></svg>,
+    // Circle
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" key="circle"><circle cx="7" cy="7" r="6" fill="#FF6B35"/></svg>,
+    // Triangle
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" key="triangle"><polygon points="7,2 12,12 2,12" fill="#4A2FBD"/></svg>,
+    // Square
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" key="square"><rect x="2" y="2" width="8" height="8" fill="#AA367C"/></svg>,
+  ];
+
   return (
     <section className="achievements" id="achievements">
       <div className="achievements-background">
         <div className="floating-particles">
-          {[...Array(20)].map((_, i) => (
-            <div key={i} className="particle" style={{
-              left: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-              animationDuration: `${3 + Math.random() * 4}s`
-            }}></div>
-          ))}
+          {[...Array(50)].map((_, i) => {
+            const shape = svgShapes[Math.floor(Math.random() * svgShapes.length)];
+            const left = Math.random() * 100;
+            const top = Math.random() * 100;
+            const delay = Math.random() * 3;
+            const duration = 3 + Math.random() * 4;
+            const spin = Math.random() > 0.7; // Fewer spinning for subtlety
+            return (
+              <div
+                key={i}
+                className={`particle${spin ? ' spin' : ''}`}
+                style={{
+                  left: `${left}%`,
+                  top: `${top}%`,
+                  animationDelay: `${delay}s`,
+                  animationDuration: `${duration}s`,
+                  width: `${12 + Math.random() * 6}px`,
+                  height: `${12 + Math.random() * 6}px`,
+                }}
+              >
+                {shape}
+              </div>
+            );
+          })}
         </div>
       </div>
       
