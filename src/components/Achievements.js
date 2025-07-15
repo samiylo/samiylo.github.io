@@ -1,7 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import TrackVisibility from 'react-on-screen';
-import './Achievements.css';
 
 export const Achievements = () => {
   const achievements = [
