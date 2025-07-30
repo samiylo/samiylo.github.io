@@ -21,9 +21,9 @@ function App() {
                 <>
                 <NavBar />
                 <Banner />
-                <Achievements />
-                <Timeline />
                 <Showcase />
+                <Timeline />
+                
                 <Contact />
                 <Footer />
                 </>
