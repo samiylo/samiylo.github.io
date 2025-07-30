@@ -1049,7 +1049,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 .project-link:hover {
   background: #fff;
-  color: #AA367C;
+  color: #fff;
 }
 
 @media (max-width: 600px) {
@@ -1458,6 +1458,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   border: 1px solid rgba(255, 255, 255, 0.2);
   position: relative;
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .timeline-content:hover {
@@ -1466,10 +1467,16 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   border-color: rgba(170, 54, 124, 0.3);
 }
 
+.timeline-content.expanded {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 50px rgba(170, 54, 124, 0.3);
+  border-color: rgba(170, 54, 124, 0.4);
+}
+
 .timeline-year {
   font-size: 14px;
   font-weight: 600;
-  color: #AA367C;
+  color: #fff;
   margin-bottom: 10px;
   letter-spacing: 1px;
 }
@@ -1520,6 +1527,138 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   box-shadow: 0 5px 15px rgba(170, 54, 124, 0.3);
 }
 
+/* Expandable Content Styles */
+.expanded-content {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  animation: slideDown 0.4s ease-out;
+}
+
+.expanded-section {
+  margin-bottom: 25px;
+}
+
+.expanded-section:last-child {
+  margin-bottom: 0;
+}
+
+.expanded-section h5 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.expanded-section h5::before {
+  content: '';
+  width: 4px;
+  height: 16px;
+  background: linear-gradient(45deg, #AA367C, #4A2FBD);
+  border-radius: 2px;
+}
+
+.expanded-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.expanded-section li {
+  color: #B8B8B8;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 8px;
+  padding-left: 20px;
+  position: relative;
+}
+
+.expanded-section li::before {
+  content: '•';
+  color: #fff;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
+
+.projects-grid {
+  display: grid;
+  gap: 15px;
+}
+
+.project-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.project-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(170, 54, 124, 0.3);
+  transform: translateY(-2px);
+}
+
+.project-card h6 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 8px;
+}
+
+.project-card p {
+  color: #B8B8B8;
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.project-impact {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Expand Indicator */
+.expand-indicator {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 24px;
+  height: 24px;
+  background: linear-gradient(45deg, #AA367C, #4A2FBD);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 3;
+}
+
+.expand-indicator:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(170, 54, 124, 0.4);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -1563,6 +1702,23 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   .timeline p {
     font-size: 16px;
   }
+  
+  .expanded-content {
+    margin-top: 15px;
+    padding-top: 15px;
+  }
+  
+  .expanded-section {
+    margin-bottom: 20px;
+  }
+  
+  .projects-grid {
+    gap: 12px;
+  }
+  
+  .project-card {
+    padding: 12px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1589,5 +1745,29 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   .tech-tag {
     font-size: 11px;
     padding: 3px 10px;
+  }
+  
+  .expand-indicator {
+    top: 15px;
+    right: 15px;
+    width: 20px;
+    height: 20px;
+    font-size: 14px;
+  }
+  
+  .expanded-section h5 {
+    font-size: 15px;
+  }
+  
+  .expanded-section li {
+    font-size: 13px;
+  }
+  
+  .project-card h6 {
+    font-size: 14px;
+  }
+  
+  .project-card p {
+    font-size: 12px;
   }
 }

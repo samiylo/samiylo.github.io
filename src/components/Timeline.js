@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { timelineData } from '../utils';
 
 export const Timeline = () => {
+  const [expandedItems, setExpandedItems] = useState(new Set());
+
+  const toggleExpanded = (index) => {
+    const newExpandedItems = new Set(expandedItems);
+    if (newExpandedItems.has(index)) {
+      newExpandedItems.delete(index);
+    } else {
+      newExpandedItems.add(index);
+    }
+    setExpandedItems(newExpandedItems);
+  };
+
   return (
     <section className="timeline" id="timeline">
       <div className="container">
@@ -14,7 +26,10 @@ export const Timeline = () => {
               <div className="timeline-container">
                 {timelineData.map((item, index) => (
                   <div key={index} className={`timeline-item ${index % 2 === 0 ? 'left' : 'right'}`}>
-                    <div className="timeline-content">
+                    <div 
+                      className={`timeline-content ${expandedItems.has(index) ? 'expanded' : ''}`}
+                      onClick={() => toggleExpanded(index)}
+                    >
                       <div className="timeline-year">{item.year}</div>
                       <div className="timeline-header">
                         <h4>{item.title}</h4>
@@ -25,6 +40,49 @@ export const Timeline = () => {
                         {item.technologies.map((tech, techIndex) => (
                           <span key={techIndex} className="tech-tag">{tech}</span>
                         ))}
+                      </div>
+                      
+                      {/* Expanded Content */}
+                      {expandedItems.has(index) && (
+                        <div className="expanded-content">
+                          <div className="expanded-section">
+                            <h5>Achievements</h5>
+                            <ul>
+                              {item.achievements.map((achievement, achievementIndex) => (
+                                <li key={achievementIndex}>{achievement}</li>
+                              ))}
+                            </ul>
+                          </div>
+                          
+                          <div className="expanded-section">
+                            <h5>Key Responsibilities</h5>
+                            <ul>
+                              {item.responsibilities.map((responsibility, responsibilityIndex) => (
+                                <li key={responsibilityIndex}>{responsibility}</li>
+                              ))}
+                            </ul>
+                          </div>
+                          
+                          <div className="expanded-section">
+                            <h5>Notable Projects</h5>
+                            <div className="projects-grid">
+                              {item.projects.map((project, projectIndex) => (
+                                <div key={projectIndex} className="project-card">
+                                  <h6>{project.name}</h6>
+                                  <p>{project.description}</p>
+                                  <div className="project-impact">
+                                    <strong>Impact:</strong> {project.impact}
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                      
+                      {/* Expand/Collapse Indicator */}
+                      <div className="expand-indicator">
+                        {expandedItems.has(index) ? '−' : '+'}
                       </div>
                     </div>
                   </div>
