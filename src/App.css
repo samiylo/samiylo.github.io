@@ -1461,16 +1461,123 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   cursor: pointer;
 }
 
+/* Different colored glass effects for each timeline tile */
+.timeline-item:nth-child(1) .timeline-content {
+  background: rgba(170, 54, 124, 0.08);
+  border: 1px solid rgba(170, 54, 124, 0.2);
+  box-shadow: 0 4px 20px rgba(170, 54, 124, 0.1);
+}
+
+.timeline-item:nth-child(2) .timeline-content {
+  background: rgba(74, 47, 189, 0.08);
+  border: 1px solid rgba(74, 47, 189, 0.2);
+  box-shadow: 0 4px 20px rgba(74, 47, 189, 0.1);
+}
+
+.timeline-item:nth-child(3) .timeline-content {
+  background: rgba(255, 193, 7, 0.08);
+  border: 1px solid rgba(255, 193, 7, 0.2);
+  box-shadow: 0 4px 20px rgba(255, 193, 7, 0.1);
+}
+
+.timeline-item:nth-child(4) .timeline-content {
+  background: rgba(40, 167, 69, 0.08);
+  border: 1px solid rgba(40, 167, 69, 0.2);
+  box-shadow: 0 4px 20px rgba(40, 167, 69, 0.1);
+}
+
+.timeline-item:nth-child(5) .timeline-content {
+  background: rgba(220, 53, 69, 0.08);
+  border: 1px solid rgba(220, 53, 69, 0.2);
+  box-shadow: 0 4px 20px rgba(220, 53, 69, 0.1);
+}
+
+.timeline-item:nth-child(6) .timeline-content {
+  background: rgba(23, 162, 184, 0.08);
+  border: 1px solid rgba(23, 162, 184, 0.2);
+  box-shadow: 0 4px 20px rgba(23, 162, 184, 0.1);
+}
+
 .timeline-content:hover {
   transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(170, 54, 124, 0.2);
-  border-color: rgba(170, 54, 124, 0.3);
+}
+
+/* Enhanced hover effects with matching colors */
+.timeline-item:nth-child(1) .timeline-content:hover {
+  box-shadow: 0 20px 40px rgba(170, 54, 124, 0.25);
+  border-color: rgba(170, 54, 124, 0.4);
+  background: rgba(170, 54, 124, 0.12);
+}
+
+.timeline-item:nth-child(2) .timeline-content:hover {
+  box-shadow: 0 20px 40px rgba(74, 47, 189, 0.25);
+  border-color: rgba(74, 47, 189, 0.4);
+  background: rgba(74, 47, 189, 0.12);
+}
+
+.timeline-item:nth-child(3) .timeline-content:hover {
+  box-shadow: 0 20px 40px rgba(255, 193, 7, 0.25);
+  border-color: rgba(255, 193, 7, 0.4);
+  background: rgba(255, 193, 7, 0.12);
+}
+
+.timeline-item:nth-child(4) .timeline-content:hover {
+  box-shadow: 0 20px 40px rgba(40, 167, 69, 0.25);
+  border-color: rgba(40, 167, 69, 0.4);
+  background: rgba(40, 167, 69, 0.12);
+}
+
+.timeline-item:nth-child(5) .timeline-content:hover {
+  box-shadow: 0 20px 40px rgba(220, 53, 69, 0.25);
+  border-color: rgba(220, 53, 69, 0.4);
+  background: rgba(220, 53, 69, 0.12);
+}
+
+.timeline-item:nth-child(6) .timeline-content:hover {
+  box-shadow: 0 20px 40px rgba(23, 162, 184, 0.25);
+  border-color: rgba(23, 162, 184, 0.4);
+  background: rgba(23, 162, 184, 0.12);
 }
 
 .timeline-content.expanded {
   transform: translateY(-5px);
-  box-shadow: 0 25px 50px rgba(170, 54, 124, 0.3);
-  border-color: rgba(170, 54, 124, 0.4);
+}
+
+/* Enhanced expanded states with matching colors */
+.timeline-item:nth-child(1) .timeline-content.expanded {
+  box-shadow: 0 25px 50px rgba(170, 54, 124, 0.35);
+  border-color: rgba(170, 54, 124, 0.5);
+  background: rgba(170, 54, 124, 0.15);
+}
+
+.timeline-item:nth-child(2) .timeline-content.expanded {
+  box-shadow: 0 25px 50px rgba(74, 47, 189, 0.35);
+  border-color: rgba(74, 47, 189, 0.5);
+  background: rgba(74, 47, 189, 0.15);
+}
+
+.timeline-item:nth-child(3) .timeline-content.expanded {
+  box-shadow: 0 25px 50px rgba(255, 193, 7, 0.35);
+  border-color: rgba(255, 193, 7, 0.5);
+  background: rgba(255, 193, 7, 0.15);
+}
+
+.timeline-item:nth-child(4) .timeline-content.expanded {
+  box-shadow: 0 25px 50px rgba(40, 167, 69, 0.35);
+  border-color: rgba(40, 167, 69, 0.5);
+  background: rgba(40, 167, 69, 0.15);
+}
+
+.timeline-item:nth-child(5) .timeline-content.expanded {
+  box-shadow: 0 25px 50px rgba(220, 53, 69, 0.35);
+  border-color: rgba(220, 53, 69, 0.5);
+  background: rgba(220, 53, 69, 0.15);
+}
+
+.timeline-item:nth-child(6) .timeline-content.expanded {
+  box-shadow: 0 25px 50px rgba(23, 162, 184, 0.35);
+  border-color: rgba(23, 162, 184, 0.5);
+  background: rgba(23, 162, 184, 0.15);
 }
 
 .timeline-year {
