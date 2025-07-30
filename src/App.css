@@ -390,6 +390,14 @@ nav.navbar a.navbar-brand {
 a.navbar-brand:hover {
   transform: scale(1.2) rotate(360deg);
 }
+
+/* Hide brand logo on mobile dimensions */
+@media (max-width: 768px) {
+  .brand-logo {
+    display: none;
+  }
+}
+
 nav.navbar .navbar-nav .nav-link.navbar-link {
   font-weight: 400;
   color: #fff !important;

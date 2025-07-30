@@ -36,12 +36,16 @@ export const NavBar = () => {
       <Container>
         <Navbar.Brand href="/">
           <Spline 
+            className="brand-logo"
             scene="https://prod.spline.design/kcNfbALfc98G-jW2/scene.splinecode" 
             style={{ width: '200px', height: '100px' }}
           />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav">
-          <span className="navbar-toggler-icon"></span>
+        <Spline 
+            scene="https://prod.spline.design/kcNfbALfc98G-jW2/scene.splinecode" 
+            style={{ width: '200px', height: '100px' }}
+          />
         </Navbar.Toggle>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
