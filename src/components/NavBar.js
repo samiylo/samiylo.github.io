@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import logo from '../assets/img/logo.png';
+import Spline from '@splinetool/react-spline';
 
 import { SocialIcon } from "react-social-icons";
 import 'react-social-icons/discord';
@@ -35,7 +36,10 @@ export const NavBar = () => {
     <Navbar expand="md" className={scrolled ? "scrolled" : ""}>
       <Container>
         <Navbar.Brand href="/">
-          <img src={logo} alt="Logo" />
+          <Spline 
+            scene="https://prod.spline.design/kcNfbALfc98G-jW2/scene.splinecode" 
+            style={{ width: '200px', height: '100px' }}
+          />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav">
           <span className="navbar-toggler-icon"></span>

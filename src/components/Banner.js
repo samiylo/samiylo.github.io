@@ -55,14 +55,7 @@ export const Banner = () => {
             </TrackVisibility>
           </Col>
           <Col xs={12} md={6} xl={5}>
-            <TrackVisibility>
-              {({ isVisible }) =>
-                <div className={isVisible ? "animate__animated animate__zoomIn" : ""}>
-                  {/* <img src={headerImg} alt="Header Img"/> */}
-                  {/* <div><BufferGeometryLines></BufferGeometryLines></div> */}
-                </div>}
-                <Spline scene="https://prod.spline.design/kcNfbALfc98G-jW2/scene.splinecode" />
-            </TrackVisibility>
+            
           </Col>
         </Row>
       </Container>
