@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
-import Spline from '@splinetool/react-spline';
 
 export const Banner = () => {
   const [loopNum, setLoopNum] = useState(0);
