@@ -820,7 +820,9 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 /************ Projects Css ************/
 .contact {
-  /* background: linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%); */
+  position: relative;
+  overflow: hidden;
+  /* background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #533483 100%); */
   padding: 60px 0 200px 0;
 }
 .contact img {
@@ -994,7 +996,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   padding: 120px 0;
   min-height: 100vh;
   overflow: hidden;
-  background: linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(26, 26, 46, 0.95) 25%, rgba(22, 33, 62, 0.95) 50%, rgba(15, 52, 96, 0.95) 75%, rgba(83, 52, 131, 0.95) 100%);
+  /* background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #533483 100%); */
 }
 
 .showcase-background {
@@ -1530,7 +1532,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 .achievements {
   position: relative;
   padding: 100px 0;
-  /* background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%); */
+  /* background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #533483 100%); */
   overflow: hidden;
   min-height: 100vh;
 }
@@ -2341,5 +2343,169 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   
   .project-card p {
     font-size: 12px;
+  }
+}
+
+/* === Contact Component Floating Shapes === */
+.contact {
+  position: relative;
+  overflow: hidden;
+  /* background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #533483 100%); */
+  padding: 60px 0 200px 0;
+}
+
+.contact-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.contact .floating-shapes {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.contact .floating-shape {
+  position: absolute;
+  background: linear-gradient(45deg, rgba(170, 54, 124, 0.07), rgba(74, 47, 189, 0.07));
+  border-radius: 50%;
+  width: var(--size);
+  height: var(--size);
+  animation: floatShape var(--duration) ease-in-out infinite;
+  animation-delay: var(--delay);
+  opacity: 0.35;
+}
+
+.contact .floating-shape:nth-child(even) {
+  background: linear-gradient(45deg, rgba(74, 47, 189, 0.07), rgba(170, 54, 124, 0.07));
+  animation-direction: reverse;
+}
+
+.contact .floating-shape:nth-child(3n) {
+  background: linear-gradient(45deg, rgba(255, 107, 53, 0.05), rgba(255, 167, 38, 0.05));
+}
+
+.contact .floating-shape:nth-child(4n) {
+  background: linear-gradient(45deg, rgba(40, 167, 69, 0.05), rgba(76, 175, 80, 0.05));
+}
+
+.contact .floating-shape:nth-child(5n) {
+  background: linear-gradient(45deg, rgba(220, 53, 69, 0.05), rgba(255, 107, 107, 0.05));
+}
+
+/* Ensure contact content is above floating shapes */
+.contact .container {
+  position: relative;
+  z-index: 3;
+}
+
+.contact h2 {
+  position: relative;
+  z-index: 3;
+}
+
+.contact form {
+  position: relative;
+  z-index: 3;
+}
+
+/* === Timeline Component Floating Shapes === */
+.timeline {
+  position: relative;
+  padding: 80px 0;
+  overflow: hidden;
+  /* background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #533483 100%); */
+}
+
+.timeline-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.timeline .floating-shapes {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.timeline .floating-shape {
+  position: absolute;
+  background: linear-gradient(45deg, rgba(170, 54, 124, 0.06), rgba(74, 47, 189, 0.06));
+  border-radius: 50%;
+  width: var(--size);
+  height: var(--size);
+  animation: floatShape var(--duration) ease-in-out infinite;
+  animation-delay: var(--delay);
+  opacity: 0.3;
+}
+
+.timeline .floating-shape:nth-child(even) {
+  background: linear-gradient(45deg, rgba(74, 47, 189, 0.06), rgba(170, 54, 124, 0.06));
+  animation-direction: reverse;
+}
+
+.timeline .floating-shape:nth-child(3n) {
+  background: linear-gradient(45deg, rgba(255, 193, 7, 0.05), rgba(255, 167, 38, 0.05));
+}
+
+.timeline .floating-shape:nth-child(4n) {
+  background: linear-gradient(45deg, rgba(40, 167, 69, 0.05), rgba(76, 175, 80, 0.05));
+}
+
+.timeline .floating-shape:nth-child(5n) {
+  background: linear-gradient(45deg, rgba(220, 53, 69, 0.05), rgba(255, 107, 107, 0.05));
+}
+
+/* Ensure timeline content is above floating shapes */
+.timeline .container {
+  position: relative;
+  z-index: 3;
+}
+
+.timeline-bx {
+  position: relative;
+  z-index: 3;
+}
+
+/* === Enhanced Floating Shape Animation === */
+@keyframes floatShape {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+    opacity: 0.3;
+  }
+  25% {
+    transform: translateY(-20px) translateX(10px) rotate(90deg);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-40px) translateX(-10px) rotate(180deg);
+    opacity: 0.8;
+  }
+  75% {
+    transform: translateY(-20px) translateX(5px) rotate(270deg);
+    opacity: 0.6;
+  }
+}
+
+/* === Responsive adjustments for floating shapes === */
+@media (max-width: 768px) {
+  .banner .floating-shapes,
+  .timeline .floating-shapes,
+  .contact .floating-shapes {
+    display: none; /* Hide on mobile for better performance */
+  }
+  
+  .showcase .floating-shapes {
+    display: block; /* Keep showcase shapes on mobile */
   }
 }

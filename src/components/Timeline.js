@@ -16,6 +16,18 @@ export const Timeline = () => {
 
   return (
     <section className="timeline" id="timeline">
+      <div className="timeline-background">
+        <div className="floating-shapes">
+          {[...Array(12)].map((_, i) => (
+            <div key={i} className="floating-shape" style={{
+              '--delay': `${Math.random() * 5}s`,
+              '--duration': `${3 + Math.random() * 4}s`,
+              '--size': `${10 + Math.random() * 30}px`
+            }}></div>
+          ))}
+        </div>
+      </div>
+      
       <div className="container">
         <div className="row">
           <div className="col-12">
@@ -25,7 +37,10 @@ export const Timeline = () => {
               
               <div className="timeline-container">
                 {timelineData.map((item, index) => (
-                  <div key={index} className={`timeline-item ${index % 2 === 0 ? 'left' : 'right'}`}>
+                  <div
+                    key={index}
+                    className={`timeline-item ${index % 2 === 0 ? 'left' : 'right'}`}
+                  >
                     <div 
                       className={`timeline-content ${expandedItems.has(index) ? 'expanded' : ''}`}
                       onClick={() => toggleExpanded(index)}
@@ -33,12 +48,15 @@ export const Timeline = () => {
                       <div className="timeline-year">{item.year}</div>
                       <div className="timeline-header">
                         <h4>{item.title}</h4>
-                        <span className="company">{item.company}</span>
+                        <div className="company">{item.company}</div>
                       </div>
                       <p>{item.description}</p>
+                      
                       <div className="technologies">
                         {item.technologies.map((tech, techIndex) => (
-                          <span key={techIndex} className="tech-tag">{tech}</span>
+                          <span key={techIndex} className="tech-tag">
+                            {tech}
+                          </span>
                         ))}
                       </div>
                       

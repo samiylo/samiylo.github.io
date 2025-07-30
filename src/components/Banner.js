@@ -41,6 +41,9 @@ export const Banner = () => {
 
   return (
     <section className="banner" id="home">
+      <div className="banner-background">
+      </div>
+      
       <Container>
         <Row className="aligh-items-center">
           <Col xs={12} md={6} xl={7}>
@@ -60,4 +63,4 @@ export const Banner = () => {
       </Container>
     </section>
   )
-}
+};
