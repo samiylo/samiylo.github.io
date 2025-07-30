@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaExternalLinkAlt, FaGithub, FaReact, FaJs, FaHtml5, FaCss3Alt, FaNodeJs, FaDatabase } from 'react-icons/fa';
+import { FaExternalLinkAlt, FaGithub, FaReact, FaJs, FaCss3Alt, FaNodeJs, FaDatabase } from 'react-icons/fa';
 
 const projects = [
   {
