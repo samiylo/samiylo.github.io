@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { timelineData } from '../utils';
+import FloatingShapes from './FloatingShapes';
 
 export const Timeline = () => {
   const [expandedItems, setExpandedItems] = useState(new Set());
@@ -17,15 +18,16 @@ export const Timeline = () => {
   return (
     <section className="timeline" id="timeline">
       <div className="timeline-background">
-        <div className="floating-shapes">
-          {[...Array(12)].map((_, i) => (
-            <div key={i} className="floating-shape" style={{
-              '--delay': `${Math.random() * 5}s`,
-              '--duration': `${3 + Math.random() * 4}s`,
-              '--size': `${10 + Math.random() * 30}px`
-            }}></div>
-          ))}
-        </div>
+        <FloatingShapes 
+          count={12} 
+          minSize={10} 
+          maxSize={40} 
+          minDelay={1} 
+          maxDelay={6} 
+          minDuration={3} 
+          maxDuration={9}
+          className="timeline-floating-shapes"
+        />
       </div>
       
       <div className="container">

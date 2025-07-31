@@ -1013,6 +1013,8 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .floating-shape {
@@ -1024,6 +1026,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   animation: floatShape var(--duration) ease-in-out infinite;
   animation-delay: var(--delay);
   opacity: 0.3;
+  pointer-events: none;
 }
 
 .floating-shape:nth-child(even) {
@@ -2508,4 +2511,28 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   .showcase .floating-shapes {
     display: block; /* Keep showcase shapes on mobile */
   }
+}
+
+.App {
+  text-align: center;
+  position: relative;
+}
+
+.global-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.global-floating-shapes {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
 }

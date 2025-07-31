@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import TrackVisibility from 'react-on-screen';
+import FloatingShapes from './FloatingShapes';
 
 export const Achievements = () => {
   const achievements = [
@@ -93,6 +94,16 @@ export const Achievements = () => {
   return (
     <section className="achievements" id="achievements">
       <div className="achievements-background">
+        <FloatingShapes 
+          count={15} 
+          minSize={5} 
+          maxSize={25} 
+          minDelay={0} 
+          maxDelay={8} 
+          minDuration={6} 
+          maxDuration={15}
+          className="achievements-floating-shapes"
+        />
         <div className="floating-particles">
           {[...Array(50)].map((_, i) => {
             const shape = svgShapes[Math.floor(Math.random() * svgShapes.length)];

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaExternalLinkAlt, FaGithub, FaReact, FaJs, FaCss3Alt, FaNodeJs, FaDatabase } from 'react-icons/fa';
+import FloatingShapes from './FloatingShapes';
 
 const projects = [
   {
@@ -88,15 +89,7 @@ export const Showcase = () => {
   return (
     <section className="projects-showcase-section" id="showcase">
       <div className="showcase-background">
-        <div className="floating-shapes">
-          {[...Array(20)].map((_, i) => (
-            <div key={i} className="floating-shape" style={{
-              '--delay': `${Math.random() * 5}s`,
-              '--duration': `${3 + Math.random() * 4}s`,
-              '--size': `${20 + Math.random() * 40}px`
-            }}></div>
-          ))}
-        </div>
+        <FloatingShapes />
       </div>
 
       <div className="container">
@@ -109,7 +102,7 @@ export const Showcase = () => {
             AI integration, and user experience design
           </p>
         </div>
-
+        
         <div className="category-filter">
           {categories.map(category => (
             <button
@@ -181,7 +174,7 @@ export const Showcase = () => {
             </div>
           ))}
         </div>
-
+        <FloatingShapes />
         <div className="showcase-footer">
           <p className="showcase-cta">
             Interested in collaborating? Let's build something amazing together!

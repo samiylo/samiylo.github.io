@@ -3,6 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
 import emailjs from '@emailjs/browser';
+import FloatingShapes from './FloatingShapes';
 
 export const Contact = () => {
   const formInitialDetails = {
@@ -60,6 +61,18 @@ export const Contact = () => {
 
   return (
     <section className="contact" id="connect">
+      <div className="contact-background">
+        <FloatingShapes 
+          count={6} 
+          minSize={8} 
+          maxSize={35} 
+          minDelay={0} 
+          maxDelay={4} 
+          minDuration={5} 
+          maxDuration={10}
+          className="contact-floating-shapes"
+        />
+      </div>
       
       
       <Container>

@@ -1,6 +1,7 @@
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import colorSharp from "../assets/img/color-sharp.png"
+import FloatingShapes from './FloatingShapes';
 
 export const Skills = () => {
   const responsive = {
@@ -25,6 +26,18 @@ export const Skills = () => {
 
   return (
     <section className="skill" id="skills">
+        <div className="skill-background">
+          <FloatingShapes 
+            count={10} 
+            minSize={12} 
+            maxSize={50} 
+            minDelay={2} 
+            maxDelay={7} 
+            minDuration={4} 
+            maxDuration={12}
+            className="skills-floating-shapes"
+          />
+        </div>
         <div className="container">
             <div className="row">
                 <div className="col-12">
