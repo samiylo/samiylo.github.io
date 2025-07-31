@@ -95,13 +95,13 @@ export const Achievements = () => {
     <section className="achievements" id="achievements">
       <div className="achievements-background">
         <FloatingShapes 
-          count={15} 
-          minSize={5} 
-          maxSize={25} 
+          count={22} 
+          minSize={4} 
+          maxSize={40} 
           minDelay={0} 
-          maxDelay={8} 
-          minDuration={6} 
-          maxDuration={15}
+          maxDelay={15} 
+          minDuration={8} 
+          maxDuration={25}
           className="achievements-floating-shapes"
         />
         <div className="floating-particles">

@@ -28,13 +28,13 @@ export const Skills = () => {
     <section className="skill" id="skills">
         <div className="skill-background">
           <FloatingShapes 
-            count={10} 
-            minSize={12} 
-            maxSize={50} 
+            count={15} 
+            minSize={10} 
+            maxSize={70} 
             minDelay={2} 
-            maxDelay={7} 
-            minDuration={4} 
-            maxDuration={12}
+            maxDelay={12} 
+            minDuration={6} 
+            maxDuration={20}
             className="skills-floating-shapes"
           />
         </div>

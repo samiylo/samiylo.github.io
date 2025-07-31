@@ -63,13 +63,13 @@ export const Contact = () => {
     <section className="contact" id="connect">
       <div className="contact-background">
         <FloatingShapes 
-          count={6} 
-          minSize={8} 
-          maxSize={35} 
+          count={12} 
+          minSize={5} 
+          maxSize={50} 
           minDelay={0} 
-          maxDelay={4} 
-          minDuration={5} 
-          maxDuration={10}
+          maxDelay={6} 
+          minDuration={6} 
+          maxDuration={18}
           className="contact-floating-shapes"
         />
       </div>

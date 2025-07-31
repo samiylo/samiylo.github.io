@@ -89,7 +89,16 @@ export const Showcase = () => {
   return (
     <section className="projects-showcase-section" id="showcase">
       <div className="showcase-background">
-        <FloatingShapes />
+        <FloatingShapes 
+          count={25} 
+          minSize={8} 
+          maxSize={80} 
+          minDelay={0} 
+          maxDelay={8} 
+          minDuration={4} 
+          maxDuration={12}
+          className="showcase-floating-shapes"
+        />
       </div>
 
       <div className="container">
@@ -102,7 +111,6 @@ export const Showcase = () => {
             AI integration, and user experience design
           </p>
         </div>
-        
         <div className="category-filter">
           {categories.map(category => (
             <button

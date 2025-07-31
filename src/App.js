@@ -15,13 +15,13 @@ function App() {
     <div className='App'>
       <div className="global-background">
         <FloatingShapes 
-          count={5} 
-          minSize={30} 
-          maxSize={80} 
+          count={8} 
+          minSize={40} 
+          maxSize={120} 
           minDelay={0} 
-          maxDelay={10} 
-          minDuration={8} 
-          maxDuration={20}
+          maxDelay={15} 
+          minDuration={12} 
+          maxDuration={30}
           className="global-floating-shapes"
         />
       </div>

@@ -19,13 +19,13 @@ export const Timeline = () => {
     <section className="timeline" id="timeline">
       <div className="timeline-background">
         <FloatingShapes 
-          count={12} 
-          minSize={10} 
-          maxSize={40} 
+          count={18} 
+          minSize={6} 
+          maxSize={65} 
           minDelay={1} 
-          maxDelay={6} 
-          minDuration={3} 
-          maxDuration={9}
+          maxDelay={10} 
+          minDuration={5} 
+          maxDuration={15}
           className="timeline-floating-shapes"
         />
       </div>
