@@ -643,6 +643,76 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   border-right: 0.08em solid #666;
 }
 
+/* === Fixed Rotating Text Container === */
+.txt-rotate {
+  display: inline-block;
+  min-width: 400px; /* Fixed width to prevent layout shifts */
+  height: 65px; /* Fixed height to match the h1 line height */
+  position: relative;
+  overflow: hidden;
+}
+
+.txt-rotate .wrap {
+  display: inline-block;
+  position: relative;
+  min-width: 400px; /* Same as container */
+  text-align: left;
+  border-right: 0.08em solid #666;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* Ensure the rotating text doesn't affect layout */
+.banner h1 {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+/* Responsive adjustments for the rotating text */
+@media (max-width: 768px) {
+  .txt-rotate {
+    min-width: 280px;
+    height: 70px; /* Increased height for mobile */
+  }
+  
+  .txt-rotate .wrap {
+    min-width: 280px;
+  }
+  
+  .banner h1 {
+    font-size: 2.8rem;
+    line-height: 1.1;
+  }
+}
+
+@media (max-width: 480px) {
+  .txt-rotate {
+    min-width: 220px;
+    height: 80px; /* Further increased height for small mobile */
+  }
+  
+  .txt-rotate .wrap {
+    min-width: 220px;
+  }
+  
+  .banner h1 {
+    font-size: 2.2rem;
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 1.3;
+    gap: 4px;
+  }
+  
+  .banner p {
+    font-size: 16px;
+    margin-top: 10px;
+  }
+}
+
 /************ Skills Css ************/
 .skill {
   padding: 0 0 50px 0;
