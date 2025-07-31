@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { FaExternalLinkAlt, FaGithub, FaReact, FaJs, FaCss3Alt, FaNodeJs, FaDatabase } from 'react-icons/fa';
+import { FaExternalLinkAlt, FaGithub, FaReact, FaJs, FaCss3Alt, FaNodeJs, FaDatabase, FaChevronDown } from 'react-icons/fa';
 import FloatingShapes from './FloatingShapes';
+import 'animate.css';
 
 const projects = [
   {
@@ -80,11 +81,29 @@ const projects = [
 export const Showcase = () => {
   const [hoveredProject, setHoveredProject] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [showAllProjects, setShowAllProjects] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const categories = ['All', ...new Set(projects.map(project => project.category))];
   const filteredProjects = selectedCategory === 'All' 
     ? projects 
     : projects.filter(project => project.category === selectedCategory);
+
+  const displayedProjects = showAllProjects ? filteredProjects : filteredProjects.slice(0, 3);
+  const hasMoreProjects = filteredProjects.length > 3;
+
+  const handleSeeMore = async () => {
+    setIsLoading(true);
+    // Simulate a small delay for better UX
+    await new Promise(resolve => setTimeout(resolve, 300));
+    setShowAllProjects(true);
+    setIsLoading(false);
+  };
+
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
+    setShowAllProjects(false);
+  };
 
   return (
     <section className="projects-showcase-section" id="showcase">
@@ -116,7 +135,7 @@ export const Showcase = () => {
             <button
               key={category}
               className={`category-btn ${selectedCategory === category ? 'active' : ''}`}
-              onClick={() => setSelectedCategory(category)}
+              onClick={() => handleCategoryChange(category)}
             >
               {category}
             </button>
@@ -124,7 +143,7 @@ export const Showcase = () => {
         </div>
 
         <div className="projects-grid">
-          {filteredProjects.map((project, idx) => (
+          {displayedProjects.map((project, idx) => (
             <div 
               className={`project-card ${project.featured ? 'featured' : ''} ${hoveredProject === idx ? 'hovered' : ''}`}
               key={idx}
@@ -182,6 +201,26 @@ export const Showcase = () => {
             </div>
           ))}
         </div>
+
+        {hasMoreProjects && !showAllProjects && (
+          <div className="see-more-container animate__animated animate__fadeIn">
+            <button 
+              className={`see-more-button ${isLoading ? 'loading' : ''}`}
+              onClick={handleSeeMore}
+              disabled={isLoading}
+            >
+              <div className="button-content">
+                <span className="button-text">
+                  {isLoading ? 'Loading...' : `See ${filteredProjects.length - 3} More Projects`}
+                </span>
+                <FaChevronDown className={`chevron-icon ${isLoading ? 'spinning' : ''}`} />
+              </div>
+              <div className="button-glow"></div>
+              <div className="button-particles"></div>
+            </button>
+          </div>
+        )}
+
         <FloatingShapes />
         <div className="showcase-footer">
           <p className="showcase-cta">
