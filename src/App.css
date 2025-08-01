@@ -3028,3 +3028,74 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 /* === Responsive adjustments for floating shapes === */
+
+/* Navbar Connect Button - extends see-more-button design */
+.navbar-connect-btn {
+  min-width: 160px !important;
+  height: 45px !important;
+  padding: 0.75rem 1.5rem !important;
+  font-size: 0.95rem !important;
+  margin-left: 1rem;
+  position: relative;
+  z-index: 10;
+}
+
+/* Remove underline from HashLink wrapper */
+.navbar-text a {
+  text-decoration: none !important;
+}
+
+.navbar-text a:hover {
+  text-decoration: none !important;
+}
+
+.navbar-connect-btn .button-content {
+  gap: 0.5rem;
+}
+
+.navbar-connect-btn .chevron-icon {
+  font-size: 0.8rem;
+  animation: bounce 2s infinite;
+}
+
+.navbar-connect-btn:hover .chevron-icon {
+  transform: translateX(2px);
+  animation: none;
+}
+
+/* Responsive adjustments for navbar button */
+@media (max-width: 768px) {
+  .navbar-connect-btn {
+    min-width: 140px !important;
+    height: 40px !important;
+    padding: 0.625rem 1.25rem !important;
+    font-size: 0.9rem !important;
+    margin-left: 0.5rem;
+  }
+  
+  .navbar-connect-btn .button-content {
+    gap: 0.375rem;
+  }
+  
+  .navbar-connect-btn .chevron-icon {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-connect-btn {
+    min-width: 120px !important;
+    height: 38px !important;
+    padding: 0.5rem 1rem !important;
+    font-size: 0.85rem !important;
+    margin-left: 0.25rem;
+  }
+  
+  .navbar-connect-btn .button-text {
+    font-size: 0.85rem;
+  }
+  
+  .navbar-connect-btn .chevron-icon {
+    font-size: 0.65rem;
+  }
+}

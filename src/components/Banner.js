@@ -45,8 +45,8 @@ export const Banner = () => {
       </div>
       
       <Container>
-        <Row className="aligh-items-center">
-          <Col xs={12} md={6} xl={7}>
+        <Row className="aligh-items-center justify-content-center">
+          <Col xs={12} md={6} xl={7} className="text-center">
             <TrackVisibility>
               {({ isVisible }) =>
               <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>

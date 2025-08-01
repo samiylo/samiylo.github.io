@@ -6,6 +6,7 @@ import { SocialIcon } from "react-social-icons";
 import 'react-social-icons/discord';
 import 'react-social-icons/twitter';
 import 'react-social-icons/github';
+import logo from "../assets/img/logo.png";
 
 import { HashLink } from 'react-router-hash-link';
 
@@ -42,16 +43,13 @@ export const NavBar = () => {
           />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav">
-        <Spline 
-            scene="https://prod.spline.design/kcNfbALfc98G-jW2/scene.splinecode" 
-            style={{ width: '200px', height: '100px' }}
-          />
+          <img className="navbar-toggler-icon-moblie" src={logo} alt="Logo" />
         </Navbar.Toggle>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
             <Nav.Link href="#home" className={activeLink === 'home' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('home')}>Home</Nav.Link>
             <Nav.Link href="#skills" className={activeLink === 'skills' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('skills')}>Skills</Nav.Link>
-            <Nav.Link href="#projects" className={activeLink === 'projects' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('projects')}>Projects</Nav.Link>
+            <Nav.Link href="#projects" className={activeLink === 'proj ects' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('projects')}>Projects</Nav.Link>
           </Nav>
           <span className="navbar-text">
             <div className="social-icon">
@@ -60,7 +58,13 @@ export const NavBar = () => {
                 <SocialIcon className="box" target="_blank" bgColor="white" fgColor="purple" url="https://github.com/samiylo"/> 
             </div>
             <HashLink to='#connect'>
-              <button className="vvd"><span>Let's Connect</span></button>
+              <button className="see-more-button navbar-connect-btn">
+                <div className="button-content">
+                  <span className="button-text">Let's Connect</span>
+                </div>
+                <div className="button-glow"></div>
+                <div className="button-particles"></div>
+              </button>
             </HashLink>
           </span>
         </Navbar.Collapse>
