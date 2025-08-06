@@ -1,109 +1,169 @@
-import React, { useState } from 'react';
-import { FaExternalLinkAlt, FaGithub, FaReact, FaJs, FaCss3Alt, FaNodeJs, FaDatabase, FaChevronDown } from 'react-icons/fa';
+import React, { useState, useEffect } from 'react';
+import { FaExternalLinkAlt, FaGithub, FaReact, FaDatabase, FaShieldAlt, FaRocket, FaBrain, FaServer, FaChartLine, FaShoppingCart, FaLock, FaTimes, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import FloatingShapes from './FloatingShapes';
 import 'animate.css';
 
 const projects = [
   {
-    title: 'Deterministic Physics Lab',
-    description: 'An interactive platform for learning physics concepts through real-time simulations. Features include particle systems, force calculations, and educational visualizations.',
-    longDescription: 'A comprehensive physics learning platform that brings complex concepts to life through interactive simulations. Students can experiment with gravity, momentum, and energy conservation in real-time.',
-    link: 'https://opncore-physics-lab.netlify.app',
-    github: 'https://github.com/samiylo/physics-lab',
-    image: '',
-    technologies: ['React', 'JavaScript', 'Canvas API', 'Physics.js'],
-    icons: [FaReact, FaJs],
-    category: 'Educational',
-    featured: true
-  },
-  {
-    title: 'Let\'s Travel World',
-    description: 'Interactive world exploration platform with dynamic maps, travel planning tools, and cultural insights for global adventurers.',
-    longDescription: 'A comprehensive travel platform that combines interactive mapping with cultural insights. Users can plan trips, discover destinations, and learn about local customs and traditions.',
-    link: 'https://lets-travel-world.netlify.app',
-    github: 'https://github.com/samiylo/travel-world',
-    image: '',
-    technologies: ['React', 'Mapbox API', 'Node.js', 'MongoDB'],
-    icons: [FaReact, FaNodeJs, FaDatabase],
-    category: 'Travel',
-    featured: true
-  },
-  {
-    title: 'It\'s a Lifestyle',
-    description: 'A modern travel blog platform where adventurers share experiences, tips, and stories from around the world.',
-    longDescription: 'A community-driven travel blog that connects travelers worldwide. Features include story sharing, photo galleries, and travel tips from experienced globetrotters.',
-    link: 'https://itsalifestyle.netlify.app',
-    github: 'https://github.com/samiylo/lifestyle-blog',
-    image: '',
-    technologies: ['React', 'Firebase', 'CSS3', 'Netlify'],
-    icons: [FaReact, FaCss3Alt],
-    category: 'Blog',
-    featured: false
-  },
-  {
-    title: 'AI Chat Assistant',
-    description: 'Intelligent conversational AI powered by machine learning for customer support and user engagement.',
-    longDescription: 'A sophisticated AI chat system that provides intelligent responses and learns from user interactions to improve over time.',
+    title: 'AI-Powered Retail Analytics Platform',
+    description: 'Intelligent sales forecasting and customer behavior analysis system that increased retail revenue by 35% through predictive analytics and personalized recommendations.',
+    longDescription: 'Developed a comprehensive AI-driven retail analytics platform that processes millions of transactions to provide real-time insights. Features include demand forecasting, customer segmentation, and dynamic pricing optimization. The system integrates with multiple POS systems and provides actionable recommendations to increase sales and reduce inventory costs.',
     link: '#',
-    github: 'https://github.com/samiylo/ai-chat',
+    github: 'https://github.com/samiylo/retail-ai-platform',
     image: '',
-    technologies: ['Python', 'TensorFlow', 'React', 'WebSocket'],
-    icons: [FaReact, FaJs],
+    technologies: ['Python', 'TensorFlow', 'React', 'Node.js', 'PostgreSQL', 'Redis'],
+    icons: [FaBrain, FaShoppingCart, FaChartLine],
+    category: 'AI/Retail',
+    featured: true,
+    company: 'RetailTech Solutions'
+  },
+  {
+    title: 'Microservices Architecture Migration',
+    description: 'Led the transformation of a monolithic e-commerce platform to a scalable microservices architecture, improving system performance by 60% and reducing deployment time by 80%.',
+    longDescription: 'Architected and implemented a complete microservices migration for a high-traffic e-commerce platform. Designed service boundaries, implemented API gateways, and established CI/CD pipelines. The new architecture supports 10x more concurrent users while maintaining 99.9% uptime.',
+    link: '#',
+    github: 'https://github.com/samiylo/microservices-migration',
+    image: '',
+    technologies: ['Docker', 'Kubernetes', 'Node.js', 'MongoDB', 'Redis', 'AWS'],
+    icons: [FaServer, FaRocket],
+    category: 'Microservices',
+    featured: true,
+    company: 'E-Commerce Corp'
+  },
+  {
+    title: 'Cybersecurity Threat Detection System',
+    description: 'Real-time security monitoring platform that detects and prevents cyber threats, protecting sensitive data across enterprise networks.',
+    longDescription: 'Built a comprehensive cybersecurity platform that monitors network traffic, user behavior, and system logs to identify potential threats. Implements machine learning algorithms for anomaly detection and provides real-time alerts. The system has prevented over 1000 security incidents.',
+    link: '#',
+    github: 'https://github.com/samiylo/security-monitoring',
+    image: '',
+    technologies: ['Python', 'Elasticsearch', 'React', 'Node.js', 'Machine Learning'],
+    icons: [FaShieldAlt, FaLock],
+    category: 'Security',
+    featured: true,
+    company: 'SecureNet Inc'
+  },
+  {
+    title: 'High-Performance Data Processing Pipeline',
+    description: 'Optimized data processing system that handles 10M+ records daily, reducing processing time by 75% and improving data accuracy.',
+    longDescription: 'Designed and implemented a high-throughput data processing pipeline that efficiently processes large datasets from multiple sources. Features include parallel processing, data validation, and real-time analytics. The system supports both batch and streaming data processing.',
+    link: '#',
+    github: 'https://github.com/samiylo/data-pipeline',
+    image: '',
+    technologies: ['Apache Kafka', 'Apache Spark', 'Python', 'PostgreSQL', 'Redis'],
+    icons: [FaRocket, FaDatabase],
+    category: 'Performance',
+    featured: false,
+    company: 'DataFlow Systems'
+  },
+  {
+    title: 'Cloud-Native Application Platform',
+    description: 'Scalable cloud platform that enables rapid deployment of applications with automatic scaling, monitoring, and cost optimization.',
+    longDescription: 'Developed a cloud-native platform that simplifies application deployment and management. Features include auto-scaling, load balancing, monitoring, and cost optimization. The platform supports multiple cloud providers and reduces infrastructure costs by 40%.',
+    link: '#',
+    github: 'https://github.com/samiylo/cloud-platform',
+    image: '',
+    technologies: ['AWS', 'Docker', 'Kubernetes', 'Terraform', 'Prometheus'],
+    icons: [FaServer, FaRocket],
+    category: 'Cloud',
+    featured: false,
+    company: 'CloudScale Tech'
+  },
+  {
+    title: 'Real-Time Analytics Dashboard',
+    description: 'Interactive dashboard providing real-time insights into business metrics, user behavior, and system performance across multiple data sources.',
+    longDescription: 'Created a comprehensive analytics dashboard that aggregates data from multiple sources to provide real-time business insights. Features include customizable widgets, automated reporting, and predictive analytics. The dashboard supports multiple user roles and data visualization options.',
+    link: '#',
+    github: 'https://github.com/samiylo/analytics-dashboard',
+    image: '',
+    technologies: ['React', 'D3.js', 'Node.js', 'MongoDB', 'WebSocket'],
+    icons: [FaChartLine, FaReact],
+    category: 'Analytics',
+    featured: false,
+    company: 'AnalyticsPro'
+  },
+  {
+    title: 'API Gateway & Service Mesh',
+    description: 'Enterprise-grade API gateway with service mesh capabilities, providing security, monitoring, and traffic management for microservices.',
+    longDescription: 'Built a comprehensive API gateway that handles authentication, rate limiting, request routing, and monitoring for microservices. Implements service mesh patterns for inter-service communication and provides detailed analytics on API usage and performance.',
+    link: '#',
+    github: 'https://github.com/samiylo/api-gateway',
+    image: '',
+    technologies: ['Kong', 'Istio', 'Node.js', 'Redis', 'Prometheus'],
+    icons: [FaServer, FaShieldAlt],
+    category: 'Microservices',
+    featured: false,
+    company: 'API Solutions'
+  },
+  {
+    title: 'Machine Learning Model Pipeline',
+    description: 'Automated ML model training and deployment pipeline that reduces model development time by 70% and improves prediction accuracy.',
+    longDescription: 'Developed an end-to-end machine learning pipeline that automates data preprocessing, model training, validation, and deployment. Features include A/B testing, model versioning, and automated retraining. The pipeline supports multiple ML frameworks and cloud platforms.',
+    link: '#',
+    github: 'https://github.com/samiylo/ml-pipeline',
+    image: '',
+    technologies: ['Python', 'TensorFlow', 'Kubernetes', 'MLflow', 'Docker'],
+    icons: [FaBrain, FaRocket],
     category: 'AI/ML',
-    featured: true
-  },
-  {
-    title: 'E-Commerce Platform',
-    description: 'Full-stack e-commerce solution with payment processing, inventory management, and analytics dashboard.',
-    longDescription: 'A complete online shopping platform featuring secure payments, real-time inventory tracking, and comprehensive analytics for business insights.',
-    link: '#',
-    github: 'https://github.com/samiylo/ecommerce-platform',
-    image: '',
-    technologies: ['React', 'Node.js', 'Express', 'MongoDB', 'Stripe'],
-    icons: [FaReact, FaNodeJs, FaDatabase],
-    category: 'E-Commerce',
-    featured: false
-  },
-  {
-    title: 'Task Management App',
-    description: 'Collaborative task management tool with real-time updates, team collaboration, and progress tracking.',
-    longDescription: 'A powerful project management application that enables teams to collaborate effectively with real-time updates and comprehensive progress tracking.',
-    link: '#',
-    github: 'https://github.com/samiylo/task-manager',
-    image: '',
-    technologies: ['React', 'Socket.io', 'Express', 'MongoDB'],
-    icons: [FaReact, FaNodeJs, FaDatabase],
-    category: 'Productivity',
-    featured: false
+    featured: false,
+    company: 'ML Innovations'
   }
 ];
 
 export const Showcase = () => {
-  const [hoveredProject, setHoveredProject] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const [showAllProjects, setShowAllProjects] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
   const categories = ['All', ...new Set(projects.map(project => project.category))];
   const filteredProjects = selectedCategory === 'All' 
     ? projects 
     : projects.filter(project => project.category === selectedCategory);
 
-  const displayedProjects = showAllProjects ? filteredProjects : filteredProjects.slice(0, 3);
-  const hasMoreProjects = filteredProjects.length > 3;
+  // Auto-play functionality
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+    
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % filteredProjects.length);
+    }, 5000);
 
-  const handleSeeMore = async () => {
-    setIsLoading(true);
-    // Simulate a small delay for better UX
-    await new Promise(resolve => setTimeout(resolve, 300));
-    setShowAllProjects(true);
-    setIsLoading(false);
-  };
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, filteredProjects.length]);
 
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
-    setShowAllProjects(false);
+    setCurrentSlide(0);
+    setSelectedProject(null);
   };
+
+  const handleProjectClick = (project) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+    setIsAutoPlaying(false);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedProject(null);
+    setIsAutoPlaying(true);
+  };
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % filteredProjects.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + filteredProjects.length) % filteredProjects.length);
+  };
+
+  const goToSlide = (index) => {
+    setCurrentSlide(index);
+  };
+
+  const currentProject = filteredProjects[currentSlide];
 
   return (
     <section className="projects-showcase-section" id="showcase">
@@ -123,13 +183,14 @@ export const Showcase = () => {
       <div className="container">
         <div className="showcase-header">
           <h2 className="showcase-title">
-            <span className="title-gradient">Featured</span> Projects
+            <span className="title-gradient">App</span> Showcase
           </h2>
           <p className="showcase-subtitle">
-            A collection of innovative applications showcasing modern web development, 
-            AI integration, and user experience design
+            A diverse portfolio showcasing expertise in AI/ML, microservices architecture, 
+            cybersecurity, performance optimization, and cloud-native solutions across multiple industries
           </p>
         </div>
+        
         <div className="category-filter">
           {categories.map(category => (
             <button
@@ -142,92 +203,164 @@ export const Showcase = () => {
           ))}
         </div>
 
-        <div className="projects-grid">
-          {displayedProjects.map((project, idx) => (
-            <div 
-              className={`project-card ${project.featured ? 'featured' : ''} ${hoveredProject === idx ? 'hovered' : ''}`}
-              key={idx}
-              onMouseEnter={() => setHoveredProject(idx)}
-              onMouseLeave={() => setHoveredProject(null)}
-            >
-              <div className="project-header">
-                <div className="project-category">{project.category}</div>
-                {project.featured && <div className="featured-badge">Featured</div>}
-              </div>
-
-              <div className="project-content">
-                <h3 className="project-title">{project.title}</h3>
-                <p className="project-description">{project.description}</p>
+        <div className="carousel-container">
+          <div className="carousel-wrapper">
+            <div className="carousel-slide">
+              <div className="carousel-content">
+                <div className="carousel-header">
+                  <div className="carousel-category">{currentProject.category}</div>
+                  {currentProject.featured && <div className="carousel-featured-badge">Featured</div>}
+                </div>
                 
-                <div className="project-technologies">
-                  {project.technologies.map((tech, techIdx) => (
-                    <span key={techIdx} className="tech-tag">
-                      {tech}
-                    </span>
-                  ))}
+                <div className="carousel-main">
+                  <h3 className="carousel-title">{currentProject.title}</h3>
+                  {currentProject.company && (
+                    <div className="carousel-company">
+                      <span className="company-name">{currentProject.company}</span>
+                    </div>
+                  )}
+                  <p className="carousel-description">{currentProject.description}</p>
                 </div>
 
-                <div className="project-icons">
-                  {project.icons.map((Icon, iconIdx) => (
-                    <Icon key={iconIdx} className="tech-icon" />
-                  ))}
+                <div className="carousel-footer">
+                  <div className="carousel-technologies">
+                    {currentProject.technologies.map((tech, techIdx) => (
+                      <span key={techIdx} className="carousel-tech-tag">
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                  
+                  <div className="carousel-icons">
+                    {currentProject.icons.map((Icon, iconIdx) => (
+                      <Icon key={iconIdx} className="carousel-tech-icon" />
+                    ))}
+                  </div>
+                </div>
+
+                <div className="carousel-actions">
+                  <button 
+                    className="carousel-details-btn"
+                    onClick={() => handleProjectClick(currentProject)}
+                  >
+                    View Details
+                  </button>
+                  <div className="carousel-links">
+                    <a 
+                      href={currentProject.link} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="carousel-link primary"
+                    >
+                      <FaExternalLinkAlt />
+                      <span>Live Demo</span>
+                    </a>
+                    {currentProject.github && (
+                      <a 
+                        href={currentProject.github} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="carousel-link secondary"
+                      >
+                        <FaGithub />
+                        <span>Code</span>
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
+            </div>
+          </div>
 
-              <div className="project-actions">
+          {/* Navigation Controls */}
+          <button className="carousel-nav prev" onClick={prevSlide}>
+            <FaChevronLeft />
+          </button>
+          <button className="carousel-nav next" onClick={nextSlide}>
+            <FaChevronRight />
+          </button>
+
+          {/* Dots Indicator */}
+          <div className="carousel-dots">
+            {filteredProjects.map((_, index) => (
+              <button
+                key={index}
+                className={`carousel-dot ${index === currentSlide ? 'active' : ''}`}
+                onClick={() => goToSlide(index)}
+              />
+            ))}
+          </div>
+
+          {/* Slide Counter */}
+          <div className="carousel-counter">
+            <span className="current-slide">{currentSlide + 1}</span>
+            <span className="total-slides">/ {filteredProjects.length}</span>
+          </div>
+        </div>
+
+        {/* Project Modal */}
+        {isModalOpen && selectedProject && (
+          <div className="project-modal-overlay" onClick={closeModal}>
+            <div className="project-modal" onClick={(e) => e.stopPropagation()}>
+              <button className="modal-close-btn" onClick={closeModal}>
+                <FaTimes />
+              </button>
+              
+              <div className="modal-header">
+                <div className="modal-category">{selectedProject.category}</div>
+                {selectedProject.featured && <div className="modal-featured-badge">Featured</div>}
+              </div>
+              
+              <h3 className="modal-title">{selectedProject.title}</h3>
+              {selectedProject.company && (
+                <div className="modal-company">
+                  <span className="company-label">Company:</span>
+                  <span className="company-name">{selectedProject.company}</span>
+                </div>
+              )}
+              
+              <p className="modal-description">{selectedProject.longDescription}</p>
+              
+              <div className="modal-technologies">
+                {selectedProject.technologies.map((tech, techIdx) => (
+                  <span key={techIdx} className="modal-tech-tag">
+                    {tech}
+                  </span>
+                ))}
+              </div>
+              
+              <div className="modal-actions">
                 <a 
-                  href={project.link} 
+                  href={selectedProject.link} 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="project-link primary"
+                  className="modal-link primary"
                 >
                   <FaExternalLinkAlt />
                   <span>Live Demo</span>
                 </a>
-                {project.github && (
+                {selectedProject.github && (
                   <a 
-                    href={project.github} 
+                    href={selectedProject.github} 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    className="project-link secondary"
+                    className="modal-link secondary"
                   >
                     <FaGithub />
-                    <span>Code</span>
+                    <span>View Code</span>
                   </a>
                 )}
               </div>
-
-              <div className="project-glow"></div>
             </div>
-          ))}
-        </div>
-
-        {hasMoreProjects && !showAllProjects && (
-          <div className="see-more-container animate__animated animate__fadeIn">
-            <button 
-              className={`see-more-button ${isLoading ? 'loading' : ''}`}
-              onClick={handleSeeMore}
-              disabled={isLoading}
-            >
-              <div className="button-content">
-                <span className="button-text">
-                  {isLoading ? 'Loading...' : `See ${filteredProjects.length - 3} More Projects`}
-                </span>
-                <FaChevronDown className={`chevron-icon ${isLoading ? 'spinning' : ''}`} />
-              </div>
-              <div className="button-glow"></div>
-              <div className="button-particles"></div>
-            </button>
           </div>
         )}
 
-        <FloatingShapes />
         <div className="showcase-footer">
           <p className="showcase-cta">
-            Interested in collaborating? Let's build something amazing together!
+            Ready to tackle complex technical challenges? Let's build innovative solutions together!
           </p>
           <a href="#connect" className="cta-button">
-            <span>Get In Touch</span>
+            <span>Start a Project</span>
             <div className="button-glow"></div>
           </a>
         </div>
