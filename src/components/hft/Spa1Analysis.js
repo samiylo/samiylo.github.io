@@ -67,46 +67,174 @@ const Spa1Analysis = () => {
   };
 
   return (
-    <div className="container-fluid py-5" style={{ backgroundColor: '#0a0a0a', minHeight: '100vh' }}>
+    <>
+      <style>
+        {`
+          @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+          }
+          
+          @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+          }
+          
+          @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+          }
+          
+          .modern-card {
+            transition: all 0.3s ease;
+          }
+          
+          .modern-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3) !important;
+          }
+          
+          .gradient-text {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 3s ease infinite;
+          }
+        `}
+      </style>
+      <div className="container-fluid py-5" style={{ 
+        backgroundColor: '#0a0a0a', 
+        minHeight: '100vh',
+        background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%)'
+      }}>
       <div className="container">
         {/* Header Section */}
         <div className="row mb-5">
           <div className="col-12">
             <div className="text-center">
-              <h1 className="display-4 neon mb-3">
-                {analysis_metadata.ticker} Trading Analysis
-              </h1>
-              <h2 className="h4 text-light mb-2">{analysis_metadata.full_name}</h2>
-              <div className="d-flex justify-content-center align-items-center gap-4 text-light">
-                <span>Current Price: <span className="neon">{formatCurrency(analysis_metadata.current_price)}</span></span>
-                <span>Confidence: <span className={getConfidenceColor(analysis_metadata.confidence_level)}>{analysis_metadata.confidence_level}%</span></span>
-                <span>Analysis Date: {analysis_metadata.analysis_date}</span>
+              <div className="position-relative">
+                <h1 className="display-4 mb-3" style={{
+                  color: '#ffffff',
+                  fontSize: '3rem',
+                  fontWeight: '300',
+                  letterSpacing: '2px',
+                  textTransform: 'uppercase'
+                }}>
+                  {analysis_metadata.ticker} Trading Analysis
+                </h1>
+                <div className="position-absolute top-0 start-50 translate-middle-x" style={{
+                  width: '120px',
+                  height: '2px',
+                  background: '#ffffff',
+                  borderRadius: '1px',
+                  opacity: '0.6'
+                }}></div>
+              </div>
+              <h2 className="h4 text-light mb-4" style={{ 
+                color: '#e0e6ed',
+                fontWeight: '300',
+                letterSpacing: '1px'
+              }}>
+                {analysis_metadata.full_name}
+              </h2>
+              <div className="d-flex justify-content-center align-items-center gap-5 text-light flex-wrap">
+                <div className="d-flex flex-column align-items-center">
+                  <span className="text-muted small">Current Price</span>
+                  <span className="h4 text-white" style={{ fontSize: '1.8rem', fontWeight: '400' }}>{formatCurrency(analysis_metadata.current_price)}</span>
+                </div>
+                <div className="d-flex flex-column align-items-center">
+                  <span className="text-muted small">Confidence</span>
+                  <span className={`h4 ${getConfidenceColor(analysis_metadata.confidence_level)}`} style={{ fontSize: '1.8rem', fontWeight: '400' }}>
+                    {analysis_metadata.confidence_level}%
+                  </span>
+                </div>
+                <div className="d-flex flex-column align-items-center">
+                  <span className="text-muted small">Analysis Date</span>
+                  <span className="h6 text-light">{analysis_metadata.analysis_date}</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
 
         {/* Executive Summary */}
-        <div className="row mb-4">
+        <div className="row mb-5">
           <div className="col-12">
-            <div className="card bg-dark border-secondary">
-              <div className="card-header bg-primary">
-                <h3 className="card-title text-white mb-0">Executive Summary</h3>
+            <div className="card" style={{
+              background: 'rgba(26, 26, 46, 0.95)',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              borderRadius: '12px',
+              backdropFilter: 'blur(10px)',
+              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)'
+            }}>
+              <div className="card-header" style={{
+                background: 'rgba(255, 255, 255, 0.05)',
+                borderRadius: '12px 12px 0 0',
+                border: 'none',
+                borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+                padding: '1.5rem'
+              }}>
+                <h3 className="card-title text-white mb-0" style={{ fontWeight: '500', fontSize: '1.25rem', letterSpacing: '0.5px' }}>
+                  Executive Summary
+                </h3>
               </div>
-              <div className="card-body">
-                <div className="row">
+              <div className="card-body" style={{ padding: '2rem' }}>
+                <div className="row g-4">
                   <div className="col-md-6">
-                    <p className="text-light"><strong>Market State:</strong> {executive_summary.market_state}</p>
-                    <p className="text-light"><strong>Current Position:</strong> {executive_summary.current_position}</p>
+                    <div className="d-flex flex-column h-100">
+                      <div className="mb-3 p-3" style={{
+                        background: 'rgba(255, 255, 255, 0.03)',
+                        borderRadius: '8px',
+                        border: '1px solid rgba(255, 255, 255, 0.08)'
+                      }}>
+                        <h6 className="text-white mb-2" style={{ fontWeight: '500', fontSize: '0.9rem', letterSpacing: '0.5px' }}>Market State</h6>
+                        <p className="text-light mb-0" style={{ fontSize: '0.95rem', lineHeight: '1.5' }}>{executive_summary.market_state}</p>
+                      </div>
+                      <div className="p-3" style={{
+                        background: 'rgba(255, 255, 255, 0.03)',
+                        borderRadius: '8px',
+                        border: '1px solid rgba(255, 255, 255, 0.08)'
+                      }}>
+                        <h6 className="text-white mb-2" style={{ fontWeight: '500', fontSize: '0.9rem', letterSpacing: '0.5px' }}>Current Position</h6>
+                        <p className="text-light mb-0" style={{ fontSize: '0.95rem', lineHeight: '1.5' }}>{executive_summary.current_position}</p>
+                      </div>
+                    </div>
                   </div>
                   <div className="col-md-6">
-                    <p className="text-light"><strong>Primary Bias:</strong> {executive_summary.primary_bias}</p>
-                    <p className="text-light"><strong>Key Insight:</strong> {executive_summary.key_insight}</p>
+                    <div className="d-flex flex-column h-100">
+                      <div className="mb-3 p-3" style={{
+                        background: 'rgba(255, 255, 255, 0.03)',
+                        borderRadius: '8px',
+                        border: '1px solid rgba(255, 255, 255, 0.08)'
+                      }}>
+                        <h6 className="text-white mb-2" style={{ fontWeight: '500', fontSize: '0.9rem', letterSpacing: '0.5px' }}>Primary Bias</h6>
+                        <p className="text-light mb-0" style={{ fontSize: '0.95rem', lineHeight: '1.5' }}>{executive_summary.primary_bias}</p>
+                      </div>
+                      <div className="p-3" style={{
+                        background: 'rgba(255, 255, 255, 0.03)',
+                        borderRadius: '8px',
+                        border: '1px solid rgba(255, 255, 255, 0.08)'
+                      }}>
+                        <h6 className="text-white mb-2" style={{ fontWeight: '500', fontSize: '0.9rem', letterSpacing: '0.5px' }}>Key Insight</h6>
+                        <p className="text-light mb-0" style={{ fontSize: '0.95rem', lineHeight: '1.5' }}>{executive_summary.key_insight}</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <div className="alert alert-info mt-3">
-                  <h5 className="alert-heading">Primary Recommendation</h5>
-                  <p className="mb-0">{executive_summary.primary_recommendation}</p>
+                <div className="mt-4 p-4" style={{
+                  background: 'rgba(255, 255, 255, 0.05)',
+                  borderRadius: '12px',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  position: 'relative'
+                }}>
+                  <h5 className="text-white mb-3" style={{ fontWeight: '500', fontSize: '1.1rem' }}>
+                    Primary Recommendation
+                  </h5>
+                  <p className="text-light mb-0" style={{ fontSize: '1rem', lineHeight: '1.6' }}>
+                    {executive_summary.primary_recommendation}
+                  </p>
                 </div>
               </div>
             </div>
@@ -114,29 +242,65 @@ const Spa1Analysis = () => {
         </div>
 
         {/* Navigation Tabs */}
-        <div className="row mb-4">
+        <div className="row mb-5">
           <div className="col-12">
-            <ul className="nav nav-tabs bg-dark border-secondary">
-              {[
-                { id: 'overview', label: 'Overview' },
-                { id: 'analysis', label: 'Chart Analysis' },
-                { id: 'levels', label: 'Support/Resistance' },
-                { id: 'strategies', label: 'Options Strategies' },
-                { id: 'risk', label: 'Risk Management' },
-                { id: 'signals', label: 'Entry/Exit Signals' },
-                { id: 'decision', label: 'Decision Matrix' },
-                { id: 'recommendations', label: 'Recommendations' }
-              ].map(tab => (
-                <li className="nav-item" key={tab.id}>
+            <div className="d-flex justify-content-center">
+              <div className="nav nav-pills" style={{
+                background: 'rgba(26, 26, 46, 0.8)',
+                borderRadius: '8px',
+                padding: '4px',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+                backdropFilter: 'blur(10px)',
+                boxShadow: '0 4px 16px rgba(0, 0, 0, 0.3)'
+              }}>
+                {[
+                  { id: 'overview', label: 'Overview' },
+                  { id: 'analysis', label: 'Chart Analysis' },
+                  { id: 'levels', label: 'Support/Resistance' },
+                  { id: 'strategies', label: 'Options Strategies' },
+                  { id: 'risk', label: 'Risk Management' },
+                  { id: 'signals', label: 'Entry/Exit Signals' },
+                  { id: 'decision', label: 'Decision Matrix' },
+                  { id: 'recommendations', label: 'Recommendations' }
+                ].map(tab => (
                   <button
-                    className={`nav-link ${activeTab === tab.id ? 'active bg-primary text-white' : 'text-light'}`}
+                    key={tab.id}
+                    className={`btn ${activeTab === tab.id ? 'active' : ''}`}
                     onClick={() => setActiveTab(tab.id)}
+                    style={{
+                      background: activeTab === tab.id 
+                        ? 'rgba(255, 255, 255, 0.15)' 
+                        : 'transparent',
+                      color: activeTab === tab.id ? 'white' : '#e0e6ed',
+                      border: 'none',
+                      borderRadius: '6px',
+                      padding: '10px 16px',
+                      margin: '0 2px',
+                      fontWeight: '500',
+                      fontSize: '0.85rem',
+                      transition: 'all 0.2s ease',
+                      boxShadow: activeTab === tab.id 
+                        ? '0 2px 8px rgba(0, 0, 0, 0.2)' 
+                        : 'none'
+                    }}
+                    onMouseEnter={(e) => {
+                      if (activeTab !== tab.id) {
+                        e.target.style.background = 'rgba(255, 255, 255, 0.1)';
+                        e.target.style.transform = 'translateY(-1px)';
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (activeTab !== tab.id) {
+                        e.target.style.background = 'transparent';
+                        e.target.style.transform = 'translateY(0)';
+                      }
+                    }}
                   >
                     {tab.label}
                   </button>
-                </li>
-              ))}
-            </ul>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
@@ -147,44 +311,69 @@ const Spa1Analysis = () => {
               <div className="row">
                 {/* Mathematical Calculations */}
                 <div className="col-md-6 mb-4">
-                  <div className="card bg-dark border-secondary h-100">
-                    <div className="card-header bg-success">
-                      <h4 className="card-title text-white mb-0">Trading Range</h4>
+                  <div className="card h-100 modern-card" style={{
+                    background: 'rgba(26, 26, 46, 0.95)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                    borderRadius: '12px',
+                    backdropFilter: 'blur(10px)',
+                    boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)'
+                  }}>
+                    <div className="card-header" style={{
+                      background: 'rgba(255, 255, 255, 0.05)',
+                      borderRadius: '12px 12px 0 0',
+                      border: 'none',
+                      borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+                      padding: '1.25rem'
+                    }}>
+                      <h4 className="card-title text-white mb-0" style={{ fontWeight: '500', fontSize: '1.1rem' }}>
+                        Trading Range
+                      </h4>
                     </div>
                     <div className="card-body">
                       <div className="row text-center">
                         <div className="col-4">
                           <div className="text-light">
                             <small>Upper Bound</small>
-                            <div className="h5 neon">{formatCurrency(mathematical_calculations.trading_range.upper_bound)}</div>
+                            <div className="h5 text-white">{formatCurrency(mathematical_calculations.trading_range.upper_bound)}</div>
                           </div>
                         </div>
                         <div className="col-4">
                           <div className="text-light">
                             <small>Lower Bound</small>
-                            <div className="h5 neon">{formatCurrency(mathematical_calculations.trading_range.lower_bound)}</div>
+                            <div className="h5 text-white">{formatCurrency(mathematical_calculations.trading_range.lower_bound)}</div>
                           </div>
                         </div>
                         <div className="col-4">
                           <div className="text-light">
                             <small>Range Width</small>
-                            <div className="h5 neon">{formatCurrency(mathematical_calculations.trading_range.range_width)}</div>
+                            <div className="h5 text-white">{formatCurrency(mathematical_calculations.trading_range.range_width)}</div>
                           </div>
                         </div>
                       </div>
-                      <div className="mt-3">
-                        <div className="progress bg-dark">
+                      <div className="mt-4">
+                        <div className="progress" style={{
+                          height: '8px',
+                          background: 'rgba(255, 255, 255, 0.1)',
+                          borderRadius: '4px',
+                          overflow: 'hidden'
+                        }}>
                           <div 
-                            className="progress-bar bg-gradient" 
+                            className="progress-bar" 
                             style={{ 
                               width: `${mathematical_calculations.current_position.position_in_range_percent}%`,
-                              background: 'linear-gradient(90deg, #ff6b6b, #4ecdc4)'
+                              background: 'rgba(255, 255, 255, 0.3)',
+                              borderRadius: '4px',
+                              transition: 'width 1s ease-in-out'
                             }}
                           ></div>
                         </div>
-                        <small className="text-light">
-                          Current Position: {mathematical_calculations.current_position.position_in_range_percent}% of range
-                        </small>
+                        <div className="d-flex justify-content-between mt-2">
+                          <small className="text-muted">Lower Bound</small>
+                          <small className="text-light fw-bold">
+                            Current: {mathematical_calculations.current_position.position_in_range_percent}%
+                          </small>
+                          <small className="text-muted">Upper Bound</small>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -357,46 +546,89 @@ const Spa1Analysis = () => {
               <div className="row">
                 {options_strategies?.map((strategy, index) => (
                   <div key={index} className="col-md-4 mb-4">
-                    <div className="card bg-dark border-secondary h-100">
-                      <div className={`card-header ${strategy.priority === 'PRIMARY' ? 'bg-danger' : strategy.priority === 'RECOMMENDED' ? 'bg-success' : 'bg-warning'}`}>
-                        <h5 className="card-title text-white mb-0">{strategy.name}</h5>
-                        <small className="text-white">{strategy.type}</small>
+                    <div className="card h-100 modern-card" style={{
+                      background: 'rgba(26, 26, 46, 0.95)',
+                      border: '1px solid rgba(255, 255, 255, 0.1)',
+                      borderRadius: '12px',
+                      backdropFilter: 'blur(10px)',
+                      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)'
+                    }}>
+                      <div className="card-header" style={{
+                        background: strategy.priority === 'PRIMARY' 
+                          ? 'rgba(220, 53, 69, 0.2)' 
+                          : strategy.priority === 'RECOMMENDED' 
+                          ? 'rgba(40, 167, 69, 0.2)' 
+                          : 'rgba(255, 193, 7, 0.2)',
+                        borderRadius: '12px 12px 0 0',
+                        border: 'none',
+                        borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+                        padding: '1rem'
+                      }}>
+                        <h5 className="card-title text-white mb-1" style={{ fontWeight: '500', fontSize: '1rem' }}>
+                          {strategy.name}
+                        </h5>
+                        <small className="text-muted">{strategy.type}</small>
                       </div>
                       <div className="card-body">
                         <div className="mb-3">
-                          <h6 className="text-light">Strategy Details:</h6>
-                          <ul className="text-light small">
+                          <h6 className="text-white" style={{ fontSize: '0.9rem', fontWeight: '500' }}>Strategy Details:</h6>
+                          <ul className="text-light small mb-0">
                             {strategy.legs?.map((leg, legIndex) => (
-                              <li key={legIndex}>
+                              <li key={legIndex} style={{ marginBottom: '4px' }}>
                                 <strong>{leg.action || 'N/A'}</strong> {formatCurrency(leg.strike)} {leg.option_type || 'N/A'} {leg.position || 'N/A'}
+                                {leg.expiration && <span className="text-muted"> ({leg.expiration})</span>}
                               </li>
                             )) || <li>No strategy details available</li>}
                           </ul>
                         </div>
                         {strategy.targets && (
                           <div className="mb-3">
-                            <h6 className="text-light">Targets:</h6>
-                            <p className="text-light small">
+                            <h6 className="text-white" style={{ fontSize: '0.9rem', fontWeight: '500' }}>Targets:</h6>
+                            <p className="text-light small mb-0">
                               Primary: {formatCurrency(strategy.targets.primary_target || strategy.targets.primary_target_low)} - {formatCurrency(strategy.targets.primary_target_high || strategy.targets.primary_target)}
                             </p>
                           </div>
                         )}
                         {strategy.stops && (
                           <div className="mb-3">
-                            <h6 className="text-light">Stop Loss:</h6>
-                            <p className="text-light small">{formatCurrency(strategy.stops.stop_loss)}</p>
+                            <h6 className="text-white" style={{ fontSize: '0.9rem', fontWeight: '500' }}>Stop Loss:</h6>
+                            <p className="text-light small mb-0">{formatCurrency(strategy.stops.stop_loss)}</p>
                           </div>
                         )}
-                        <div className="row text-center">
+                        {strategy.rationale && (
+                          <div className="mb-3">
+                            <h6 className="text-white" style={{ fontSize: '0.9rem', fontWeight: '500' }}>Rationale:</h6>
+                            <p className="text-light small mb-0">{strategy.rationale}</p>
+                          </div>
+                        )}
+                        {strategy.profit_mechanism && (
+                          <div className="mb-3">
+                            <h6 className="text-white" style={{ fontSize: '0.9rem', fontWeight: '500' }}>Profit Mechanism:</h6>
+                            <p className="text-light small mb-0">{strategy.profit_mechanism}</p>
+                          </div>
+                        )}
+                        <div className="row text-center mt-3">
                           <div className="col-6">
-                            <small className="text-light">Success Rate</small>
-                            <div className="h6 neon">{strategy.expected_success_rate}%</div>
+                            <small className="text-muted">Success Rate</small>
+                            <div className="h6 text-white" style={{ fontSize: '1.1rem', fontWeight: '500' }}>
+                              {strategy.expected_success_rate ? `${strategy.expected_success_rate}%` : 'N/A'}
+                            </div>
                           </div>
                           <div className="col-6">
-                            <small className="text-light">R/R Ratio</small>
-                            <div className="h6 neon">{strategy.risk_reward_ratio}</div>
+                            <small className="text-muted">R/R Ratio</small>
+                            <div className="h6 text-white" style={{ fontSize: '1.1rem', fontWeight: '500' }}>
+                              {strategy.risk_reward_ratio ? strategy.risk_reward_ratio : 'N/A'}
+                            </div>
                           </div>
                         </div>
+                        {strategy.scenario_probability && (
+                          <div className="text-center mt-2">
+                            <small className="text-muted">Scenario Probability</small>
+                            <div className="text-white" style={{ fontSize: '0.9rem', fontWeight: '500' }}>
+                              {strategy.scenario_probability}%
+                            </div>
+                          </div>
+                        )}
                         {strategy.notes && (
                           <div className="alert alert-info mt-2">
                             <small>{strategy.notes}</small>
@@ -702,7 +934,8 @@ const Spa1Analysis = () => {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 };
 
