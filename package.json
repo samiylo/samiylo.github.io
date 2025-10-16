@@ -20,6 +20,7 @@
     "emailjs-com": "^3.2.0",
     "express": "^4.21.2",
     "lil-gui": "^0.20.0",
+    "lucide-react": "^0.545.0",
     "react": "^18.1.0",
     "react-bootstrap": "^2.4.0",
     "react-bootstrap-icons": "^1.8.2",
@@ -73,6 +74,6 @@
     "file-loader": "^6.2.0",
     "gh-pages": "^6.1.1",
     "postcss": "^8.5.4",
-    "tailwindcss": "^4.0.9"
+    "tailwindcss": "^4.1.14"
   }
 }

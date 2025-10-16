@@ -10,6 +10,7 @@ import { Footer } from "./components/Footer";
 import { Showcase } from "./components/Showcase"
 import FloatingShapes from './components/FloatingShapes';
 import RouletteEmbed from './components/RouletteEmbed';
+import Spa1Analysis from './components/hft/Spa1Analysis';
 
 function App() {
   return (
@@ -49,6 +50,9 @@ function App() {
             
             {/* Roulette app embedded route (alternative approach) */}
             <Route path='/bled-roulette' element={<RouletteEmbed />} />
+            
+            {/* HFT Analysis Interactive route */}
+            <Route path='/spa1' element={<Spa1Analysis />} />
             
         </Routes>
       </Router>
