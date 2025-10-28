@@ -53,7 +53,6 @@ function App() {
             
             {/* HFT Analysis Interactive route */}
             <Route path='/spa1' element={<Spa1Analysis />} />
-            
         </Routes>
       </Router>
     </div>
