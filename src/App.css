@@ -2655,6 +2655,41 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
     height: 60px; /* keep consistent height on scroll */
     padding: 10px 0;
   }
+
+  /* Make collapsed menu appear above the bottom navbar */
+  nav.navbar .navbar-collapse {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 60px; /* same as navbar height */
+    width: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 12px 16px;
+    z-index: 10000;
+  }
+
+  /* Ensure nav items stack nicely in mobile dropdown */
+  nav.navbar .navbar-nav .nav-link.navbar-link {
+    padding: 12px 8px;
+    font-size: 16px;
+  }
+
+  /* Reposition the navbar toggler button higher from the screen edge */
+  nav.navbar .navbar-toggler {
+    position: fixed;
+    right: 16px;
+    bottom: 100px; /* move up ~100px from screen bottom */
+    z-index: 10001;
+  }
+
+  /* Keep custom image aligned within the fixed toggler */
+  .navbar-toggler-icon-moblie {
+    width: 32px;
+    height: auto;
+  }
 }
 @keyframes floatShape {
   0%, 100% {
