@@ -2681,7 +2681,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   nav.navbar .navbar-toggler {
     position: fixed;
     right: 16px;
-    bottom: 100px; /* move up ~100px from screen bottom */
+    bottom: 350px; /* move up ~100px from screen bottom */
     z-index: 10001;
   }
 
