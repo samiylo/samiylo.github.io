@@ -2664,10 +2664,11 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   /* Make collapsed menu appear above the bottom navbar */
   nav.navbar .navbar-collapse {
     position: fixed;
-    left: 10px; /* inset to reveal rounded corners */
-    right: 10px; /* inset to reveal rounded corners */
-    bottom: 60px; /* same as navbar height */
+    left: 30px; 
+    right: 10px; 
+    bottom: 60px;
     width: 90%;
+    min-width: 400px;
     /* Glassmorphism */
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.06) 100%);
     backdrop-filter: blur(18px) saturate(120%);
