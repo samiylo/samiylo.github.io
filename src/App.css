@@ -392,6 +392,7 @@ a.navbar-brand:hover {
   transform: scale(1.2) rotate(360deg);
 }
 
+
 /* Hide brand logo on mobile dimensions */
 @media (max-width: 768px) {
   .brand-logo {
@@ -2637,6 +2638,24 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 /* === Enhanced Floating Shape Animation === */
+/* === Mobile Navbar at bottom === */
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 60px; /* space for bottom navbar */
+  }
+
+  nav.navbar {
+    top: auto;
+    bottom: 0;
+    height: 60px;
+    padding: 10px 0;
+  }
+
+  nav.navbar.scrolled {
+    height: 60px; /* keep consistent height on scroll */
+    padding: 10px 0;
+  }
+}
 @keyframes floatShape {
   0%, 100% {
     transform: translateY(0px) translateX(0px) rotate(0deg);
