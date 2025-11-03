@@ -34,8 +34,8 @@ export const Timeline = () => {
         <div className="row">
           <div className="col-12">
             <div className="timeline-bx wow zoomIn">
-              <h2>Career Timeline</h2>
-              <p>My professional journey in software development and technology</p>
+              <h2>Journey</h2>
+              <p>Leading digital transformation to cloud native architecture</p>
               
               <div className="timeline-container">
                 {timelineData.map((item, index) => (
