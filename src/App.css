@@ -407,6 +407,8 @@ a.navbar-brand:hover {
 
 nav.navbar .navbar-nav .nav-link.navbar-link {
   font-weight: 400;
+  width: 50%;
+  align-self: center;
   color: #fff !important;
   letter-spacing: 0.8px;
   padding: 0 25px;
