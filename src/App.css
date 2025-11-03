@@ -2664,7 +2664,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   /* Make collapsed menu appear above the bottom navbar */
   nav.navbar .navbar-collapse {
     position: fixed;
-    left: 30px; 
+    left: 15px; 
     right: 10px; 
     bottom: 60px;
     width: 90%;
