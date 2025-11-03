@@ -47,6 +47,10 @@ html, body {
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 75px;
+  height: 100%;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #533483 100%);
+  background-attachment: fixed;
+  background-color: #3f0c38;
 }
 
 body {
@@ -57,6 +61,7 @@ body {
   color: #fff !important;
   font-family: 'Centra', sans-serif !important;
   min-height: 100vh;
+  overscroll-behavior: none;
 }
 
 h1, h2, h3, h4, h5, h6 {
