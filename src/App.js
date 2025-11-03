@@ -4,10 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { NavBar } from "./components/NavBar";
 import { Banner } from "./components/Banner";
-import { Timeline } from "./components/Timeline";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
-import { Showcase } from "./components/Showcase"
 import FloatingShapes from './components/FloatingShapes';
 import RouletteEmbed from './components/RouletteEmbed';
 import Spa1Analysis from './components/hft/Spa1Analysis';
@@ -34,10 +32,7 @@ function App() {
                    element={
                 <>
                 <NavBar />
-                <Banner />
-                <Showcase />
-                <Timeline />
-                
+                <Banner />           
                 <Contact />
                 <Footer />
                 </>
