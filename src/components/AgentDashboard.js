@@ -5,6 +5,7 @@ import 'animate.css';
 import TrackVisibility from 'react-on-screen';
 import FloatingShapes from './FloatingShapes';
 import { agentConfig } from '../config/agentConfig';
+import { MissionLog } from './MissionLog';
 
 export const AgentDashboard = () => {
   const [accessCode, setAccessCode] = useState('');
@@ -70,7 +71,7 @@ export const AgentDashboard = () => {
                 {({ isVisible }) =>
                   <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
                     <div className="agent-dashboard-header">
-                      <h1>Agent Dashboard</h1>
+                      <h1>Mission Dashboard</h1>
                       <button 
                         type="button"
                         onClick={handleLogout}
@@ -83,7 +84,7 @@ export const AgentDashboard = () => {
                     <div className="agent-dashboard-content">
                       <h2>Welcome, Agent</h2>
                       <p>You have successfully accessed the agent dashboard.</p>
-                      {/* Add your agent dashboard content here */}
+                      <MissionLog />
                     </div>
                   </div>
                 }
