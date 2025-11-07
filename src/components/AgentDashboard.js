@@ -14,9 +14,11 @@ export const AgentDashboard = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
+    e.stopPropagation();
     setError('');
 
-    if (accessCode === agentConfig.accessCode) {
+    const trimmedCode = accessCode.trim();
+    if (trimmedCode === agentConfig.accessCode) {
       setIsAuthenticated(true);
       // Store authentication in sessionStorage for persistence
       sessionStorage.setItem('agentAuthenticated', 'true');
@@ -26,7 +28,11 @@ export const AgentDashboard = () => {
     }
   };
 
-  const handleLogout = () => {
+  const handleLogout = (e) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
     setIsAuthenticated(false);
     sessionStorage.removeItem('agentAuthenticated');
     setAccessCode('');
@@ -140,7 +146,7 @@ export const AgentDashboard = () => {
                       <button 
                         type="submit" 
                         className="agent-login-button"
-                        disabled={!accessCode}
+                        disabled={!accessCode || accessCode.trim().length === 0}
                       >
                         <span>Access Dashboard</span>
                       </button>
@@ -148,7 +154,11 @@ export const AgentDashboard = () => {
                     
                     <button 
                       type="button"
-                      onClick={() => navigate('/')}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        navigate('/');
+                      }}
                       className="agent-back-button"
                     >
                       Back to Home
