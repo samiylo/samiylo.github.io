@@ -383,7 +383,7 @@ const Spa1Analysis = () => {
             <div className="col-12">
               <div className="glass-card p-4">
                 <h3 className="text-white mb-4" style={{ fontWeight: '600', fontSize: '1.5rem' }}>
-                  📊 Executive Summary
+                  
                 </h3>
                 <div className="row g-4">
                   <div className="col-md-6">
