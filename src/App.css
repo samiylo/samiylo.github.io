@@ -2581,6 +2581,319 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   z-index: 3;
 }
 
+/* === Agent Dashboard Styles === */
+.agent-login {
+  position: relative;
+  min-height: 100vh;
+  padding: 200px 0 100px 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.agent-login-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.agent-login-container {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 50px 40px;
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 5;
+  pointer-events: auto;
+}
+
+.agent-login-container h2 {
+  font-size: 45px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.agent-login-subtitle {
+  color: #B8B8B8;
+  font-size: 18px;
+  letter-spacing: 0.8px;
+  margin-bottom: 40px;
+}
+
+.agent-login-form-group {
+  margin-bottom: 30px;
+}
+
+.agent-login-input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  color: #fff;
+  padding: 18px 26px;
+  font-weight: 500;
+  font-size: 24px;
+  letter-spacing: 8px;
+  text-align: center;
+  transition: 0.3s ease-in-out;
+}
+
+.agent-login-input:focus {
+  background: rgba(255, 255, 255, 1);
+  color: #121212;
+  outline: none;
+  border-color: rgba(170, 54, 124, 0.8);
+}
+
+.agent-login-input::placeholder {
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.8px;
+}
+
+.agent-login-input:focus::placeholder {
+  color: #121212;
+  opacity: 0.5;
+}
+
+.agent-login-error {
+  color: #ff6b6b;
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.agent-login-button {
+  width: 100%;
+  font-weight: 700;
+  color: #000;
+  background-color: #fff;
+  padding: 18px 48px;
+  font-size: 18px;
+  margin-top: 20px;
+  border-radius: 20px;
+  border: none;
+  position: relative;
+  z-index: 10;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.agent-login-button span {
+  z-index: 1;
+  position: relative;
+}
+
+.agent-login-button:hover:not(:disabled) {
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(170, 54, 124, 0.3);
+}
+
+.agent-login-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.agent-login-button::before {
+  content: "";
+  background: linear-gradient(90.21deg, rgba(170, 54, 124, 0.8) -5.91%, rgba(74, 47, 189, 0.8) 111.58%);
+  width: 0;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  transition: 0.3s ease-in-out;
+  border-radius: 20px;
+}
+
+.agent-login-button:hover:not(:disabled)::before {
+  width: 100%;
+}
+
+.agent-back-button {
+  width: 100%;
+  font-weight: 500;
+  color: #fff;
+  background: transparent;
+  padding: 12px 24px;
+  font-size: 16px;
+  margin-top: 20px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+  z-index: 10;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.agent-back-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.agent-dashboard {
+  position: relative;
+  min-height: 100vh;
+  padding: 120px 0 100px 0;
+  overflow: hidden;
+}
+
+.agent-dashboard-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.agent-dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 3;
+}
+
+.agent-dashboard-header h1 {
+  font-size: 45px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+.agent-logout-btn {
+  font-weight: 500;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+  z-index: 10;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.agent-logout-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.agent-dashboard-content {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 50px 40px;
+  backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 5;
+  pointer-events: auto;
+}
+
+.agent-dashboard-content h2 {
+  font-size: 35px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.agent-dashboard-content p {
+  color: #B8B8B8;
+  font-size: 18px;
+  letter-spacing: 0.8px;
+  line-height: 1.6;
+}
+
+/* Agent Dashboard Floating Shapes */
+.agent-login .floating-shapes,
+.agent-dashboard .floating-shapes {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.agent-login .floating-shape,
+.agent-dashboard .floating-shape {
+  position: absolute;
+  background: linear-gradient(45deg, rgba(170, 54, 124, 0.07), rgba(74, 47, 189, 0.07));
+  border-radius: 50%;
+  width: var(--size);
+  height: var(--size);
+  animation: floatShape var(--duration) ease-in-out infinite;
+  animation-delay: var(--delay);
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.agent-login .floating-shape:nth-child(even),
+.agent-dashboard .floating-shape:nth-child(even) {
+  background: linear-gradient(45deg, rgba(74, 47, 189, 0.07), rgba(170, 54, 124, 0.07));
+  animation-direction: reverse;
+}
+
+/* Responsive styles for agent dashboard */
+@media (max-width: 768px) {
+  .agent-login {
+    padding: 150px 0 80px 0;
+  }
+
+  .agent-login-container {
+    padding: 40px 30px;
+  }
+
+  .agent-login-container h2 {
+    font-size: 35px;
+  }
+
+  .agent-dashboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .agent-dashboard-header h1 {
+    font-size: 35px;
+  }
+
+  .agent-login .floating-shapes,
+  .agent-dashboard .floating-shapes {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .agent-login-container {
+    padding: 30px 20px;
+  }
+
+  .agent-login-container h2 {
+    font-size: 28px;
+  }
+
+  .agent-login-input {
+    font-size: 20px;
+    letter-spacing: 4px;
+  }
+}
+
 /* === Timeline Component Floating Shapes === */
 .timeline {
   position: relative;
