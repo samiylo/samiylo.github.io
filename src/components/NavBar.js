@@ -54,7 +54,7 @@ export const NavBar = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
             <Nav.Link className={activeLink === 'home' ? 'active navbar-link' : 'navbar-link'} onClick={handleHomeClick}>Home</Nav.Link>
-            <Nav.Link href="/agents" className={activeLink === 'agents' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('agents')}>Agents</Nav.Link>
+            <Nav.Link href="#connect" className={activeLink === 'agents' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('agents')}>Connect</Nav.Link>
             <Nav.Link href="#projects" className={activeLink === 'projects' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('projects')}>Models</Nav.Link>
           </Nav>
           <span className="navbar-text">
@@ -63,10 +63,10 @@ export const NavBar = () => {
                 <SocialIcon className="box" target="_blank" bgColor="white" fgColor="purple" url="https://linkedin.com/in/samiylo"/>
                 <SocialIcon className="box" target="_blank" bgColor="white" fgColor="purple" url="https://github.com/samiylo"/> 
             </div>
-            <HashLink to='#connect'>
+            <HashLink to='/agents'>
               <button className="see-more-button navbar-connect-btn">
                 <div className="button-content">
-                  <span className="button-text">Let's Connect</span>
+                  <span className="button-text">Login</span>
                 </div>
                 <div className="button-glow"></div>
                 <div className="button-particles"></div>

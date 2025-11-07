@@ -71,7 +71,7 @@ export const AgentDashboard = () => {
                 {({ isVisible }) =>
                   <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
                     <div className="agent-dashboard-header">
-                      <h1>Mission Dashboard</h1>
+                      <h1>Agent Dashboard</h1>
                       <button 
                         type="button"
                         onClick={handleLogout}
@@ -118,7 +118,7 @@ export const AgentDashboard = () => {
               {({ isVisible }) =>
                 <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
                   <div className="agent-login-container">
-                    <h2>Agent Access</h2>
+                    <h2>Access?</h2>
                     <p className="agent-login-subtitle">Enter your access code to continue</p>
                     
                     <form onSubmit={handleLogin}>
@@ -149,7 +149,7 @@ export const AgentDashboard = () => {
                         className="agent-login-button"
                         disabled={!accessCode || accessCode.trim().length === 0}
                       >
-                        <span>Access Dashboard</span>
+                        <span>Agent Dashboard</span>
                       </button>
                     </form>
                     
