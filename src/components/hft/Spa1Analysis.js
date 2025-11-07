@@ -574,52 +574,56 @@ const Spa1Analysis = () => {
 
               {activeTab === 'analysis' && (
                 <div className="row g-4" style={{ animation: 'fadeInUp 0.5s ease' }}>
-                  <div className="col-md-6">
-                    <div className="glass-card p-4 h-100">
-                      <h4 className="text-white mb-4" style={{ fontWeight: '600' }}>📊 4H Chart Analysis</h4>
-                      <div className="mb-3">
-                        <span className="badge-modern me-2" style={{ background: 'rgba(23, 162, 184, 0.3)', color: '#fff' }}>
-                          {chart_analysis['4h_chart'].pattern}
-                        </span>
-                        <span className="badge-modern" style={{ background: 'rgba(23, 162, 184, 0.3)', color: '#fff' }}>
-                          {chart_analysis['4h_chart'].trend}
-                        </span>
-                      </div>
-                      <p className="text-light mb-2"><strong>Volume:</strong> {chart_analysis['4h_chart'].volume.toLocaleString()}</p>
-                      <p className="text-light mb-3"><strong>Volume Trend:</strong> {chart_analysis['4h_chart'].volume_trend}</p>
-                      <div>
-                        <strong className="text-white">Observations:</strong>
-                        <ul className="text-light mt-2">
-                          {chart_analysis['4h_chart'].observations.map((obs, index) => (
-                            <li key={index} style={{ marginBottom: '8px' }}>{obs}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-md-6">
-                    <div className="glass-card p-4 h-100">
-                      <h4 className="text-white mb-4" style={{ fontWeight: '600' }}>📊 15M Chart Analysis</h4>
-                      <div className="mb-3">
-                        <span className="badge-modern me-2" style={{ background: 'rgba(40, 167, 69, 0.3)', color: '#fff' }}>
-                          {chart_analysis['15m_chart'].pattern}
-                        </span>
-                        <span className="badge-modern" style={{ background: 'rgba(40, 167, 69, 0.3)', color: '#fff' }}>
-                          {chart_analysis['15m_chart'].trend}
-                        </span>
-                      </div>
-                      <p className="text-light mb-2"><strong>Volume:</strong> {chart_analysis['15m_chart'].volume.toLocaleString()}</p>
-                      <p className="text-light mb-3"><strong>Volume Trend:</strong> {chart_analysis['15m_chart'].volume_trend}</p>
-                      <div>
-                        <strong className="text-white">Observations:</strong>
-                        <ul className="text-light mt-2">
-                          {chart_analysis['15m_chart'].observations.map((obs, index) => (
-                            <li key={index} style={{ marginBottom: '8px' }}>{obs}</li>
-                          ))}
-                        </ul>
+                  {chart_analysis['4h_chart'] && (
+                    <div className="col-md-6">
+                      <div className="glass-card p-4 h-100">
+                        <h4 className="text-white mb-4" style={{ fontWeight: '600' }}>📊 4H Chart Analysis</h4>
+                        <div className="mb-3">
+                          <span className="badge-modern me-2" style={{ background: 'rgba(23, 162, 184, 0.3)', color: '#fff' }}>
+                            {chart_analysis['4h_chart'].pattern || 'N/A'}
+                          </span>
+                          <span className="badge-modern" style={{ background: 'rgba(23, 162, 184, 0.3)', color: '#fff' }}>
+                            {chart_analysis['4h_chart'].trend || 'N/A'}
+                          </span>
+                        </div>
+                        <p className="text-light mb-2"><strong>Volume:</strong> {chart_analysis['4h_chart'].volume ? chart_analysis['4h_chart'].volume.toLocaleString() : 'N/A'}</p>
+                        <p className="text-light mb-3"><strong>Volume Trend:</strong> {chart_analysis['4h_chart'].volume_trend || 'N/A'}</p>
+                        <div>
+                          <strong className="text-white">Observations:</strong>
+                          <ul className="text-light mt-2">
+                            {chart_analysis['4h_chart'].observations?.map((obs, index) => (
+                              <li key={index} style={{ marginBottom: '8px' }}>{obs}</li>
+                            )) || <li>No observations available</li>}
+                          </ul>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  )}
+                  {chart_analysis['15m_chart'] && (
+                    <div className="col-md-6">
+                      <div className="glass-card p-4 h-100">
+                        <h4 className="text-white mb-4" style={{ fontWeight: '600' }}>📊 15M Chart Analysis</h4>
+                        <div className="mb-3">
+                          <span className="badge-modern me-2" style={{ background: 'rgba(40, 167, 69, 0.3)', color: '#fff' }}>
+                            {chart_analysis['15m_chart'].pattern || 'N/A'}
+                          </span>
+                          <span className="badge-modern" style={{ background: 'rgba(40, 167, 69, 0.3)', color: '#fff' }}>
+                            {chart_analysis['15m_chart'].trend || 'N/A'}
+                          </span>
+                        </div>
+                        <p className="text-light mb-2"><strong>Volume:</strong> {chart_analysis['15m_chart'].volume ? chart_analysis['15m_chart'].volume.toLocaleString() : 'N/A'}</p>
+                        <p className="text-light mb-3"><strong>Volume Trend:</strong> {chart_analysis['15m_chart'].volume_trend || 'N/A'}</p>
+                        <div>
+                          <strong className="text-white">Observations:</strong>
+                          <ul className="text-light mt-2">
+                            {chart_analysis['15m_chart'].observations?.map((obs, index) => (
+                              <li key={index} style={{ marginBottom: '8px' }}>{obs}</li>
+                            )) || <li>No observations available</li>}
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
               )}
 
@@ -647,9 +651,9 @@ const Spa1Analysis = () => {
                             <small className="text-muted">{level.level}</small>
                           </div>
                           <p className="text-light mb-2">{level.description}</p>
-                          <small className="text-muted">
-                            Touches: {level.validation.touch_count} | 
-                            Period: {level.validation.time_period_days} days
+                          <small className="text-light">
+                            Touches: {level.validation?.touch_count || level.touches || 'N/A'} | 
+                            Period: {level.validation?.time_period_days || level.time_period_days || 'N/A'} days
                           </small>
                         </div>
                       ))}
@@ -677,9 +681,9 @@ const Spa1Analysis = () => {
                             <small className="text-muted">{level.level}</small>
                           </div>
                           <p className="text-light mb-2">{level.description}</p>
-                          <small className="text-muted">
-                            Touches: {level.validation.touch_count} | 
-                            Period: {level.validation.time_period_days} days
+                          <small className="text-light">
+                            Touches: {level.validation?.touch_count || level.touches || 'N/A'} | 
+                            Period: {level.validation?.time_period_days || level.time_period_days || 'N/A'} days
                           </small>
                         </div>
                       ))}
@@ -796,13 +800,13 @@ const Spa1Analysis = () => {
                             </tr>
                           </thead>
                           <tbody>
-                            {risk_management.position_sizing_table.map((size, index) => (
+                            {risk_management.position_sizing_table?.map((size, index) => (
                               <tr key={index}>
-                                <td>${size.account_size.toLocaleString()}</td>
-                                <td>${size.position_allocation_dollars.toLocaleString()}</td>
-                                <td>${size.max_dollar_risk}</td>
+                                <td>${size.account_size ? size.account_size.toLocaleString() : 'N/A'}</td>
+                                <td>${size.position_allocation_dollars ? size.position_allocation_dollars.toLocaleString() : 'N/A'}</td>
+                                <td>${size.max_dollar_risk || 'N/A'}</td>
                               </tr>
-                            ))}
+                            )) || <tr><td colSpan="3" className="text-center text-light">No position sizing data available</td></tr>}
                           </tbody>
                         </table>
                       </div>
@@ -873,7 +877,7 @@ const Spa1Analysis = () => {
                           }}>
                             <div className="d-flex justify-content-between">
                               <span className="text-white">{stop.strategy || 'N/A'}</span>
-                              <span className="text-white fw-bold">{formatCurrency(stop.stop_price)}</span>
+                              <span className="text-white fw-bold">{formatCurrency(stop.stop_price || stop.stop || 0)}</span>
                             </div>
                             <small className="text-light">{stop.reasoning || 'N/A'}</small>
                           </div>
@@ -922,26 +926,32 @@ const Spa1Analysis = () => {
                             </tr>
                           </thead>
                           <tbody>
-                            {decision_matrix.factors?.map((factor, index) => (
-                              <tr key={index}>
-                                <td className="text-white">{factor.factor}</td>
-                                <td>{factor.weight_percent}%</td>
-                                <td>
-                                  <span className="badge-modern" style={{ 
-                                    background: factor.score >= 7 
-                                      ? 'rgba(40, 167, 69, 0.3)' 
-                                      : factor.score >= 5 
-                                      ? 'rgba(255, 193, 7, 0.3)' 
-                                      : 'rgba(220, 53, 69, 0.3)',
-                                    color: '#fff'
-                                  }}>
-                                    {factor.score}/10
-                                  </span>
-                                </td>
-                                <td className="text-white">{factor.weighted_score.toFixed(2)}</td>
-                                <td className="text-light">{factor.assessment}</td>
-                              </tr>
-                            )) || <tr><td colSpan="5" className="text-center text-light">No decision factors available</td></tr>}
+                            {decision_matrix.factors?.map((factor, index) => {
+                              const weightedScore = factor.weighted_score ?? factor.weighted ?? 0;
+                              const weightPercent = factor.weight_percent ?? factor.weight ?? 0;
+                              const score = factor.score ?? 0;
+                              
+                              return (
+                                <tr key={index}>
+                                  <td className="text-white">{factor.factor || 'N/A'}</td>
+                                  <td>{weightPercent}%</td>
+                                  <td>
+                                    <span className="badge-modern" style={{ 
+                                      background: score >= 7 
+                                        ? 'rgba(40, 167, 69, 0.3)' 
+                                        : score >= 5 
+                                        ? 'rgba(255, 193, 7, 0.3)' 
+                                        : 'rgba(220, 53, 69, 0.3)',
+                                      color: '#fff'
+                                    }}>
+                                      {score}/10
+                                    </span>
+                                  </td>
+                                  <td className="text-white">{weightedScore ? Number(weightedScore).toFixed(2) : '0.00'}</td>
+                                  <td className="text-light">{factor.assessment || 'N/A'}</td>
+                                </tr>
+                              );
+                            }) || <tr><td colSpan="5" className="text-center text-light">No decision factors available</td></tr>}
                           </tbody>
                         </table>
                       </div>
