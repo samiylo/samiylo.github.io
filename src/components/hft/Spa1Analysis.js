@@ -336,7 +336,7 @@ const Spa1Analysis = () => {
                 <div className="row g-4 mt-4">
                   <div className="col-md-4">
                     <div className="stat-card text-center">
-                      <div className="text-muted small mb-2">Current Price</div>
+                      <div className="text-white small mb-2">Current Price</div>
                       <div className="h3 text-white mb-0" style={{ fontWeight: '600' }}>
                         {formatCurrency(analysis_metadata.current_price)}
                       </div>
@@ -344,10 +344,10 @@ const Spa1Analysis = () => {
                   </div>
                   <div className="col-md-4">
                     <div className="stat-card text-center">
-                      <div className="text-muted small mb-2">Confidence Level</div>
+                      <div className="text-white small mb-2">Confidence Level</div>
                       <div className="h3 mb-0" style={{ 
                         fontWeight: '600',
-                        color: getConfidenceColor(analysis_metadata.confidence_level)
+                        color: '#fff'
                       }}>
                         {analysis_metadata.confidence_level}%
                       </div>
@@ -367,7 +367,7 @@ const Spa1Analysis = () => {
                   </div>
                   <div className="col-md-4">
                     <div className="stat-card text-center">
-                      <div className="text-muted small mb-2">Quality Rating</div>
+                      <div className="text-white small mb-2">Quality Rating</div>
                       <div className="h3 text-white mb-0" style={{ fontWeight: '600' }}>
                         {analysis_metadata.analysis_quality}
                       </div>
@@ -462,15 +462,15 @@ const Spa1Analysis = () => {
                       <h4 className="text-white mb-4" style={{ fontWeight: '600' }}>📏 Trading Range</h4>
                       <div className="row text-center mb-4">
                         <div className="col-4">
-                          <div className="text-muted small mb-2">Upper</div>
+                          <div className="text-white small mb-2">Upper</div>
                           <div className="h5 text-white">{formatCurrency(mathematical_calculations.trading_range.upper_bound)}</div>
                         </div>
                         <div className="col-4">
-                          <div className="text-muted small mb-2">Lower</div>
+                          <div className="text-white small mb-2">Lower</div>
                           <div className="h5 text-white">{formatCurrency(mathematical_calculations.trading_range.lower_bound)}</div>
                         </div>
                         <div className="col-4">
-                          <div className="text-muted small mb-2">Width</div>
+                          <div className="text-white small mb-2">Width</div>
                           <div className="h5 text-white">{formatCurrency(mathematical_calculations.trading_range.range_width)}</div>
                         </div>
                       </div>
@@ -487,11 +487,11 @@ const Spa1Analysis = () => {
                         ></div>
                       </div>
                       <div className="d-flex justify-content-between mt-2">
-                        <small className="text-muted">Lower Bound</small>
+                        <small className="text-light">Lower Bound</small>
                         <small className="text-light fw-bold">
                           Current: {mathematical_calculations.current_position.position_in_range_percent}%
                         </small>
-                        <small className="text-muted">Upper Bound</small>
+                        <small className="text-light">Upper Bound</small>
                       </div>
                     </div>
                   </div>
@@ -502,11 +502,11 @@ const Spa1Analysis = () => {
                       <h4 className="text-white mb-4" style={{ fontWeight: '600' }}>📉 Volatility Analysis</h4>
                       <div className="row text-center mb-3">
                         <div className="col-6">
-                          <div className="text-muted small mb-2">ATR (14)</div>
+                          <div className="text-white small mb-2">ATR (14)</div>
                           <div className="h5 text-white">{formatCurrency(volatility_analysis.atr_14.value_dollars)}</div>
                         </div>
                         <div className="col-6">
-                          <div className="text-muted small mb-2">Regime</div>
+                          <div className="text-white small mb-2">Regime</div>
                           <div className="h6" style={{ color: '#ffc107' }}>
                             {volatility_analysis.volatility_regime.classification}
                           </div>
@@ -738,13 +738,13 @@ const Spa1Analysis = () => {
                         )}
                         <div className="row text-center mt-3 pt-3" style={{ borderTop: '1px solid rgba(255, 255, 255, 0.1)' }}>
                           <div className="col-6">
-                            <small className="text-muted d-block">Success Rate</small>
+                            <small className="text-light d-block">Success Rate</small>
                             <div className="h6 text-white mt-1">
                               {strategy.expected_success_rate ? `${strategy.expected_success_rate}%` : 'N/A'}
                             </div>
                           </div>
                           <div className="col-6">
-                            <small className="text-muted d-block">R/R Ratio</small>
+                            <small className="text-light d-block">R/R Ratio</small>
                             <div className="h6 text-white mt-1">
                               {strategy.risk_reward_ratio ? strategy.risk_reward_ratio : 'N/A'}
                             </div>
@@ -763,11 +763,11 @@ const Spa1Analysis = () => {
                       <h4 className="text-white mb-4" style={{ fontWeight: '600' }}>📊 Kelly Criterion</h4>
                       <div className="row text-center mb-4">
                         <div className="col-6">
-                          <div className="text-muted small mb-2">Win Rate</div>
+                          <div className="text-white small mb-2">Win Rate</div>
                           <div className="h5 text-white">{formatPercent(risk_management.kelly_criterion.win_rate * 100)}</div>
                         </div>
                         <div className="col-6">
-                          <div className="text-muted small mb-2">Loss Rate</div>
+                          <div className="text-white small mb-2">Loss Rate</div>
                           <div className="h5 text-white">{formatPercent(risk_management.kelly_criterion.loss_rate * 100)}</div>
                         </div>
                       </div>
