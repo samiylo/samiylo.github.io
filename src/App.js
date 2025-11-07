@@ -8,6 +8,7 @@ import { Timeline } from "./components/Timeline";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 import FloatingShapes from './components/FloatingShapes';
+import GeometricBloom from './components/GeometricShape';
 import RouletteEmbed from './components/RouletteEmbed';
 import Spa1Analysis from './components/hft/Spa1Analysis';
 import { AgentDashboard } from './components/AgentDashboard';
@@ -15,6 +16,7 @@ import { AgentDashboard } from './components/AgentDashboard';
 function App() {
   return (
     <div className='App'>
+      <GeometricBloom />
       <div className="global-background">
         <FloatingShapes 
           count={8} 
