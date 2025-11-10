@@ -119,7 +119,7 @@ export const AgentDashboard = () => {
                 <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
                   <div className="agent-login-container">
                     <h2>Access?</h2>
-                    <p className="agent-login-subtitle">Enter your access code to continue</p>
+                    <p className="agent-login-subtitle">Access code is required</p>
                     
                     <form onSubmit={handleLogin}>
                       <div className="agent-login-form-group">
@@ -134,7 +134,7 @@ export const AgentDashboard = () => {
                             setAccessCode(value);
                             setError('');
                           }}
-                          placeholder="Enter access code"
+                          placeholder="agent access code"
                           className="agent-login-input"
                           autoFocus
                           maxLength={10}
@@ -149,7 +149,7 @@ export const AgentDashboard = () => {
                         className="agent-login-button"
                         disabled={!accessCode || accessCode.trim().length === 0}
                       >
-                        <span>Agent Dashboard</span>
+                        <span>Enter</span>
                       </button>
                     </form>
                     

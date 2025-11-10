@@ -1063,12 +1063,15 @@ const Spa1Analysis = () => {
                 </div>
               )}
             </div>
-            <div className="disclaimer mt-4 p-4 text-light">
-              <p><strong>Disclaimer:</strong> This is an example project for a quantitative analysis. It is not investment advice and is for informational purposes only. The analysis is based on the data provided and is not guaranteed to be accurate or complete.</p>
-              <p>The analysis is not a recommendation to buy or sell any particular security. The analysis is not a guarantee of future performance. The analysis is not a guarantee of future profits. The analysis is not a guarantee of future losses.</p>
-            </div>
+           
           </div>
+          
         </div>
+        
+      </div>
+      <div className="disclaimer mt-4 p-4 text-light">
+          <p><strong>Disclaimer:</strong> This is an example project for a quantitative analysis. It is not investment advice and is for informational purposes only. The analysis is based on the data provided and is not guaranteed to be accurate or complete.</p>
+          <p>The analysis is not a recommendation to buy or sell any particular security. The analysis is not a guarantee of future performance. The analysis is not a guarantee of future profits. The analysis is not a guarantee of future losses.</p>
       </div>
     </>
   );
