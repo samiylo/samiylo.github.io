@@ -64,10 +64,9 @@ const Spa1AnalysisMobile = () => {
       </div>
     );
   }
-
-  const { analysis_metadata, executive_summary, chart_analysis, support_resistance, 
+       //   options_strategies, risk_management, entry_exit_signals, decision_matrix, 
+  const { analysis_metadata, executive_summary, support_resistance, 
           mathematical_calculations, volatility_analysis, probability_assessment, 
-          options_strategies, risk_management, entry_exit_signals, decision_matrix, 
           recommendations, key_takeaways, next_steps } = analysisData;
 
   const formatCurrency = (value) => {
