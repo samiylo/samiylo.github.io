@@ -10,6 +10,7 @@ import { Footer } from "./components/Footer";
 import FloatingShapes from './components/FloatingShapes';
 import RouletteEmbed from './components/RouletteEmbed';
 import Spa1Analysis from './components/hft/Spa1Analysis';
+import Spa1AnalysisMobile from './components/hft/Spa1AnalysisMobile';
 import { AgentDashboard } from './components/AgentDashboard';
 
 function App() {
@@ -50,7 +51,7 @@ function App() {
             <Route path='/bled-roulette' element={<RouletteEmbed />} />
             
             {/* HFT Analysis Interactive route */}
-            <Route path='/spa1' element={<Spa1Analysis />} />
+            <Route path='/spa1' element={<Spa1AnalysisMobile />} />
             
             {/* Agent Dashboard route */}
             <Route path='/agents' element={<AgentDashboard />} />
