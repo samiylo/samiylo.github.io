@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import TickerSelector from './TickerSelector';
 import { formatCurrency, getConfidenceColor } from '../utils/formatters';
 import { DATA_FILES } from '../constants/tabs';
 import '../styles/mobileStyles.css';
 
 const Header = ({ analysisMetadata, selectedDataFile, onDataFileChange }) => {
+  const [priceChange, setPriceChange] = useState(null);
+
+  useEffect(() => {
+    // Animate price value on mount/update
+    setPriceChange('updated');
+    const timer = setTimeout(() => setPriceChange(null), 600);
+    return () => clearTimeout(timer);
+  }, [analysisMetadata.current_price]);
+
   return (
     <div className="mobile-sticky-header">
       <div className="mobile-header-top">
@@ -20,7 +29,9 @@ const Header = ({ analysisMetadata, selectedDataFile, onDataFileChange }) => {
       <div className="mobile-metrics-compact">
         <div className="mobile-metric-compact">
           <div className="mobile-metric-label-compact">Price</div>
-          <div className="mobile-metric-value-compact">
+          <div 
+            className={`mobile-metric-value-compact ${priceChange ? 'price-update' : ''}`}
+          >
             {formatCurrency(analysisMetadata.current_price)}
           </div>
         </div>

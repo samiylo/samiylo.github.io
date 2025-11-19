@@ -455,3 +455,330 @@
   justify-content: center;
 }
 
+.mobile-error-content {
+  text-align: center;
+  max-width: 300px;
+}
+
+.mobile-error-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  animation: shake 0.5s ease;
+}
+
+.mobile-error-title {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.mobile-error-message {
+  color: #B8B8B8;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.mobile-retry-button {
+  background: linear-gradient(135deg, #AA367C, #4A2FBD);
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(170, 54, 124, 0.3);
+}
+
+.mobile-retry-button:active {
+  transform: scale(0.95);
+  box-shadow: 0 2px 8px rgba(170, 54, 124, 0.3);
+}
+
+/* Tab Transition Animations */
+.mobile-tab-content {
+  animation: slideInTab 0.3s ease-out;
+}
+
+.mobile-tab-forward {
+  animation: slideInRight 0.3s ease-out;
+}
+
+.mobile-tab-backward {
+  animation: slideInLeft 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInTab {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+
+/* Skeleton Loader */
+.mobile-skeleton-card {
+  animation: skeletonPulse 1.5s ease-in-out infinite;
+}
+
+.mobile-skeleton-title {
+  height: 20px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 75%);
+  background-size: 200% 100%;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  width: 60%;
+  animation: skeletonShimmer 1.5s infinite;
+}
+
+.mobile-skeleton-line {
+  height: 14px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.05) 25%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.05) 75%);
+  background-size: 200% 100%;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  animation: skeletonShimmer 1.5s infinite;
+}
+
+.mobile-skeleton-line.short {
+  width: 70%;
+}
+
+@keyframes skeletonShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes skeletonPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Card Hover/Press Effects */
+.mobile-card-compact {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mobile-card-compact:active {
+  transform: scale(0.98);
+}
+
+.mobile-strategy-compact {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.mobile-strategy-compact:active {
+  transform: scale(0.98);
+}
+
+/* Stagger Animation for Cards */
+.mobile-card-compact {
+  animation: fadeInUp 0.4s ease-out backwards;
+}
+
+.mobile-card-compact:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.mobile-card-compact:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.mobile-card-compact:nth-child(3) {
+  animation-delay: 0.15s;
+}
+
+.mobile-card-compact:nth-child(4) {
+  animation-delay: 0.2s;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Metric Value Animations */
+.mobile-metric-value-compact {
+  transition: transform 0.3s ease;
+}
+
+.mobile-metric-compact:hover .mobile-metric-value-compact {
+  transform: scale(1.05);
+}
+
+/* Progress Bar Animation */
+.mobile-progress-fill-compact {
+  animation: progressGrow 0.6s ease-out;
+}
+
+@keyframes progressGrow {
+  from {
+    width: 0;
+  }
+}
+
+/* Badge Pulse Animation */
+.mobile-badge-small {
+  transition: transform 0.2s ease;
+}
+
+.mobile-badge-danger {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(220, 53, 69, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(220, 53, 69, 0);
+  }
+}
+
+/* Improved Dropdown Animation */
+.mobile-dropdown-menu {
+  animation: dropdownSlide 0.2s ease-out;
+}
+
+@keyframes dropdownSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Loading Spinner Enhancement */
+.mobile-loading-container .spinner-border {
+  border-width: 3px;
+  border-color: rgba(170, 54, 124, 0.2);
+  border-top-color: #AA367C;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Scroll Indicator */
+.mobile-content-area {
+  position: relative;
+}
+
+.mobile-content-area::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  background: linear-gradient(to top, rgba(10, 10, 10, 0.8), transparent);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-content-area.scrollable::after {
+  opacity: 1;
+}
+
+/* Improved Touch Targets */
+.mobile-nav-item {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+.mobile-dropdown-item {
+  min-height: 44px;
+}
+
+/* Accessibility Improvements */
+.mobile-nav-item:focus-visible {
+  outline: 2px solid #AA367C;
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+.mobile-ticker-display:focus-visible {
+  outline: 2px solid #AA367C;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Smooth Scroll */
+.mobile-content-area {
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Price Update Animation */
+.mobile-metric-value-compact.price-update {
+  animation: pricePulse 0.6s ease-out;
+}
+
+@keyframes pricePulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+    color: #AA367C;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
