@@ -1,84 +1,80 @@
 {
   "analysis_metadata": {
-    "ticker": "TSLA",
-    "full_name": "Tesla, Inc.",
-    "analysis_date": "2025-11-13",
-    "analysis_timestamp": "2025-11-13T16:00:00Z",
-    "timeframes_analyzed": ["4H", "15M"],
-    "current_price": 402.55,
-    "confidence_level": 82.0,
-    "confidence_rating": "HIGH",
-    "analysis_quality": "HIGH",
+    "ticker": "SPY",
+    "full_name": "SPDR S&P 500 ETF Trust",
+    "analysis_date": "2025-11-19",
+    "analysis_timestamp": "2025-11-19T16:00:00Z",
+    "timeframes_analyzed": ["4H"],
+    "current_price": 661.43,
+    "confidence_level": 71.0,
+    "confidence_rating": "MEDIUM-HIGH",
+    "analysis_quality": "MEDIUM-HIGH",
     "methodology_version": "1.0"
   },
   "executive_summary": {
-    "market_state": "Severe breakdown in progress with capitulation-level volume",
-    "current_position": "Free fall below all major support levels",
-    "primary_bias": "Strongly bearish - continuation likely",
-    "primary_recommendation": "AVOID long positions. Consider bear put spreads on any relief bounce to resistance zones. Current breakdown suggests further downside to $380-390 zone before stabilization.",
-    "key_insight": "TSLA experiencing massive -5.65% decline with extreme volume (5.25M), breaking below critical $420 support. All moving averages violated. This is a capitulation event suggesting further downside before any meaningful bounce."
+    "market_state": "Downtrend with support test in progress - Decision point at range lows",
+    "current_position": "Testing lower boundary after decline from $690 highs",
+    "primary_bias": "Neutral to bearish - Awaiting confirmation at support",
+    "primary_recommendation": "Price testing $660-662 support zone after $30 decline from highs. Watch for support hold (bounce to $670-675) or breakdown (target $650-655). Volume declining suggests indecision. Wait for directional confirmation.",
+    "key_insight": "SPY in similar consolidation pattern as TSLA but showing slightly more resilience. Key support zone $658-662 being tested. Break or hold within next 24-48 hours will determine intermediate-term direction."
   },
   "chart_analysis": {
     "4h_chart": {
       "observations": [
-        "Catastrophic breakdown from $440-460 consolidation range",
-        "Price collapsed from $440 to $402 (-8.6% from recent range)",
-        "All moving averages decisively broken to downside",
-        "Volume explosion to 5.25M (significantly above average)",
-        "No support levels holding - clean air below current price",
-        "Supply/Demand notation shows 'Increase in volatility, Supply & Demand fairly balanced' - but price action shows supply dominance"
+        "Decline from $690 peak to current $661 level (-4.2%)",
+        "Testing support zone around $660-662 (green highlighted area visible)",
+        "Multiple moving averages overhead acting as resistance",
+        "Volume at 2.77M - moderate but not elevated",
+        "Price has formed lower highs and lower lows - downtrend intact",
+        "Recent attempt at bounce from $658 lows showing weakness",
+        "Support zone from early November being tested again"
       ],
-      "pattern": "Breakdown/Capitulation",
-      "trend": "Strongly bearish",
-      "volume": 5250000,
-      "volume_trend": "Extreme spike - panic selling"
+      "pattern": "Downtrend testing support",
+      "trend": "Bearish short-term",
+      "volume": 2770000,
+      "volume_trend": "Moderate - not confirming strong directional bias yet"
     },
     "15m_chart": {
       "observations": [
-        "Intraday shows relentless selling pressure throughout session",
-        "Breakdown from $440 level accelerated around 15:00",
-        "No meaningful bounces or support attempts",
-        "Volume surge (256.05K) accompanying the breakdown",
-        "Price in free fall pattern - consecutive lower highs and lows",
-        "Currently testing $402 with no signs of reversal"
+        "Not provided - analysis based on 4H only"
       ],
-      "pattern": "Cascading breakdown",
-      "trend": "Severe downtrend",
-      "volume": 256050,
-      "volume_trend": "Extremely elevated"
+      "pattern": "N/A",
+      "trend": "N/A",
+      "volume": null,
+      "volume_trend": "N/A"
     }
   },
   "support_resistance": {
     "support_levels": [
       {
         "level": "S1",
-        "price": 400.00,
-        "strength": "Weak",
-        "description": "Psychological round number, currently testing",
+        "price": 660.00,
+        "strength": "Strong",
+        "description": "Current test zone, psychological round number",
         "validation": {
-          "touch_count": 0,
-          "time_period_days": 0,
-          "volume_confirmed": false,
-          "multiple_timeframe_confirmed": false
+          "touch_count": 2,
+          "time_period_days": 15,
+          "volume_confirmed": true,
+          "multiple_timeframe_confirmed": true
         }
       },
       {
         "level": "S2",
-        "price": 390.00,
+        "price": 655.00,
         "strength": "Medium",
-        "description": "Next major psychological level, gap fill potential",
+        "description": "Secondary support from prior consolidation",
         "validation": {
-          "touch_count": 0,
-          "time_period_days": 0,
+          "touch_count": 1,
+          "time_period_days": 20,
           "volume_confirmed": false,
-          "multiple_timeframe_confirmed": false
+          "multiple_timeframe_confirmed": true
         }
       },
       {
         "level": "S3",
-        "price": 380.00,
+        "price": 648.00,
         "strength": "Strong",
-        "description": "Major support from prior consolidation (visible on 4H)",
+        "description": "Major support from October lows",
         "validation": {
           "touch_count": 2,
           "time_period_days": 30,
@@ -90,9 +86,21 @@
     "resistance_levels": [
       {
         "level": "R1",
-        "price": 420.00,
+        "price": 670.00,
+        "strength": "Medium",
+        "description": "Immediate overhead resistance, recent consolidation",
+        "validation": {
+          "touch_count": 3,
+          "time_period_days": 7,
+          "volume_confirmed": true,
+          "multiple_timeframe_confirmed": true
+        }
+      },
+      {
+        "level": "R2",
+        "price": 675.00,
         "strength": "Strong",
-        "description": "Broken support now major resistance, recent breakdown level",
+        "description": "Key resistance zone, multiple rejections",
         "validation": {
           "touch_count": 4,
           "time_period_days": 10,
@@ -101,25 +109,13 @@
         }
       },
       {
-        "level": "R2",
-        "price": 430.00,
-        "strength": "Strong",
-        "description": "Mid-range resistance from prior consolidation",
+        "level": "R3",
+        "price": 685.00,
+        "strength": "Very Strong",
+        "description": "Major resistance before breakdown",
         "validation": {
           "touch_count": 5,
           "time_period_days": 15,
-          "volume_confirmed": true,
-          "multiple_timeframe_confirmed": true
-        }
-      },
-      {
-        "level": "R3",
-        "price": 440.00,
-        "strength": "Very Strong",
-        "description": "Major resistance zone, top of broken range",
-        "validation": {
-          "touch_count": 6,
-          "time_period_days": 20,
           "volume_confirmed": true,
           "multiple_timeframe_confirmed": true
         }
@@ -128,331 +124,333 @@
   },
   "mathematical_calculations": {
     "trading_range": {
-      "upper_bound": 440.00,
-      "lower_bound": 400.00,
-      "range_width": 40.00,
-      "range_width_percent": 9.94,
-      "midpoint": 420.00
+      "upper_bound": 690.00,
+      "lower_bound": 660.00,
+      "range_width": 30.00,
+      "range_width_percent": 4.54,
+      "midpoint": 675.00
     },
     "current_position": {
-      "price": 402.55,
-      "position_in_range_percent": 6.4,
-      "position_description": "Extreme lower boundary - breakdown territory"
+      "price": 661.43,
+      "position_in_range_percent": 4.8,
+      "position_description": "Lower extreme of range"
     },
     "distance_calculations": {
       "to_resistance": {
-        "dollars": 17.45,
-        "percent": 4.34
+        "dollars": 8.57,
+        "percent": 1.30
       },
       "to_support": {
-        "dollars": -2.55,
-        "percent": -0.63
+        "dollars": -1.43,
+        "percent": -0.22
       },
       "to_midpoint": {
-        "dollars": 17.45,
-        "percent": 4.34
+        "dollars": 13.57,
+        "percent": 2.05
       }
     }
   },
   "volatility_analysis": {
     "atr_14": {
-      "value_dollars": 18.00,
-      "value_percent": 4.47,
-      "estimation_method": "Visual chart analysis based on recent massive candle ranges"
+      "value_dollars": 7.50,
+      "value_percent": 1.13,
+      "estimation_method": "Visual chart analysis based on recent candle ranges"
     },
     "volatility_regime": {
-      "classification": "Extreme Volatility",
-      "percentile": 95,
-      "description": "95th percentile - extremely elevated, panic selling conditions"
+      "classification": "Medium Volatility",
+      "percentile": 60,
+      "description": "60th percentile - Elevated from norm but not extreme"
     },
     "stop_loss_parameters": {
-      "atr_multiplier": 0.75,
-      "stop_distance_dollars": 13.50,
-      "stop_distance_percent": 3.35,
-      "reasoning": "High volatility regime requires 0.75x ATR multiplier to avoid excessive risk"
+      "atr_multiplier": 1.0,
+      "stop_distance_dollars": 7.50,
+      "stop_distance_percent": 1.13,
+      "reasoning": "Medium volatility regime requires 1.0x ATR multiplier"
     }
   },
   "probability_assessment": {
     "time_horizon": "24-48 hours",
     "scenarios": [
       {
-        "scenario": "Continued Breakdown",
-        "price_range": "$380-$400",
-        "probability_percent": 55,
-        "reasoning": "Extreme volume breakdown with no support holding. Momentum strongly bearish. Typically after such capitulation, price continues lower before finding support. Next logical target is $380-390 zone.",
+        "scenario": "Support Hold and Bounce",
+        "price_range": "$665-$675",
+        "probability_percent": 40,
+        "reasoning": "Testing major support zone at $660. If holds with volume, expect bounce toward $670-675 resistance. Support has held multiple times historically.",
         "supporting_factors": [
-          "Massive volume breakdown indicates institutional selling",
-          "All moving averages broken",
-          "No support levels holding",
-          "Momentum extremely bearish",
-          "Cascading stop losses likely triggered"
-        ]
-      },
-      {
-        "scenario": "Dead Cat Bounce to Resistance",
-        "price_range": "$410-$420",
-        "probability_percent": 30,
-        "reasoning": "After extreme selling, often see relief bounce as shorts take profits and bargain hunters enter. However, bounce likely to be sold into resistance at $420. This is a selling opportunity, not reversal.",
-        "supporting_factors": [
+          "Strong support zone from prior consolidation",
           "Oversold on shorter timeframes",
-          "Profit-taking from shorts",
-          "Dip buyers attempting to catch bottom",
-          "Natural reversion after capitulation move"
+          "Psychological $660 round number support",
+          "Prior successful tests of this level",
+          "Declining volume suggests seller exhaustion"
         ]
       },
       {
-        "scenario": "Stabilization/Consolidation",
-        "price_range": "$400-$410",
-        "probability_percent": 15,
-        "reasoning": "Least likely in immediate term. After such violent moves, typically see either continuation or sharp bounce, not consolidation. Market needs to exhaust one direction first.",
+        "scenario": "Range-Bound Consolidation",
+        "price_range": "$660-$670",
+        "probability_percent": 35,
+        "reasoning": "Could consolidate in tight range while digesting recent decline. Neither bulls nor bears showing strong conviction yet based on moderate volume.",
         "supporting_factors": [
-          "Round number $400 psychological support",
-          "Potential exhaustion of sellers",
-          "Wait-and-see from buyers"
+          "Volume not confirming strong directional move",
+          "Price compressed at support",
+          "Need time to establish direction",
+          "Market waiting for catalyst"
+        ]
+      },
+      {
+        "scenario": "Breakdown Continuation",
+        "price_target": "<$660",
+        "probability_percent": 25,
+        "reasoning": "If $660 fails, next support at $655 then $648. Downtrend structure still intact with lower highs. Risk of continuation if support breaks.",
+        "supporting_factors": [
+          "Downtrend still in effect",
+          "Multiple resistance levels overhead",
+          "Failed rallies at $675-680",
+          "Momentum remains negative"
         ]
       }
     ],
     "confidence_score": {
-      "total": 82.0,
-      "factor_alignment": 85,
-      "historical_success_rate": 80,
-      "technical_clarity": 80,
+      "total": 71.0,
+      "factor_alignment": 70,
+      "historical_success_rate": 72,
+      "technical_clarity": 71,
       "calculation_method": "(Factor Alignment × 0.4) + (Historical × 0.3) + (Clarity × 0.3)"
     }
   },
   "options_strategies": [
     {
       "strategy_id": "A",
-      "name": "Bear Put Spread (Primary Breakdown Play)",
+      "name": "Bull Call Spread (Support Bounce)",
       "priority": "PRIMARY",
+      "type": "Directional - Bullish",
+      "legs": [
+        {
+          "action": "BUY",
+          "strike": 662.00,
+          "option_type": "CALL",
+          "position": "Slightly OTM"
+        },
+        {
+          "action": "SELL",
+          "strike": 672.00,
+          "option_type": "CALL",
+          "position": "OTM"
+        }
+      ],
+      "expiration": "2-5 DTE",
+      "entry_criteria": {
+        "price_condition": "Price holds $660 with bullish reversal candle AND breaks above $664",
+        "volume_condition": "Volume increase on bounce",
+        "confirmation": "Close above $664 on 4H chart"
+      },
+      "targets": {
+        "primary_target": 672.00,
+        "target_gain_percent": 1.59
+      },
+      "stops": {
+        "stop_loss": 658.00,
+        "stop_loss_percent": -0.52
+      },
+      "risk_reward_ratio": 3.1,
+      "expected_success_rate": 55,
+      "scenario_probability": 40
+    },
+    {
+      "strategy_id": "B",
+      "name": "Bear Put Spread (Breakdown Play)",
+      "priority": "SECONDARY",
       "type": "Directional - Bearish",
       "legs": [
         {
           "action": "BUY",
-          "strike": 400.00,
+          "strike": 660.00,
           "option_type": "PUT",
           "position": "ATM"
         },
         {
           "action": "SELL",
-          "strike": 380.00,
+          "strike": 650.00,
           "option_type": "PUT",
           "position": "OTM"
         }
       ],
       "expiration": "1-3 DTE",
       "entry_criteria": {
-        "price_condition": "Any bounce to $405-410 range for better entry",
-        "volume_condition": "Continued elevated volume on down moves",
-        "confirmation": "Failure to reclaim $410 on bounce attempts"
+        "price_condition": "Break and close below $660",
+        "volume_condition": "Volume spike on breakdown >3.5M",
+        "confirmation": "Failure to reclaim $660 on retest"
       },
       "targets": {
-        "primary_target": 380.00,
-        "target_gain_percent": -4.98
+        "primary_target": 650.00,
+        "target_gain_percent": -1.67
       },
       "stops": {
-        "stop_loss": 415.00,
-        "stop_loss_percent": 3.10
-      },
-      "risk_reward_ratio": 2.8,
-      "expected_success_rate": 65,
-      "scenario_probability": 55
-    },
-    {
-      "strategy_id": "B",
-      "name": "Short Call Spread (Bounce Fade)",
-      "priority": "SECONDARY",
-      "type": "Fade Rally - Bearish",
-      "legs": [
-        {
-          "action": "SELL",
-          "strike": 420.00,
-          "option_type": "CALL",
-          "position": "OTM Resistance"
-        },
-        {
-          "action": "BUY",
-          "strike": 430.00,
-          "option_type": "CALL",
-          "position": "Further OTM"
-        }
-      ],
-      "expiration": "2-5 DTE",
-      "entry_criteria": {
-        "price_condition": "IF price bounces to $415-420 resistance zone",
-        "volume_condition": "Volume declining on bounce (weak buying)",
-        "confirmation": "Rejection candle at $420 resistance, failure to break above"
-      },
-      "rationale": "Broken support becomes resistance. Any bounce into $420 zone likely to be sold. Collect premium from failed rally attempt.",
-      "targets": {
-        "profit_mechanism": "Premium decay as price fails to rally",
-        "max_profit": "Full premium if stays below $420"
-      },
-      "stops": {
-        "stop_loss": "Close above $425",
-        "reasoning": "Break above $425 would invalidate bearish thesis"
+        "stop_loss": 666.00,
+        "stop_loss_percent": 0.83
       },
       "risk_reward_ratio": 2.0,
-      "expected_success_rate": 60,
-      "scenario_probability": 30
+      "expected_success_rate": 50,
+      "scenario_probability": 25
     },
     {
       "strategy_id": "C",
-      "name": "Long Put (Aggressive Breakdown Continuation)",
-      "priority": "AGGRESSIVE",
-      "type": "Directional - High Risk/Reward",
+      "name": "Iron Condor (Range Play)",
+      "priority": "ALTERNATIVE",
+      "type": "Neutral - Range Bound",
       "legs": [
         {
+          "action": "SELL",
+          "strike": 672.00,
+          "option_type": "CALL",
+          "position": "OTM"
+        },
+        {
           "action": "BUY",
-          "strike": 400.00,
+          "strike": 678.00,
+          "option_type": "CALL",
+          "position": "Further OTM"
+        },
+        {
+          "action": "SELL",
+          "strike": 655.00,
           "option_type": "PUT",
-          "position": "ATM"
+          "position": "OTM"
+        },
+        {
+          "action": "BUY",
+          "strike": 648.00,
+          "option_type": "PUT",
+          "position": "Further OTM"
         }
       ],
-      "expiration": "0-2 DTE",
+      "expiration": "3-7 DTE",
       "entry_criteria": {
-        "price_condition": "Any bounce to $408-412 for better entry OR break below $400",
-        "volume_condition": "Volume spike on downward breaks",
-        "confirmation": "Continued momentum breakdown, no reversal patterns"
+        "price_condition": "Price stabilizes in $660-670 range",
+        "volatility_condition": "IV elevated for premium collection",
+        "market_condition": "Continued consolidation with declining volume"
       },
-      "targets": {
-        "primary_target_low": 380.00,
-        "primary_target_high": 390.00,
-        "target_gain_percent_low": -5.60,
-        "target_gain_percent_high": -3.11
-      },
-      "stops": {
-        "stop_loss": 410.00,
-        "stop_loss_percent": 1.85
-      },
-      "risk_reward_ratio": 2.5,
-      "expected_success_rate": 55,
-      "scenario_probability": 55,
-      "notes": "Higher risk due to naked put, but maximum profit potential. Only for traders comfortable with volatility."
+      "profit_mechanism": "Collect premium as price remains range-bound",
+      "risk": "Breakout beyond $648 or $678",
+      "scenario_probability": 35
     }
   ],
   "risk_management": {
     "kelly_criterion": {
-      "win_rate": 0.65,
-      "average_win_percent": 3.50,
-      "loss_rate": 0.35,
-      "average_loss_percent": 2.00,
-      "kelly_percentage": 77.9,
+      "win_rate": 0.58,
+      "average_win_percent": 1.75,
+      "loss_rate": 0.42,
+      "average_loss_percent": 1.00,
+      "kelly_percentage": 59.5,
       "conservative_factor": 0.25,
-      "recommended_position_size_percent": 19.5,
-      "calculation": "(0.65 × 3.50 - 0.35 × 2.00) ÷ 2.00 = 0.779; 0.779 × 0.25 = 0.195"
+      "recommended_position_size_percent": 14.9,
+      "calculation": "(0.58 × 1.75 - 0.42 × 1.00) ÷ 1.00 = 0.595; 0.595 × 0.25 = 0.149"
     },
     "position_sizing_table": [
       {
         "account_size": 25000,
-        "max_risk_per_trade_percent": 0.30,
-        "position_allocation_percent": 19.5,
-        "position_allocation_dollars": 4875,
-        "max_dollar_risk": 75
+        "max_risk_per_trade_percent": 0.25,
+        "position_allocation_percent": 14.9,
+        "position_allocation_dollars": 3725,
+        "max_dollar_risk": 63
       },
       {
         "account_size": 50000,
-        "max_risk_per_trade_percent": 0.30,
-        "position_allocation_percent": 19.5,
-        "position_allocation_dollars": 9750,
-        "max_dollar_risk": 150
+        "max_risk_per_trade_percent": 0.25,
+        "position_allocation_percent": 14.9,
+        "position_allocation_dollars": 7450,
+        "max_dollar_risk": 125
       },
       {
         "account_size": 100000,
-        "max_risk_per_trade_percent": 0.30,
-        "position_allocation_percent": 19.5,
-        "position_allocation_dollars": 19500,
-        "max_dollar_risk": 300
+        "max_risk_per_trade_percent": 0.25,
+        "position_allocation_percent": 14.9,
+        "position_allocation_dollars": 14900,
+        "max_dollar_risk": 250
       }
     ],
     "stop_loss_methodology": {
       "method": "ATR-based",
       "atr_period": 14,
-      "multiplier": 0.75,
-      "volatility_regime": "Extreme",
-      "stop_distance_dollars": 13.50,
-      "notes": "Increased max risk to 0.30% given high probability setup with extreme volatility"
+      "multiplier": 1.0,
+      "volatility_regime": "Medium",
+      "stop_distance_dollars": 7.50
     }
   },
   "entry_exit_signals": {
     "entry_signals": [
       {
         "signal_id": 1,
-        "name": "Bounce Fade Entry",
-        "trigger": "Price bounces to $408-412 range",
+        "name": "Support Hold Confirmation",
+        "trigger": "Price holds $660 and closes above $664 with volume",
         "confirmation_requirements": [
-          "Bounce shows declining volume (weak buying)",
-          "Rejection candle forms at resistance",
-          "Failure to break above $415"
+          "Bullish reversal candle pattern",
+          "Volume increase on bounce",
+          "Break and hold above $664"
         ],
-        "success_rate": 65,
-        "strategy_applicable": "A, C",
-        "notes": "PREFERRED ENTRY - Better risk/reward than chasing current price"
+        "success_rate": 55,
+        "strategy_applicable": "A"
       },
       {
         "signal_id": 2,
-        "name": "Breakdown Continuation",
-        "trigger": "Break and close below $400 with volume",
+        "name": "Breakdown Trigger",
+        "trigger": "Close below $660 with volume >3.5M",
         "confirmation_requirements": [
           "Volume spike on break",
-          "No reversal candle patterns",
-          "Momentum acceleration to downside"
+          "Failed retest of $660 from below",
+          "Momentum continuation"
         ],
-        "success_rate": 60,
-        "strategy_applicable": "A, C",
-        "notes": "Chase only if conviction is strong and volume confirms"
+        "success_rate": 50,
+        "strategy_applicable": "B"
       },
       {
         "signal_id": 3,
-        "name": "Resistance Rejection",
-        "trigger": "Price rallies to $420 and gets rejected",
+        "name": "Range Consolidation",
+        "trigger": "Price stabilizes in $660-668 range for 4+ hours",
         "confirmation_requirements": [
-          "Clear rejection candle (long upper wick)",
-          "Volume dries up on rally",
-          "Failure to close above $420"
+          "Volume remains moderate",
+          "Multiple tests of boundaries without breaks",
+          "Tight range formation"
         ],
-        "success_rate": 70,
-        "strategy_applicable": "B",
-        "notes": "Highest probability fade setup at major resistance"
+        "success_rate": 60,
+        "strategy_applicable": "C"
       }
     ],
     "exit_criteria": {
       "profit_targets": [
         {
-          "target_type": "Primary",
-          "price": 380.00,
-          "level": "S3 major support",
+          "target_type": "Primary - Bounce",
+          "price": 672.00,
+          "level": "R1 resistance",
           "allocation": "Full position"
         },
         {
-          "target_type": "Secondary",
-          "price": 390.00,
-          "level": "Intermediate support",
-          "allocation": "50-75% position (scale out)"
+          "target_type": "Primary - Breakdown",
+          "price": 650.00,
+          "level": "S2 support",
+          "allocation": "Full position"
         },
         {
-          "target_type": "Quick Scalp",
-          "price": 395.00,
-          "level": "Psychological level",
-          "gain_percent": -1.88,
-          "allocation": "25% if momentum stalls"
+          "target_type": "Secondary - Bounce",
+          "price": 668.00,
+          "level": "Intermediate",
+          "allocation": "50% scale out"
         }
       ],
       "stop_losses": [
         {
+          "strategy": "Bull call spreads",
+          "stop_price": 658.00,
+          "reasoning": "Below support invalidates bounce thesis"
+        },
+        {
           "strategy": "Bear put spreads",
-          "stop_price": 415.00,
-          "reasoning": "Above this level invalidates breakdown thesis"
+          "stop_price": 666.00,
+          "reasoning": "Reclaim invalidates breakdown"
         },
         {
-          "strategy": "Call spreads (bounce fades)",
-          "stop_price": 425.00,
-          "reasoning": "Break above $425 shows genuine reversal, not dead cat bounce"
-        },
-        {
-          "strategy": "Time stop",
-          "condition": "If price consolidates at $400-405 for 4+ hours",
-          "reasoning": "Stalled breakdown reduces probability of continuation"
+          "strategy": "Iron condors",
+          "stop_price": "Beyond $655 or $672",
+          "reasoning": "Range break invalidates neutral thesis"
         }
       ]
     }
@@ -462,339 +460,181 @@
       {
         "factor": "Price Level Proximity",
         "weight_percent": 25,
-        "score": 9,
-        "weighted_score": 2.25,
-        "assessment": "At extreme breakdown level - high importance"
+        "score": 8,
+        "weighted_score": 2.00,
+        "assessment": "At important support - decision point"
       },
       {
         "factor": "Volatility Environment",
         "weight_percent": 20,
-        "score": 9,
-        "weighted_score": 1.80,
-        "assessment": "Extreme volatility - panic selling evident"
+        "score": 6,
+        "weighted_score": 1.20,
+        "assessment": "Medium volatility - manageable"
       },
       {
         "factor": "Volume Confirmation",
         "weight_percent": 15,
-        "score": 10,
-        "weighted_score": 1.50,
-        "assessment": "Massive volume spike - institutional selling"
+        "score": 5,
+        "weighted_score": 0.75,
+        "assessment": "Moderate volume - no strong signal yet"
       },
       {
         "factor": "Time of Day",
         "weight_percent": 15,
-        "score": 7,
-        "weighted_score": 1.05,
-        "assessment": "End of session - continuation likely next day"
+        "score": 5,
+        "weighted_score": 0.75,
+        "assessment": "Neutral timing"
       },
       {
         "factor": "Market Regime",
         "weight_percent": 15,
-        "score": 9,
-        "weighted_score": 1.35,
-        "assessment": "Clear breakdown - momentum strongly bearish"
+        "score": 6,
+        "weighted_score": 0.90,
+        "assessment": "Testing support in downtrend"
       },
       {
         "factor": "Risk-Reward Ratio",
         "weight_percent": 10,
         "score": 8,
         "weighted_score": 0.80,
-        "assessment": "Excellent R/R on bounces to resistance"
+        "assessment": "Good R/R at support level"
       }
     ],
-    "total_score": 8.75,
+    "total_score": 6.40,
     "max_score": 10,
-    "rating": "EXCELLENT OPPORTUNITY (BEARISH)"
+    "rating": "MODERATE-GOOD OPPORTUNITY"
   },
   "recommendations": {
-    "primary_action": "WAIT FOR BOUNCE TO FADE",
+    "primary_action": "WAIT FOR SUPPORT CONFIRMATION",
     "primary_setup": {
-      "name": "Bear Put Spread on Relief Rally",
-      "condition": "IF price bounces to $408-412 zone (relief rally)",
-      "action": "THEN buy $400/$380 put spread (1-3 DTE)",
-      "target": "$380-390 for continuation of breakdown",
-      "risk": "Stop above $415 (breakdown invalidation)",
-      "probability": "High (65% success rate on bounce fades after capitulation)"
+      "name": "Support Bounce Play",
+      "condition": "IF price holds $660 AND closes above $664 with volume",
+      "action": "THEN buy $662/$672 call spread (2-5 DTE)",
+      "target": "$670-672 for +1.59% gain",
+      "risk": "Stop below $658",
+      "probability": "Moderate (40% scenario, 55% success if triggered)"
     },
     "alternative_setup": {
-      "name": "Direct Breakdown Play",
-      "condition": "IF price breaks below $400 with volume spike",
-      "action": "THEN buy $400 puts or $400/$380 put spread",
-      "target": "$380-390",
-      "stop": "$410",
-      "notes": "Only chase if volume and momentum confirm continuation"
+      "name": "Breakdown Play",
+      "condition": "IF breaks below $660 with volume spike",
+      "action": "THEN buy $660/$650 put spread",
+      "target": "$650-655",
+      "stop": "$666"
     },
     "avoid": [
-      "ANY long call positions - this is a breakdown, not a dip to buy",
-      "Trying to catch the falling knife - wait for stabilization or bounce first",
-      "Overleveraging despite high conviction - volatility is extreme",
-      "Holding through bounces - take profits on target hits, re-enter on rallies"
+      "Entering without directional confirmation at this inflection point",
+      "Assuming support will hold without volume confirmation",
+      "Overleveraging despite moderate probability setup",
+      "Chasing small moves within consolidation range"
     ]
   },
   "key_takeaways": [
     {
       "number": 1,
       "category": "Market State",
-      "takeaway": "TSLA in full capitulation mode: -5.65% with extreme 5.25M volume, breaking all major support and moving averages"
+      "takeaway": "SPY testing $660 support after -4.2% decline from $690 highs. Decision point similar to TSLA but showing slightly more resilience."
     },
     {
       "number": 2,
       "category": "Probability",
-      "takeaway": "Continued breakdown to $380-390 most likely (55%), with relief bounce to $410-420 possible (30%) but should be faded"
+      "takeaway": "Support bounce (40%) slightly favored over consolidation (35%) and breakdown (25%). More balanced than TSLA's bearish skew."
     },
     {
       "number": 3,
       "category": "Best Setup",
-      "takeaway": "Wait for relief bounce to $408-412, then enter bear put spreads targeting $380-390 (65% success rate, 1:2.8 R/R)"
+      "takeaway": "Wait for support hold confirmation above $664, then enter bull call spread targeting $670-672 (3.1:1 R/R)"
     },
     {
       "number": 4,
       "category": "Risk Management",
-      "takeaway": "Position size: 19.5% of options capital with stops at $415 (wider stops needed for extreme volatility)"
+      "takeaway": "Position size: 14.9% of capital. Stops at $658 (longs) or $666 (shorts) based on $7.50 ATR."
     },
     {
       "number": 5,
-      "category": "Critical Warning",
-      "takeaway": "This is NOT a dip to buy - it's institutional selling. Avoid long positions. Broken support at $420 now becomes major resistance."
+      "category": "Market Comparison",
+      "takeaway": "$660 support critical. Hold = potential bounce to $675. Break = targets $650-655. Less bearish than TSLA but still at decision point."
     }
   ],
   "quality_control": {
     "checklist_completed": true,
     "verification_items": [
-      "Multiple timeframe confirmation (4H + 15M)",
+      "Single timeframe analysis (4H only) - limits confidence slightly",
       "Support/resistance validated with touch-count system",
       "Calculations performed to precision standards",
       "Probability assessments documented with reasoning",
       "Risk parameters calculated before strategy selection",
-      "Historical pattern recognition applied (capitulation events)",
+      "Historical pattern recognition applied",
       "Multiple scenarios analyzed",
-      "Market context reviewed - extreme breakdown identified"
+      "Market context reviewed - support test identified"
     ],
-    "analysis_quality_rating": "HIGH",
-    "confidence_score": 82.0,
-    "notes": "High confidence due to clear technical breakdown with extreme volume confirmation. Multiple timeframe alignment strengthens analysis."
+    "analysis_quality_rating": "MEDIUM-HIGH",
+    "confidence_score": 71.0,
+    "notes": "Solid analysis but single timeframe limits full confirmation. SPY showing slightly more resilience than TSLA."
   },
   "next_steps": {
     "immediate_actions": [
-      "Set price alerts at $400 (psychological support), $410 (bounce level), $420 (major resistance)",
-      "Monitor for ANY bounce to $408-412 for optimal bear entry",
-      "Prepare bear put spread orders in advance",
-      "Calculate exact position sizes (19.5% allocation)",
-      "Have stops ready at $415 (put spreads) or $425 (call spreads)"
+      "Set price alerts at $660 (critical support), $664 (bounce confirmation), $670 (resistance)",
+      "Monitor for support hold with volume confirmation",
+      "Prepare bull call spread for bounce OR bear put spread for breakdown",
+      "Calculate exact position sizes (14.9% allocation)",
+      "Have stops ready at predetermined levels"
     ],
     "monitoring_schedule": {
       "market_open": {
-        "time": "9:30-10:30 AM",
-        "priority": "CRITICAL",
-        "focus": "Watch for gap direction. Gap down = continuation likely. Gap up = potential bounce to fade."
+        "time": "9:30-11:00 AM",
+        "priority": "High",
+        "focus": "Watch for support test resolution. Volume and first 90 minutes key."
       },
       "mid_day": {
-        "time": "10:30-2:00 PM",
-        "priority": "High",
-        "focus": "Monitor for relief bounce to $408-412 resistance. This is optimal entry zone for bears."
+        "time": "11:00-2:00 PM",
+        "priority": "Medium",
+        "focus": "Confirm direction or watch for consolidation"
       },
       "power_hour": {
         "time": "3:00-4:00 PM",
         "priority": "High",
-        "focus": "Often see continued selling or stabilization attempts. Close below $400 = very bearish for next session."
+        "focus": "Close relative to $660 important for next session bias"
       }
     },
     "decision_timeline": {
-      "immediate": "Next session open - Watch gap and initial direction",
-      "short_term": "Next 24-48 hours - Expect either continuation to $380-390 OR bounce to $410-420",
-      "contingency": "If price reclaims and holds $420, bearish thesis invalidated - reassess"
+      "immediate": "Next 12-24 hours - Support test resolution likely",
+      "short_term": "24-48 hours - Direction should be established",
+      "contingency": "If no clear direction after 48 hours, reassess"
     }
-  },
-  "technical_indicators": {
-    "moving_averages": {
-      "ma_50_approximate": 430.00,
-      "ma_100_approximate": 420.00,
-      "price_vs_ma_50": "Well below MA (-6.4%)",
-      "price_vs_ma_100": "Below MA (-4.2%)",
-      "ma_alignment": "All MAs broken to downside",
-      "interpretation": "Catastrophic breakdown below all major moving averages. Very bearish signal. MAs now all overhead resistance."
-    },
-    "trend_analysis": {
-      "short_term_trend": "Extremely bearish (capitulation)",
-      "medium_term_trend": "Bearish (breakdown from consolidation)",
-      "long_term_trend": "Neutral to bearish (uptrend broken)",
-      "current_phase": "Breakdown/Capitulation phase"
-    },
-    "volume_analysis": {
-      "current_volume": 5250000,
-      "average_volume_estimate": 2500000,
-      "volume_ratio": 2.10,
-      "volume_interpretation": "Extreme volume spike (2.1x average) confirms genuine institutional selling, not just low-liquidity drift. This is distribution, not accumulation.",
-      "volume_trend": "Parabolic increase on breakdown - panic selling"
-    }
-  },
-  "market_context": {
-    "recent_price_action": {
-      "high_recent": 460.00,
-      "low_recent": 402.55,
-      "range_from_high_percent": -12.49,
-      "days_from_high": 10,
-      "speed_of_decline": "Accelerating (10 days for -12.49%, with -5.65% today alone)",
-      "decline_character": "Capitulation selloff with extreme volume"
-    },
-    "pattern_recognition": {
-      "primary_pattern": "Breakdown and capitulation",
-      "secondary_pattern": "Failed consolidation leading to waterfall decline",
-      "continuation_pattern": "Likely to see either immediate continuation OR dead cat bounce that fails",
-      "reversal_requirements": "Would need: volume exhaustion, hammer/bullish engulfing candle, AND reclaim of $420+ to signal reversal"
-    },
-    "comparable_setups": {
-      "similar_historical": "High-volume breakdown patterns in TSLA historically lead to 10-15% total declines before stabilization",
-      "success_rate_historical": 70,
-      "notes": "TSLA has history of violent moves. After such capitulation, typically sees further 5-8% downside before finding support."
-    }
-  },
-  "scenario_planning": {
-    "bullish_scenario": {
-      "trigger": "Immediate reversal with volume, reclaim $420",
-      "path": "$402 → $410 → $420 → $430",
-      "timeframe": "3-7 trading days IF occurs",
-      "probability": 15,
-      "key_levels": [410, 420, 430],
-      "invalidation": "Failure to reclaim $420 with volume",
-      "notes": "Low probability. Would require major catalyst or extreme short squeeze."
-    },
-    "neutral_scenario": {
-      "trigger": "Stabilization at $400-405, grinding consolidation",
-      "path": "Choppy sideways for 2-5 days",
-      "timeframe": "2-5 trading days",
-      "probability": 15,
-      "key_levels": [400, 405, 410],
-      "invalidation": "Break in either direction with volume",
-      "notes": "Least likely after such violent move. Market usually needs to exhaust in one direction."
-    },
-    "bearish_scenario": {
-      "trigger": "Continuation of breakdown below $400",
-      "path": "$402 → $390 → $380 → potentially $360",
-      "timeframe": "1-5 trading days",
-      "probability": 70,
-      "key_levels": [400, 390, 380],
-      "invalidation": "Strong bounce and close above $415",
-      "notes": "HIGHEST PROBABILITY. Momentum, volume, and technical damage all support continued downside."
-    }
-  },
-  "risk_factors": {
-    "upside_risks": [
-      "Dead cat bounce could spike to $415-420 quickly (fade opportunity)",
-      "Short squeeze if too many piled into shorts at lows",
-      "Unexpected positive news/catalyst could reverse sentiment",
-      "Extreme oversold readings might trigger algorithmic buying"
-    ],
-    "downside_risks": [
-      "Momentum is extremely bearish - further capitulation to $380 or lower very possible",
-      "All moving averages broken - technical damage severe",
-      "Volume confirms institutional selling, not retail panic",
-      "No support levels visible until $380 zone",
-      "Cascading stop losses likely continuing"
-    ],
-    "neutral_risks": [
-      "Extreme volatility makes both timing and sizing difficult",
-      "Whipsaw risk if attempts to stabilize",
-      "Options premiums likely very elevated - reduces edge",
-      "Gap risk overnight in either direction"
-    ]
-  },
-  "execution_notes": {
-    "optimal_entry_timing": "Wait for ANY bounce to $408-412 for optimal risk/reward rather than chasing current price. Patience will be rewarded.",
-    "position_management": "Scale into bearish positions on bounces. Take profits on target hits. Re-enter on rallies to resistance.",
-    "hedge_considerations": "Use spreads rather than naked positions to limit risk in extreme volatility. Put spreads provide defined risk.",
-    "slippage_concerns": "Options will have wide spreads due to volatility - use limit orders only, never market orders",
-    "iv_considerations": "Implied volatility extremely elevated - premium sellers may have edge IF price stabilizes, but trend is strongly down so focus on directional bearish plays"
   },
   "alerts_to_set": [
     {
-      "price": 400.00,
+      "price": 660.00,
       "type": "Critical Support",
-      "action": "Watch for breakdown confirmation or bounce",
+      "action": "Watch for hold or break",
       "urgency": "Critical"
     },
     {
-      "price": 408.00,
-      "type": "Bounce Entry Zone",
-      "action": "Prepare bear put spread entry",
+      "price": 664.00,
+      "type": "Bounce Confirmation",
+      "action": "Prepare bull call spread entry",
       "urgency": "High"
     },
     {
-      "price": 415.00,
-      "type": "Stop Loss Alert",
-      "action": "Exit bearish positions - breakdown thesis invalidated",
-      "urgency": "Critical"
-    },
-    {
-      "price": 420.00,
-      "type": "Major Resistance",
-      "action": "Prime fade zone for call spreads or adding to puts",
-      "urgency": "High"
-    },
-    {
-      "price": 390.00,
-      "type": "Profit Target 1",
-      "action": "Take 50-75% profits on bearish positions",
+      "price": 670.00,
+      "type": "Resistance Test",
+      "action": "Profit target or resistance fade zone",
       "urgency": "Medium"
     },
     {
-      "price": 380.00,
-      "type": "Profit Target 2",
-      "action": "Take remaining profits, reassess for reversal",
+      "price": 655.00,
+      "type": "Breakdown Target",
+      "action": "Secondary support if $660 fails",
       "urgency": "Medium"
     }
   ],
   "final_assessment": {
-    "overall_bias": "STRONGLY BEARISH",
-    "confidence_in_analysis": "High (82.0%) - Clear breakdown with volume confirmation on multiple timeframes",
-    "action_urgency": "High - but patience for bounce improves risk/reward significantly",
-    "recommended_approach": "Wait for relief bounce to $408-412, then aggressively fade with bear put spreads. Alternative: chase breakdown below $400 ONLY if volume confirms.",
-    "critical_level": 420.00,
-    "critical_level_importance": "EXTREME - Broken support now major resistance. Reclaiming this with volume would invalidate bearish thesis. Failure to reclaim confirms continued downside.",
-    "trader_mindset": "This is a high-conviction bearish setup with extreme volume confirmation. However, don't chase - wait for bounces to optimize entry. Take profits at targets and re-enter on rallies. This is NOT a reversal opportunity yet."
-  },
-  "comparative_analysis": {
-    "tsla_vs_market": {
-      "spy_performance": "-1.15%",
-      "tsla_performance": "-5.65%",
-      "relative_weakness": -4.50,
-      "interpretation": "TSLA significantly underperforming market, showing stock-specific selling pressure beyond general market weakness. This is idiosyncratic breakdown, not just market sympathy."
-    },
-    "correlation_notes": "While SPY also weak, TSLA breakdown is 5x worse, suggesting company-specific issues or sector rotation out of high-beta tech. TSLA often leads market volatility - this could be warning sign for broader tech."
-  },
-  "additional_considerations": {
-    "earnings_proximity": "Unknown from chart - check if earnings approaching as volatility could be related",
-    "options_expiration": "High options volume day visible - could be related to monthly/weekly expiration driving volatility",
-    "institutional_flow": "5.25M volume suggests major institutional positioning change - not retail driven",
-    "sentiment_shift": "Capitulation-level volume often marks intermediate-term lows, but typically AFTER additional downside of 5-10%"
-  },
-  "trade_execution_checklist": {
-    "pre_trade": [
-      "Confirm account has sufficient buying power for 19.5% allocation",
-      "Calculate exact number of contracts based on position size",
-      "Set limit orders at favorable prices - don't chase",
-      "Verify stop loss levels are programmed",
-      "Check options liquidity and bid-ask spreads"
-    ],
-    "during_trade": [
-      "Monitor for bounce to $408-412 entry zone",
-      "Watch volume on any rallies (declining = fade opportunity)",
-      "Look for rejection candles at resistance",
-      "Be patient - don't force entry if setup doesn't develop",
-      "Scale into position if available (50% then 50%)"
-    ],
-    "post_trade": [
-      "Set profit target alerts at $390 and $380",
-      "Move stops to breakeven if profit reaches 1:1 R/R",
-      "Scale out at profit targets, don't get greedy",
-      "Document trade for review and learning",
-      "Prepare to re-enter on next rally to resistance"
-    ]
-  },
-  "risk_disclaimer": {
-    "volatility_warning": "TSLA showing extreme volatility (95th percentile). Position sizing MUST be conservative despite high conviction. A -10% move ($40) is possible in single session.",
-    "gap_risk": "Overnight gaps of 3-5% are common in TSLA during high volatility periods. Never risk more than you can afford to lose on gap through stops.",
-    "options_specific": "Options premiums will be inflated due to elevated IV. Greeks (delta, gamma, theta, vega) will be aggressive. Understand your exposure.",
-    "reversal_risk": "While bearish bias is strong, violent reversals are also TSLA's trademark. If $420 reclaimed with volume, exit bearish positions immediately."
+    "overall_bias": "NEUTRAL - SLIGHT BULLISH LEAN IF SUPPORT HOLDS",
+    "confidence_in_analysis": "Medium-High (71.0%) - Clear support test but single timeframe limits confidence",
+    "action_urgency": "Medium-High - Decision point requires monitoring but less urgent than TSLA",
+    "recommended_approach": "Wait for support hold confirmation above $664 before entering bullish positions. Have bearish plan ready if $660 breaks.",
+    "critical_level": 660.00,
+    "critical_level_importance": "HIGH - Key support that determines next 1-2% move direction",
+    "trader_mindset": "SPY more stable than TSLA but still at decision point. Favor bounce over breakdown given support strength, but wait for confirmation. Don't anticipate."
   }
 }

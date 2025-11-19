@@ -15,7 +15,7 @@ export const TABS = [
 ];
 
 export const DATA_FILES = [
-  { name: 'spa1-data-injest.json', label: 'TSLA 2025-11-13' },
+  { name: 'spa1-data-injest.json', label: 'SPY 2025-11-19' },
   { name: 'spa1-data-injest2.json', label: 'TSLA 2025-11-19' }
 ];
 
