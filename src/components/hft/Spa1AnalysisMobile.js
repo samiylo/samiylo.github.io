@@ -1,5 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import './data/spa1-data-injest.json';
+import { 
+  BarChart, 
+  Bullseye, 
+  Briefcase, 
+  GraphUpArrow, 
+  Lightbulb, 
+  CheckCircle, 
+  Rulers, 
+  Dice6, 
+  Calendar, 
+  Shield, 
+  Rocket 
+} from 'react-bootstrap-icons';
 
 const Spa1AnalysisMobile = () => {
   const [analysisData, setAnalysisData] = useState(null);
@@ -30,15 +43,17 @@ const Spa1AnalysisMobile = () => {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (dropdownOpen && !event.target.closest('.mobile-dropdown')) {
+      if (dropdownOpen && !event.target.closest('.mobile-ticker-selector')) {
         setDropdownOpen(false);
       }
     };
 
     if (dropdownOpen) {
       document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('touchstart', handleClickOutside);
       return () => {
         document.removeEventListener('mousedown', handleClickOutside);
+        document.removeEventListener('touchstart', handleClickOutside);
       };
     }
   }, [dropdownOpen]);
@@ -117,11 +132,11 @@ const Spa1AnalysisMobile = () => {
   };
 
   const tabs = [
-    { id: 'overview', label: 'Overview', icon: '📊' },
-    { id: 'levels', label: 'Levels', icon: '🎯' },
-    { id: 'strategies', label: 'Strategies', icon: '💼' },
-    { id: 'analysis', label: 'Analysis', icon: '📈' },
-    { id: 'insights', label: 'Insights', icon: '💡' }
+    { id: 'overview', label: 'Overview', icon: BarChart },
+    { id: 'levels', label: 'Levels', icon: Bullseye },
+    { id: 'strategies', label: 'Strategies', icon: Briefcase },
+    { id: 'analysis', label: 'Analysis', icon: GraphUpArrow },
+    { id: 'insights', label: 'Insights', icon: Lightbulb }
   ];
 
   return (
@@ -285,6 +300,10 @@ const Spa1AnalysisMobile = () => {
             gap: 8px;
           }
 
+          .mobile-card-title-compact svg {
+            flex-shrink: 0;
+          }
+
           .mobile-card-content-compact {
             color: #B8B8B8;
             font-size: 14px;
@@ -304,6 +323,13 @@ const Spa1AnalysisMobile = () => {
             font-weight: 600;
             color: #fff;
             margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+          }
+
+          .mobile-insight-title svg {
+            flex-shrink: 0;
           }
 
           .mobile-insight-text {
@@ -513,6 +539,14 @@ const Spa1AnalysisMobile = () => {
             font-size: 20px;
             margin-bottom: 4px;
             transition: transform 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+          .mobile-nav-icon svg {
+            width: 20px;
+            height: 20px;
           }
 
           .mobile-nav-label {
@@ -600,7 +634,10 @@ const Spa1AnalysisMobile = () => {
           {activeTab === 'overview' && (
             <>
               <div className="mobile-card-compact">
-                <div className="mobile-card-title-compact">📊 Market Summary</div>
+                <div className="mobile-card-title-compact">
+                  <BarChart size={18} style={{ marginRight: '8px', verticalAlign: 'middle' }} />
+                  Market Summary
+                </div>
                 <div className="mobile-card-content-compact">
                   <div className="mobile-insight-box">
                     <div className="mobile-insight-title">Market State</div>
@@ -611,14 +648,20 @@ const Spa1AnalysisMobile = () => {
                     <div style={{ fontSize: '15px', fontWeight: '600', color: '#fff' }}>{executive_summary.primary_bias}</div>
                   </div>
                   <div className="mobile-insight-box">
-                    <div className="mobile-insight-title">💡 Key Insight</div>
+                    <div className="mobile-insight-title">
+                      <Lightbulb size={14} style={{ marginRight: '6px', verticalAlign: 'middle' }} />
+                      Key Insight
+                    </div>
                     <div className="mobile-insight-text">{executive_summary.key_insight}</div>
                   </div>
                 </div>
               </div>
 
               <div className="mobile-card-compact">
-                <div className="mobile-card-title-compact">✅ Primary Recommendation</div>
+                <div className="mobile-card-title-compact">
+                  <CheckCircle size={18} style={{ marginRight: '8px', verticalAlign: 'middle' }} />
+                  Primary Recommendation
+                </div>
                 <div className="mobile-card-content-compact">
                   <div className="mobile-insight-box">
                     <div className="mobile-insight-title">{recommendations.primary_action}</div>
@@ -639,7 +682,10 @@ const Spa1AnalysisMobile = () => {
           {activeTab === 'levels' && (
             <>
               <div className="mobile-card-compact">
-                <div className="mobile-card-title-compact">🛡️ Support Levels</div>
+                <div className="mobile-card-title-compact">
+                  <Shield size={18} style={{ marginRight: '8px', verticalAlign: 'middle' }} />
+                  Support Levels
+                </div>
                 <div className="mobile-card-content-compact">
                   {support_resistance.support_levels.slice(0, 3).map((level, index) => (
                     <div 
@@ -664,7 +710,10 @@ const Spa1AnalysisMobile = () => {
               </div>
 
               <div className="mobile-card-compact">
-                <div className="mobile-card-title-compact">🚀 Resistance Levels</div>
+                <div className="mobile-card-title-compact">
+                  <Rocket size={18} style={{ marginRight: '8px', verticalAlign: 'middle' }} />
+                  Resistance Levels
+                </div>
                 <div className="mobile-card-content-compact">
                   {support_resistance.resistance_levels.slice(0, 3).map((level, index) => (
                     <div 
@@ -741,7 +790,10 @@ const Spa1AnalysisMobile = () => {
           {activeTab === 'analysis' && (
             <>
               <div className="mobile-card-compact">
-                <div className="mobile-card-title-compact">📏 Trading Range</div>
+                <div className="mobile-card-title-compact">
+                  <Rulers size={18} style={{ marginRight: '8px', verticalAlign: 'middle' }} />
+                  Trading Range
+                </div>
                 <div className="mobile-card-content-compact">
                   <div className="mobile-stat-grid">
                     <div className="mobile-stat-compact">
@@ -779,7 +831,10 @@ const Spa1AnalysisMobile = () => {
               </div>
 
               <div className="mobile-card-compact">
-                <div className="mobile-card-title-compact">🎲 Probability Scenarios</div>
+                <div className="mobile-card-title-compact">
+                  <Dice6 size={18} style={{ marginRight: '8px', verticalAlign: 'middle' }} />
+                  Probability Scenarios
+                </div>
                 <div className="mobile-card-content-compact">
                   {probability_assessment.scenarios.map((scenario, index) => (
                     <div key={index} className="mobile-strategy-compact" style={{ marginBottom: '10px' }}>
@@ -809,7 +864,10 @@ const Spa1AnalysisMobile = () => {
           {activeTab === 'insights' && (
             <>
               <div className="mobile-card-compact">
-                <div className="mobile-card-title-compact">💡 Key Takeaways</div>
+                <div className="mobile-card-title-compact">
+                  <Lightbulb size={18} style={{ marginRight: '8px', verticalAlign: 'middle' }} />
+                  Key Takeaways
+                </div>
                 <div className="mobile-card-content-compact">
                   {key_takeaways.map((takeaway, index) => (
                     <div key={index} className="mobile-takeaway-item">
@@ -824,7 +882,10 @@ const Spa1AnalysisMobile = () => {
               </div>
 
               <div className="mobile-card-compact">
-                <div className="mobile-card-title-compact">📅 Next Steps</div>
+                <div className="mobile-card-title-compact">
+                  <Calendar size={18} style={{ marginRight: '8px', verticalAlign: 'middle' }} />
+                  Next Steps
+                </div>
                 <div className="mobile-card-content-compact">
                   <div style={{ fontSize: '11px', color: '#888', marginBottom: '12px', textTransform: 'uppercase' }}>Immediate Actions</div>
                   {next_steps.immediate_actions.map((action, index) => (
@@ -846,16 +907,21 @@ const Spa1AnalysisMobile = () => {
 
         {/* Bottom Navigation */}
         <div className="mobile-bottom-nav">
-          {tabs.map((tab) => (
-            <div
-              key={tab.id}
-              className={`mobile-nav-item ${activeTab === tab.id ? 'active' : ''}`}
-              onClick={() => setActiveTab(tab.id)}
-            >
-              <div className="mobile-nav-icon">{tab.icon}</div>
-              <div className="mobile-nav-label">{tab.label}</div>
-            </div>
-          ))}
+          {tabs.map((tab) => {
+            const IconComponent = tab.icon;
+            return (
+              <div
+                key={tab.id}
+                className={`mobile-nav-item ${activeTab === tab.id ? 'active' : ''}`}
+                onClick={() => setActiveTab(tab.id)}
+              >
+                <div className="mobile-nav-icon">
+                  <IconComponent size={20} />
+                </div>
+                <div className="mobile-nav-label">{tab.label}</div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </>
