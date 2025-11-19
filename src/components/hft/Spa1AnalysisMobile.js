@@ -3,13 +3,10 @@ import './data/spa1-data-injest.json';
 
 const Spa1AnalysisMobile = () => {
   const [analysisData, setAnalysisData] = useState(null);
-  const [expandedSections, setExpandedSections] = useState({
-    summary: true,
-    recommendation: true
-  });
   const [isLoading, setIsLoading] = useState(true);
   const [selectedDataFile, setSelectedDataFile] = useState('spa1-data-injest.json');
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState('overview');
 
   const dataFiles = [
     { name: 'spa1-data-injest.json', label: 'TSLA 2025-11-13' },
@@ -22,7 +19,7 @@ const Spa1AnalysisMobile = () => {
       .then(data => {
         setAnalysisData(data.default);
         setIsLoading(false);
-        setDropdownOpen(false); // Close dropdown after selection
+        setDropdownOpen(false);
       })
       .catch(error => {
         console.error('Error loading analysis data:', error);
@@ -31,7 +28,6 @@ const Spa1AnalysisMobile = () => {
       });
   }, [selectedDataFile]);
 
-  // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownOpen && !event.target.closest('.mobile-dropdown')) {
@@ -54,13 +50,6 @@ const Spa1AnalysisMobile = () => {
   const toggleDropdown = (e) => {
     e.stopPropagation();
     setDropdownOpen(!dropdownOpen);
-  };
-
-  const toggleSection = (section) => {
-    setExpandedSections(prev => ({
-      ...prev,
-      [section]: !prev[section]
-    }));
   };
 
   if (isLoading) {
@@ -127,236 +116,215 @@ const Spa1AnalysisMobile = () => {
     return '#6c757d';
   };
 
+  const tabs = [
+    { id: 'overview', label: 'Overview', icon: '📊' },
+    { id: 'levels', label: 'Levels', icon: '🎯' },
+    { id: 'strategies', label: 'Strategies', icon: '💼' },
+    { id: 'analysis', label: 'Analysis', icon: '📈' },
+    { id: 'insights', label: 'Insights', icon: '💡' }
+  ];
+
   return (
     <>
       <style>
         {`
-          .mobile-analysis-container {
+          * {
+            -webkit-tap-highlight-color: transparent;
+          }
+
+          .mobile-app-container {
             min-height: 100vh;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
-            padding: 20px 16px 100px 16px;
-            max-width: 100%;
-            margin: 0 auto;
+            background: #0a0a0a;
+            position: relative;
+            padding-bottom: 80px;
+            overflow-x: hidden;
           }
 
-          .mobile-header {
-            text-align: center;
-            margin-bottom: 24px;
-            padding-top: 20px;
+          .mobile-sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 12px 16px;
           }
 
-          .mobile-header-badge {
-            display: inline-block;
-            background: linear-gradient(135deg, #AA367C, #4A2FBD);
-            color: #fff;
-            padding: 8px 16px;
-            margin-right: 10px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
+          .mobile-header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 12px;
           }
 
-          .mobile-header-title {
-            font-size: 28px;
+          .mobile-date-badge {
+            background: linear-gradient(135deg, #AA367C, #4A2FBD);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+          }
+
+          .mobile-ticker-selector {
+            position: relative;
+            display: inline-block;
+          }
+
+          .mobile-ticker-display {
+            font-size: 24px;
             font-weight: 700;
             color: #fff;
-            margin: 8px 0;
-            letter-spacing: 1px;
             cursor: pointer;
-            position: relative;
-            display: inline-block;
-            user-select: none;
-            transition: opacity 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
           }
 
-          .mobile-header-title:hover {
-            opacity: 0.8;
+          .mobile-ticker-arrow {
+            font-size: 14px;
+            transition: transform 0.2s ease;
+            color: #B8B8B8;
           }
 
-          .mobile-dropdown-arrow {
-            font-size: 16px;
-            margin-left: 8px;
-            display: inline-block;
-            transition: transform 0.3s ease;
-            vertical-align: middle;
-          }
-
-          .mobile-dropdown-arrow.open {
+          .mobile-ticker-arrow.open {
             transform: rotate(180deg);
-          }
-
-          .mobile-dropdown {
-            position: relative;
-            display: inline-block;
           }
 
           .mobile-dropdown-menu {
             position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            margin-top: 8px;
+            top: calc(100% + 8px);
+            right: 0;
             background: rgba(26, 26, 46, 0.98);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 12px;
-            padding: 8px 0;
-            min-width: 180px;
+            padding: 6px 0;
+            min-width: 160px;
             z-index: 1000;
             backdrop-filter: blur(20px);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
             animation: fadeIn 0.2s ease;
           }
 
           .mobile-dropdown-item {
-            padding: 12px 20px;
+            padding: 10px 16px;
             color: #fff;
-            font-size: 14px;
+            font-size: 13px;
             cursor: pointer;
-            transition: background 0.2s ease;
+            transition: background 0.15s ease;
           }
 
-          .mobile-dropdown-item:hover {
-            background: rgba(170, 54, 124, 0.2);
+          .mobile-dropdown-item:active {
+            background: rgba(170, 54, 124, 0.3);
           }
 
           .mobile-dropdown-item.active {
-            background: rgba(170, 54, 124, 0.3);
+            background: rgba(170, 54, 124, 0.2);
             color: #AA367C;
             font-weight: 600;
           }
 
-          .mobile-dropdown-item.active::after {
-            content: ' ✓';
-            float: right;
-          }
-
-          .mobile-header-subtitle {
-            font-size: 14px;
+          .mobile-header-name {
+            font-size: 12px;
             color: #B8B8B8;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
           }
 
-          .mobile-metrics-row {
+          .mobile-metrics-compact {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin-bottom: 24px;
+            gap: 8px;
           }
 
-          .mobile-metric-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 16px 12px;
+          .mobile-metric-compact {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 10px 8px;
             text-align: center;
-            backdrop-filter: blur(10px);
           }
 
-          .mobile-metric-label {
-            font-size: 11px;
-            color: #B8B8B8;
-            margin-bottom: 8px;
+          .mobile-metric-label-compact {
+            font-size: 10px;
+            color: #888;
+            margin-bottom: 4px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
           }
 
-          .mobile-metric-value {
-            font-size: 18px;
+          .mobile-metric-value-compact {
+            font-size: 16px;
             font-weight: 700;
             color: #fff;
           }
 
-          .mobile-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 20px;
-            margin-bottom: 16px;
-            backdrop-filter: blur(20px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+          .mobile-content-area {
+            padding: 16px;
+            animation: slideIn 0.3s ease;
           }
 
-          .mobile-card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 16px;
-            cursor: pointer;
-            user-select: none;
+          .mobile-section {
+            margin-bottom: 20px;
           }
 
-          .mobile-card-title {
-            font-size: 18px;
-            font-weight: 700;
+          .mobile-card-compact {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 12px;
+          }
+
+          .mobile-card-title-compact {
+            font-size: 16px;
+            font-weight: 600;
             color: #fff;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
             gap: 8px;
           }
 
-          .mobile-card-icon {
-            font-size: 20px;
-          }
-
-          .mobile-expand-icon {
-            font-size: 20px;
-            color: #B8B8B8;
-            transition: transform 0.3s ease;
-          }
-
-          .mobile-expand-icon.expanded {
-            transform: rotate(180deg);
-          }
-
-          .mobile-card-content {
+          .mobile-card-content-compact {
             color: #B8B8B8;
             font-size: 14px;
             line-height: 1.6;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease, opacity 0.3s ease;
-            opacity: 0;
           }
 
-          .mobile-card-content.expanded {
-            max-height: 2000px;
-            opacity: 1;
-          }
-
-          .mobile-highlight-box {
-            background: linear-gradient(135deg, rgba(170, 54, 124, 0.15), rgba(74, 47, 189, 0.15));
-            border: 1px solid rgba(170, 54, 124, 0.3);
-            border-radius: 16px;
-            padding: 16px;
-            margin: 12px 0;
-          }
-
-          .mobile-highlight-title {
-            font-size: 14px;
-            font-weight: 600;
-            color: #fff;
-            margin-bottom: 8px;
-          }
-
-          .mobile-highlight-text {
-            font-size: 14px;
-            color: #fff;
-            line-height: 1.6;
-          }
-
-          .mobile-badge {
-            display: inline-block;
-            padding: 4px 12px;
+          .mobile-insight-box {
+            background: linear-gradient(135deg, rgba(170, 54, 124, 0.12), rgba(74, 47, 189, 0.12));
+            border-left: 3px solid #AA367C;
             border-radius: 12px;
-            font-size: 11px;
+            padding: 14px;
+            margin-bottom: 12px;
+          }
+
+          .mobile-insight-title {
+            font-size: 13px;
             font-weight: 600;
-            margin: 4px 4px 4px 0;
+            color: #fff;
+            margin-bottom: 6px;
+          }
+
+          .mobile-insight-text {
+            font-size: 13px;
+            color: #ddd;
+            line-height: 1.6;
+          }
+
+          .mobile-badge-small {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: 600;
+            margin-right: 6px;
           }
 
           .mobile-badge-primary {
-            background: linear-gradient(135deg, #AA367C, #4A2FBD);
-            color: #fff;
+            background: rgba(170, 54, 124, 0.25);
+            color: #AA367C;
+            border: 1px solid rgba(170, 54, 124, 0.4);
           }
 
           .mobile-badge-success {
@@ -377,433 +345,359 @@ const Spa1AnalysisMobile = () => {
             border: 1px solid rgba(220, 53, 69, 0.3);
           }
 
-          .mobile-list-item {
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+          .mobile-level-compact {
+            background: rgba(255, 255, 255, 0.02);
+            border-left: 3px solid;
+            border-radius: 10px;
+            padding: 12px;
+            margin-bottom: 8px;
           }
 
-          .mobile-list-item:last-child {
-            border-bottom: none;
-          }
-
-          .mobile-list-label {
-            font-size: 12px;
-            color: #B8B8B8;
-            margin-bottom: 4px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-          }
-
-          .mobile-list-value {
+          .mobile-level-price-compact {
             font-size: 16px;
-            font-weight: 600;
+            font-weight: 700;
             color: #fff;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
           }
 
-          .mobile-progress-bar {
-            width: 100%;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
-            margin: 8px 0;
+          .mobile-level-desc-compact {
+            font-size: 12px;
+            color: #999;
+            line-height: 1.5;
           }
 
-          .mobile-progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, #AA367C, #4A2FBD);
-            border-radius: 10px;
-            transition: width 0.5s ease;
+          .mobile-strategy-compact {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 14px;
+            margin-bottom: 10px;
           }
 
-          .mobile-strategy-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 16px;
-            margin-bottom: 12px;
-          }
-
-          .mobile-strategy-header {
+          .mobile-strategy-header-compact {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
           }
 
-          .mobile-strategy-name {
-            font-size: 16px;
+          .mobile-strategy-name-compact {
+            font-size: 15px;
             font-weight: 600;
             color: #fff;
             flex: 1;
           }
 
-          .mobile-two-col {
+          .mobile-progress-compact {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 6px;
+            overflow: hidden;
+            margin: 8px 0;
+          }
+
+          .mobile-progress-fill-compact {
+            height: 100%;
+            background: linear-gradient(90deg, #AA367C, #4A2FBD);
+            border-radius: 6px;
+            transition: width 0.4s ease;
+          }
+
+          .mobile-stat-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 12px;
+            gap: 10px;
             margin: 12px 0;
           }
 
-          .mobile-stat-box {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 12px;
+          .mobile-stat-compact {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 10px;
             padding: 12px;
             text-align: center;
           }
 
-          .mobile-stat-label {
+          .mobile-stat-label-compact {
+            font-size: 10px;
+            color: #888;
+            margin-bottom: 4px;
+            text-transform: uppercase;
+          }
+
+          .mobile-stat-value-compact {
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+          }
+
+          .mobile-takeaway-item {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            gap: 10px;
+          }
+
+          .mobile-takeaway-item:last-child {
+            border-bottom: none;
+          }
+
+          .mobile-takeaway-number {
             font-size: 11px;
-            color: #B8B8B8;
+            font-weight: 600;
+            color: #AA367C;
+            background: rgba(170, 54, 124, 0.15);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+          }
+
+          .mobile-takeaway-content {
+            flex: 1;
+          }
+
+          .mobile-takeaway-category {
+            font-size: 11px;
+            color: #888;
             margin-bottom: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
           }
 
-          .mobile-stat-value {
-            font-size: 18px;
-            font-weight: 700;
-            color: #fff;
+          .mobile-takeaway-text {
+            font-size: 13px;
+            color: #ddd;
+            line-height: 1.5;
           }
 
-          .mobile-level-item {
-            background: rgba(255, 255, 255, 0.03);
-            border-left: 4px solid;
-            border-radius: 12px;
-            padding: 12px;
-            margin-bottom: 8px;
+          .mobile-bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 26, 46, 0.98);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 8px 0 max(8px, env(safe-area-inset-bottom));
+            z-index: 100;
+            display: flex;
+            justify-content: space-around;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
           }
 
-          .mobile-level-price {
-            font-size: 18px;
-            font-weight: 700;
-            color: #fff;
+          .mobile-nav-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 6px 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
+          }
+
+          .mobile-nav-item:active {
+            transform: scale(0.95);
+          }
+
+          .mobile-nav-icon {
+            font-size: 20px;
             margin-bottom: 4px;
+            transition: transform 0.2s ease;
           }
 
-          .mobile-level-desc {
-            font-size: 12px;
-            color: #B8B8B8;
+          .mobile-nav-label {
+            font-size: 11px;
+            color: #888;
+            font-weight: 500;
+            transition: color 0.2s ease;
+          }
+
+          .mobile-nav-item.active .mobile-nav-icon {
+            transform: scale(1.1);
+          }
+
+          .mobile-nav-item.active .mobile-nav-label {
+            color: #AA367C;
+            font-weight: 600;
           }
 
           @keyframes fadeIn {
-            from {
-              opacity: 0;
-              transform: translateY(10px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
           }
 
-          .mobile-card {
-            animation: fadeIn 0.3s ease;
+          @keyframes slideIn {
+            from { opacity: 0; transform: translateX(10px); }
+            to { opacity: 1; transform: translateX(0); }
+          }
+
+          .mobile-empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: #888;
+            font-size: 14px;
           }
         `}
       </style>
 
-      <div className="mobile-analysis-container">
-        {/* Header */}
-        <div className="mobile-header">
-          <div className="mobile-header-badge">
-            {analysis_metadata.analysis_date}
-          </div>
-          <div className="mobile-dropdown">
-            <h1 
-              className="mobile-header-title"
-              onClick={toggleDropdown}
-            >
-              {analysis_metadata.ticker}
-              <span className={`mobile-dropdown-arrow ${dropdownOpen ? 'open' : ''}`}>▼</span>
-            </h1>
-            {dropdownOpen && (
-              <div className="mobile-dropdown-menu">
-                {dataFiles.map((file) => (
-                  <div
-                    key={file.name}
-                    className={`mobile-dropdown-item ${selectedDataFile === file.name ? 'active' : ''}`}
-                    onClick={() => handleDataFileChange(file.name)}
-                  >
-                    {file.label}
-                  </div>
-                ))}
+      <div className="mobile-app-container">
+        {/* Sticky Header */}
+        <div className="mobile-sticky-header">
+          <div className="mobile-header-top">
+            <div className="mobile-date-badge">{analysis_metadata.analysis_date}</div>
+            <div className="mobile-ticker-selector">
+              <div className="mobile-ticker-display" onClick={toggleDropdown}>
+                {analysis_metadata.ticker}
+                <span className={`mobile-ticker-arrow ${dropdownOpen ? 'open' : ''}`}>▼</span>
               </div>
-            )}
-          </div>
-          <p className="mobile-header-subtitle">
-            {analysis_metadata.full_name}
-          </p>
-
-          {/* Key Metrics */}
-          <div className="mobile-metrics-row">
-            <div className="mobile-metric-card">
-              <div className="mobile-metric-label">Price</div>
-              <div className="mobile-metric-value">
-                {formatCurrency(analysis_metadata.current_price)}
-              </div>
+              {dropdownOpen && (
+                <div className="mobile-dropdown-menu">
+                  {dataFiles.map((file) => (
+                    <div
+                      key={file.name}
+                      className={`mobile-dropdown-item ${selectedDataFile === file.name ? 'active' : ''}`}
+                      onClick={() => handleDataFileChange(file.name)}
+                    >
+                      {file.label}
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
-            <div className="mobile-metric-card">
-              <div className="mobile-metric-label">Confidence</div>
-              <div className="mobile-metric-value" style={{ color: getConfidenceColor(analysis_metadata.confidence_level) }}>
+          </div>
+          <div className="mobile-header-name">{analysis_metadata.full_name}</div>
+          <div className="mobile-metrics-compact">
+            <div className="mobile-metric-compact">
+              <div className="mobile-metric-label-compact">Price</div>
+              <div className="mobile-metric-value-compact">{formatCurrency(analysis_metadata.current_price)}</div>
+            </div>
+            <div className="mobile-metric-compact">
+              <div className="mobile-metric-label-compact">Confidence</div>
+              <div className="mobile-metric-value-compact" style={{ color: getConfidenceColor(analysis_metadata.confidence_level) }}>
                 {analysis_metadata.confidence_level}%
               </div>
             </div>
-            <div className="mobile-metric-card">
-              <div className="mobile-metric-label">Quality</div>
-              <div className="mobile-metric-value">
-                {analysis_metadata.analysis_quality}
-              </div>
+            <div className="mobile-metric-compact">
+              <div className="mobile-metric-label-compact">Quality</div>
+              <div className="mobile-metric-value-compact">{analysis_metadata.analysis_quality}</div>
             </div>
           </div>
         </div>
 
-        {/* Executive Summary */}
-        <div className="mobile-card">
-          <div 
-            className="mobile-card-header"
-            onClick={() => toggleSection('summary')}
-          >
-            <div className="mobile-card-title">
-              <span className="mobile-card-icon">📊</span>
-              Market Summary
-            </div>
-            <span className={`mobile-expand-icon ${expandedSections.summary ? 'expanded' : ''}`}>
-              ▼
-            </span>
-          </div>
-          {expandedSections.summary && (
-            <div className="mobile-card-content expanded">
-              <div className="mobile-highlight-box">
-                <div className="mobile-highlight-title">Market State</div>
-                <div className="mobile-highlight-text">{executive_summary.market_state}</div>
-              </div>
-              <div style={{ marginTop: '12px' }}>
-                <div className="mobile-list-label">Primary Bias</div>
-                <div className="mobile-list-value">{executive_summary.primary_bias}</div>
-              </div>
-              <div className="mobile-highlight-box" style={{ marginTop: '16px' }}>
-                <div className="mobile-highlight-title">💡 Key Insight</div>
-                <div className="mobile-highlight-text">{executive_summary.key_insight}</div>
-              </div>
-            </div>
-          )}
-        </div>
-
-        {/* Primary Recommendation */}
-        <div className="mobile-card">
-          <div 
-            className="mobile-card-header"
-            onClick={() => toggleSection('recommendation')}
-          >
-            <div className="mobile-card-title">
-              <span className="mobile-card-icon">✅</span>
-              Primary Recommendation
-            </div>
-            <span className={`mobile-expand-icon ${expandedSections.recommendation ? 'expanded' : ''}`}>
-              ▼
-            </span>
-          </div>
-          {expandedSections.recommendation && (
-            <div className="mobile-card-content expanded">
-              <div className="mobile-highlight-box">
-                <div className="mobile-highlight-title">{recommendations.primary_action}</div>
-                <div className="mobile-highlight-text" style={{ marginTop: '12px' }}>
-                  <strong>Setup:</strong> {recommendations.primary_setup.name}
-                </div>
-                <div className="mobile-highlight-text" style={{ marginTop: '8px' }}>
-                  <strong>Condition:</strong> {recommendations.primary_setup.condition}
-                </div>
-                <div className="mobile-highlight-text" style={{ marginTop: '8px' }}>
-                  <strong>Action:</strong> {recommendations.primary_setup.action}
-                </div>
-                <div className="mobile-highlight-text" style={{ marginTop: '8px' }}>
-                  <strong>Target:</strong> {recommendations.primary_setup.target}
-                </div>
-                <div className="mobile-highlight-text" style={{ marginTop: '8px' }}>
-                  <strong>Probability:</strong> {recommendations.primary_setup.probability}
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-
-        {/* Trading Range & Volatility */}
-        <div className="mobile-card">
-          <div 
-            className="mobile-card-header"
-            onClick={() => toggleSection('range')}
-          >
-            <div className="mobile-card-title">
-              <span className="mobile-card-icon">📏</span>
-              Trading Range
-            </div>
-            <span className={`mobile-expand-icon ${expandedSections.range ? 'expanded' : ''}`}>
-              ▼
-            </span>
-          </div>
-          {expandedSections.range && (
-            <div className="mobile-card-content expanded">
-              <div className="mobile-two-col">
-                <div className="mobile-stat-box">
-                  <div className="mobile-stat-label">Upper</div>
-                  <div className="mobile-stat-value">
-                    {formatCurrency(mathematical_calculations.trading_range.upper_bound)}
+        {/* Content Area - Tab Based */}
+        <div className="mobile-content-area">
+          {/* Overview Tab */}
+          {activeTab === 'overview' && (
+            <>
+              <div className="mobile-card-compact">
+                <div className="mobile-card-title-compact">📊 Market Summary</div>
+                <div className="mobile-card-content-compact">
+                  <div className="mobile-insight-box">
+                    <div className="mobile-insight-title">Market State</div>
+                    <div className="mobile-insight-text">{executive_summary.market_state}</div>
                   </div>
-                </div>
-                <div className="mobile-stat-box">
-                  <div className="mobile-stat-label">Lower</div>
-                  <div className="mobile-stat-value">
-                    {formatCurrency(mathematical_calculations.trading_range.lower_bound)}
+                  <div style={{ marginTop: '12px', marginBottom: '12px' }}>
+                    <div style={{ fontSize: '11px', color: '#888', marginBottom: '6px', textTransform: 'uppercase' }}>Primary Bias</div>
+                    <div style={{ fontSize: '15px', fontWeight: '600', color: '#fff' }}>{executive_summary.primary_bias}</div>
+                  </div>
+                  <div className="mobile-insight-box">
+                    <div className="mobile-insight-title">💡 Key Insight</div>
+                    <div className="mobile-insight-text">{executive_summary.key_insight}</div>
                   </div>
                 </div>
               </div>
-              <div style={{ marginTop: '16px' }}>
-                <div className="mobile-list-label">Current Position</div>
-                <div className="mobile-list-value">
-                  {mathematical_calculations.current_position.position_in_range_percent.toFixed(1)}%
-                </div>
-                <div className="mobile-progress-bar">
-                  <div 
-                    className="mobile-progress-fill"
-                    style={{ width: `${mathematical_calculations.current_position.position_in_range_percent}%` }}
-                  ></div>
-                </div>
-              </div>
-              <div style={{ marginTop: '16px' }}>
-                <div className="mobile-list-label">ATR (14)</div>
-                <div className="mobile-list-value">
-                  {formatCurrency(volatility_analysis.atr_14.value_dollars)}
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
 
-        {/* Support & Resistance */}
-        <div className="mobile-card">
-          <div 
-            className="mobile-card-header"
-            onClick={() => toggleSection('levels')}
-          >
-            <div className="mobile-card-title">
-              <span className="mobile-card-icon">🎯</span>
-              Support & Resistance
-            </div>
-            <span className={`mobile-expand-icon ${expandedSections.levels ? 'expanded' : ''}`}>
-              ▼
-            </span>
-          </div>
-          {expandedSections.levels && (
-            <div className="mobile-card-content expanded">
-              <div style={{ marginBottom: '20px' }}>
-                <div className="mobile-list-label" style={{ marginBottom: '12px' }}>Support Levels</div>
-                {support_resistance.support_levels.slice(0, 3).map((level, index) => (
-                  <div 
-                    key={index}
-                    className="mobile-level-item"
-                    style={{ borderLeftColor: getStrengthColor(level.strength) }}
-                  >
-                    <div className="mobile-level-price">
-                      {formatCurrency(level.price)}
-                      <span className="mobile-badge" style={{ 
-                        marginLeft: '8px',
-                        background: getStrengthColor(level.strength) + '40',
-                        color: getStrengthColor(level.strength),
-                        border: `1px solid ${getStrengthColor(level.strength)}80`
-                      }}>
-                        {level.strength}
-                      </span>
+              <div className="mobile-card-compact">
+                <div className="mobile-card-title-compact">✅ Primary Recommendation</div>
+                <div className="mobile-card-content-compact">
+                  <div className="mobile-insight-box">
+                    <div className="mobile-insight-title">{recommendations.primary_action}</div>
+                    <div style={{ marginTop: '10px', fontSize: '13px', lineHeight: '1.6' }}>
+                      <div style={{ marginBottom: '6px' }}><strong>Setup:</strong> {recommendations.primary_setup.name}</div>
+                      <div style={{ marginBottom: '6px' }}><strong>Condition:</strong> {recommendations.primary_setup.condition}</div>
+                      <div style={{ marginBottom: '6px' }}><strong>Action:</strong> {recommendations.primary_setup.action}</div>
+                      <div style={{ marginBottom: '6px' }}><strong>Target:</strong> {recommendations.primary_setup.target}</div>
+                      <div><strong>Probability:</strong> {recommendations.primary_setup.probability}</div>
                     </div>
-                    <div className="mobile-level-desc">{level.description}</div>
                   </div>
-                ))}
+                </div>
               </div>
-              <div>
-                <div className="mobile-list-label" style={{ marginBottom: '12px' }}>Resistance Levels</div>
-                {support_resistance.resistance_levels.slice(0, 3).map((level, index) => (
-                  <div 
-                    key={index}
-                    className="mobile-level-item"
-                    style={{ borderLeftColor: getStrengthColor(level.strength) }}
-                  >
-                    <div className="mobile-level-price">
-                      {formatCurrency(level.price)}
-                      <span className="mobile-badge" style={{ 
-                        marginLeft: '8px',
-                        background: getStrengthColor(level.strength) + '40',
-                        color: getStrengthColor(level.strength),
-                        border: `1px solid ${getStrengthColor(level.strength)}80`
-                      }}>
-                        {level.strength}
-                      </span>
-                    </div>
-                    <div className="mobile-level-desc">{level.description}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
+            </>
           )}
-        </div>
 
-        {/* Probability Scenarios */}
-        <div className="mobile-card">
-          <div 
-            className="mobile-card-header"
-            onClick={() => toggleSection('probability')}
-          >
-            <div className="mobile-card-title">
-              <span className="mobile-card-icon">🎲</span>
-              Probability Scenarios
-            </div>
-            <span className={`mobile-expand-icon ${expandedSections.probability ? 'expanded' : ''}`}>
-              ▼
-            </span>
-          </div>
-          {expandedSections.probability && (
-            <div className="mobile-card-content expanded">
-              {probability_assessment.scenarios.map((scenario, index) => (
-                <div key={index} className="mobile-strategy-card">
-                  <div className="mobile-strategy-header">
-                    <div className="mobile-strategy-name">{scenario.scenario}</div>
-                    <span className="mobile-badge mobile-badge-primary">
-                      {scenario.probability_percent}%
-                    </span>
-                  </div>
-                  <div className="mobile-progress-bar">
+          {/* Levels Tab */}
+          {activeTab === 'levels' && (
+            <>
+              <div className="mobile-card-compact">
+                <div className="mobile-card-title-compact">🛡️ Support Levels</div>
+                <div className="mobile-card-content-compact">
+                  {support_resistance.support_levels.slice(0, 3).map((level, index) => (
                     <div 
-                      className="mobile-progress-fill"
-                      style={{ width: `${scenario.probability_percent}%` }}
-                    ></div>
-                  </div>
-                  <div style={{ marginTop: '8px', fontSize: '12px', color: '#B8B8B8' }}>
-                    {scenario.price_range || scenario.price_target}
-                  </div>
+                      key={index}
+                      className="mobile-level-compact"
+                      style={{ borderLeftColor: getStrengthColor(level.strength) }}
+                    >
+                      <div className="mobile-level-price-compact">
+                        {formatCurrency(level.price)}
+                        <span className="mobile-badge-small" style={{ 
+                          background: getStrengthColor(level.strength) + '30',
+                          color: getStrengthColor(level.strength),
+                          border: `1px solid ${getStrengthColor(level.strength)}50`
+                        }}>
+                          {level.strength}
+                        </span>
+                      </div>
+                      <div className="mobile-level-desc-compact">{level.description}</div>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-          )}
-        </div>
+              </div>
 
-        {/* Options Strategies */}
-        <div className="mobile-card">
-          <div 
-            className="mobile-card-header"
-            onClick={() => toggleSection('strategies')}
-          >
-            <div className="mobile-card-title">
-              <span className="mobile-card-icon">💼</span>
-              Options Strategies
-            </div>
-            <span className={`mobile-expand-icon ${expandedSections.strategies ? 'expanded' : ''}`}>
-              ▼
-            </span>
-          </div>
-          {expandedSections.strategies && (
-            <div className="mobile-card-content expanded">
+              <div className="mobile-card-compact">
+                <div className="mobile-card-title-compact">🚀 Resistance Levels</div>
+                <div className="mobile-card-content-compact">
+                  {support_resistance.resistance_levels.slice(0, 3).map((level, index) => (
+                    <div 
+                      key={index}
+                      className="mobile-level-compact"
+                      style={{ borderLeftColor: getStrengthColor(level.strength) }}
+                    >
+                      <div className="mobile-level-price-compact">
+                        {formatCurrency(level.price)}
+                        <span className="mobile-badge-small" style={{ 
+                          background: getStrengthColor(level.strength) + '30',
+                          color: getStrengthColor(level.strength),
+                          border: `1px solid ${getStrengthColor(level.strength)}50`
+                        }}>
+                          {level.strength}
+                        </span>
+                      </div>
+                      <div className="mobile-level-desc-compact">{level.description}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </>
+          )}
+
+          {/* Strategies Tab */}
+          {activeTab === 'strategies' && (
+            <>
               {options_strategies?.filter(s => s.priority !== 'TERTIARY - NOT RECOMMENDED').map((strategy, index) => (
-                <div key={index} className="mobile-strategy-card">
-                  <div className="mobile-strategy-header">
-                    <div className="mobile-strategy-name">{strategy.name}</div>
-                    <span className={`mobile-badge ${
+                <div key={index} className="mobile-strategy-compact">
+                  <div className="mobile-strategy-header-compact">
+                    <div className="mobile-strategy-name-compact">{strategy.name}</div>
+                    <span className={`mobile-badge-small ${
                       strategy.priority === 'PRIMARY' ? 'mobile-badge-danger' :
                       strategy.priority === 'SECONDARY' ? 'mobile-badge-warning' :
                       'mobile-badge-success'
@@ -812,7 +706,7 @@ const Spa1AnalysisMobile = () => {
                     </span>
                   </div>
                   {strategy.legs && (
-                    <div style={{ marginTop: '8px', fontSize: '12px', color: '#B8B8B8' }}>
+                    <div style={{ marginTop: '8px', fontSize: '12px', color: '#999', lineHeight: '1.5' }}>
                       {strategy.legs.map((leg, legIndex) => (
                         <div key={legIndex} style={{ marginBottom: '4px' }}>
                           <strong>{leg.action}</strong> {formatCurrency(leg.strike)} {leg.type}
@@ -821,7 +715,7 @@ const Spa1AnalysisMobile = () => {
                     </div>
                   )}
                   {strategy.targets && (
-                    <div style={{ marginTop: '8px', fontSize: '12px', color: '#B8B8B8' }}>
+                    <div style={{ marginTop: '8px', fontSize: '12px', color: '#999' }}>
                       <strong>Target:</strong> {
                         strategy.targets.primary 
                           ? formatCurrency(strategy.targets.primary)
@@ -834,98 +728,134 @@ const Spa1AnalysisMobile = () => {
                     </div>
                   )}
                   {strategy.risk_reward_ratio && (
-                    <div style={{ marginTop: '8px', fontSize: '12px', color: '#B8B8B8' }}>
+                    <div style={{ marginTop: '8px', fontSize: '12px', color: '#999' }}>
                       <strong>R/R:</strong> {strategy.risk_reward_ratio}:1
                     </div>
                   )}
                 </div>
               ))}
-            </div>
+            </>
           )}
-        </div>
 
-        {/* Key Takeaways */}
-        <div className="mobile-card">
-          <div 
-            className="mobile-card-header"
-            onClick={() => toggleSection('takeaways')}
-          >
-            <div className="mobile-card-title">
-              <span className="mobile-card-icon">💡</span>
-              Key Takeaways
-            </div>
-            <span className={`mobile-expand-icon ${expandedSections.takeaways ? 'expanded' : ''}`}>
-              ▼
-            </span>
-          </div>
-          {expandedSections.takeaways && (
-            <div className="mobile-card-content expanded">
-              {key_takeaways.map((takeaway, index) => (
-                <div key={index} className="mobile-list-item">
-                  <div style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                    <span className="mobile-badge mobile-badge-primary" style={{ marginTop: '2px' }}>
-                      {takeaway.number}
-                    </span>
-                    <div style={{ flex: 1 }}>
-                      <div style={{ fontSize: '11px', color: '#B8B8B8', marginBottom: '4px' }}>
-                        {takeaway.category}
+          {/* Analysis Tab */}
+          {activeTab === 'analysis' && (
+            <>
+              <div className="mobile-card-compact">
+                <div className="mobile-card-title-compact">📏 Trading Range</div>
+                <div className="mobile-card-content-compact">
+                  <div className="mobile-stat-grid">
+                    <div className="mobile-stat-compact">
+                      <div className="mobile-stat-label-compact">Upper</div>
+                      <div className="mobile-stat-value-compact">
+                        {formatCurrency(mathematical_calculations.trading_range.upper_bound)}
                       </div>
-                      <div style={{ fontSize: '14px', color: '#fff', lineHeight: '1.5' }}>
-                        {takeaway.takeaway}
+                    </div>
+                    <div className="mobile-stat-compact">
+                      <div className="mobile-stat-label-compact">Lower</div>
+                      <div className="mobile-stat-value-compact">
+                        {formatCurrency(mathematical_calculations.trading_range.lower_bound)}
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-
-        {/* Next Steps */}
-        <div className="mobile-card">
-          <div 
-            className="mobile-card-header"
-            onClick={() => toggleSection('nextSteps')}
-          >
-            <div className="mobile-card-title">
-              <span className="mobile-card-icon">📅</span>
-              Next Steps
-            </div>
-            <span className={`mobile-expand-icon ${expandedSections.nextSteps ? 'expanded' : ''}`}>
-              ▼
-            </span>
-          </div>
-          {expandedSections.nextSteps && (
-            <div className="mobile-card-content expanded">
-              <div style={{ marginBottom: '20px' }}>
-                <div className="mobile-list-label" style={{ marginBottom: '12px' }}>Immediate Actions</div>
-                {next_steps.immediate_actions.map((action, index) => (
-                  <div key={index} style={{ 
-                    padding: '8px 0',
-                    fontSize: '14px',
-                    color: '#B8B8B8',
-                    borderBottom: index < next_steps.immediate_actions.length - 1 ? '1px solid rgba(255,255,255,0.05)' : 'none'
-                  }}>
-                    • {action}
+                  <div style={{ marginTop: '16px', marginBottom: '12px' }}>
+                    <div style={{ fontSize: '11px', color: '#888', marginBottom: '6px', textTransform: 'uppercase' }}>Current Position</div>
+                    <div style={{ fontSize: '16px', fontWeight: '700', color: '#fff', marginBottom: '6px' }}>
+                      {mathematical_calculations.current_position.position_in_range_percent.toFixed(1)}%
+                    </div>
+                    <div className="mobile-progress-compact">
+                      <div 
+                        className="mobile-progress-fill-compact"
+                        style={{ width: `${mathematical_calculations.current_position.position_in_range_percent}%` }}
+                      ></div>
+                    </div>
                   </div>
-                ))}
+                  <div>
+                    <div style={{ fontSize: '11px', color: '#888', marginBottom: '6px', textTransform: 'uppercase' }}>ATR (14)</div>
+                    <div style={{ fontSize: '16px', fontWeight: '700', color: '#fff' }}>
+                      {formatCurrency(volatility_analysis.atr_14.value_dollars)}
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
+
+              <div className="mobile-card-compact">
+                <div className="mobile-card-title-compact">🎲 Probability Scenarios</div>
+                <div className="mobile-card-content-compact">
+                  {probability_assessment.scenarios.map((scenario, index) => (
+                    <div key={index} className="mobile-strategy-compact" style={{ marginBottom: '10px' }}>
+                      <div className="mobile-strategy-header-compact">
+                        <div className="mobile-strategy-name-compact">{scenario.scenario}</div>
+                        <span className="mobile-badge-small mobile-badge-primary">
+                          {scenario.probability_percent}%
+                        </span>
+                      </div>
+                      <div className="mobile-progress-compact">
+                        <div 
+                          className="mobile-progress-fill-compact"
+                          style={{ width: `${scenario.probability_percent}%` }}
+                        ></div>
+                      </div>
+                      <div style={{ marginTop: '8px', fontSize: '12px', color: '#999' }}>
+                        {scenario.price_range || scenario.price_target}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </>
+          )}
+
+          {/* Insights Tab */}
+          {activeTab === 'insights' && (
+            <>
+              <div className="mobile-card-compact">
+                <div className="mobile-card-title-compact">💡 Key Takeaways</div>
+                <div className="mobile-card-content-compact">
+                  {key_takeaways.map((takeaway, index) => (
+                    <div key={index} className="mobile-takeaway-item">
+                      <div className="mobile-takeaway-number">{takeaway.number}</div>
+                      <div className="mobile-takeaway-content">
+                        <div className="mobile-takeaway-category">{takeaway.category}</div>
+                        <div className="mobile-takeaway-text">{takeaway.takeaway}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mobile-card-compact">
+                <div className="mobile-card-title-compact">📅 Next Steps</div>
+                <div className="mobile-card-content-compact">
+                  <div style={{ fontSize: '11px', color: '#888', marginBottom: '12px', textTransform: 'uppercase' }}>Immediate Actions</div>
+                  {next_steps.immediate_actions.map((action, index) => (
+                    <div key={index} style={{ 
+                      padding: '10px 0',
+                      fontSize: '13px',
+                      color: '#ddd',
+                      lineHeight: '1.5',
+                      borderBottom: index < next_steps.immediate_actions.length - 1 ? '1px solid rgba(255,255,255,0.05)' : 'none'
+                    }}>
+                      • {action}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </>
           )}
         </div>
 
-        {/* Disclaimer */}
-        <div style={{ 
-          marginTop: '24px',
-          padding: '16px',
-          background: 'rgba(255, 255, 255, 0.03)',
-          borderRadius: '16px',
-          fontSize: '11px',
-          color: '#B8B8B8',
-          lineHeight: '1.6'
-        }}>
-          <strong>Disclaimer:</strong> This analysis is for informational purposes only and is not investment advice. 
-          The analysis is not a guarantee of future performance.
+        {/* Bottom Navigation */}
+        <div className="mobile-bottom-nav">
+          {tabs.map((tab) => (
+            <div
+              key={tab.id}
+              className={`mobile-nav-item ${activeTab === tab.id ? 'active' : ''}`}
+              onClick={() => setActiveTab(tab.id)}
+            >
+              <div className="mobile-nav-icon">{tab.icon}</div>
+              <div className="mobile-nav-label">{tab.label}</div>
+            </div>
+          ))}
         </div>
       </div>
     </>
