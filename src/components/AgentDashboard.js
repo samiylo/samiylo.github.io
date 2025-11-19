@@ -84,6 +84,15 @@ export const AgentDashboard = () => {
                     <div className="agent-dashboard-content">
                       <h2>Welcome, Agent</h2>
                       <p>You have successfully accessed the agent dashboard.</p>
+                      
+                      <button 
+                        type="button"
+                        onClick={() => navigate('/spa1')}
+                        className="agent-spa1-button"
+                      >
+                        <span>View SPA1 Analysis</span>
+                      </button>
+                      
                       <MissionLog />
                     </div>
                   </div>

@@ -2846,6 +2846,52 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   border-color: rgba(255, 255, 255, 0.5);
 }
 
+.agent-spa1-button {
+  width: 100%;
+  font-weight: 700;
+  color: #000;
+  background-color: #fff;
+  padding: 18px 48px;
+  font-size: 18px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  border: none;
+  position: relative;
+  z-index: 10;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.agent-spa1-button span {
+  z-index: 1;
+  position: relative;
+}
+
+.agent-spa1-button:hover {
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(170, 54, 124, 0.3);
+}
+
+.agent-spa1-button::before {
+  content: "";
+  background: linear-gradient(90.21deg, rgba(170, 54, 124, 0.8) -5.91%, rgba(74, 47, 189, 0.8) 111.58%);
+  width: 0;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  transition: 0.3s ease-in-out;
+  border-radius: 20px;
+}
+
+.agent-spa1-button:hover::before {
+  width: 100%;
+}
+
 .agent-dashboard-content {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.2);
