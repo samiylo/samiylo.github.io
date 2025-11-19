@@ -65,7 +65,7 @@ export const timelineData = [
   {
     year: "Oct 2020 - June 2022",
     title: "Backend Java Developer",
-    company: "HCL Tech",
+    company: "USAA Bank",
     description: "Extensive experience in backend development and cloud migration of mainframe at USAA headquarters in San Antonio. In Production Support, resolved production bugs and developed solutions for the annuities component. Later, on the Cloud Migration team, played a key role in migrating the annuities product to AWS using Spring Batch.",
     technologies: ["Java", "Spring Batch", "AWS", "S3", "Database Migration", "Production Support"],
     achievements: [

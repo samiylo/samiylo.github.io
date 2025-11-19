@@ -8,18 +8,53 @@ const Spa1AnalysisMobile = () => {
     recommendation: true
   });
   const [isLoading, setIsLoading] = useState(true);
+  const [selectedDataFile, setSelectedDataFile] = useState('spa1-data-injest.json');
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const dataFiles = [
+    { name: 'spa1-data-injest.json', label: 'TSLA 2025-11-13' },
+    { name: 'spa1-data-injest2.json', label: 'TSLA 2025-11-19' }
+  ];
 
   useEffect(() => {
-    import('./data/spa1-data-injest.json')
+    setIsLoading(true);
+    import(`./data/${selectedDataFile}`)
       .then(data => {
         setAnalysisData(data.default);
         setIsLoading(false);
+        setDropdownOpen(false); // Close dropdown after selection
       })
       .catch(error => {
         console.error('Error loading analysis data:', error);
         setIsLoading(false);
+        setDropdownOpen(false);
       });
-  }, []);
+  }, [selectedDataFile]);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownOpen && !event.target.closest('.mobile-dropdown')) {
+        setDropdownOpen(false);
+      }
+    };
+
+    if (dropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }
+  }, [dropdownOpen]);
+
+  const handleDataFileChange = (fileName) => {
+    setSelectedDataFile(fileName);
+  };
+
+  const toggleDropdown = (e) => {
+    e.stopPropagation();
+    setDropdownOpen(!dropdownOpen);
+  };
 
   const toggleSection = (section) => {
     setExpandedSections(prev => ({
@@ -74,10 +109,10 @@ const Spa1AnalysisMobile = () => {
     return `$${Number(value).toFixed(2)}`;
   };
   
-  const formatPercent = (value) => {
-    if (value === undefined || value === null || isNaN(value)) return '0.00%';
-    return `${Number(value).toFixed(2)}%`;
-  };
+  // const formatPercent = (value) => {
+  //   if (value === undefined || value === null || isNaN(value)) return '0.00%';
+  //   return `${Number(value).toFixed(2)}%`;
+  // };
 
   const getConfidenceColor = (confidence) => {
     if (confidence >= 80) return '#28a745';
@@ -115,6 +150,7 @@ const Spa1AnalysisMobile = () => {
             background: linear-gradient(135deg, #AA367C, #4A2FBD);
             color: #fff;
             padding: 8px 16px;
+            margin-right: 10px;
             border-radius: 20px;
             font-size: 12px;
             font-weight: 600;
@@ -127,6 +163,72 @@ const Spa1AnalysisMobile = () => {
             color: #fff;
             margin: 8px 0;
             letter-spacing: 1px;
+            cursor: pointer;
+            position: relative;
+            display: inline-block;
+            user-select: none;
+            transition: opacity 0.2s ease;
+          }
+
+          .mobile-header-title:hover {
+            opacity: 0.8;
+          }
+
+          .mobile-dropdown-arrow {
+            font-size: 16px;
+            margin-left: 8px;
+            display: inline-block;
+            transition: transform 0.3s ease;
+            vertical-align: middle;
+          }
+
+          .mobile-dropdown-arrow.open {
+            transform: rotate(180deg);
+          }
+
+          .mobile-dropdown {
+            position: relative;
+            display: inline-block;
+          }
+
+          .mobile-dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 8px;
+            background: rgba(26, 26, 46, 0.98);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 8px 0;
+            min-width: 180px;
+            z-index: 1000;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            animation: fadeIn 0.2s ease;
+          }
+
+          .mobile-dropdown-item {
+            padding: 12px 20px;
+            color: #fff;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+          }
+
+          .mobile-dropdown-item:hover {
+            background: rgba(170, 54, 124, 0.2);
+          }
+
+          .mobile-dropdown-item.active {
+            background: rgba(170, 54, 124, 0.3);
+            color: #AA367C;
+            font-weight: 600;
+          }
+
+          .mobile-dropdown-item.active::after {
+            content: ' ✓';
+            float: right;
           }
 
           .mobile-header-subtitle {
@@ -405,9 +507,28 @@ const Spa1AnalysisMobile = () => {
           <div className="mobile-header-badge">
             {analysis_metadata.analysis_date}
           </div>
-          <h1 className="mobile-header-title">
-            {analysis_metadata.ticker}
-          </h1>
+          <div className="mobile-dropdown">
+            <h1 
+              className="mobile-header-title"
+              onClick={toggleDropdown}
+            >
+              {analysis_metadata.ticker}
+              <span className={`mobile-dropdown-arrow ${dropdownOpen ? 'open' : ''}`}>▼</span>
+            </h1>
+            {dropdownOpen && (
+              <div className="mobile-dropdown-menu">
+                {dataFiles.map((file) => (
+                  <div
+                    key={file.name}
+                    className={`mobile-dropdown-item ${selectedDataFile === file.name ? 'active' : ''}`}
+                    onClick={() => handleDataFileChange(file.name)}
+                  >
+                    {file.label}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
           <p className="mobile-header-subtitle">
             {analysis_metadata.full_name}
           </p>
