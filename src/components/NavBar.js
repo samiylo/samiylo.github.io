@@ -38,6 +38,10 @@ export const NavBar = () => {
     navigate('/bled-roulette');
   };
 
+  const handleGameClick = () => {
+    navigate('/skateboarding');
+  };
+
   return (
     <Navbar expand="md" className={scrolled ? "scrolled" : ""}>
       <Container>
@@ -55,7 +59,7 @@ export const NavBar = () => {
           <Nav className="ms-auto">
             <Nav.Link className={activeLink === 'home' ? 'active navbar-link' : 'navbar-link'} onClick={handleHomeClick}>Home</Nav.Link>
             <Nav.Link href="#connect" className={activeLink === 'agents' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('agents')}>Connect</Nav.Link>
-            <Nav.Link href="#projects" className={activeLink === 'projects' ? 'active navbar-link' : 'navbar-link'} onClick={() => onUpdateActiveLink('projects')}>Models</Nav.Link>
+            <Nav.Link className={activeLink === 'projects' ? 'active navbar-link' : 'navbar-link'} onClick={handleGameClick}>Game</Nav.Link>
           </Nav>
           <span className="navbar-text">
             <div className="social-icon">
