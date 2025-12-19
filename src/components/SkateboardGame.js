@@ -39,10 +39,25 @@ const SkateboardGame = () => {
         const game = gameRef.current;
         const container = containerRef.current;
         
-        // Custom cursor
+        // Detect mobile device
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || 
+                         (window.matchMedia && window.matchMedia("(max-width: 768px)").matches);
+        
+        // Show/hide mobile controls
+        const mobileControls = document.getElementById('mobileControls');
+        if (mobileControls) {
+            mobileControls.style.display = isMobile ? 'flex' : 'none';
+        }
+        
+        // Hide cursor on mobile
         const cursor = document.getElementById('skateboard-cursor');
+        if (cursor) {
+            cursor.style.display = isMobile ? 'none' : 'block';
+        }
+        
+        // Custom cursor (desktop only)
         const handleMouseMove = (e) => {
-            if (cursor) {
+            if (cursor && !isMobile) {
                 cursor.style.left = e.clientX + 'px';
                 cursor.style.top = e.clientY + 'px';
             }
@@ -459,6 +474,137 @@ const SkateboardGame = () => {
             }
         }
 
+        // Touch control handlers
+        function handleTouchStart(direction) {
+            if (!game.gameActive) return;
+            
+            if (direction === 'left') {
+                game.keys.left = true;
+            } else if (direction === 'right') {
+                game.keys.right = true;
+            } else if (direction === 'jump') {
+                if (!game.isJumping) {
+                    game.keys.space = true;
+                    game.isJumping = true;
+                    game.playerVelocityY = 0.35;
+                    game.trickRotation = 0;
+                }
+            }
+        }
+
+        function handleTouchEnd(direction) {
+            if (direction === 'left') {
+                game.keys.left = false;
+            } else if (direction === 'right') {
+                game.keys.right = false;
+            } else if (direction === 'jump') {
+                game.keys.space = false;
+            }
+        }
+
+        // Handler functions for mobile controls (defined here for cleanup access)
+        const leftTouchStart = (e) => {
+            e.preventDefault();
+            handleTouchStart('left');
+        };
+        const leftTouchEnd = (e) => {
+            e.preventDefault();
+            handleTouchEnd('left');
+        };
+        const leftMouseDown = (e) => {
+            e.preventDefault();
+            handleTouchStart('left');
+        };
+        const leftMouseUp = (e) => {
+            e.preventDefault();
+            handleTouchEnd('left');
+        };
+
+        const rightTouchStart = (e) => {
+            e.preventDefault();
+            handleTouchStart('right');
+        };
+        const rightTouchEnd = (e) => {
+            e.preventDefault();
+            handleTouchEnd('right');
+        };
+        const rightMouseDown = (e) => {
+            e.preventDefault();
+            handleTouchStart('right');
+        };
+        const rightMouseUp = (e) => {
+            e.preventDefault();
+            handleTouchEnd('right');
+        };
+
+        const jumpTouchStart = (e) => {
+            e.preventDefault();
+            handleTouchStart('jump');
+        };
+        const jumpTouchEnd = (e) => {
+            e.preventDefault();
+            handleTouchEnd('jump');
+        };
+        const jumpMouseDown = (e) => {
+            e.preventDefault();
+            handleTouchStart('jump');
+        };
+        const jumpMouseUp = (e) => {
+            e.preventDefault();
+            handleTouchEnd('jump');
+        };
+
+        const preventScroll = (e) => {
+            e.preventDefault();
+        };
+
+        // Setup mobile control button handlers (use setTimeout to ensure DOM is ready)
+        let leftBtn, rightBtn, jumpBtn;
+        let setupTimeout;
+        
+        const setupMobileControls = () => {
+            leftBtn = document.getElementById('mobileLeft');
+            rightBtn = document.getElementById('mobileRight');
+            jumpBtn = document.getElementById('mobileJump');
+            
+            if (!leftBtn || !rightBtn || !jumpBtn) {
+                setupTimeout = setTimeout(setupMobileControls, 50);
+                return;
+            }
+            
+            if (leftBtn) {
+                leftBtn.addEventListener('touchstart', leftTouchStart);
+                leftBtn.addEventListener('touchend', leftTouchEnd);
+                leftBtn.addEventListener('touchcancel', leftTouchEnd);
+                leftBtn.addEventListener('mousedown', leftMouseDown);
+                leftBtn.addEventListener('mouseup', leftMouseUp);
+                leftBtn.addEventListener('mouseleave', leftTouchEnd);
+            }
+
+            if (rightBtn) {
+                rightBtn.addEventListener('touchstart', rightTouchStart);
+                rightBtn.addEventListener('touchend', rightTouchEnd);
+                rightBtn.addEventListener('touchcancel', rightTouchEnd);
+                rightBtn.addEventListener('mousedown', rightMouseDown);
+                rightBtn.addEventListener('mouseup', rightMouseUp);
+                rightBtn.addEventListener('mouseleave', rightTouchEnd);
+            }
+
+            if (jumpBtn) {
+                jumpBtn.addEventListener('touchstart', jumpTouchStart);
+                jumpBtn.addEventListener('touchend', jumpTouchEnd);
+                jumpBtn.addEventListener('touchcancel', jumpTouchEnd);
+                jumpBtn.addEventListener('mousedown', jumpMouseDown);
+                jumpBtn.addEventListener('mouseup', jumpMouseUp);
+            }
+        };
+        
+        // Prevent scrolling on touch
+        container.addEventListener('touchmove', preventScroll, { passive: false });
+        
+        // Setup mobile controls after a short delay to ensure DOM is ready
+        setupMobileControls();
+
         function checkCollision() {
             const playerBox = new THREE.Box3().setFromObject(game.player);
 
@@ -501,6 +647,18 @@ const SkateboardGame = () => {
             if (speedCanvas) {
                 speedCanvas.width = window.innerWidth;
                 speedCanvas.height = window.innerHeight;
+            }
+            
+            // Update mobile controls visibility on resize
+            const isMobileNow = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent) || 
+                               (window.matchMedia && window.matchMedia("(max-width: 768px)").matches);
+            const mobileControlsEl = document.getElementById('mobileControls');
+            const cursorEl = document.getElementById('skateboard-cursor');
+            if (mobileControlsEl) {
+                mobileControlsEl.style.display = isMobileNow ? 'flex' : 'none';
+            }
+            if (cursorEl) {
+                cursorEl.style.display = isMobileNow ? 'none' : 'block';
             }
         }
 
@@ -660,10 +818,46 @@ const SkateboardGame = () => {
 
         // Cleanup
         return () => {
+            // Clear setup timeout if it exists
+            if (setupTimeout) {
+                clearTimeout(setupTimeout);
+            }
+            
             document.removeEventListener('mousemove', handleMouseMove);
             window.removeEventListener('keydown', onKeyDown);
             window.removeEventListener('keyup', onKeyUp);
             window.removeEventListener('resize', onWindowResize);
+            container.removeEventListener('touchmove', preventScroll);
+            
+            // Clean up mobile control handlers (re-query in case elements weren't found initially)
+            const cleanupLeftBtn = document.getElementById('mobileLeft');
+            const cleanupRightBtn = document.getElementById('mobileRight');
+            const cleanupJumpBtn = document.getElementById('mobileJump');
+            
+            if (cleanupLeftBtn) {
+                cleanupLeftBtn.removeEventListener('touchstart', leftTouchStart);
+                cleanupLeftBtn.removeEventListener('touchend', leftTouchEnd);
+                cleanupLeftBtn.removeEventListener('touchcancel', leftTouchEnd);
+                cleanupLeftBtn.removeEventListener('mousedown', leftMouseDown);
+                cleanupLeftBtn.removeEventListener('mouseup', leftMouseUp);
+                cleanupLeftBtn.removeEventListener('mouseleave', leftTouchEnd);
+            }
+            if (cleanupRightBtn) {
+                cleanupRightBtn.removeEventListener('touchstart', rightTouchStart);
+                cleanupRightBtn.removeEventListener('touchend', rightTouchEnd);
+                cleanupRightBtn.removeEventListener('touchcancel', rightTouchEnd);
+                cleanupRightBtn.removeEventListener('mousedown', rightMouseDown);
+                cleanupRightBtn.removeEventListener('mouseup', rightMouseUp);
+                cleanupRightBtn.removeEventListener('mouseleave', rightTouchEnd);
+            }
+            if (cleanupJumpBtn) {
+                cleanupJumpBtn.removeEventListener('touchstart', jumpTouchStart);
+                cleanupJumpBtn.removeEventListener('touchend', jumpTouchEnd);
+                cleanupJumpBtn.removeEventListener('touchcancel', jumpTouchEnd);
+                cleanupJumpBtn.removeEventListener('mousedown', jumpMouseDown);
+                cleanupJumpBtn.removeEventListener('mouseup', jumpMouseUp);
+            }
+            
             delete window.restartGame;
             
             if (game.animationId) {
@@ -726,6 +920,18 @@ const SkateboardGame = () => {
                 STEER
                 <span className="key">SPACE</span>
                 JUMP & TRICK
+            </div>
+
+            <div id="mobileControls" className="mobile-controls">
+                <button id="mobileLeft" className="mobile-btn mobile-btn-left">
+                    ←
+                </button>
+                <button id="mobileJump" className="mobile-btn mobile-btn-jump">
+                    ⬆
+                </button>
+                <button id="mobileRight" className="mobile-btn mobile-btn-right">
+                    →
+                </button>
             </div>
         </div>
     );

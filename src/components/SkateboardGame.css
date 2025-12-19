@@ -219,3 +219,97 @@
     box-shadow: 0 0 15px var(--neon-cyan);
 }
 
+/* Mobile Controls */
+.mobile-controls {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    flex-direction: row;
+    gap: 30px;
+    align-items: center;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.mobile-btn {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 4px solid var(--neon-cyan);
+    background: rgba(0, 245, 255, 0.2);
+    color: var(--neon-cyan);
+    font-size: 36px;
+    font-weight: bold;
+    font-family: 'Bakbak One', cursive;
+    cursor: pointer;
+    pointer-events: all;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 
+        0 0 20px var(--neon-cyan),
+        0 0 40px rgba(0, 245, 255, 0.5),
+        inset 0 0 20px rgba(0, 245, 255, 0.1);
+    transition: all 0.2s ease;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+}
+
+.mobile-btn:active {
+    transform: scale(0.9);
+    background: rgba(0, 245, 255, 0.4);
+    box-shadow: 
+        0 0 30px var(--neon-cyan),
+        0 0 60px var(--neon-cyan),
+        inset 0 0 30px rgba(0, 245, 255, 0.3);
+}
+
+.mobile-btn-left,
+.mobile-btn-right {
+    border-color: var(--neon-cyan);
+}
+
+.mobile-btn-jump {
+    border-color: var(--neon-yellow);
+    background: rgba(255, 190, 11, 0.2);
+    color: var(--neon-yellow);
+    box-shadow: 
+        0 0 20px var(--neon-yellow),
+        0 0 40px rgba(255, 190, 11, 0.5),
+        inset 0 0 20px rgba(255, 190, 11, 0.1);
+}
+
+.mobile-btn-jump:active {
+    background: rgba(255, 190, 11, 0.4);
+    box-shadow: 
+        0 0 30px var(--neon-yellow),
+        0 0 60px var(--neon-yellow),
+        inset 0 0 30px rgba(255, 190, 11, 0.3);
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 480px) {
+    .mobile-btn {
+        width: 70px;
+        height: 70px;
+        font-size: 32px;
+        gap: 20px;
+    }
+    
+    .mobile-controls {
+        bottom: 30px;
+        gap: 25px;
+    }
+}
+
+/* Hide instructions on mobile since controls are visible */
+@media (max-width: 768px) {
+    .instructions {
+        display: none !important;
+    }
+}
+
