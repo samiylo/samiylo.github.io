@@ -927,7 +927,7 @@ const SkateboardGame = () => {
                     ←
                 </button>
                 <button id="mobileJump" className="mobile-btn mobile-btn-jump">
-                    ⬆
+                    
                 </button>
                 <button id="mobileRight" className="mobile-btn mobile-btn-right">
                     →
