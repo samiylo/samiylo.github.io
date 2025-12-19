@@ -1,0 +1,220 @@
+.skateboard-game-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Orbitron', sans-serif;
+    background: linear-gradient(180deg, #FF006E 0%, #8338EC 50%, #0A0E27 100%);
+    cursor: none;
+}
+
+.skateboard-game-container * {
+    box-sizing: border-box;
+}
+
+:root {
+    --neon-pink: #FF006E;
+    --neon-cyan: #00F5FF;
+    --neon-yellow: #FFBE0B;
+    --neon-purple: #8338EC;
+    --dark-bg: #0A0E27;
+    --road-dark: #1A1D2E;
+}
+
+.game-canvas-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.game-canvas-container canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.skateboard-cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--neon-cyan);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 10000;
+    mix-blend-mode: difference;
+    transition: transform 0.1s ease;
+}
+
+.skateboard-ui {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    color: white;
+    z-index: 10;
+    font-family: 'Bakbak One', cursive;
+}
+
+.stat {
+    margin-bottom: 15px;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 
+        0 0 10px var(--neon-cyan),
+        0 0 20px var(--neon-cyan),
+        0 0 30px var(--neon-cyan);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.stat-value {
+    font-size: 36px;
+    color: var(--neon-yellow);
+    text-shadow: 
+        0 0 10px var(--neon-yellow),
+        0 0 20px var(--neon-yellow),
+        0 0 40px var(--neon-yellow);
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+#speedLines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+    opacity: 0.3;
+}
+
+.combo-display {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 72px;
+    font-family: 'Bakbak One', cursive;
+    color: var(--neon-yellow);
+    text-shadow: 
+        0 0 20px var(--neon-yellow),
+        0 0 40px var(--neon-yellow),
+        0 0 60px var(--neon-yellow);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 15;
+    animation: comboFade 1s ease-out;
+}
+
+@keyframes comboFade {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+    20% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.2);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -100%) scale(1);
+    }
+}
+
+.game-over {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    display: none;
+    z-index: 20;
+}
+
+.game-over h1 {
+    font-size: 96px;
+    font-family: 'Bakbak One', cursive;
+    color: var(--neon-pink);
+    text-shadow: 
+        0 0 20px var(--neon-pink),
+        0 0 40px var(--neon-pink),
+        0 0 60px var(--neon-pink);
+    margin-bottom: 20px;
+    animation: glitch 0.5s infinite;
+}
+
+@keyframes glitch {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(2px, -2px); }
+    60% { transform: translate(-2px, -2px); }
+    80% { transform: translate(2px, 2px); }
+}
+
+#finalScore {
+    font-size: 48px;
+    margin-bottom: 30px;
+    color: var(--neon-cyan);
+    text-shadow: 
+        0 0 15px var(--neon-cyan),
+        0 0 30px var(--neon-cyan);
+}
+
+.game-over button {
+    margin-top: 20px;
+    padding: 20px 60px;
+    font-size: 28px;
+    font-family: 'Bakbak One', cursive;
+    background: linear-gradient(135deg, var(--neon-pink), var(--neon-purple));
+    border: 3px solid var(--neon-cyan);
+    border-radius: 0;
+    color: white;
+    cursor: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    box-shadow: 
+        0 0 20px var(--neon-cyan),
+        0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+.game-over button:hover {
+    transform: scale(1.1);
+    box-shadow: 
+        0 0 40px var(--neon-cyan),
+        0 15px 40px rgba(0, 0, 0, 0.7);
+}
+
+.instructions {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 18px;
+    font-family: 'Bakbak One', cursive;
+    text-shadow: 
+        0 0 10px var(--neon-cyan),
+        0 0 20px var(--neon-cyan);
+    text-align: center;
+    letter-spacing: 2px;
+    z-index: 10;
+}
+
+.key {
+    display: inline-block;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid var(--neon-cyan);
+    border-radius: 5px;
+    margin: 0 5px;
+    box-shadow: 0 0 15px var(--neon-cyan);
+}
+

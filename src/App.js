@@ -12,6 +12,7 @@ import RouletteEmbed from './components/RouletteEmbed';
 // import Spa1Analysis from './components/hft/Spa1Analysis';
 import Spa1AnalysisMobile from './components/hft/Spa1AnalysisMobile';
 import { AgentDashboard } from './components/AgentDashboard';
+import SkateboardGame from './components/SkateboardGame';
 
 function App() {
   return (
@@ -55,6 +56,9 @@ function App() {
             
             {/* Agent Dashboard route */}
             <Route path='/agents' element={<AgentDashboard />} />
+            
+            {/* Skateboard Game route */}
+            <Route path='/skateboarding' element={<SkateboardGame />} />
         </Routes>
       </Router>
     </div>
