@@ -479,8 +479,10 @@ const SkateboardGame = () => {
             game.gameActive = false;
             const gameOverEl = document.getElementById('gameOver');
             const finalScoreEl = document.getElementById('finalScore');
+            const instructionsEl = document.getElementById('instructions');
             if (gameOverEl) gameOverEl.style.display = 'block';
             if (finalScoreEl) finalScoreEl.textContent = `SCORE: ${Math.floor(game.score)}`;
+            if (instructionsEl) instructionsEl.style.display = 'block';
         }
 
         function updateUI() {
@@ -642,7 +644,9 @@ const SkateboardGame = () => {
             }
 
             const gameOverEl = document.getElementById('gameOver');
+            const instructionsEl = document.getElementById('instructions');
             if (gameOverEl) gameOverEl.style.display = 'none';
+            if (instructionsEl) instructionsEl.style.display = 'none';
             updateUI();
         }
 

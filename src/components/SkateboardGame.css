@@ -206,6 +206,7 @@
     text-align: center;
     letter-spacing: 2px;
     z-index: 10;
+    display: none;
 }
 
 .key {
