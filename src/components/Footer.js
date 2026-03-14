@@ -19,7 +19,8 @@ export const Footer = () => {
                 <SocialIcon target="_blank" bgColor="white" fgColor="purple" url="https://linkedin.com/in/samiylo"/>
                 <SocialIcon target="_blank" bgColor="white" fgColor="purple" url="https://github.com/samiylo"/>
             </div>
-            <p>Copyright 2026. All Rights Reserved</p>
+            <p>Copyright © {new Date().getFullYear()}</p>
+            <p>All Rights Reserved</p>
           </Col>
         </Row>
       </Container>
