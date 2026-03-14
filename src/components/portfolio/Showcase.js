@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { FaExternalLinkAlt, FaGithub, FaReact, FaDatabase, FaShieldAlt, FaRocket, FaBrain, FaServer, FaChartLine, FaShoppingCart, FaLock, FaTimes, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import FloatingShapes from './FloatingShapes';
+import FloatingShapes from '../common/FloatingShapes';
 import 'animate.css';
 
 const projects = [

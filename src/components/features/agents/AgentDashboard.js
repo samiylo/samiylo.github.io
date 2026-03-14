@@ -3,8 +3,8 @@ import { Container, Row, Col } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
-import FloatingShapes from './FloatingShapes';
-import { agentConfig } from '../config/agentConfig';
+import FloatingShapes from '../../common/FloatingShapes';
+import { agentConfig } from '../../../config/agentConfig';
 import { MissionLog } from './MissionLog';
 
 export const AgentDashboard = () => {

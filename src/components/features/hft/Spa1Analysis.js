@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import './data/spa1-data-injest.json';
+import '../../../data/hft/spa1-data-injest.json';
 
 const Spa1Analysis = () => {
   const [analysisData, setAnalysisData] = useState(null);
@@ -7,7 +7,7 @@ const Spa1Analysis = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    import('./data/spa1-data-injest.json')
+    import('../../../data/hft/spa1-data-injest.json')
       .then(data => {
         setAnalysisData(data.default);
         setIsLoading(false);

@@ -3,7 +3,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
 import emailjs from '@emailjs/browser';
-import FloatingShapes from './FloatingShapes';
+import FloatingShapes from '../common/FloatingShapes';
 
 export const Contact = () => {
   const formInitialDetails = {

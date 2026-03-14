@@ -1,7 +1,7 @@
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import colorSharp from "../assets/img/color-sharp.png"
-import FloatingShapes from './FloatingShapes';
+import colorSharp from "../../assets/img/color-sharp.png"
+import FloatingShapes from '../common/FloatingShapes';
 
 export const Skills = () => {
   const responsive = {

@@ -19,7 +19,7 @@ const Spa1AnalysisMobile = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    import(`./data/${selectedDataFile}`)
+    import(`../../../data/hft/${selectedDataFile}`)
       .then(data => {
         setAnalysisData(data.default);
         setIsLoading(false);
@@ -62,7 +62,7 @@ const Spa1AnalysisMobile = () => {
 
   const handleRetry = () => {
     setIsLoading(true);
-    import(`./data/${selectedDataFile}`)
+    import(`../../../data/hft/${selectedDataFile}`)
       .then(data => {
         setAnalysisData(data.default);
         setIsLoading(false);

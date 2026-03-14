@@ -1,5 +1,5 @@
 import { Container, Row, Col } from "react-bootstrap";
-import logo from "../assets/img/logo.png";
+import logo from "../../assets/img/logo.png";
 import { SocialIcon } from "react-social-icons";
 import 'react-social-icons/discord';
 import 'react-social-icons/twitter';

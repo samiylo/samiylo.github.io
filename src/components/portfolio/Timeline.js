@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { timelineData } from '../utils';
-import FloatingShapes from './FloatingShapes';
+import { timelineData } from '../../utils';
+import FloatingShapes from '../common/FloatingShapes';
 
 export const Timeline = () => {
   const [expandedItems, setExpandedItems] = useState(new Set());

@@ -7,7 +7,7 @@ import { SocialIcon } from "react-social-icons";
 import 'react-social-icons/discord';
 import 'react-social-icons/twitter';
 import 'react-social-icons/github';
-import logo from "../assets/img/logo.png";
+import logo from "../../assets/img/logo.png";
 
 import { HashLink } from 'react-router-hash-link';
 

@@ -2,17 +2,17 @@ import './App.css';
 import './Styletics.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { NavBar } from "./components/NavBar";
-import { Banner } from "./components/Banner";
-import { Timeline } from "./components/Timeline";
-import { Contact } from "./components/Contact";
-import { Footer } from "./components/Footer";
-import FloatingShapes from './components/FloatingShapes';
-import RouletteEmbed from './components/RouletteEmbed';
-// import Spa1Analysis from './components/hft/Spa1Analysis';
-import Spa1AnalysisMobile from './components/hft/Spa1AnalysisMobile';
-import { AgentDashboard } from './components/AgentDashboard';
-import SkateboardGame from './components/SkateboardGame';
+import { NavBar } from "./components/layout/NavBar";
+import { Banner } from "./components/layout/Banner";
+import { Timeline } from "./components/portfolio/Timeline";
+import { Contact } from "./components/portfolio/Contact";
+import { Footer } from "./components/layout/Footer";
+import FloatingShapes from './components/common/FloatingShapes';
+import RouletteEmbed from './components/features/roulette/RouletteEmbed';
+// import Spa1Analysis from './components/features/hft/Spa1Analysis';
+import Spa1AnalysisMobile from './components/features/hft/Spa1AnalysisMobile';
+import { AgentDashboard } from './components/features/agents/AgentDashboard';
+import SkateboardGame from './components/features/skateboard/SkateboardGame';
 
 function App() {
   return (

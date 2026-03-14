@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import TrackVisibility from 'react-on-screen';
-import FloatingShapes from './FloatingShapes';
+import FloatingShapes from '../common/FloatingShapes';
 
 export const Achievements = () => {
   const achievements = [
