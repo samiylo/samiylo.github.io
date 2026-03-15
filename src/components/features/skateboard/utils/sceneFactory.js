@@ -61,8 +61,19 @@ function setupLighting(scene) {
 
 /**
  * Creates the player character with skateboard
+ * @param {Object} options - Optional rotation parameters
+ * @param {number} options.rotationX - Rotation around X-axis in radians (default: 0)
+ * @param {number} options.rotationY - Rotation around Y-axis in radians (default: 0)
+ * @param {number} options.rotationZ - Rotation around Z-axis in radians (default: 0)
+ * @returns {Object} Object containing player group and skateboard mesh
  */
-export function createPlayer() {
+export function createPlayer(options = {}) {
+    const {
+        rotationX = 0,
+        rotationY = 1.5,
+        rotationZ = Math.PI / 2
+    } = options;
+
     const group = new THREE.Group();
 
     // Body
@@ -151,6 +162,11 @@ export function createPlayer() {
         wheel.castShadow = true;
         skateboard.add(wheel);
     }
+
+    // Apply rotation to the entire player group
+    group.rotation.x = rotationX;
+    group.rotation.y = rotationY;
+    group.rotation.z = rotationZ;
 
     group.position.set(0, 1, 0);
     return { player: group, skateboard };

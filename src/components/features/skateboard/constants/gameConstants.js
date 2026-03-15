@@ -30,7 +30,7 @@ export const SCORING = {
 // Road Generation Constants
 export const ROAD = {
     WIDTH: 8,
-    SEGMENT_LENGTH: 5,
+    SEGMENT_LENGTH: 8,
     INITIAL_SEGMENTS: 25,
     MAX_SEGMENTS: 100,
     OBSTACLE_SPAWN_CHANCE: 0.45,
