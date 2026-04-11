@@ -1,0 +1,26 @@
+.inspect-resume-viewer .react-pdf__Document {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 12px 32px;
+}
+
+.inspect-resume-magnifier-wrap {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
+  line-height: 0;
+}
+
+.inspect-resume-magnifier-wrap .magnifier {
+  border-radius: 2px;
+}
+
+.inspect-resume-magnifier-wrap .magnifier-image {
+  display: block;
+  vertical-align: top;
+}
+
+/* Plain react-pdf fallback (snapshot failed) */
+.inspect-resume-viewer .react-pdf__Page {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
+}

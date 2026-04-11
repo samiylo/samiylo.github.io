@@ -13,6 +13,7 @@ import RouletteEmbed from './components/features/roulette/RouletteEmbed';
 import Spa1AnalysisMobile from './components/features/hft/Spa1AnalysisMobile';
 import { AgentDashboard } from './components/features/agents/AgentDashboard';
 import SkateboardGame from './components/features/skateboard/SkateboardGame';
+import InspectResume from './components/features/resume/InspectResume';
 
 function App() {
   return (
@@ -59,6 +60,9 @@ function App() {
             
             {/* Skateboard Game route */}
             <Route path='/skateboarding' element={<SkateboardGame />} />
+            
+            {/* Inspect Resume route */}
+            <Route path='/resume' element={<InspectResume />} />
         </Routes>
       </Router>
     </div>
