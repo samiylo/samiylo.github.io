@@ -9,7 +9,6 @@ import { Contact } from "./components/portfolio/Contact";
 import { Footer } from "./components/layout/Footer";
 import FloatingShapes from './components/common/FloatingShapes';
 import RouletteEmbed from './components/features/roulette/RouletteEmbed';
-// import Spa1Analysis from './components/features/hft/Spa1Analysis';
 import Spa1AnalysisMobile from './components/features/hft/Spa1AnalysisMobile';
 import { AgentDashboard } from './components/features/agents/AgentDashboard';
 import SkateboardGame from './components/features/skateboard/SkateboardGame';
