@@ -22,6 +22,7 @@ import { ROAD } from './constants/gameConstants';
 
 const SkateboardGame = () => {
     const containerRef = useRef(null);
+    const speedLinesCanvasRef = useRef(null);
     const speedLinesRef = useRef(null);
     const isRestartingRef = useRef(false);
 
@@ -39,7 +40,7 @@ const SkateboardGame = () => {
     useCustomCursor(isMobile);
 
     // Initialize Three.js scene
-    const { gameRef, sceneState } = useThreeScene(containerRef);
+    const { gameRef } = useThreeScene(containerRef);
 
     // Jump handler
     const handleJump = useCallback(() => {
@@ -75,24 +76,14 @@ const SkateboardGame = () => {
         gameRef.current.gameActive = false;
     }, [gameRef]);
 
-    // Game loop
-    useGameLoop(
-        gameRef,
-        sceneState?.scene,
-        sceneState?.camera,
-        sceneState?.renderer,
-        sceneState?.player,
-        sceneState?.skateboard,
-        handleGameOver,
-        handleScoreUpdate,
-        handleCombo
-    );
+    // Game loop — reads scene objects from gameRef directly
+    useGameLoop(gameRef, handleGameOver, handleScoreUpdate, handleCombo);
 
-    // Initialize speed lines
+    // Initialize speed lines via ref instead of getElementById
     useEffect(() => {
-        const speedCanvas = document.getElementById('speedLines');
-        if (speedCanvas) {
-            speedLinesRef.current = initSpeedLines(speedCanvas);
+        const canvas = speedLinesCanvasRef.current;
+        if (canvas) {
+            speedLinesRef.current = initSpeedLines(canvas);
         }
 
         return () => {
@@ -132,10 +123,7 @@ const SkateboardGame = () => {
 
     // Restart game function
     const handleRestart = useCallback(() => {
-        // Prevent multiple rapid restarts
-        if (isRestartingRef.current) {
-            return;
-        }
+        if (isRestartingRef.current) return;
 
         const game = gameRef.current;
         const scene = game.scene;
@@ -143,25 +131,17 @@ const SkateboardGame = () => {
         if (!scene) return;
 
         isRestartingRef.current = true;
-
-        // Stop the game first to prevent race conditions
         game.gameActive = false;
 
         // Remove all game objects safely
         game.obstacles.forEach(obs => {
-            if (obs.mesh && obs.mesh.parent) {
-                scene.remove(obs.mesh);
-            }
+            if (obs.mesh && obs.mesh.parent) scene.remove(obs.mesh);
         });
         game.roadSegments.forEach(seg => {
-            if (seg.mesh && seg.mesh.parent) {
-                scene.remove(seg.mesh);
-            }
+            if (seg.mesh && seg.mesh.parent) scene.remove(seg.mesh);
         });
         game.trees.forEach(tree => {
-            if (tree.mesh && tree.mesh.parent) {
-                scene.remove(tree.mesh);
-            }
+            if (tree.mesh && tree.mesh.parent) scene.remove(tree.mesh);
         });
 
         // Clear arrays
@@ -186,7 +166,6 @@ const SkateboardGame = () => {
         game.combo = 0;
         game.trickRotation = 0;
 
-        // Reset keys state to prevent immediate movement
         game.keys.left = false;
         game.keys.right = false;
         game.keys.space = false;
@@ -211,11 +190,11 @@ const SkateboardGame = () => {
             );
         }
 
-        // Re-enable game after a brief delay to ensure cleanup is complete
-        setTimeout(() => {
+        // Re-enable on the next animation frame, ensuring cleanup is fully flushed
+        requestAnimationFrame(() => {
             game.gameActive = true;
             isRestartingRef.current = false;
-        }, 50);
+        });
 
         // Reset UI state
         setScore(0);
@@ -230,7 +209,7 @@ const SkateboardGame = () => {
     return (
         <div className="skateboard-game-container">
             <div id="skateboard-cursor" className="skateboard-cursor"></div>
-            <canvas id="speedLines"></canvas>
+            <canvas ref={speedLinesCanvasRef} id="speedLines"></canvas>
             <div ref={containerRef} className="game-canvas-container"></div>
 
             <GameUI score={score} speed={speed} tricks={tricks} />

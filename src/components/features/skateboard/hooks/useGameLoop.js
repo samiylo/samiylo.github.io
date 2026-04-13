@@ -4,23 +4,26 @@ import { checkCollision } from '../utils/collisionDetection';
 import { createRoadSegment, createParticle } from '../utils/sceneFactory';
 
 /**
- * Custom hook for the main game loop
+ * Custom hook for the main game loop.
+ * Reads scene objects directly from gameRef to avoid stale closure issues
+ * and prevent multiple animation loops from spawning on re-render.
  */
-export function useGameLoop(
-    gameRef,
-    scene,
-    camera,
-    renderer,
-    player,
-    skateboard,
-    onGameOver,
-    onScoreUpdate,
-    onCombo
-) {
+export function useGameLoop(gameRef, onGameOver, onScoreUpdate, onCombo) {
+    const onGameOverRef = useRef(onGameOver);
+    const onScoreUpdateRef = useRef(onScoreUpdate);
+    const onComboRef = useRef(onCombo);
+
+    // Keep callback refs current without re-running the effect
+    useEffect(() => { onGameOverRef.current = onGameOver; }, [onGameOver]);
+    useEffect(() => { onScoreUpdateRef.current = onScoreUpdate; }, [onScoreUpdate]);
+    useEffect(() => { onComboRef.current = onCombo; }, [onCombo]);
+
     useEffect(() => {
+        const game = gameRef.current;
+        const { scene, camera, renderer, player, skateboard } = game;
+
         if (!scene || !camera || !renderer || !player) return;
 
-        const game = gameRef.current;
         const obstacles = game.obstacles;
         const roadSegments = game.roadSegments;
         const trees = game.trees;
@@ -82,9 +85,8 @@ export function useGameLoop(
                         game.score += trickBonus;
 
                         const trickName = TRICK_NAMES[Math.floor(Math.random() * TRICK_NAMES.length)];
-                        onCombo(`${trickName} +${trickBonus}`);
+                        onComboRef.current(`${trickName} +${trickBonus}`);
 
-                        // Clear any existing combo timeout
                         if (game.comboTimeoutId) {
                             clearTimeout(game.comboTimeoutId);
                         }
@@ -101,10 +103,10 @@ export function useGameLoop(
                 player.position.x = game.playerX;
                 player.position.y = 1 + game.playerY;
 
-                // Animate obstacles (skip if game is not active to prevent issues during restart)
+                // Animate obstacles
                 obstacles.forEach(obstacle => {
                     if (!game.gameActive || !obstacle.mesh || !obstacle.mesh.parent) return;
-                    
+
                     obstacle.mesh.position.z += game.speed;
                     obstacle.z += game.speed;
 
@@ -116,41 +118,35 @@ export function useGameLoop(
                     if (obstacle.z > 10) {
                         scene.remove(obstacle.mesh);
                         const index = obstacles.indexOf(obstacle);
-                        if (index !== -1) {
-                            obstacles.splice(index, 1);
-                        }
+                        if (index !== -1) obstacles.splice(index, 1);
                     }
                 });
 
-                // Animate road segments (skip if game is not active)
+                // Animate road segments
                 roadSegments.forEach(segment => {
                     if (!game.gameActive || !segment.mesh || !segment.mesh.parent) return;
-                    
+
                     segment.mesh.position.z += game.speed;
                     segment.z += game.speed;
 
                     if (segment.z > 10) {
                         scene.remove(segment.mesh);
                         const index = roadSegments.indexOf(segment);
-                        if (index !== -1) {
-                            roadSegments.splice(index, 1);
-                        }
+                        if (index !== -1) roadSegments.splice(index, 1);
                     }
                 });
 
-                // Animate trees (skip if game is not active)
+                // Animate trees
                 trees.forEach(tree => {
                     if (!game.gameActive || !tree.mesh || !tree.mesh.parent) return;
-                    
+
                     tree.mesh.position.z += game.speed;
                     tree.z += game.speed;
 
                     if (tree.z > 10) {
                         scene.remove(tree.mesh);
                         const index = trees.indexOf(tree);
-                        if (index !== -1) {
-                            trees.splice(index, 1);
-                        }
+                        if (index !== -1) trees.splice(index, 1);
                     }
                 });
 
@@ -169,15 +165,16 @@ export function useGameLoop(
 
                 // Generate new road segments
                 if (roadSegments.length < ROAD.MAX_SEGMENTS) {
-                    const lastZ = roadSegments.length > 0
-                        ? Math.min(...roadSegments.map(s => s.z))
-                        : 0;
+                    let lastZ = 0;
+                    for (let i = 0; i < roadSegments.length; i++) {
+                        if (roadSegments[i].z < lastZ) lastZ = roadSegments[i].z;
+                    }
                     createRoadSegment(lastZ - ROAD.SEGMENT_LENGTH, scene, obstacles, roadSegments, trees);
                 }
 
                 // Update score
                 game.score += game.speed * SCORING.BASE_MULTIPLIER;
-                onScoreUpdate({
+                onScoreUpdateRef.current({
                     score: Math.floor(game.score),
                     speed: Math.floor(game.speed * 100),
                     tricks: game.trickCount
@@ -185,7 +182,7 @@ export function useGameLoop(
 
                 // Check collision
                 if (checkCollision(player, obstacles) && !game.isJumping) {
-                    onGameOver(Math.floor(game.score));
+                    onGameOverRef.current(Math.floor(game.score));
                 }
             }
 
@@ -204,15 +201,5 @@ export function useGameLoop(
                 game.comboTimeoutId = null;
             }
         };
-    }, [
-        gameRef,
-        scene,
-        camera,
-        renderer,
-        player,
-        skateboard,
-        onGameOver,
-        onScoreUpdate,
-        onCombo
-    ]);
+    }, [gameRef]); // gameRef is stable — scene objects read directly from it
 }
