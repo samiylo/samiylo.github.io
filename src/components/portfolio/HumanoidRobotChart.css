@@ -1,0 +1,273 @@
+.humanoid-chart {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  padding: 28px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  margin-top: 28px;
+}
+
+.humanoid-chart__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.humanoid-chart__header h3 {
+  margin: 0 0 8px;
+  font-size: 1.75rem;
+  font-weight: 700;
+  background: linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.humanoid-chart__header p {
+  margin: 0;
+  color: #B8B8B8;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.humanoid-chart__tabs {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.humanoid-chart__tabs button,
+.humanoid-actions button {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.04);
+  color: #ddd;
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.humanoid-chart__tabs button:hover,
+.humanoid-actions button:hover {
+  border-color: rgba(170, 54, 124, 0.5);
+  color: #fff;
+}
+
+.humanoid-chart__tabs button.active {
+  background: linear-gradient(90.21deg, rgba(170, 54, 124, 0.35), rgba(74, 47, 189, 0.35));
+  border-color: rgba(170, 54, 124, 0.6);
+  color: #fff;
+}
+
+.humanoid-chart__body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(260px, 0.8fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.humanoid-chart__canvas-wrap {
+  background: rgba(0, 0, 0, 0.22);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 12px;
+}
+
+.humanoid-chart__svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  touch-action: none;
+  user-select: none;
+}
+
+.humanoid-ground {
+  stroke: rgba(255, 255, 255, 0.25);
+  stroke-width: 2;
+}
+
+.humanoid-ground-label {
+  fill: #9ca3af;
+  font-size: 12px;
+}
+
+.humanoid-torso-spine {
+  stroke: rgba(255, 255, 255, 0.15);
+  stroke-width: 2;
+}
+
+.humanoid-torso {
+  fill: url(#humanoidTorso);
+  stroke: rgba(255, 255, 255, 0.2);
+  stroke-width: 1.5;
+}
+
+.humanoid-panel-line {
+  stroke: rgba(255, 255, 255, 0.18);
+  stroke-width: 1.5;
+}
+
+.humanoid-limb {
+  stroke: url(#humanoidLimb);
+  stroke-linecap: round;
+}
+
+.humanoid-limb--upper {
+  stroke-width: 9;
+}
+
+.humanoid-limb--lower {
+  stroke-width: 8;
+}
+
+.humanoid-chain--leg .humanoid-limb {
+  stroke: #818cf8;
+}
+
+.humanoid-joint {
+  fill: #1f2937;
+  stroke: #fff;
+  stroke-width: 1.5;
+}
+
+.humanoid-joint--pelvis {
+  fill: #4A2FBD;
+}
+
+.humanoid-head__shell {
+  fill: rgba(15, 23, 42, 0.92);
+  stroke: rgba(192, 132, 252, 0.55);
+  stroke-width: 2;
+}
+
+.humanoid-head__visor {
+  fill: rgba(96, 165, 250, 0.25);
+  stroke: rgba(96, 165, 250, 0.5);
+  stroke-width: 1;
+}
+
+.humanoid-head__eye {
+  fill: #34d399;
+}
+
+.humanoid-hand {
+  fill: #AA367C;
+  stroke: #fff;
+  stroke-width: 1.5;
+}
+
+.humanoid-foot {
+  fill: #312e81;
+  stroke: rgba(255, 255, 255, 0.25);
+  stroke-width: 1;
+}
+
+.humanoid-target__hit {
+  fill: transparent;
+  cursor: grab;
+}
+
+.humanoid-target__hit:active {
+  cursor: grabbing;
+}
+
+.humanoid-target__ring {
+  fill: rgba(244, 114, 182, 0.12);
+  stroke: rgba(244, 114, 182, 0.9);
+  stroke-width: 2;
+  stroke-dasharray: 6 4;
+  pointer-events: none;
+}
+
+.humanoid-target__cross {
+  stroke: #f472b6;
+  stroke-width: 2;
+  pointer-events: none;
+}
+
+.humanoid-label {
+  fill: #B8B8B8;
+  font-size: 12px;
+}
+
+.humanoid-chart__panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.humanoid-joint-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.humanoid-joint-chip {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 10px 12px;
+}
+
+.humanoid-joint-chip span {
+  display: block;
+  color: #9ca3af;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 4px;
+}
+
+.humanoid-joint-chip code {
+  color: #f3f4f6;
+  font-size: 0.82rem;
+}
+
+.humanoid-sliders {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 220px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.humanoid-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.humanoid-actions button {
+  flex: 1;
+}
+
+@media (max-width: 992px) {
+  .humanoid-chart__body {
+    grid-template-columns: 1fr;
+  }
+
+  .humanoid-chart__header {
+    flex-direction: column;
+  }
+
+  .humanoid-chart__tabs {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 576px) {
+  .humanoid-chart {
+    padding: 18px;
+    border-radius: 18px;
+  }
+
+  .humanoid-chart__header h3 {
+    font-size: 1.4rem;
+  }
+}

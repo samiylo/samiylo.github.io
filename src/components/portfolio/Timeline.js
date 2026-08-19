@@ -4,6 +4,7 @@ import { CalculusChart } from './CalculusChart';
 import { TaylorChart } from './TaylorChart';
 import { PIDChart } from './PIDChart';
 import { RoboticArmChart } from './RoboticArmChart';
+import { HumanoidRobotChart } from './HumanoidRobotChart';
 
 export const Timeline = () => {
   return (
@@ -28,6 +29,7 @@ export const Timeline = () => {
             <TaylorChart />
             <PIDChart />
             <RoboticArmChart />
+            <HumanoidRobotChart />
           </div>
         </div>
       </div>
