@@ -1,0 +1,271 @@
+.arm-chart {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  padding: 28px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  margin-top: 28px;
+}
+
+.arm-chart__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.arm-chart__header h3 {
+  margin: 0 0 8px;
+  font-size: 1.75rem;
+  font-weight: 700;
+  background: linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.arm-chart__header p {
+  margin: 0;
+  color: #B8B8B8;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.arm-chart__tabs {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
+.arm-chart__tabs button,
+.arm-actions button {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.04);
+  color: #ddd;
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.arm-chart__tabs button:hover,
+.arm-actions button:hover {
+  border-color: rgba(170, 54, 124, 0.5);
+  color: #fff;
+}
+
+.arm-chart__body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(260px, 0.8fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.arm-chart__visual {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.arm-chart__canvas-wrap {
+  background: rgba(0, 0, 0, 0.22);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 12px;
+}
+
+.arm-chart__svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  touch-action: none;
+  user-select: none;
+}
+
+.arm-workspace {
+  pointer-events: none;
+}
+
+.arm-workspace-ring {
+  fill: none;
+  stroke-width: 1.5;
+  stroke-dasharray: 6 5;
+  pointer-events: none;
+}
+
+.arm-workspace-ring--outer {
+  stroke: rgba(96, 165, 250, 0.35);
+}
+
+.arm-workspace-ring--inner {
+  stroke: rgba(96, 165, 250, 0.2);
+}
+
+.arm-link {
+  stroke-linecap: round;
+}
+
+.arm-link--primary {
+  stroke-width: 10;
+}
+
+.arm-link--secondary {
+  stroke: #c084fc;
+  stroke-width: 8;
+}
+
+.arm-link--ghost {
+  stroke: rgba(255, 255, 255, 0.22);
+  stroke-width: 5;
+  stroke-dasharray: 8 6;
+}
+
+.arm-joint {
+  stroke: #fff;
+  stroke-width: 2;
+}
+
+.arm-joint--base {
+  fill: #1f2937;
+}
+
+.arm-joint--elbow {
+  fill: #4A2FBD;
+}
+
+.arm-joint--ee {
+  fill: #AA367C;
+}
+
+.arm-error-line {
+  stroke: rgba(251, 191, 36, 0.85);
+  stroke-width: 2;
+  stroke-dasharray: 5 4;
+}
+
+.arm-target__hit {
+  fill: transparent;
+  cursor: grab;
+}
+
+.arm-target__hit:active {
+  cursor: grabbing;
+}
+
+.arm-target__ring {
+  fill: rgba(244, 114, 182, 0.12);
+  stroke: rgba(244, 114, 182, 0.9);
+  stroke-width: 2;
+  stroke-dasharray: 6 4;
+  pointer-events: none;
+}
+
+.arm-target__cross {
+  stroke: #f472b6;
+  stroke-width: 2;
+  pointer-events: none;
+}
+
+.arm-label {
+  fill: #B8B8B8;
+  font-size: 12px;
+}
+
+.arm-label--ee {
+  fill: #e9d5ff;
+}
+
+.arm-warning {
+  fill: #fbbf24;
+  font-size: 13px;
+}
+
+.arm-err-line {
+  fill: none;
+  stroke: #34d399;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.arm-chart__panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.arm-joint-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.arm-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.arm-bar {
+  display: grid;
+  grid-template-columns: 24px 1fr auto;
+  gap: 8px;
+  align-items: center;
+  color: #ddd;
+  font-size: 0.82rem;
+}
+
+.arm-bar__track {
+  height: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.arm-bar__fill {
+  height: 100%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, #AA367C, #4A2FBD);
+}
+
+.arm-toggles,
+.arm-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.arm-toggles label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #ddd;
+  font-size: 0.9rem;
+}
+
+.arm-actions button {
+  flex: 1;
+}
+
+@media (max-width: 992px) {
+  .arm-chart__body {
+    grid-template-columns: 1fr;
+  }
+
+  .arm-chart__header {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 576px) {
+  .arm-chart {
+    padding: 18px;
+    border-radius: 18px;
+  }
+
+  .arm-chart__header h3 {
+    font-size: 1.4rem;
+  }
+}

@@ -1,7 +1,9 @@
 import React from 'react';
 import FloatingShapes from '../common/FloatingShapes';
 import { CalculusChart } from './CalculusChart';
+import { TaylorChart } from './TaylorChart';
 import { PIDChart } from './PIDChart';
+import { RoboticArmChart } from './RoboticArmChart';
 
 export const Timeline = () => {
   return (
@@ -23,7 +25,9 @@ export const Timeline = () => {
         <div className="row">
           <div className="col-12">
             <CalculusChart />
+            <TaylorChart />
             <PIDChart />
+            <RoboticArmChart />
           </div>
         </div>
       </div>
