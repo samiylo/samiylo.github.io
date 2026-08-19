@@ -1,6 +1,7 @@
 import React from 'react';
 import FloatingShapes from '../common/FloatingShapes';
 import { CalculusChart } from './CalculusChart';
+import { PIDChart } from './PIDChart';
 
 export const Timeline = () => {
   return (
@@ -22,6 +23,7 @@ export const Timeline = () => {
         <div className="row">
           <div className="col-12">
             <CalculusChart />
+            <PIDChart />
           </div>
         </div>
       </div>

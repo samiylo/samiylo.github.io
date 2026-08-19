@@ -167,7 +167,7 @@ export const CalculusChart = () => {
     <div className="calculus-chart">
       <div className="calculus-chart__header">
         <div>
-          <h3>Calculus Explorer</h3>
+          <h3>Derivitives and Integrals Lab</h3>
           <p>Drag the points to see derivatives and integrals update in real time.</p>
         </div>
         <div className="calculus-chart__tabs" role="tablist" aria-label="Calculus mode">
