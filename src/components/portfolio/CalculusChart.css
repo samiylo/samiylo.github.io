@@ -1,0 +1,261 @@
+.calculus-chart {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  padding: 28px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.calculus-chart__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.calculus-chart__header h3 {
+  margin: 0 0 8px;
+  font-size: 1.75rem;
+  font-weight: 700;
+  background: linear-gradient(90.21deg, #AA367C -5.91%, #4A2FBD 111.58%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.calculus-chart__header p {
+  margin: 0;
+  color: #B8B8B8;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.calculus-chart__tabs {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.calculus-chart__tabs button {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.04);
+  color: #ddd;
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.calculus-chart__tabs button:hover {
+  border-color: rgba(170, 54, 124, 0.5);
+  color: #fff;
+}
+
+.calculus-chart__tabs button.active {
+  background: linear-gradient(90.21deg, rgba(170, 54, 124, 0.35), rgba(74, 47, 189, 0.35));
+  border-color: rgba(170, 54, 124, 0.6);
+  color: #fff;
+}
+
+.calculus-chart__body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(260px, 0.8fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.calculus-chart__canvas-wrap {
+  background: rgba(0, 0, 0, 0.22);
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 12px;
+}
+
+.calculus-chart__svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  touch-action: none;
+  user-select: none;
+}
+
+.grid-line {
+  stroke: rgba(255, 255, 255, 0.08);
+  stroke-width: 1;
+}
+
+.axis-line {
+  stroke: rgba(255, 255, 255, 0.35);
+  stroke-width: 1.5;
+}
+
+.axis-label,
+.axis-title,
+.curve-label,
+.point-label {
+  fill: #B8B8B8;
+  font-size: 12px;
+}
+
+.axis-title {
+  fill: #ddd;
+  font-size: 13px;
+}
+
+.curve-label {
+  fill: #e6d4ff;
+  font-size: 13px;
+}
+
+.curve-line {
+  fill: none;
+  stroke: #c084fc;
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.secant-line {
+  stroke: #f472b6;
+  stroke-width: 2.5;
+}
+
+.tangent-line {
+  stroke: #60a5fa;
+  stroke-width: 2.5;
+}
+
+.delta-bridge {
+  stroke: rgba(255, 255, 255, 0.45);
+  stroke-width: 1.5;
+}
+
+.bound-line {
+  stroke: rgba(96, 165, 250, 0.7);
+  stroke-width: 1.5;
+  stroke-dasharray: 5 4;
+}
+
+.area-fill {
+  stroke: none;
+}
+
+.riemann-rect {
+  fill: rgba(170, 54, 124, 0.18);
+  stroke: rgba(170, 54, 124, 0.45);
+  stroke-width: 1;
+}
+
+.handle {
+  cursor: grab;
+  stroke: #fff;
+  stroke-width: 2;
+  transition: r 0.15s ease;
+}
+
+.handle:active {
+  cursor: grabbing;
+}
+
+.handle--primary {
+  fill: #AA367C;
+}
+
+.handle--secondary {
+  fill: #4A2FBD;
+}
+
+.handle--a {
+  fill: #60a5fa;
+}
+
+.handle--b {
+  fill: #f472b6;
+}
+
+.calculus-chart__panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.calc-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 14px 16px;
+}
+
+.calc-card--highlight {
+  border-color: rgba(170, 54, 124, 0.45);
+  background: linear-gradient(135deg, rgba(170, 54, 124, 0.12), rgba(74, 47, 189, 0.12));
+}
+
+.calc-card__label {
+  display: block;
+  color: #9ca3af;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.calc-card code {
+  display: block;
+  color: #f3f4f6;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  white-space: normal;
+  word-break: break-word;
+}
+
+.calc-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #ddd;
+  font-size: 0.9rem;
+}
+
+.calc-slider input[type='range'] {
+  width: 100%;
+  accent-color: #AA367C;
+}
+
+.calc-note {
+  margin: 4px 0 0;
+  color: #9ca3af;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 992px) {
+  .calculus-chart__body {
+    grid-template-columns: 1fr;
+  }
+
+  .calculus-chart__header {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 576px) {
+  .calculus-chart {
+    padding: 18px;
+    border-radius: 18px;
+  }
+
+  .calculus-chart__header h3 {
+    font-size: 1.4rem;
+  }
+
+  .calculus-chart__tabs {
+    width: 100%;
+  }
+
+  .calculus-chart__tabs button {
+    flex: 1;
+  }
+}
