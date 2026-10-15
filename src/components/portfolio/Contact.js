@@ -27,7 +27,7 @@ export const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setButtonText("Sending...");
-    setShowNotification(false);
+    setShowNotification(true);
 
     try {
       // const response = await emailjs.send(
