@@ -29,7 +29,7 @@ export const Timeline = () => {
             <TaylorChart />
             <PIDChart />
             <RoboticArmChart />
-            <HumanoidRobotChart />
+            {/* <HumanoidRobotChart /> */}
           </div>
         </div>
       </div>

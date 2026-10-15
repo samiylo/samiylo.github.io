@@ -6,6 +6,8 @@ import { NavBar } from "./components/layout/NavBar";
 import { Banner } from "./components/layout/Banner";
 import { Timeline } from "./components/portfolio/Timeline";
 import { Contact } from "./components/portfolio/Contact";
+import { RoboticArmChart } from './components/portfolio/RoboticArmChart';
+import { HumanoidRobotChart } from './components/portfolio/HumanoidRobotChart';
 import { Footer } from "./components/layout/Footer";
 import FloatingShapes from './components/common/FloatingShapes';
 import RouletteEmbed from './components/features/roulette/RouletteEmbed';
@@ -65,6 +67,9 @@ function App() {
 
             {/* Calculus Chart route */}
             <Route path='/calculus' element={<Timeline />} /> 
+
+            {/* Robots Chart route */}
+            <Route path='/robots' element={<><RoboticArmChart /> <HumanoidRobotChart /></>} /> 
         </Routes>
       </Router>
     </div>
