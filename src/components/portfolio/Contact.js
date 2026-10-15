@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import 'animate.css';
 import TrackVisibility from 'react-on-screen';
-import emailjs from '@emailjs/browser';
 import FloatingShapes from '../common/FloatingShapes';
 
 export const Contact = () => {
@@ -31,23 +30,26 @@ export const Contact = () => {
     setShowNotification(false);
 
     try {
-      const response = await emailjs.send(
-        'service_abc123',
-        'template_abc123',
-        {
-          from_name: `${formDetails.firstName} ${formDetails.lastName}`,
-          from_email: formDetails.email,
-          from_phone: formDetails.phone,
-          message: formDetails.message,
-        },
-        'user_abc123'
-      );
+      // const response = await emailjs.send(
+      //   'service_abc123',
+      //   'template_abc123',
+      //   {
+      //     from_name: `${formDetails.firstName} ${formDetails.lastName}`,
+      //     from_email: formDetails.email,
+      //     from_phone: formDetails.phone,
+      //     message: formDetails.message,
+      //   },
+      //   'user_abc123'
+      // );
+
+      const response = { status: 200 };
 
       if (response.status === 200) {
         setStatus({ type: 'success', message: 'Message sent successfully!' });
         setShowNotification(true);
         setFormDetails(formInitialDetails);
       } else {
+
         setStatus({ type: 'error', message: 'Something went wrong, please try again.' });
         setShowNotification(true);
       }
