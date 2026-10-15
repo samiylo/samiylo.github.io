@@ -37,7 +37,7 @@ function App() {
                 <>
                 <NavBar />
                 <Banner />  
-                <Timeline />         
+                {/* <Timeline />          */}
                 <Contact />
                 <Footer />
                 </>
@@ -62,6 +62,9 @@ function App() {
             
             {/* Inspect Resume route */}
             <Route path='/resume' element={<InspectResume />} />
+
+            {/* Calculus Chart route */}
+            <Route path='/calculus' element={<Timeline />} /> 
         </Routes>
       </Router>
     </div>
