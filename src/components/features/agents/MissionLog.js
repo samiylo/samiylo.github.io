@@ -2,6 +2,42 @@ import { useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import TrackVisibility from 'react-on-screen';
 
+export const DEFAULT_MISSIONS = [
+  {
+    id: 'M-001',
+    title: 'Data Extraction Protocol',
+    statement: 'Extract and analyze critical data points from designated sources while maintaining operational security.',
+    acceptanceCriteria: [
+      'All target data points successfully extracted',
+      'Data integrity verified with 99.9% accuracy',
+      'Security protocols maintained throughout operation',
+      'Report generated and submitted within 24 hours'
+    ]
+  },
+  {
+    id: 'M-002',
+    title: 'System Integration Task',
+    statement: 'Integrate new communication protocols into existing infrastructure without service interruption.',
+    acceptanceCriteria: [
+      'Integration completed with zero downtime',
+      'All systems tested and verified operational',
+      'Documentation updated and reviewed',
+      'Team briefed on new protocols'
+    ]
+  },
+  {
+    id: 'M-003',
+    title: 'Security Audit Mission',
+    statement: 'Conduct comprehensive security audit of all active systems and identify potential vulnerabilities.',
+    acceptanceCriteria: [
+      'Complete audit of all systems performed',
+      'All vulnerabilities documented and prioritized',
+      'Remediation plan created and approved',
+      'Follow-up audit scheduled'
+    ]
+  }
+];
+
 export const MissionLog = ({ missions = [] }) => {
   const [expandedMission, setExpandedMission] = useState(null);
 
@@ -9,44 +45,7 @@ export const MissionLog = ({ missions = [] }) => {
     setExpandedMission(expandedMission === missionId ? null : missionId);
   };
 
-  // Default missions if none provided
-  const defaultMissions = [
-    {
-      id: 'M-001',
-      title: 'Data Extraction Protocol',
-      statement: 'Extract and analyze critical data points from designated sources while maintaining operational security.',
-      acceptanceCriteria: [
-        'All target data points successfully extracted',
-        'Data integrity verified with 99.9% accuracy',
-        'Security protocols maintained throughout operation',
-        'Report generated and submitted within 24 hours'
-      ]
-    },
-    {
-      id: 'M-002',
-      title: 'System Integration Task',
-      statement: 'Integrate new communication protocols into existing infrastructure without service interruption.',
-      acceptanceCriteria: [
-        'Integration completed with zero downtime',
-        'All systems tested and verified operational',
-        'Documentation updated and reviewed',
-        'Team briefed on new protocols'
-      ]
-    },
-    {
-      id: 'M-003',
-      title: 'Security Audit Mission',
-      statement: 'Conduct comprehensive security audit of all active systems and identify potential vulnerabilities.',
-      acceptanceCriteria: [
-        'Complete audit of all systems performed',
-        'All vulnerabilities documented and prioritized',
-        'Remediation plan created and approved',
-        'Follow-up audit scheduled'
-      ]
-    }
-  ];
-
-  const missionsToDisplay = missions.length > 0 ? missions : defaultMissions;
+  const missionsToDisplay = missions.length > 0 ? missions : DEFAULT_MISSIONS;
 
   return (
     <div className="mission-log">

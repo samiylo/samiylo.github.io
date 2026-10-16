@@ -6,6 +6,7 @@ import TrackVisibility from 'react-on-screen';
 import FloatingShapes from '../../common/FloatingShapes';
 import { agentConfig } from '../../../config/agentConfig';
 import { MissionLog } from './MissionLog';
+import { DeadDropTerminal } from './DeadDropTerminal';
 
 const formatUtcClock = (date) => {
   const pad = (n) => String(n).padStart(2, '0');
@@ -144,7 +145,7 @@ export const AgentDashboard = () => {
                           <h1 className="agent-command-title">
                             <span className="agent-command-prefix">OPS</span>
                             <span className="agent-command-sep" aria-hidden="true">//</span>
-                            <span>AGENT DASHBOARD</span>
+                            <span>DASHBOARD</span>
                           </h1>
                           <span className="agent-secure-link">
                             <span className="agent-secure-link-dot" aria-hidden="true" />
@@ -173,10 +174,14 @@ export const AgentDashboard = () => {
                         <span>CHANNEL: ENCRYPTED</span>
                       </div>
                     </header>
+                    <DeadDropTerminal sessionId={sessionId} modules={AGENT_MODULES} />
                     
                     <div className="agent-dashboard-content">
-                      <h2>Welcome, Agent</h2>
-                      <p>You have successfully accessed the agent dashboard.</p>
+                      <h2>Welcome, <span className="" >
+                            {sessionId}
+                          </span> </h2>
+                      <p></p>
+                      
 
                       <div className="agent-modules" aria-label="Mission modules">
                         {AGENT_MODULES.map((module) => (

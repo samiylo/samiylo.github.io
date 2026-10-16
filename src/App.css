@@ -3173,6 +3173,126 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   margin-bottom: 8px;
 }
 
+/* === Dead-Drop Terminal === */
+.dead-drop {
+  margin-top: 32px;
+  position: relative;
+  z-index: 5;
+}
+
+.dead-drop-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.dead-drop-title {
+  font-family: var(--ops-font-display);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ops-accent);
+}
+
+.dead-drop-badge {
+  font-family: var(--ops-font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ops-text-muted);
+  border: 1px solid var(--ops-border);
+  padding: 3px 8px;
+  border-radius: 2px;
+}
+
+.dead-drop-shell {
+  background: rgba(0, 0, 0, 0.55);
+  border: 1px solid var(--ops-border);
+  border-radius: var(--ops-radius);
+  overflow: hidden;
+  cursor: text;
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.35);
+}
+
+.dead-drop-output {
+  height: 200px;
+  overflow-y: auto;
+  padding: 14px 16px 8px;
+  font-family: var(--ops-font-mono);
+  font-size: 12px;
+  line-height: 1.55;
+  scrollbar-width: thin;
+  scrollbar-color: var(--ops-border) transparent;
+}
+
+.dead-drop-line {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.dead-drop-line--system {
+  color: var(--ops-accent);
+  letter-spacing: 0.08em;
+}
+
+.dead-drop-line--input {
+  color: var(--ops-text);
+  margin-top: 6px;
+}
+
+.dead-drop-line--output {
+  color: var(--ops-text-muted);
+}
+
+.dead-drop-line--accent {
+  color: var(--ops-accent);
+}
+
+.dead-drop-line--muted {
+  color: rgba(122, 154, 134, 0.75);
+}
+
+.dead-drop-line--error {
+  color: var(--ops-danger);
+}
+
+.dead-drop-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px 12px;
+  border-top: 1px solid var(--ops-border);
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.dead-drop-prompt {
+  font-family: var(--ops-font-mono);
+  color: var(--ops-accent);
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.dead-drop-input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--ops-text);
+  font-family: var(--ops-font-mono);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  caret-color: var(--ops-accent);
+}
+
+.dead-drop-input::placeholder {
+  color: rgba(122, 154, 134, 0.55);
+  letter-spacing: 0.06em;
+}
+
 /* === Mission Log Styles === */
 .mission-log {
   margin-top: 40px;
