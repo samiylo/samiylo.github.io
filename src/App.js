@@ -17,6 +17,7 @@ import { AgentDashboard } from './components/features/agents/AgentDashboard';
 import SkateboardGame from './components/features/skateboard/SkateboardGame';
 import InspectResume from './components/features/resume/InspectResume';
 import Algorythms from './components/features/algorithms/Algorythms';
+import Vocabulary from './components/features/vocabulary/Vocabulary';
 
 function App() {
   return (
@@ -69,6 +70,9 @@ function App() {
 
             {/* Algorithms & Data Structures route */}
             <Route path='/algorythms' element={<Algorythms />} />
+
+            {/* Calculus & Physics Vocabulary route */}
+            <Route path='/vocabulary' element={<Vocabulary />} />
 
             {/* Calculus Chart route */}
             <Route path='/calculus' element={<Timeline />} /> 

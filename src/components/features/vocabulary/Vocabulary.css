@@ -1,0 +1,31 @@
+.vocab-nav-symbol {
+  display: inline-block;
+  min-width: 2.2em;
+  margin-right: 8px;
+  color: var(--alg-accent);
+  font-family: source-code-pro, Menlo, Monaco, Consolas, monospace;
+  font-size: 13px;
+  opacity: 0.95;
+}
+
+.algorythms-nav-item.active .vocab-nav-symbol {
+  color: inherit;
+}
+
+.vocab-symbol-hero {
+  font-size: clamp(36px, 6vw, 56px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+  color: var(--alg-accent);
+  margin-bottom: 12px;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Centra', monospace;
+  user-select: text;
+}
+
+.vocab-copy-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
