@@ -4,7 +4,7 @@ import { DEFAULT_MISSIONS } from './MissionLog';
 
 const BOOT_LINES = [
   { type: 'system', text: 'DEAD-DROP // CHANNEL OPEN' },
-  { type: 'muted', text: 'Type help for available directives.' },
+  { type: 'muted', text: '.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:.:' },
 ];
 
 const CLEARANCE_COPY = [
@@ -205,15 +205,15 @@ export const DeadDropTerminal = ({ sessionId = '—', modules = [] }) => {
   return (
     <div className="dead-drop">
       <div className="dead-drop-header">
-        <span className="dead-drop-title">DEAD-DROP TERMINAL</span>
-        <span className="dead-drop-badge">DROP // LOCAL</span>
+        <span className="dead-drop-title">TERMINAL</span>
+        <span className="dead-drop-badge">LOCAL</span>
       </div>
 
       <div
         className="dead-drop-shell"
         onClick={() => inputRef.current?.focus()}
         role="application"
-        aria-label="Dead-drop terminal"
+        aria-label="terminal"
       >
         <div className="dead-drop-output" ref={outputRef} aria-live="polite">
           {lines.map((line, index) => (

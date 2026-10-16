@@ -8,6 +8,7 @@ import { agentConfig } from '../../../config/agentConfig';
 import { MissionLog } from './MissionLog';
 import { DeadDropTerminal } from './DeadDropTerminal';
 import { InterceptFeed } from './InterceptFeed';
+import { BootSequence } from './BootSequence';
 
 const formatUtcClock = (date) => {
   const pad = (n) => String(n).padStart(2, '0');
@@ -60,6 +61,7 @@ export const AgentDashboard = () => {
   const [error, setError] = useState('');
   const [utcNow, setUtcNow] = useState(() => new Date());
   const [sessionId, setSessionId] = useState('');
+  const [bootComplete, setBootComplete] = useState(false);
   const navigate = useNavigate();
   const utcClock = formatUtcClock(utcNow);
 
@@ -72,6 +74,7 @@ export const AgentDashboard = () => {
     if (trimmedCode === agentConfig.accessCode) {
       const newSessionId = createSessionId();
       setSessionId(newSessionId);
+      setBootComplete(false);
       setIsAuthenticated(true);
       sessionStorage.setItem('agentAuthenticated', 'true');
       sessionStorage.setItem('agentSessionId', newSessionId);
@@ -87,6 +90,7 @@ export const AgentDashboard = () => {
       e.stopPropagation();
     }
     setIsAuthenticated(false);
+    setBootComplete(false);
     setSessionId('');
     sessionStorage.removeItem('agentAuthenticated');
     sessionStorage.removeItem('agentSessionId');
@@ -111,12 +115,12 @@ export const AgentDashboard = () => {
   }, []);
 
   useEffect(() => {
-    if (!isAuthenticated) return undefined;
+    if (!isAuthenticated || !bootComplete) return undefined;
     const tick = () => setUtcNow(new Date());
     tick();
     const intervalId = setInterval(tick, 1000);
     return () => clearInterval(intervalId);
-  }, [isAuthenticated]);
+  }, [isAuthenticated, bootComplete]);
 
   if (isAuthenticated) {
     return (
@@ -140,100 +144,105 @@ export const AgentDashboard = () => {
             className="agent-dashboard-floating-shapes"
           />
         </div>
-        
-        <Container fluid className="agent-console">
-          <TrackVisibility>
-            {({ isVisible }) =>
-              <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
-                <header className="agent-command-strip agent-command-strip--sticky">
-                  <div className="agent-command-strip-main">
-                    <div className="agent-command-strip-left">
-                      <h1 className="agent-command-title">
-                        <span className="agent-command-prefix">OPS</span>
-                        <span className="agent-command-sep" aria-hidden="true">//</span>
-                        <span>AGENT DASHBOARD</span>
-                      </h1>
-                      <span className="agent-secure-link">
-                        <span className="agent-secure-link-dot" aria-hidden="true" />
-                        SECURE LINK
-                      </span>
-                    </div>
-                    <div className="agent-command-strip-right">
-                      <time className="agent-command-meta agent-command-clock" dateTime={utcNow.toISOString()}>
-                        {utcClock}
-                      </time>
-                      <span className="agent-command-meta agent-command-session" title="Session ID">
-                        {sessionId}
-                      </span>
-                      <button
-                        type="button"
-                        onClick={handleLogout}
-                        className="agent-logout-btn"
-                      >
-                        Terminate Session
-                      </button>
-                    </div>
-                  </div>
-                  <div className="agent-status-bar" role="status" aria-live="polite">
-                    <span>ENCRYPTION: ACTIVE</span>
-                    <span className="agent-status-sep" aria-hidden="true">·</span>
-                    <span>CHANNEL: ENCRYPTED</span>
-                    <span className="agent-status-sep" aria-hidden="true">·</span>
-                    <span>REF: OPS-7A</span>
-                  </div>
-                </header>
-                <DeadDropTerminal sessionId={sessionId} modules={AGENT_MODULES} />
 
-                <div className="agent-ops-grid">
-                  <div className="agent-ops-col agent-ops-col--left">
-                    <div className="agent-panel">
-                      <div className="agent-panel-header">
-                        <h2>Mission Modules</h2>
-                        <p>Clearance-gated terminals · select to deploy</p>
+        {!bootComplete ? (
+          <BootSequence
+            sessionId={sessionId}
+            onComplete={() => setBootComplete(true)}
+          />
+        ) : (
+          <Container fluid className="agent-console">
+            <TrackVisibility>
+              {({ isVisible }) =>
+                <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
+                  <header className="agent-command-strip agent-command-strip--sticky">
+                    <div className="agent-command-strip-main">
+                      <div className="agent-command-strip-left">
+                        <h1 className="agent-command-title">
+                          <span className="agent-command-prefix">OPS</span>
+                          <span className="agent-command-sep" aria-hidden="true">//</span>
+                          <span>AGENT DASHBOARD</span>
+                        </h1>
+                        <span className="agent-secure-link">
+                          <span className="agent-secure-link-dot" aria-hidden="true" />
+                          SECURE LINK
+                        </span>
                       </div>
-                      <div className="agent-modules" aria-label="Mission modules">
-                        {AGENT_MODULES.map((module) => (
-                          <button
-                            key={module.id}
-                            type="button"
-                            onClick={() => navigate(module.path)}
-                            className={`agent-module agent-module--${module.status.toLowerCase()}`}
-                          >
-                            <div className="agent-module-top">
-                              <span
-                                className={`agent-module-clearance agent-module-clearance--${module.clearance.toLowerCase()}`}
-                                title={`Clearance ${module.clearance}`}
-                              >
-                                {module.clearance}
-                              </span>
-                              <span
-                                className={`agent-module-status agent-module-status--${module.status.toLowerCase()}`}
-                              >
-                                <span className="agent-module-status-dot" aria-hidden="true" />
-                                {module.status}
-                              </span>
-                            </div>
-                            <span className="agent-module-codename">{module.codename}</span>
-                            <span className="agent-module-briefing">{module.briefing}</span>
-                          </button>
-                        ))}
+                      <div className="agent-command-strip-right">
+                        <time className="agent-command-meta agent-command-clock" dateTime={utcNow.toISOString()}>
+                          {utcClock}
+                        </time>
+                        <span className="agent-command-meta agent-command-session" title="Session ID">
+                          {sessionId}
+                        </span>
+                        <button
+                          type="button"
+                          onClick={handleLogout}
+                          className="agent-logout-btn"
+                        >
+                          Terminate Session
+                        </button>
                       </div>
                     </div>
-
-                    
-                  </div>
-
-                  <div className="agent-ops-col agent-ops-col--right">
-                    <div className="agent-panel agent-panel--missions">
-                      <MissionLog />
+                    <div className="agent-status-bar" role="status" aria-live="polite">
+                      <span>ENCRYPTION: ACTIVE</span>
+                      <span className="agent-status-sep" aria-hidden="true">·</span>
+                      <span>CHANNEL: ENCRYPTED</span>
+                      <span className="agent-status-sep" aria-hidden="true">·</span>
+                      <span>REF: OPS-7A</span>
                     </div>
-                    <InterceptFeed />
+                  </header>
+                  <DeadDropTerminal sessionId={sessionId} modules={AGENT_MODULES} />
+
+                  <div className="agent-ops-grid">
+                    <div className="agent-ops-col agent-ops-col--left">
+                      <div className="agent-panel">
+                        <div className="agent-panel-header">
+                          <h2>Mission Modules</h2>
+                          <p>Clearance-gated terminals · select to deploy</p>
+                        </div>
+                        <div className="agent-modules" aria-label="Mission modules">
+                          {AGENT_MODULES.map((module) => (
+                            <button
+                              key={module.id}
+                              type="button"
+                              onClick={() => navigate(module.path)}
+                              className={`agent-module agent-module--${module.status.toLowerCase()}`}
+                            >
+                              <div className="agent-module-top">
+                                <span
+                                  className={`agent-module-clearance agent-module-clearance--${module.clearance.toLowerCase()}`}
+                                  title={`Clearance ${module.clearance}`}
+                                >
+                                  {module.clearance}
+                                </span>
+                                <span
+                                  className={`agent-module-status agent-module-status--${module.status.toLowerCase()}`}
+                                >
+                                  <span className="agent-module-status-dot" aria-hidden="true" />
+                                  {module.status}
+                                </span>
+                              </div>
+                              <span className="agent-module-codename">{module.codename}</span>
+                              <span className="agent-module-briefing">{module.briefing}</span>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="agent-ops-col agent-ops-col--right">
+                      <div className="agent-panel agent-panel--missions">
+                        <MissionLog />
+                      </div>
+                      <InterceptFeed />
+                    </div>
                   </div>
                 </div>
-              </div>
-            }
-          </TrackVisibility>
-        </Container>
+              }
+            </TrackVisibility>
+          </Container>
+        )}
       </section>
     );
   }
