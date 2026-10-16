@@ -7,11 +7,24 @@ import FloatingShapes from '../../common/FloatingShapes';
 import { agentConfig } from '../../../config/agentConfig';
 import { MissionLog } from './MissionLog';
 
+const formatUtcClock = (date) => {
+  const pad = (n) => String(n).padStart(2, '0');
+  return `${pad(date.getUTCHours())}:${pad(date.getUTCMinutes())}:${pad(date.getUTCSeconds())} UTC`;
+};
+
+const createSessionId = () => {
+  const segment = () => Math.random().toString(36).slice(2, 6).toUpperCase();
+  return `SES-${segment()}-${segment()}`;
+};
+
 export const AgentDashboard = () => {
   const [accessCode, setAccessCode] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [error, setError] = useState('');
+  const [utcNow, setUtcNow] = useState(() => new Date());
+  const [sessionId, setSessionId] = useState('');
   const navigate = useNavigate();
+  const utcClock = formatUtcClock(utcNow);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -20,9 +33,11 @@ export const AgentDashboard = () => {
 
     const trimmedCode = accessCode.trim();
     if (trimmedCode === agentConfig.accessCode) {
+      const newSessionId = createSessionId();
+      setSessionId(newSessionId);
       setIsAuthenticated(true);
-      // Store authentication in sessionStorage for persistence
       sessionStorage.setItem('agentAuthenticated', 'true');
+      sessionStorage.setItem('agentSessionId', newSessionId);
     } else {
       setError('Invalid access code. Please try again.');
       setAccessCode('');
@@ -35,7 +50,9 @@ export const AgentDashboard = () => {
       e.stopPropagation();
     }
     setIsAuthenticated(false);
+    setSessionId('');
     sessionStorage.removeItem('agentAuthenticated');
+    sessionStorage.removeItem('agentSessionId');
     setAccessCode('');
     setError('');
   };
@@ -45,8 +62,24 @@ export const AgentDashboard = () => {
     const authenticated = sessionStorage.getItem('agentAuthenticated');
     if (authenticated === 'true') {
       setIsAuthenticated(true);
+      const existingSession = sessionStorage.getItem('agentSessionId');
+      if (existingSession) {
+        setSessionId(existingSession);
+      } else {
+        const newSessionId = createSessionId();
+        setSessionId(newSessionId);
+        sessionStorage.setItem('agentSessionId', newSessionId);
+      }
     }
   }, []);
+
+  useEffect(() => {
+    if (!isAuthenticated) return undefined;
+    const tick = () => setUtcNow(new Date());
+    tick();
+    const intervalId = setInterval(tick, 1000);
+    return () => clearInterval(intervalId);
+  }, [isAuthenticated]);
 
   if (isAuthenticated) {
     return (
@@ -70,16 +103,41 @@ export const AgentDashboard = () => {
               <TrackVisibility>
                 {({ isVisible }) =>
                   <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
-                    <div className="agent-dashboard-header">
-                      <h1>Agent Dashboard</h1>
-                      <button 
-                        type="button"
-                        onClick={handleLogout}
-                        className="agent-logout-btn"
-                      >
-                        Logout
-                      </button>
-                    </div>
+                    <header className="agent-command-strip">
+                      <div className="agent-command-strip-main">
+                        <div className="agent-command-strip-left">
+                          <h1 className="agent-command-title">
+                            <span className="agent-command-prefix">OPS</span>
+                            <span className="agent-command-sep" aria-hidden="true">//</span>
+                            <span>AGENT DASHBOARD</span>
+                          </h1>
+                          <span className="agent-secure-link">
+                            <span className="agent-secure-link-dot" aria-hidden="true" />
+                            SECURE LINK
+                          </span>
+                        </div>
+                        <div className="agent-command-strip-right">
+                          <time className="agent-command-meta agent-command-clock" dateTime={utcNow.toISOString()}>
+                            {utcClock}
+                          </time>
+                          <span className="agent-command-meta agent-command-session" title="Session ID">
+                            {sessionId}
+                          </span>
+                          <button
+                            type="button"
+                            onClick={handleLogout}
+                            className="agent-logout-btn"
+                          >
+                            Terminate Session
+                          </button>
+                        </div>
+                      </div>
+                      <div className="agent-status-bar" role="status" aria-live="polite">
+                        <span>ENCRYPTION: ACTIVE</span>
+                        <span className="agent-status-sep" aria-hidden="true">·</span>
+                        <span>CHANNEL: ENCRYPTED</span>
+                      </div>
+                    </header>
                     
                     <div className="agent-dashboard-content">
                       <h2>Welcome, Agent</h2>

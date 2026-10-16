@@ -2582,6 +2582,31 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 /* === Agent Dashboard Styles === */
+/* Ops console palette — scoped to agent login/dashboard only */
+.agent-login,
+.agent-dashboard {
+  --ops-bg-deep: #050806;
+  --ops-bg-panel: rgba(8, 14, 10, 0.92);
+  --ops-bg-inset: rgba(0, 0, 0, 0.45);
+  --ops-border: rgba(57, 255, 140, 0.22);
+  --ops-border-strong: rgba(57, 255, 140, 0.45);
+  --ops-accent: #39ff8c;
+  --ops-accent-dim: rgba(57, 255, 140, 0.12);
+  --ops-accent-glow: rgba(57, 255, 140, 0.25);
+  --ops-danger: #ff4d4d;
+  --ops-text: #e8f5ec;
+  --ops-text-muted: #7a9a86;
+  --ops-radius: 4px;
+  --ops-font-display: 'Orbitron', 'Centra', sans-serif;
+  --ops-font-mono: 'Share Tech Mono', source-code-pro, Menlo, Monaco, Consolas, monospace;
+  --ops-font-body: 'Centra', sans-serif;
+  color: var(--ops-text);
+  font-family: var(--ops-font-body);
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(57, 255, 140, 0.08), transparent 55%),
+    linear-gradient(180deg, var(--ops-bg-deep) 0%, #0a1210 50%, var(--ops-bg-deep) 100%);
+}
+
 .agent-login {
   position: relative;
   min-height: 100vh;
@@ -2620,14 +2645,17 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 .agent-login-container {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 20px;
+  background: var(--ops-bg-panel);
+  border: 1px solid var(--ops-border);
+  border-radius: var(--ops-radius);
   padding: 50px 40px;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(8px);
   position: relative;
   z-index: 20;
   pointer-events: auto;
+  box-shadow:
+    inset 0 1px 0 rgba(57, 255, 140, 0.08),
+    0 0 40px rgba(0, 0, 0, 0.5);
 }
 
 .agent-login-container form {
@@ -2643,16 +2671,21 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 .agent-login-container h2 {
-  font-size: 45px;
+  font-family: var(--ops-font-display);
+  font-size: 36px;
   font-weight: 700;
   margin-bottom: 10px;
-  color: #fff;
+  color: var(--ops-accent);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .agent-login-subtitle {
-  color: #B8B8B8;
-  font-size: 18px;
-  letter-spacing: 0.8px;
+  font-family: var(--ops-font-mono);
+  color: var(--ops-text-muted);
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
   margin-bottom: 40px;
 }
 
@@ -2662,62 +2695,73 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 .agent-login-input {
   width: 100%;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 20px;
-  color: #fff;
+  background: var(--ops-bg-inset);
+  border: 1px solid var(--ops-border);
+  border-radius: var(--ops-radius);
+  color: var(--ops-accent);
   padding: 18px 26px;
-  font-weight: 500;
+  font-family: var(--ops-font-mono);
+  font-weight: 400;
   font-size: 24px;
-  letter-spacing: 8px;
+  letter-spacing: 0.4em;
   text-align: center;
-  transition: 0.3s ease-in-out;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
   position: relative;
   z-index: 25;
   pointer-events: auto;
 }
 
 .agent-login-input:focus {
-  background: rgba(255, 255, 255, 1);
-  color: #121212;
+  background: rgba(0, 0, 0, 0.65);
+  color: var(--ops-accent);
   outline: none;
-  border-color: rgba(170, 54, 124, 0.8);
+  border-color: var(--ops-border-strong);
+  box-shadow: 0 0 0 1px var(--ops-accent-glow), 0 0 24px var(--ops-accent-dim);
 }
 
 .agent-login-input::placeholder {
-  font-size: 18px;
+  font-family: var(--ops-font-mono);
+  font-size: 13px;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.5);
-  letter-spacing: 0.8px;
+  color: var(--ops-text-muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 .agent-login-input:focus::placeholder {
-  color: #121212;
-  opacity: 0.5;
+  color: var(--ops-text-muted);
+  opacity: 0.6;
 }
 
 .agent-login-error {
-  color: #ff6b6b;
-  font-size: 14px;
+  font-family: var(--ops-font-mono);
+  color: var(--ops-danger);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   margin-top: 10px;
   text-align: center;
 }
 
 .agent-login-button {
   width: 100%;
+  font-family: var(--ops-font-display);
   font-weight: 700;
-  color: #000;
-  background-color: #fff;
-  padding: 18px 48px;
-  font-size: 18px;
+  color: var(--ops-bg-deep);
+  background-color: var(--ops-accent);
+  padding: 16px 48px;
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
   margin-top: 20px;
-  border-radius: 20px;
-  border: none;
+  border-radius: var(--ops-radius);
+  border: 1px solid var(--ops-accent);
   position: relative;
   z-index: 10;
-  transition: 0.3s ease-in-out;
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
   pointer-events: auto;
+  overflow: hidden;
 }
 
 .agent-login-button span {
@@ -2726,53 +2770,44 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 .agent-login-button:hover:not(:disabled) {
-  color: #fff;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(170, 54, 124, 0.3);
+  color: var(--ops-accent);
+  background: transparent;
+  box-shadow: 0 0 24px var(--ops-accent-glow);
 }
 
 .agent-login-button:disabled {
-  opacity: 0.5;
+  opacity: 0.35;
   cursor: not-allowed;
 }
 
 .agent-login-button::before {
-  content: "";
-  background: linear-gradient(90.21deg, rgba(170, 54, 124, 0.8) -5.91%, rgba(74, 47, 189, 0.8) 111.58%);
-  width: 0;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 0;
-  transition: 0.3s ease-in-out;
-  border-radius: 20px;
-}
-
-.agent-login-button:hover:not(:disabled)::before {
-  width: 100%;
+  content: none;
 }
 
 .agent-back-button {
   width: 100%;
-  font-weight: 500;
-  color: #fff;
+  font-family: var(--ops-font-mono);
+  font-weight: 400;
+  color: var(--ops-text-muted);
   background: transparent;
   padding: 12px 24px;
-  font-size: 16px;
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   margin-top: 20px;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--ops-radius);
+  border: 1px solid var(--ops-border);
   position: relative;
   z-index: 10;
-  transition: 0.3s ease-in-out;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
   cursor: pointer;
   pointer-events: auto;
 }
 
 .agent-back-button:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.5);
+  color: var(--ops-text);
+  background: var(--ops-accent-dim);
+  border-color: var(--ops-border-strong);
 }
 
 .agent-dashboard {
@@ -2810,58 +2845,185 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   pointer-events: none;
 }
 
-.agent-dashboard-header {
+.agent-command-strip {
+  position: relative;
+  z-index: 3;
+  margin-bottom: 28px;
+  background: var(--ops-bg-panel);
+  border: 1px solid var(--ops-border);
+  border-radius: var(--ops-radius);
+  overflow: hidden;
+  box-shadow:
+    inset 0 1px 0 rgba(57, 255, 140, 0.06),
+    0 0 32px rgba(0, 0, 0, 0.4);
+}
+
+.agent-command-strip-main {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 40px;
-  position: relative;
-  z-index: 3;
+  gap: 20px;
+  padding: 18px 22px 14px;
+  flex-wrap: wrap;
 }
 
-.agent-dashboard-header h1 {
-  font-size: 45px;
+.agent-command-strip-left {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.agent-command-title {
+  font-family: var(--ops-font-display);
+  font-size: 18px;
   font-weight: 700;
-  color: #fff;
+  color: var(--ops-text);
   margin: 0;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.agent-command-prefix {
+  color: var(--ops-accent);
+}
+
+.agent-command-sep {
+  color: var(--ops-text-muted);
+  font-weight: 400;
+}
+
+.agent-secure-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--ops-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ops-accent);
+}
+
+.agent-secure-link-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--ops-accent);
+  box-shadow: 0 0 8px var(--ops-accent-glow);
+  animation: opsSecurePulse 1.4s ease-in-out infinite;
+}
+
+@keyframes opsSecurePulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.85);
+  }
+}
+
+.agent-command-strip-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.agent-command-meta {
+  font-family: var(--ops-font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--ops-text-muted);
+  white-space: nowrap;
+}
+
+.agent-command-clock {
+  color: var(--ops-text);
+  min-width: 9.5ch;
+  font-variant-numeric: tabular-nums;
+}
+
+.agent-command-session {
+  padding: 4px 8px;
+  border: 1px solid var(--ops-border);
+  border-radius: 2px;
+  background: var(--ops-bg-inset);
+  color: var(--ops-accent);
+  letter-spacing: 0.12em;
 }
 
 .agent-logout-btn {
-  font-weight: 500;
-  color: #fff;
-  background: rgba(255, 255, 255, 0.1);
-  padding: 12px 24px;
-  font-size: 16px;
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  font-family: var(--ops-font-mono);
+  font-weight: 400;
+  color: var(--ops-text-muted);
+  background: var(--ops-bg-inset);
+  padding: 8px 14px;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-radius: var(--ops-radius);
+  border: 1px solid var(--ops-border);
   position: relative;
   z-index: 10;
-  transition: 0.3s ease-in-out;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
   cursor: pointer;
   pointer-events: auto;
+  white-space: nowrap;
 }
 
 .agent-logout-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(255, 255, 255, 0.5);
+  color: var(--ops-danger);
+  background: rgba(255, 77, 77, 0.08);
+  border-color: rgba(255, 77, 77, 0.45);
+}
+
+.agent-status-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 8px 22px;
+  border-top: 1px solid var(--ops-border);
+  background: rgba(0, 0, 0, 0.35);
+  font-family: var(--ops-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ops-text-muted);
+}
+
+.agent-status-sep {
+  color: var(--ops-accent);
+  opacity: 0.7;
 }
 
 .agent-spa1-button {
   width: 100%;
+  font-family: var(--ops-font-display);
   font-weight: 700;
-  color: #000;
-  background-color: #fff;
-  padding: 18px 48px;
-  font-size: 18px;
-  margin-top: 30px;
-  margin-bottom: 20px;
-  border-radius: 20px;
-  border: none;
+  color: var(--ops-accent);
+  background: var(--ops-bg-inset);
+  padding: 16px 28px;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-top: 16px;
+  margin-bottom: 0;
+  border-radius: var(--ops-radius);
+  border: 1px solid var(--ops-border);
   position: relative;
   z-index: 10;
-  transition: 0.3s ease-in-out;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
   cursor: pointer;
   pointer-events: auto;
+  text-align: left;
+  overflow: hidden;
 }
 
 .agent-spa1-button span {
@@ -2870,51 +3032,48 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 .agent-spa1-button:hover {
-  color: #fff;
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(170, 54, 124, 0.3);
+  color: var(--ops-text);
+  background: var(--ops-accent-dim);
+  border-color: var(--ops-border-strong);
+  box-shadow: inset 3px 0 0 var(--ops-accent), 0 0 20px var(--ops-accent-dim);
+  transform: none;
 }
 
 .agent-spa1-button::before {
-  content: "";
-  background: linear-gradient(90.21deg, rgba(170, 54, 124, 0.8) -5.91%, rgba(74, 47, 189, 0.8) 111.58%);
-  width: 0;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 0;
-  transition: 0.3s ease-in-out;
-  border-radius: 20px;
-}
-
-.agent-spa1-button:hover::before {
-  width: 100%;
+  content: none;
 }
 
 .agent-dashboard-content {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 20px;
-  padding: 50px 40px;
-  backdrop-filter: blur(10px);
+  background: var(--ops-bg-panel);
+  border: 1px solid var(--ops-border);
+  border-radius: var(--ops-radius);
+  padding: 40px 36px;
+  backdrop-filter: blur(8px);
   position: relative;
   z-index: 5;
   pointer-events: auto;
+  box-shadow:
+    inset 0 1px 0 rgba(57, 255, 140, 0.06),
+    0 0 40px rgba(0, 0, 0, 0.45);
 }
 
 .agent-dashboard-content h2 {
-  font-size: 35px;
+  font-family: var(--ops-font-display);
+  font-size: 22px;
   font-weight: 700;
-  margin-bottom: 20px;
-  color: #fff;
+  margin-bottom: 12px;
+  color: var(--ops-text);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
-.agent-dashboard-content p {
-  color: #B8B8B8;
-  font-size: 18px;
-  letter-spacing: 0.8px;
+.agent-dashboard-content > p {
+  font-family: var(--ops-font-mono);
+  color: var(--ops-text-muted);
+  font-size: 13px;
+  letter-spacing: 0.06em;
   line-height: 1.6;
+  margin-bottom: 8px;
 }
 
 /* === Mission Log Styles === */
@@ -2922,13 +3081,18 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   margin-top: 40px;
   position: relative;
   z-index: 5;
+  padding-top: 28px;
+  border-top: 1px solid var(--ops-border);
 }
 
 .mission-log-title {
-  font-size: 28px;
+  font-family: var(--ops-font-display);
+  font-size: 18px;
   font-weight: 700;
-  color: #fff;
-  margin-bottom: 30px;
+  color: var(--ops-accent);
+  margin-bottom: 24px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   position: relative;
   z-index: 5;
 }
@@ -2939,14 +3103,14 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 .mission-card {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 20px;
-  padding: 24px;
+  background: var(--ops-bg-inset);
+  border: 1px solid var(--ops-border);
+  border-radius: var(--ops-radius);
+  padding: 20px 22px;
   position: relative;
   overflow: hidden;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  backdrop-filter: none;
   cursor: pointer;
 }
 
@@ -2955,11 +3119,11 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   position: absolute;
   top: 0;
   left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(170, 54, 124, 0.05) 0%, rgba(74, 47, 189, 0.05) 100%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  width: 2px;
+  height: 100%;
+  background: var(--ops-accent);
+  opacity: 0.35;
+  transition: opacity 0.2s ease;
   z-index: 0;
 }
 
@@ -2968,16 +3132,16 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 .mission-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(170, 54, 124, 0.3);
-  box-shadow: 0 12px 40px rgba(170, 54, 124, 0.15), 0 4px 16px rgba(74, 47, 189, 0.1);
+  transform: none;
+  border-color: var(--ops-border-strong);
+  box-shadow: 0 0 24px var(--ops-accent-dim);
 }
 
 .mission-card-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
   position: relative;
   z-index: 1;
 }
@@ -2988,64 +3152,71 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 .mission-id {
   display: inline-block;
-  background: linear-gradient(135deg, rgba(170, 54, 124, 0.2), rgba(74, 47, 189, 0.2));
-  color: #AA367C;
-  padding: 4px 12px;
-  border-radius: 12px;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
+  font-family: var(--ops-font-mono);
+  background: var(--ops-accent-dim);
+  color: var(--ops-accent);
+  padding: 3px 10px;
+  border-radius: 2px;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.16em;
   margin-bottom: 8px;
-  border: 1px solid rgba(170, 54, 124, 0.3);
+  border: 1px solid var(--ops-border);
+  text-transform: uppercase;
 }
 
 .mission-title {
-  font-size: 20px;
+  font-family: var(--ops-font-display);
+  font-size: 15px;
   font-weight: 700;
-  color: #fff;
+  color: var(--ops-text);
   margin: 0;
-  line-height: 1.3;
+  line-height: 1.35;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .mission-expand-btn {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
+  background: transparent;
+  border: 1px solid var(--ops-border);
+  border-radius: var(--ops-radius);
+  width: 28px;
+  height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
-  font-size: 20px;
-  font-weight: 300;
+  color: var(--ops-accent);
+  font-family: var(--ops-font-mono);
+  font-size: 16px;
+  font-weight: 400;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background 0.2s ease, border-color 0.2s ease;
   flex-shrink: 0;
   position: relative;
   z-index: 2;
 }
 
 .mission-expand-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: rgba(170, 54, 124, 0.5);
-  transform: scale(1.1);
+  background: var(--ops-accent-dim);
+  border-color: var(--ops-border-strong);
+  transform: none;
 }
 
 .mission-expand-btn.expanded {
-  background: linear-gradient(135deg, rgba(170, 54, 124, 0.3), rgba(74, 47, 189, 0.3));
-  border-color: rgba(170, 54, 124, 0.5);
+  background: var(--ops-accent-dim);
+  border-color: var(--ops-border-strong);
 }
 
 .mission-statement {
   position: relative;
   z-index: 1;
-  margin-bottom: 16px;
+  margin-bottom: 8px;
 }
 
 .mission-statement p {
-  color: #B8B8B8;
-  font-size: 16px;
+  font-family: var(--ops-font-body);
+  color: var(--ops-text-muted);
+  font-size: 14px;
   line-height: 1.6;
   margin: 0;
 }
@@ -3053,17 +3224,20 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 .mission-details {
   position: relative;
   z-index: 1;
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--ops-border);
   animation: slideDown 0.3s ease-out;
 }
 
 .mission-acceptance-criteria h5 {
-  font-size: 16px;
-  font-weight: 600;
-  color: #fff;
+  font-family: var(--ops-font-mono);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--ops-accent);
   margin-bottom: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 .mission-acceptance-criteria ul {
@@ -3073,21 +3247,22 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 .mission-acceptance-criteria li {
-  color: #B8B8B8;
-  font-size: 14px;
-  line-height: 1.8;
-  padding-left: 24px;
+  font-family: var(--ops-font-mono);
+  color: var(--ops-text-muted);
+  font-size: 13px;
+  line-height: 1.7;
+  padding-left: 20px;
   position: relative;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .mission-acceptance-criteria li::before {
-  content: '✓';
+  content: '>';
   position: absolute;
   left: 0;
-  color: #4A2FBD;
-  font-weight: 700;
-  font-size: 16px;
+  color: var(--ops-accent);
+  font-weight: 400;
+  font-size: 13px;
 }
 
 @keyframes slideDown {
@@ -3115,23 +3290,23 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 /* Responsive styles for mission log */
 @media (max-width: 768px) {
   .mission-log-title {
-    font-size: 24px;
+    font-size: 16px;
   }
 
   .mission-card {
-    padding: 20px;
+    padding: 16px 18px;
   }
 
   .mission-title {
-    font-size: 18px;
+    font-size: 13px;
   }
 
   .mission-statement p {
-    font-size: 14px;
+    font-size: 13px;
   }
 }
 
-/* Agent Dashboard Floating Shapes */
+/* Agent Dashboard Floating Shapes — muted to ops accent */
 .agent-login .floating-shapes,
 .agent-dashboard .floating-shapes {
   position: absolute;
@@ -3145,20 +3320,20 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 .agent-login .floating-shape,
 .agent-dashboard .floating-shape {
   position: absolute;
-  background: linear-gradient(45deg, rgba(170, 54, 124, 0.07), rgba(74, 47, 189, 0.07));
+  background: radial-gradient(circle, rgba(57, 255, 140, 0.08), transparent 70%);
   border-radius: 50%;
   width: var(--size);
   height: var(--size);
   animation: floatShape var(--duration) ease-in-out infinite;
   animation-delay: var(--delay);
-  opacity: 0.35;
+  opacity: 0.4;
   pointer-events: none;
   z-index: 0;
 }
 
 .agent-login .floating-shape:nth-child(even),
 .agent-dashboard .floating-shape:nth-child(even) {
-  background: linear-gradient(45deg, rgba(74, 47, 189, 0.07), rgba(170, 54, 124, 0.07));
+  background: radial-gradient(circle, rgba(57, 255, 140, 0.05), transparent 70%);
   animation-direction: reverse;
 }
 
@@ -3173,17 +3348,28 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   }
 
   .agent-login-container h2 {
-    font-size: 35px;
+    font-size: 26px;
   }
 
-  .agent-dashboard-header {
+  .agent-command-strip-main {
     flex-direction: column;
     align-items: flex-start;
-    gap: 20px;
+    gap: 14px;
+    padding: 16px 16px 12px;
   }
 
-  .agent-dashboard-header h1 {
-    font-size: 35px;
+  .agent-command-title {
+    font-size: 14px;
+  }
+
+  .agent-command-strip-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .agent-status-bar {
+    padding: 8px 16px;
+    font-size: 10px;
   }
 
   .agent-login .floating-shapes,
@@ -3198,12 +3384,12 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   }
 
   .agent-login-container h2 {
-    font-size: 28px;
+    font-size: 22px;
   }
 
   .agent-login-input {
-    font-size: 20px;
-    letter-spacing: 4px;
+    font-size: 18px;
+    letter-spacing: 0.25em;
   }
 }
 
