@@ -2582,8 +2582,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 /* === Agent Dashboard Styles === */
-/* Ops console palette — scoped to agent login/dashboard only */
-.agent-login,
+/* Ops console palette — authenticated dashboard only */
 .agent-dashboard {
   --ops-bg-deep: #050806;
   --ops-bg-panel: rgba(8, 14, 10, 0.92);
@@ -2645,17 +2644,14 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 .agent-login-container {
-  background: var(--ops-bg-panel);
-  border: 1px solid var(--ops-border);
-  border-radius: var(--ops-radius);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
   padding: 50px 40px;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
   position: relative;
   z-index: 20;
   pointer-events: auto;
-  box-shadow:
-    inset 0 1px 0 rgba(57, 255, 140, 0.08),
-    0 0 40px rgba(0, 0, 0, 0.5);
 }
 
 .agent-login-container form {
@@ -2671,21 +2667,16 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 .agent-login-container h2 {
-  font-family: var(--ops-font-display);
-  font-size: 36px;
+  font-size: 45px;
   font-weight: 700;
   margin-bottom: 10px;
-  color: var(--ops-accent);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  color: #fff;
 }
 
 .agent-login-subtitle {
-  font-family: var(--ops-font-mono);
-  color: var(--ops-text-muted);
-  font-size: 14px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+  color: #B8B8B8;
+  font-size: 18px;
+  letter-spacing: 0.8px;
   margin-bottom: 40px;
 }
 
@@ -2695,70 +2686,60 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 
 .agent-login-input {
   width: 100%;
-  background: var(--ops-bg-inset);
-  border: 1px solid var(--ops-border);
-  border-radius: var(--ops-radius);
-  color: var(--ops-accent);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  color: #fff;
   padding: 18px 26px;
-  font-family: var(--ops-font-mono);
-  font-weight: 400;
+  font-weight: 500;
   font-size: 24px;
-  letter-spacing: 0.4em;
+  letter-spacing: 8px;
   text-align: center;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  transition: 0.3s ease-in-out;
   position: relative;
   z-index: 25;
   pointer-events: auto;
 }
 
 .agent-login-input:focus {
-  background: rgba(0, 0, 0, 0.65);
-  color: var(--ops-accent);
+  background: rgba(255, 255, 255, 1);
+  color: #121212;
   outline: none;
-  border-color: var(--ops-border-strong);
-  box-shadow: 0 0 0 1px var(--ops-accent-glow), 0 0 24px var(--ops-accent-dim);
+  border-color: rgba(170, 54, 124, 0.8);
 }
 
 .agent-login-input::placeholder {
-  font-family: var(--ops-font-mono);
-  font-size: 13px;
+  font-size: 18px;
   font-weight: 400;
-  color: var(--ops-text-muted);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.8px;
 }
 
 .agent-login-input:focus::placeholder {
-  color: var(--ops-text-muted);
-  opacity: 0.6;
+  color: #121212;
+  opacity: 0.5;
 }
 
 .agent-login-error {
-  font-family: var(--ops-font-mono);
-  color: var(--ops-danger);
-  font-size: 13px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  color: #ff6b6b;
+  font-size: 14px;
   margin-top: 10px;
   text-align: center;
 }
 
 .agent-login-button {
   width: 100%;
-  font-family: var(--ops-font-display);
   font-weight: 700;
-  color: var(--ops-bg-deep);
-  background-color: var(--ops-accent);
-  padding: 16px 48px;
-  font-size: 14px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+  color: #000;
+  background-color: #fff;
+  padding: 18px 48px;
+  font-size: 18px;
   margin-top: 20px;
-  border-radius: var(--ops-radius);
-  border: 1px solid var(--ops-accent);
+  border-radius: 20px;
+  border: none;
   position: relative;
   z-index: 10;
-  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  transition: 0.3s ease-in-out;
   cursor: pointer;
   pointer-events: auto;
   overflow: hidden;
@@ -2770,44 +2751,53 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 .agent-login-button:hover:not(:disabled) {
-  color: var(--ops-accent);
-  background: transparent;
-  box-shadow: 0 0 24px var(--ops-accent-glow);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(170, 54, 124, 0.3);
 }
 
 .agent-login-button:disabled {
-  opacity: 0.35;
+  opacity: 0.5;
   cursor: not-allowed;
 }
 
 .agent-login-button::before {
-  content: none;
+  content: "";
+  background: linear-gradient(90.21deg, rgba(170, 54, 124, 0.8) -5.91%, rgba(74, 47, 189, 0.8) 111.58%);
+  width: 0;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  transition: 0.3s ease-in-out;
+  border-radius: 20px;
+}
+
+.agent-login-button:hover:not(:disabled)::before {
+  width: 100%;
 }
 
 .agent-back-button {
   width: 100%;
-  font-family: var(--ops-font-mono);
-  font-weight: 400;
-  color: var(--ops-text-muted);
+  font-weight: 500;
+  color: #fff;
   background: transparent;
   padding: 12px 24px;
-  font-size: 13px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  font-size: 16px;
   margin-top: 20px;
-  border-radius: var(--ops-radius);
-  border: 1px solid var(--ops-border);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   position: relative;
   z-index: 10;
-  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  transition: 0.3s ease-in-out;
   cursor: pointer;
   pointer-events: auto;
 }
 
 .agent-back-button:hover {
-  color: var(--ops-text);
-  background: var(--ops-accent-dim);
-  border-color: var(--ops-border-strong);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
 }
 
 .agent-dashboard {
@@ -3413,8 +3403,35 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   }
 }
 
-/* Agent Dashboard Floating Shapes — muted to ops accent */
-.agent-login .floating-shapes,
+/* Agent login floating shapes — original portfolio theme */
+.agent-login .floating-shapes {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.agent-login .floating-shape {
+  position: absolute;
+  background: linear-gradient(45deg, rgba(170, 54, 124, 0.07), rgba(74, 47, 189, 0.07));
+  border-radius: 50%;
+  width: var(--size);
+  height: var(--size);
+  animation: floatShape var(--duration) ease-in-out infinite;
+  animation-delay: var(--delay);
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.agent-login .floating-shape:nth-child(even) {
+  background: linear-gradient(45deg, rgba(74, 47, 189, 0.07), rgba(170, 54, 124, 0.07));
+  animation-direction: reverse;
+}
+
+/* Agent dashboard floating shapes — ops accent */
 .agent-dashboard .floating-shapes {
   position: absolute;
   width: 100%;
@@ -3424,7 +3441,6 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   z-index: 0;
 }
 
-.agent-login .floating-shape,
 .agent-dashboard .floating-shape {
   position: absolute;
   background: radial-gradient(circle, rgba(57, 255, 140, 0.08), transparent 70%);
@@ -3438,7 +3454,6 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   z-index: 0;
 }
 
-.agent-login .floating-shape:nth-child(even),
 .agent-dashboard .floating-shape:nth-child(even) {
   background: radial-gradient(circle, rgba(57, 255, 140, 0.05), transparent 70%);
   animation-direction: reverse;
@@ -3455,7 +3470,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   }
 
   .agent-login-container h2 {
-    font-size: 26px;
+    font-size: 35px;
   }
 
   .agent-command-strip-main {
@@ -3491,12 +3506,12 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   }
 
   .agent-login-container h2 {
-    font-size: 22px;
+    font-size: 28px;
   }
 
   .agent-login-input {
-    font-size: 18px;
-    letter-spacing: 0.25em;
+    font-size: 20px;
+    letter-spacing: 4px;
   }
 }
 
