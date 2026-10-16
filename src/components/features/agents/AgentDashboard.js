@@ -90,7 +90,32 @@ export const AgentDashboard = () => {
                         onClick={() => navigate('/spa1')}
                         className="agent-spa1-button"
                       >
-                        <span>View SPA1 Analysis</span>
+                        <span>SPA1 Analysis</span>
+                      </button>
+
+                      <button 
+                        type="button"
+                        onClick={() => navigate('/miro')}
+                        className="agent-spa1-button"
+                      >
+                        <span>Agent Vector Board</span>
+                      </button>
+
+                      <button 
+                        type="button"
+                        onClick={() => navigate('/vocabulary')}
+                        className="agent-spa1-button"
+                      >
+                        <span>Physics Master Artifact</span>
+                      </button>
+                      
+
+                      <button 
+                        type="button"
+                        onClick={() => navigate('/robots')}
+                        className="agent-spa1-button"
+                      >
+                        <span>TOP Secret Robotic Research</span>
                       </button>
                       
                       <MissionLog />
