@@ -16,6 +16,7 @@ import Spa1AnalysisMobile from './components/features/hft/Spa1AnalysisMobile';
 import { AgentDashboard } from './components/features/agents/AgentDashboard';
 import SkateboardGame from './components/features/skateboard/SkateboardGame';
 import InspectResume from './components/features/resume/InspectResume';
+import Algorythms from './components/features/algorithms/Algorythms';
 
 function App() {
   return (
@@ -65,6 +66,9 @@ function App() {
             
             {/* Inspect Resume route */}
             <Route path='/resume' element={<InspectResume />} />
+
+            {/* Algorithms & Data Structures route */}
+            <Route path='/algorythms' element={<Algorythms />} />
 
             {/* Calculus Chart route */}
             <Route path='/calculus' element={<Timeline />} /> 

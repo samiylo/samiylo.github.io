@@ -1,54 +1,49 @@
 import React, { useState, useRef } from 'react';
 
 export const Miro = ({ src = "/digital-architecture.svg", alt = "Digital Architecture Diagram" }) => {
-  const [scale, setScale] = useState(1);
+  const [scale] = useState(1);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
-  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
-  
+  const isDraggingRef = useRef(false);
+  const dragStartRef = useRef({ x: 0, y: 0 });
   const containerRef = useRef(null);
 
-  // Handle Zooming via Mouse Wheel (Zooms toward mouse cursor)
-//   const handleWheel = (e) => {
-//     e.preventDefault();
-//     const zoomIntensity = 0.1;
-//     const direction = e.deltaY < 0 ? 1 : -1;
-//     const newScale = Math.min(Math.max(scale + direction * zoomIntensity, 0.5), 8); // Scale between 0.5x and 8x
-
-//     setScale(newScale);
-//   };
-
-  // Handle Dragging / Panning Start
-  const handleMouseDown = (e) => {
+  const handlePointerDown = (e) => {
+    if (e.button !== 0) return;
+    e.currentTarget.setPointerCapture(e.pointerId);
+    isDraggingRef.current = true;
     setIsDragging(true);
-    setDragStart({ x: e.clientX - position.x, y: e.clientY - position.y });
+    dragStartRef.current = { x: e.clientX - position.x, y: e.clientY - position.y };
   };
 
-  // Handle Dragging / Panning Move
-  const handleMouseMove = (e) => {
-    if (!isDragging) return;
+  const handlePointerMove = (e) => {
+    if (!isDraggingRef.current) return;
     setPosition({
-      x: e.clientX - dragStart.x,
-      y: e.clientY - dragStart.y
+      x: e.clientX - dragStartRef.current.x,
+      y: e.clientY - dragStartRef.current.y
     });
   };
 
-  // Handle Dragging / Panning End
-  const handleMouseUp = () => {
+  const handlePointerUp = (e) => {
+    if (e.currentTarget.hasPointerCapture(e.pointerId)) {
+      e.currentTarget.releasePointerCapture(e.pointerId);
+    }
+    isDraggingRef.current = false;
     setIsDragging(false);
   };
 
   return (
-    <div 
+    <div
       ref={containerRef}
       className="miro-container"
-      
-      onMouseDown={handleMouseDown}
-      onMouseMove={handleMouseMove}
-      onMouseUp={handleMouseUp}
-      onMouseLeave={handleMouseUp}
+      onPointerDown={handlePointerDown}
+      onPointerMove={handlePointerMove}
+      onPointerUp={handlePointerUp}
+      onPointerCancel={handlePointerUp}
       style={{
-       
+        touchAction: 'none',
+        cursor: isDragging ? 'grabbing' : 'grab',
+        userSelect: 'none',
       }}
     >
       <div
@@ -63,11 +58,11 @@ export const Miro = ({ src = "/digital-architecture.svg", alt = "Digital Archite
           transition: isDragging ? 'none' : 'transform 0.05s ease-out'
         }}
       >
-        <img 
-          src={src} 
-          alt={alt} 
-          draggable={false} // Prevents default browser image-dragging behavior
-          style={{ maxWidth: '80%', height: 'auto' }} 
+        <img
+          src={src}
+          alt={alt}
+          draggable={false}
+          style={{ maxWidth: '80%', height: 'auto' }}
         />
       </div>
     </div>
