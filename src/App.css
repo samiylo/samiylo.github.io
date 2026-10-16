@@ -3003,44 +3003,151 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   opacity: 0.7;
 }
 
-.agent-spa1-button {
+.agent-modules {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.agent-module {
+  --module-edge: #3de0ff;
+  --module-glow: rgba(61, 224, 255, 0.18);
   width: 100%;
-  font-family: var(--ops-font-display);
-  font-weight: 700;
-  color: var(--ops-accent);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 16px 18px 16px 20px;
   background: var(--ops-bg-inset);
-  padding: 16px 28px;
-  font-size: 13px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  margin-top: 16px;
-  margin-bottom: 0;
-  border-radius: var(--ops-radius);
   border: 1px solid var(--ops-border);
+  border-radius: var(--ops-radius);
+  text-align: left;
+  cursor: pointer;
   position: relative;
   z-index: 10;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
-  cursor: pointer;
   pointer-events: auto;
-  text-align: left;
   overflow: hidden;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
-.agent-spa1-button span {
-  z-index: 1;
-  position: relative;
+.agent-module::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--module-edge);
+  opacity: 0;
+  transition: opacity 0.2s ease;
 }
 
-.agent-spa1-button:hover {
+.agent-module:hover,
+.agent-module:focus-visible {
+  outline: none;
+  background: rgba(61, 224, 255, 0.06);
+  border-color: rgba(61, 224, 255, 0.4);
+  box-shadow: 0 0 28px var(--module-glow);
+}
+
+.agent-module:hover::before,
+.agent-module:focus-visible::before {
+  opacity: 1;
+}
+
+.agent-module--restricted {
+  --module-edge: #ffb020;
+  --module-glow: rgba(255, 176, 32, 0.16);
+}
+
+.agent-module--restricted:hover,
+.agent-module--restricted:focus-visible {
+  background: rgba(255, 176, 32, 0.06);
+  border-color: rgba(255, 176, 32, 0.4);
+}
+
+.agent-module-top {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.agent-module-clearance {
+  font-family: var(--ops-font-mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 2px;
+  border: 1px solid currentColor;
+  line-height: 1.2;
+}
+
+.agent-module-clearance--ts {
+  color: #ff4d4d;
+  background: rgba(255, 77, 77, 0.1);
+}
+
+.agent-module-clearance--s {
+  color: #ffb020;
+  background: rgba(255, 176, 32, 0.1);
+}
+
+.agent-module-clearance--c {
+  color: #3de0ff;
+  background: rgba(61, 224, 255, 0.1);
+}
+
+.agent-module-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--ops-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ops-accent);
+}
+
+.agent-module-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 6px currentColor;
+}
+
+.agent-module-status--online {
+  color: var(--ops-accent);
+}
+
+.agent-module-status--restricted {
+  color: #ffb020;
+}
+
+.agent-module-codename {
+  font-family: var(--ops-font-display);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: var(--ops-text);
-  background: var(--ops-accent-dim);
-  border-color: var(--ops-border-strong);
-  box-shadow: inset 3px 0 0 var(--ops-accent), 0 0 20px var(--ops-accent-dim);
-  transform: none;
+  line-height: 1.3;
 }
 
-.agent-spa1-button::before {
-  content: none;
+.agent-module-briefing {
+  font-family: var(--ops-font-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--ops-text-muted);
+  line-height: 1.5;
 }
 
 .agent-dashboard-content {

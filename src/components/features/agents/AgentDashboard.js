@@ -17,6 +17,41 @@ const createSessionId = () => {
   return `SES-${segment()}-${segment()}`;
 };
 
+const AGENT_MODULES = [
+  {
+    id: 'mod-spa1',
+    path: '/spa1',
+    clearance: 'S',
+    codename: 'SPA1 Analysis',
+    briefing: 'Signal pattern analysis terminal — ingest and correlate field telemetry.',
+    status: 'ONLINE',
+  },
+  {
+    id: 'mod-miro',
+    path: '/miro',
+    clearance: 'C',
+    codename: 'Agent Vector Board',
+    briefing: 'Tactical mapping surface for vector coordination and asset placement.',
+    status: 'ONLINE',
+  },
+  {
+    id: 'mod-vocab',
+    path: '/vocabulary',
+    clearance: 'S',
+    codename: 'Physics Master Artifact',
+    briefing: 'Restricted lexicon vault — classified physics terminology and formulas.',
+    status: 'ONLINE',
+  },
+  {
+    id: 'mod-robots',
+    path: '/robots',
+    clearance: 'TS',
+    codename: 'TOP Secret Robotic Research',
+    briefing: 'Eyes-only robotics lab feed. Clearance TS required to proceed.',
+    status: 'RESTRICTED',
+  },
+];
+
 export const AgentDashboard = () => {
   const [accessCode, setAccessCode] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -142,39 +177,34 @@ export const AgentDashboard = () => {
                     <div className="agent-dashboard-content">
                       <h2>Welcome, Agent</h2>
                       <p>You have successfully accessed the agent dashboard.</p>
-                      
-                      <button 
-                        type="button"
-                        onClick={() => navigate('/spa1')}
-                        className="agent-spa1-button"
-                      >
-                        <span>SPA1 Analysis</span>
-                      </button>
 
-                      <button 
-                        type="button"
-                        onClick={() => navigate('/miro')}
-                        className="agent-spa1-button"
-                      >
-                        <span>Agent Vector Board</span>
-                      </button>
-
-                      <button 
-                        type="button"
-                        onClick={() => navigate('/vocabulary')}
-                        className="agent-spa1-button"
-                      >
-                        <span>Physics Master Artifact</span>
-                      </button>
-                      
-
-                      <button 
-                        type="button"
-                        onClick={() => navigate('/robots')}
-                        className="agent-spa1-button"
-                      >
-                        <span>TOP Secret Robotic Research</span>
-                      </button>
+                      <div className="agent-modules" aria-label="Mission modules">
+                        {AGENT_MODULES.map((module) => (
+                          <button
+                            key={module.id}
+                            type="button"
+                            onClick={() => navigate(module.path)}
+                            className={`agent-module agent-module--${module.status.toLowerCase()}`}
+                          >
+                            <div className="agent-module-top">
+                              <span
+                                className={`agent-module-clearance agent-module-clearance--${module.clearance.toLowerCase()}`}
+                                title={`Clearance ${module.clearance}`}
+                              >
+                                {module.clearance}
+                              </span>
+                              <span
+                                className={`agent-module-status agent-module-status--${module.status.toLowerCase()}`}
+                              >
+                                <span className="agent-module-status-dot" aria-hidden="true" />
+                                {module.status}
+                              </span>
+                            </div>
+                            <span className="agent-module-codename">{module.codename}</span>
+                            <span className="agent-module-briefing">{module.briefing}</span>
+                          </button>
+                        ))}
+                      </div>
                       
                       <MissionLog />
                     </div>
