@@ -49,7 +49,7 @@ export const MissionLog = ({ missions = [] }) => {
 
   return (
     <div className="mission-log">
-      <h3 className="mission-log-title">Active Missions</h3>
+      <h3 className="mission-log-title">Active Directives</h3>
       <div className="missions-list">
         <Row>
           {missionsToDisplay.map((mission, index) => (

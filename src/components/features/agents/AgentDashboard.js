@@ -7,6 +7,7 @@ import FloatingShapes from '../../common/FloatingShapes';
 import { agentConfig } from '../../../config/agentConfig';
 import { MissionLog } from './MissionLog';
 import { DeadDropTerminal } from './DeadDropTerminal';
+import { InterceptFeed } from './InterceptFeed';
 
 const formatUtcClock = (date) => {
   const pad = (n) => String(n).padStart(2, '0');
@@ -120,6 +121,13 @@ export const AgentDashboard = () => {
   if (isAuthenticated) {
     return (
       <section className="agent-dashboard" id="agent-dashboard">
+        <div className="agent-fiducials" aria-hidden="true">
+          <span className="agent-fiducial agent-fiducial--tl">REF: OPS-7A</span>
+          <span className="agent-fiducial agent-fiducial--tr">GRID 47.2N / 12.8E</span>
+          <span className="agent-fiducial agent-fiducial--bl">SECTOR · Δ-09</span>
+          <span className="agent-fiducial agent-fiducial--br">CH-Ω / 0x7A</span>
+        </div>
+
         <div className="agent-dashboard-background">
           <FloatingShapes 
             count={10} 
@@ -133,56 +141,56 @@ export const AgentDashboard = () => {
           />
         </div>
         
-        <Container>
-          <Row className="align-items-center justify-content-center">
-            <Col xs={12} md={10} lg={8}>
-              <TrackVisibility>
-                {({ isVisible }) =>
-                  <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
-                    <header className="agent-command-strip">
-                      <div className="agent-command-strip-main">
-                        <div className="agent-command-strip-left">
-                          <h1 className="agent-command-title">
-                            <span className="agent-command-prefix">OPS</span>
-                            <span className="agent-command-sep" aria-hidden="true">//</span>
-                            <span>DASHBOARD</span>
-                          </h1>
-                          <span className="agent-secure-link">
-                            <span className="agent-secure-link-dot" aria-hidden="true" />
-                            SECURE LINK
-                          </span>
-                        </div>
-                        <div className="agent-command-strip-right">
-                          <time className="agent-command-meta agent-command-clock" dateTime={utcNow.toISOString()}>
-                            {utcClock}
-                          </time>
-                          <span className="agent-command-meta agent-command-session" title="Session ID">
-                            {sessionId}
-                          </span>
-                          <button
-                            type="button"
-                            onClick={handleLogout}
-                            className="agent-logout-btn"
-                          >
-                            Terminate Session
-                          </button>
-                        </div>
-                      </div>
-                      <div className="agent-status-bar" role="status" aria-live="polite">
-                        <span>ENCRYPTION: ACTIVE</span>
-                        <span className="agent-status-sep" aria-hidden="true">·</span>
-                        <span>CHANNEL: ENCRYPTED</span>
-                      </div>
-                    </header>
-                    <DeadDropTerminal sessionId={sessionId} modules={AGENT_MODULES} />
-                    
-                    <div className="agent-dashboard-content">
-                      <h2>Welcome, <span className="" >
-                            {sessionId}
-                          </span> </h2>
-                      <p></p>
-                      
+        <Container fluid className="agent-console">
+          <TrackVisibility>
+            {({ isVisible }) =>
+              <div className={isVisible ? "animate__animated animate__fadeIn" : ""}>
+                <header className="agent-command-strip agent-command-strip--sticky">
+                  <div className="agent-command-strip-main">
+                    <div className="agent-command-strip-left">
+                      <h1 className="agent-command-title">
+                        <span className="agent-command-prefix">OPS</span>
+                        <span className="agent-command-sep" aria-hidden="true">//</span>
+                        <span>AGENT DASHBOARD</span>
+                      </h1>
+                      <span className="agent-secure-link">
+                        <span className="agent-secure-link-dot" aria-hidden="true" />
+                        SECURE LINK
+                      </span>
+                    </div>
+                    <div className="agent-command-strip-right">
+                      <time className="agent-command-meta agent-command-clock" dateTime={utcNow.toISOString()}>
+                        {utcClock}
+                      </time>
+                      <span className="agent-command-meta agent-command-session" title="Session ID">
+                        {sessionId}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={handleLogout}
+                        className="agent-logout-btn"
+                      >
+                        Terminate Session
+                      </button>
+                    </div>
+                  </div>
+                  <div className="agent-status-bar" role="status" aria-live="polite">
+                    <span>ENCRYPTION: ACTIVE</span>
+                    <span className="agent-status-sep" aria-hidden="true">·</span>
+                    <span>CHANNEL: ENCRYPTED</span>
+                    <span className="agent-status-sep" aria-hidden="true">·</span>
+                    <span>REF: OPS-7A</span>
+                  </div>
+                </header>
+                <DeadDropTerminal sessionId={sessionId} modules={AGENT_MODULES} />
 
+                <div className="agent-ops-grid">
+                  <div className="agent-ops-col agent-ops-col--left">
+                    <div className="agent-panel">
+                      <div className="agent-panel-header">
+                        <h2>Mission Modules</h2>
+                        <p>Clearance-gated terminals · select to deploy</p>
+                      </div>
                       <div className="agent-modules" aria-label="Mission modules">
                         {AGENT_MODULES.map((module) => (
                           <button
@@ -210,14 +218,21 @@ export const AgentDashboard = () => {
                           </button>
                         ))}
                       </div>
-                      
+                    </div>
+
+                    
+                  </div>
+
+                  <div className="agent-ops-col agent-ops-col--right">
+                    <div className="agent-panel agent-panel--missions">
                       <MissionLog />
                     </div>
+                    <InterceptFeed />
                   </div>
-                }
-              </TrackVisibility>
-            </Col>
-          </Row>
+                </div>
+              </div>
+            }
+          </TrackVisibility>
         </Container>
       </section>
     );
